@@ -1,1 +1,52 @@
-mkdocs.yml
+site_name: SE311 - Sillah (صلة) Family Health Management System
+site_description: Full SE311 Software Requirements Analysis Project Documentation
+site_url: https://Software-Requirements-Analysis.Shoug-Tech.com
+
+theme:
+  name: material
+  logo: img/tree.png
+  language: en
+  features:
+    - navigation.top
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/white-balance-sunny
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Introduction: introduction.md
+  - Conclusion: conclusion.md
+  - Team: team.md
+  - Phase 1:
+    - Overview: Phase 1/index.md 
+    - Business Requirements: Phase 1/business-requirements.md 
+    - Scope & Limitations: Phase 1/scope-and-limitations.md
+    - Business Context: Phase 1/business-context.md
+  - Report:
+      - View & Download: report/report.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - attr_list
+  - md_in_html
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css
