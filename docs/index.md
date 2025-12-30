@@ -41,11 +41,3 @@ This project is developed for **SE311 – Software Requirements Engineering**, w
 - Requirements management and traceability  
 
 Sillah serves as a complete case study demonstrating the full lifecycle of Requirements Engineering as taught in SE311.
-
----
-
-## Team
-
-- Shoug Fawaz Abdullah Alomran — 223410392  
-- Ghala Alsaqar -
-- Ghala Alalula -

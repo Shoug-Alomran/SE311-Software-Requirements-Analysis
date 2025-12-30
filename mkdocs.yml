@@ -28,7 +28,6 @@ theme:
 nav:
   - Home: index.md
   - Introduction: introduction.md
-  - Conclusion: conclusion.md
   - Team: team.md
   - Phase 1:
     - Overview: Phase 1/index.md 
@@ -37,6 +36,7 @@ nav:
     - Business Context: Phase 1/business-context.md
   - Report:
       - View & Download: report/report.md
+  - Conclusion: conclusion.md
 
 markdown_extensions:
   - admonition
