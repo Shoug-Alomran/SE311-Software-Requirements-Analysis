@@ -1,6 +1,6 @@
 # SE311 – Sillah (صلة): Family Health Management System
 
-Prince Sultan University  
+**Prince Sultan University**
 College of Computer and Information Sciences (CCIS)  
 Course: SE311 – Software Requirements Engineering  
 Instructor: Ms. Alhanouf Almutairi  
