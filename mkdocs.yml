@@ -4,11 +4,12 @@ site_url: https://Software-Requirements-Analysis.Shoug-Tech.com
 
 theme:
   name: material
-  logo: img/tree.png
-  language: en
   features:
-    - navigation.top
-    - content.code.copy
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -29,14 +30,46 @@ nav:
   - Home: index.md
   - Introduction: introduction.md
   - Team: team.md
-  - Phase 1:
-    - Overview: Phase 1/index.md 
-    - Business Requirements: Phase 1/business-requirements.md 
-    - Scope & Limitations: Phase 1/scope-and-limitations.md
-    - Business Context: Phase 1/business-context.md
+
+  - Phase 1 - Inception:
+      - Overview: Phase 1 - Inception/index.md
+      - Business Requirements: Phase 1 - Inception/business-requirements.md
+      - Scope & Limitations: Phase 1 - Inception/scope-and-limitations.md
+      - Business Context: Phase 1 - Inception/business-context.md
+
+  - Phase 2 - Elicitation:
+      - Overview: Phase 2 - Elicitation/index.md
+      - Stakeholders: Phase 2 - Elicitation/stakeholders.md
+      - Elicitation Plan: Phase 2 - Elicitation/elicitation-plan.md
+      - Elicitation Notes: Phase 2 - Elicitation/elicitation-notes.md
+
+  - Phase 3 - Analysis:
+      - Overview: Phase 3 - Analysis/index.md
+      - Domain Model: Phase 3 - Analysis/domain-model.md
+      - Use Cases: Phase 3 - Analysis/use-cases.md
+      - Functional Requirements: Phase 3 - Analysis/functional-requirements.md
+      - Non-Functional Requirements: Phase 3 - Analysis/nonfunctional-requirements.md
+      - Prioritization: Phase 3 - Analysis/prioritization.md
+
+  - Phase 4 – Specification:
+      - Overview: Phase 4 – Specification/index.md
+      - SRS: Phase 4 – Specification/srs.md
+
+  - Phase 5 – Validation:
+      - Overview: Phase 5 – Validation/index.md
+      - Validation Results: Phase 5 – Validation/validation-results.md
+
+  - Phase 6 – Requirements Management:
+      - Overview: Phase 6 – Requirements Management/index.md
+      - Change Control: Phase 6 – Requirements Management/change-control.md
+      - Traceability Matrix: Phase 6 – Requirements Management/traceability-matrix.md
+
+
   - Report:
       - View & Download: report/report.md
+
   - Conclusion: conclusion.md
+
 
 markdown_extensions:
   - admonition
@@ -49,4 +82,4 @@ markdown_extensions:
   - md_in_html
 
 extra_css:
-  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css
+  - styles/extra.css
