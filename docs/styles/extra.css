@@ -3,57 +3,61 @@
   --green-2:#43a047;
 }
 
-/* Header */
+/* =========================
+   HEADER + TABS (DESKTOP FIX)
+   ========================= */
+
+/* Keep your gradients */
 .md-header{
   background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
   color:#fff !important;
 }
-.md-header__inner{
-  background:transparent !important;
-  overflow:visible !important;
-}
-
-/* Top tabs */
 .md-tabs{
   background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
-  overflow:visible !important;
 }
+
+/* IMPORTANT: Material clamps header/tabs content inside .md-grid with a max-width.
+   Remove that clamp so tabs don't get visually cut off on laptops/desktops. */
+.md-header__inner.md-grid,
+.md-tabs__inner.md-grid{
+  max-width:100% !important;
+  width:100% !important;
+  margin:0 !important;
+  padding-left:0.8rem !important;
+  padding-right:0.8rem !important;
+  box-sizing:border-box !important;
+}
+
+/* Make the TABS row scroll horizontally when it exceeds viewport width */
 .md-tabs__inner{
-  background:transparent !important;
   overflow-x:auto !important;
   overflow-y:hidden !important;
   -webkit-overflow-scrolling:touch !important;
 }
+
+/* Ensure the list becomes content-sized (so scrolling actually engages) */
 .md-tabs__list{
   display:inline-flex !important;
   flex-wrap:nowrap !important;
   width:max-content !important;
   min-width:100% !important;
-  padding-right:1rem !important;
+  padding-right:1.5rem !important;
 }
 .md-tabs__item{
   flex:0 0 auto !important;
 }
-.md-tabs__link{
-  padding-left:0.9rem !important;
-  padding-right:0.9rem !important;
-}
-.md-tabs__link:hover{
-  background-color:rgba(255,255,255,0.15) !important;
-}
+
+/* Prevent ellipsis clipping inside tab labels */
+.md-tabs__link,
 .md-tabs__link .md-ellipsis{
   white-space:nowrap !important;
   overflow:visible !important;
   text-overflow:clip !important;
 }
-.md-tabs__inner,
-.md-tabs__list,
-.md-tabs__item,
-.md-tabs__link{
-  max-width:none !important;
-}
-.md-tabs__inner::-webkit-scrollbar{
-  height:8px;
+
+/* Hover */
+.md-tabs__link:hover{
+  background-color:rgba(255,255,255,0.15) !important;
 }
 
 /* Header icons & search */
@@ -65,7 +69,20 @@
   color:#fff !important;
 }
 
-/* Sidebar links reset */
+/* Optional: show scrollbar on WebKit (doesn't affect behavior) */
+.md-tabs__inner::-webkit-scrollbar{
+  height:8px;
+}
+
+/* =========================
+   SIDEBAR / TOC (your existing styling)
+   ========================= */
+
+.md-header__inner,
+.md-tabs__inner{
+  background:transparent !important;
+}
+
 .md-nav--primary .md-nav__link{
   background:transparent !important;
   color:inherit !important;
@@ -73,7 +90,6 @@
   border-radius:8px !important;
 }
 
-/* Sidebar section headers */
 .md-nav--primary .md-nav__item--section > .md-nav__title,
 .md-nav--primary .md-nav__item--section > .md-nav__link{
   display:flex !important;
@@ -88,6 +104,7 @@
   box-sizing:border-box !important;
   min-width:0 !important;
 }
+
 .md-nav--primary .md-nav__item--section > .md-nav__title .md-nav__button{
   margin-left:auto !important;
   background:transparent !important;
@@ -95,17 +112,16 @@
   flex:0 0 auto !important;
 }
 
-/* Active sidebar link */
 .md-nav--primary .md-nav__link--active{
   background-color:rgba(67,160,71,0.18) !important;
   color:var(--green-1) !important;
   font-weight:700 !important;
 }
 
-/* TOC */
 .md-nav--secondary{
   padding-top:12px !important;
 }
+
 .md-nav--secondary .md-nav__title{
   background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
   color:#fff !important;
@@ -114,20 +130,23 @@
   margin-bottom:10px !important;
   font-weight:700 !important;
 }
+
 .md-nav--secondary .md-nav__link{
   border-radius:8px !important;
   padding:6px 10px !important;
 }
+
 .md-nav--secondary .md-nav__link:hover{
   background-color:rgba(67,160,71,0.10) !important;
 }
+
 .md-nav--secondary .md-nav__link--active{
   background-color:rgba(67,160,71,0.20) !important;
   color:var(--green-1) !important;
   font-weight:700 !important;
 }
 
-/* Sidebar scrolling */
+/* Sidebar scrolling safety */
 .md-sidebar__scrollwrap{
   overflow-y:auto !important;
   overflow-x:hidden !important;
@@ -138,7 +157,7 @@
   overflow:visible !important;
 }
 
-/* Avoid text clipping in nav */
+/* Avoid text clipping in sidebar items */
 .md-nav__link,
 .md-nav__title{
   overflow:visible !important;
@@ -151,7 +170,6 @@
   padding-right:0.6rem !important;
 }
 
-/* Optional: widen sidebar on desktop */
 @media (min-width:76.25em){
   .md-sidebar--primary{
     width:16rem !important;
