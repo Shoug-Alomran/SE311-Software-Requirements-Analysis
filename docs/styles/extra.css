@@ -130,3 +130,40 @@
     width: 16rem !important;
   }
 }
+/* --- FIX: TOP HEADER TABS CUT OFF (DESKTOP) --- */
+
+/* Allow the tabs bar to scroll instead of clipping items */
+.md-tabs {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Ensure the inner wrapper doesn't hide overflow */
+.md-tabs__inner {
+  overflow: visible !important;
+}
+
+/* Keep tabs in one row, sized to content, so scrolling works */
+.md-tabs__list {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important;
+  min-width: 100% !important;
+}
+
+/* Prevent individual tab items from shrinking and getting clipped */
+.md-tabs__item {
+  flex: 0 0 auto !important;
+}
+
+/* Optional: small visual comfort so tabs aren't flush to the edge */
+.md-tabs__link {
+  padding-left: 0.9rem !important;
+  padding-right: 0.9rem !important;
+}
+
+/* Optional: show a thin scrollbar only when needed (doesn't affect functionality) */
+.md-tabs::-webkit-scrollbar {
+  height: 8px;
+}
