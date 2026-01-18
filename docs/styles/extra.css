@@ -3,13 +3,11 @@
   --green-2: #43a047;
 }
 
-/* Header */
 .md-header {
   background: linear-gradient(90deg, var(--green-1), var(--green-2)) !important;
   color: #fff !important;
 }
 
-/* Top tabs */
 .md-tabs {
   background: linear-gradient(90deg, var(--green-1), var(--green-2)) !important;
 }
@@ -19,7 +17,6 @@
   background: transparent !important;
 }
 
-/* Header icons & search */
 .md-search__form,
 .md-search__input,
 .md-search__icon,
@@ -28,12 +25,10 @@
   color: #fff !important;
 }
 
-/* Tabs hover */
 .md-tabs__link:hover {
   background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
-/* Sidebar links reset */
 .md-nav--primary .md-nav__link {
   background: transparent !important;
   color: inherit !important;
@@ -41,12 +36,11 @@
   border-radius: 8px !important;
 }
 
-/* Sidebar section headers */
 .md-nav--primary .md-nav__item--section > .md-nav__title,
 .md-nav--primary .md-nav__item--section > .md-nav__link {
   display: flex !important;
   align-items: center !important;
-  width: calc(100% - 16px) !important;
+  width: auto !important;
   margin: 8px !important;
   padding: 8px 12px !important;
   background: linear-gradient(90deg, var(--green-1), var(--green-2)) !important;
@@ -54,22 +48,27 @@
   border-radius: 12px !important;
   font-weight: 700 !important;
   box-sizing: border-box !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  line-height: 1.25 !important;
 }
 
 .md-nav--primary .md-nav__item--section > .md-nav__title .md-nav__button {
   margin-left: auto !important;
   background: transparent !important;
   color: inherit !important;
+  flex: 0 0 auto !important;
 }
 
-/* Active sidebar link */
 .md-nav--primary .md-nav__link--active {
   background-color: rgba(67, 160, 71, 0.18) !important;
   color: var(--green-1) !important;
   font-weight: 700 !important;
 }
 
-/* TOC */
 .md-nav--secondary {
   padding-top: 12px !important;
 }
@@ -96,4 +95,38 @@
   background-color: rgba(67, 160, 71, 0.20) !important;
   color: var(--green-1) !important;
   font-weight: 700 !important;
+}
+
+.md-sidebar__scrollwrap {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.md-sidebar,
+.md-sidebar__inner,
+.md-nav--primary {
+  overflow: visible !important;
+}
+
+.md-nav__link,
+.md-nav__title,
+.md-tabs__link {
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+
+.md-nav__link,
+.md-nav__title {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  line-height: 1.25 !important;
+  padding-left: 0.6rem !important;
+  padding-right: 0.6rem !important;
+}
+
+@media (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 16rem !important;
+  }
 }
