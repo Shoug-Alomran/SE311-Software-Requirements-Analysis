@@ -1,6 +1,8 @@
 site_name: SE311 - Sillah (صلة) Family Health Management System
 site_description: Full SE311 Software Requirements Analysis Project Documentation
 site_url: https://Software-Requirements-Analysis.Shoug-Tech.com
+copyright: © 2026 Shoug Fawaz Alomran · All rights reserved
+
 
 theme:
   name: material
