@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root{
   --green-1:#2e7d32;
   --green-2:#43a047;
@@ -26,6 +27,47 @@
   padding-left:0.8rem !important;
   padding-right:0.8rem !important;
   box-sizing:border-box !important;
+=======
+/* =======================================================
+   GLOBAL COLORS (YOUR PALETTE + SEMANTIC TINTS)
+   ======================================================= */
+:root {
+  /* Darker green gradient (header, tabs, section headers) */
+  --mint-1: #6fc7a6;   /* darker, calmer green */
+  --mint-2: #9fe0c3;   /* still lighter, but not pastel */
+
+  /* Softer than harsh black (unchanged) */
+  --ink: #2b3443;
+  --ink-muted: #445063;
+
+  /* Darker accent green (active states) */
+  --accent: #075e55;
+
+  /* Pills (still ink-based, unchanged structure) */
+  --pill: rgba(43, 52, 67, 0.06);
+  --pill-hover: rgba(43, 52, 67, 0.10);
+
+  /* Active pill now darker + greener */
+  --pill-active: rgba(7, 94, 85, 0.18);
+
+  /* Semantic green fills (darker than before) */
+  --mint-soft: rgba(111, 199, 166, 0.25);
+  --mint-soft-hover: rgba(159, 224, 195, 0.14);
+}
+
+
+/* =======================================================
+   HEADER + TABS (PALE GREEN GRADIENT) — CLEAN
+   ======================================================= */
+.md-header,
+.md-tabs {
+  background: linear-gradient(90deg, var(--mint-1), var(--mint-2)) !important;
+}
+
+.md-header,
+.md-header * {
+  color: var(--ink) !important;
+>>>>>>> 295f3fb (formatting)
 }
 
 /* Make the TABS row scroll horizontally when it exceeds viewport width */
@@ -60,10 +102,10 @@
   background-color:rgba(255,255,255,0.15) !important;
 }
 
-/* Header icons & search */
 .md-search__form,
 .md-search__input,
 .md-search__icon,
+<<<<<<< HEAD
 .md-header__option{
   background-color:transparent !important;
   color:#fff !important;
@@ -103,6 +145,97 @@
   font-weight:700 !important;
   box-sizing:border-box !important;
   min-width:0 !important;
+=======
+.md-header__option,
+.md-header__button {
+  background-color: transparent !important;
+  color: var(--ink) !important;
+}
+
+.md-tabs .md-grid {
+  max-width: 100% !important;
+  padding-left: 14px !important;
+  padding-right: 14px !important;
+}
+
+/* =======================================================
+   TOP TABS — POLISHED (PILL STYLE) + WRAP
+   ======================================================= */
+.md-tabs__list {
+  width: 100% !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 10px 14px !important;
+  padding: 10px 0 !important;
+}
+
+.md-tabs__item {
+  margin: 0 !important;
+  white-space: normal !important;
+}
+
+.md-tabs__link {
+  color: var(--ink-muted) !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+
+  font-size: 0.82rem !important;
+  line-height: 1.1 !important;
+
+  padding: 0.55rem 0.85rem !important;
+  text-align: center !important;
+
+  border-radius: 999px !important;
+  background: var(--pill) !important;
+
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.md-tabs__link:hover {
+  background: var(--pill-hover) !important;
+  color: var(--ink) !important;
+  transform: translateY(-1px);
+}
+
+.md-tabs__link--active {
+  background: var(--pill-active) !important;
+  color: var(--accent) !important;
+  font-weight: 600 !important;
+  border-bottom: 0 !important;
+}
+
+@media (max-width: 720px) {
+  .md-tabs__list {
+    justify-content: flex-start !important;
+  }
+}
+
+/* =======================================================
+   LEFT SIDEBAR (PRIMARY NAV)
+   ======================================================= */
+.md-nav--primary .md-nav__link {
+  background: transparent !important;
+  color: inherit !important;
+  font-weight: 400 !important;
+  border-radius: 8px;
+}
+
+/* SECTION HEADERS */
+.md-nav--primary .md-nav__item--section > .md-nav__title,
+.md-nav--primary .md-nav__item--section > .md-nav__link {
+  display: flex !important;
+  align-items: center !important;
+  width: calc(100% - 16px) !important;
+  margin: 8px !important;
+  padding: 8px 12px !important;
+  background: linear-gradient(90deg, var(--mint-1), var(--mint-2)) !important;
+  color: var(--ink) !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px !important;
+  box-sizing: border-box !important;
+>>>>>>> 295f3fb (formatting)
 }
 
 .md-nav--primary .md-nav__item--section > .md-nav__title .md-nav__button{
@@ -112,6 +245,7 @@
   flex:0 0 auto !important;
 }
 
+<<<<<<< HEAD
 .md-nav--primary .md-nav__link--active{
   background-color:rgba(67,160,71,0.18) !important;
   color:var(--green-1) !important;
@@ -175,3 +309,48 @@
     width:16rem !important;
   }
 }
+=======
+/* ACTIVE PAGE LINK (was hard-coded rgba mint) */
+.md-nav--primary .md-nav__link--active {
+  background-color: var(--mint-soft) !important;
+  color: var(--accent) !important;
+  font-weight: 700 !important;
+}
+
+/* =======================================================
+   RIGHT SIDEBAR (TOC)
+   ======================================================= */
+.md-nav--secondary {
+  padding-top: 12px;
+}
+
+.md-nav--secondary .md-nav__title {
+  background: linear-gradient(90deg, var(--mint-1), var(--mint-2)) !important;
+  color: var(--ink) !important;
+  border-radius: 10px;
+  padding: 10px 12px !important;
+  margin-bottom: 10px !important;
+  font-weight: 700;
+}
+
+.md-nav--secondary .md-nav__link {
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+/* TOC hover (was hard-coded rgba mint-2) */
+.md-nav--secondary .md-nav__link:hover {
+  background-color: var(--mint-soft-hover) !important;
+}
+
+/* TOC active (was hard-coded rgba mint-1) */
+.md-nav--secondary .md-nav__link--active {
+  background-color: var(--mint-soft) !important;
+  color: var(--accent) !important;
+  font-weight: 700 !important;
+}
+
+.md-nav--secondary .md-nav__link--active * {
+  color: inherit !important;
+}
+>>>>>>> 295f3fb (formatting)

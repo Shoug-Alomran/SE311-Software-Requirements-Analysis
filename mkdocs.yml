@@ -4,6 +4,8 @@ site_url: https://Software-Requirements-Analysis.Shoug-Tech.com
 
 theme:
   name: material
+  icon:
+    logo: material/ambulance
   features:
     - navigation.tabs
     - navigation.tabs.sticky
