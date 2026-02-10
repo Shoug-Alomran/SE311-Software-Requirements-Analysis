@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirements Engineering Dashboard | Course Registration & Sillah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light mode colors */
+            --primary: #6c63ff;
+            --primary-light: #8a84ff;
+            --secondary: #ff6584;
+            --accent: #36d1dc;
+            --background: #ffffff;
+            --surface: #f9f7fe;
+            --text: #333344;
+            --text-light: #666677;
+            --border: #e1deff;
+            --shadow: rgba(108, 99, 255, 0.1);
+            --card: #ffffff;
+            --success: #4cc9b0;
+            --warning: #ffb347;
+            --danger: #ff6b6b;
+            --shoug: #4cc9b0;
+            --ghala: #6c63ff;
+            --gala: #ff6584;
+            --salma: #ffb347;
+            --shared: #8a84ff;
+            --notes: #36d1dc;
+            --tools: #ff6b6b;
+        }
+
+        .dark-mode {
+            /* Dark mode colors */
+            --primary: #7d76ff;
+            --primary-light: #9a94ff;
+            --secondary: #ff7a96;
+            --accent: #4de0eb;
+            --background: #1a1a2e;
+            --surface: #252542;
+            --text: #f0f0ff;
+            --text-light: #b0b0cc;
+            --border: #3a3a5e;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --card: #252542;
+            --success: #5ad9c5;
+            --warning: #ffc074;
+            --danger: #ff7b7b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.2s;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, var(--primary) 0%, #5a52d5 100%);
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 5px 0 15px var(--shadow);
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .logo i {
+            margin-right: 12px;
+            font-size: 26px;
+        }
+
+        .search-box {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border-radius: 50px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+        }
+
+        .language-toggle {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 8px;
+            display: flex;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .lang-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border-radius: 50px;
+            border: none;
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .team-members {
+            margin-bottom: 30px;
+        }
+
+        .team-title {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .team-title i {
+            margin-right: 10px;
+        }
+
+        .members-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .member {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .member:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .member.active {
+            background-color: white;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: 700;
+        }
+
+        .member-name {
+            font-weight: 600;
+        }
+
+        .member-task {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .project-status {
+            display: flex;
+            gap: 15px;
+        }
+
+        .status-badge {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-badge i {
+            margin-right: 8px;
+        }
+
+        /* Tabs */
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background-color: transparent;
+            border: none;
+            border-radius: 50px;
+            color: var(--text-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .tab-btn i {
+            margin-right: 8px;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+            background-color: var(--shadow);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Task cards - EXPANDABLE */
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .task-card {
+            background-color: var(--card);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .task-card.expanded {
+            grid-column: 1 / -1;
+            max-height: none;
+            z-index: 10;
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .task-title {
+            font-size: 20px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .task-assignee {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        .task-assignee i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+
+        .task-summary {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            max-height: 100px;
+            overflow: hidden;
+            transition: max-height 0.3s;
+        }
+
+        .task-card.expanded .task-summary {
+            max-height: none;
+        }
+
+        .expand-icon {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            color: var(--text-light);
+            transition: transform 0.3s;
+            font-size: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .task-card.expanded .expand-icon {
+            transform: rotate(180deg);
+            color: var(--warning);
+        }
+
+        /* Expanded content */
+        .task-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 0;
+            border-top: 1px solid transparent;
+        }
+
+        .task-card.expanded .task-details {
+            max-height: 2000px;
+            border-top: 1px solid var(--border);
+            padding-top: 25px;
+            margin-top: 15px;
+        }
+
+        .details-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--text);
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .steps-list {
+            list-style-type: none;
+            counter-reset: step-counter;
+            padding-left: 0;
+        }
+
+        .steps-list li {
+            padding: 15px 0 15px 60px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .steps-list li:before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .steps-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tools-list {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tools-list li {
+            background-color: var(--surface);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .tools-list li i {
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .deliverables-list {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .deliverables-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .deliverables-list li:last-child {
+            border-bottom: none;
+        }
+
+        .deliverables-list li i {
+            color: var(--success);
+            margin-top: 3px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: var(--primary-light);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* Progress bars */
+        .progress-container {
+            margin-top: 20px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        /* ✅ Checklist styles (NEW) */
+        .checklist label {
+            display: flex;
+            gap: 10px;
+            cursor: pointer;
+            width: 100%;
+            align-items: flex-start;
+        }
+        .checklist input[type="checkbox"] {
+            transform: translateY(3px);
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Shared work */
+        .shared-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .collaboration-card {
+            background-color: var(--card);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .collab-title {
+            font-size: 20px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Notes */
+        .notes-container {
+            max-width: 100%;
+        }
+
+        .note-card {
+            background-color: var(--card);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px var(--shadow);
+            border-left: 5px solid var(--warning);
+        }
+
+        .note-title {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .note-title i {
+            color: var(--warning);
+        }
+
+        /* Tools */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-card {
+            background-color: var(--card);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .tool-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .tool-category {
+            font-size: 14px;
+            color: var(--text-light);
+            background-color: var(--border);
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .tool-desc {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            border: none;
+        }
+
+        /* Arabic text */
+        .ar-text {
+            display: none;
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .members-list {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .member {
+                flex: 1;
+                min-width: 200px;
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .task-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .project-status {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .steps-list li {
+                padding-left: 50px;
+                font-size: 15px;
+            }
+
+            .steps-list li:before {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-project-diagram"></i>
+            <span class="en-text">Requirements Dashboard</span>
+            <span class="ar-text">لوحة المتطلبات</span>
+        </div>
+
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search tasks, tools, deliverables...">
+        </div>
+
+        <div class="language-toggle">
+            <button class="lang-btn active" id="langEn">EN</button>
+            <button class="lang-btn" id="langAr">AR</button>
+        </div>
+
+        <div class="team-members">
+            <div class="team-title">
+                <i class="fas fa-users"></i>
+                <span class="en-text">Team Members</span>
+                <span class="ar-text">أعضاء الفريق</span>
+            </div>
+            <div class="members-list">
+                <div class="member active" data-tab="shouq">
+                    <div class="member-avatar">ش</div>
+                    <div>
+                        <div class="member-name">Shouq Alomran</div>
+                        <div class="member-task en-text">Use Case Diagrams</div>
+                        <div class="member-task ar-text">مخططات حالات الاستخدام</div>
+                    </div>
+                </div>
+                <div class="member" data-tab="ghala">
+                    <div class="member-avatar">غ</div>
+                    <div>
+                        <div class="member-name">Ghala Alsager</div>
+                        <div class="member-task en-text">Functional Requirements</div>
+                        <div class="member-task ar-text">المتطلبات الوظيفية</div>
+                    </div>
+                </div>
+                <div class="member" data-tab="gala">
+                    <div class="member-avatar">غ</div>
+                    <div>
+                        <div class="member-name">Gala Alalula</div>
+                        <div class="member-task en-text">Non-Functional Requirements</div>
+                        <div class="member-task ar-text">المتطلبات غير الوظيفية</div>
+                    </div>
+                </div>
+                <div class="member" data-tab="salma">
+                    <div class="member-avatar">س</div>
+                    <div>
+                        <div class="member-name">Salma Al Khaldi</div>
+                        <div class="member-task en-text">Risk Analysis</div>
+                        <div class="member-task ar-text">تحليل المخاطر</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="en-text">Course Registration & Sillah Projects</div>
+            <div class="ar-text">مشروعي تسجيل المقررات وسلة</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <h1 class="en-text">Requirements Engineering Dashboard</h1>
+            <h1 class="ar-text">لوحة هندسة المتطلبات</h1>
+            <div class="project-status">
+                <div class="status-badge">
+                    <i class="fas fa-tasks"></i>
+                    <span class="en-text">Phase 2: Requirements</span>
+                    <span class="ar-text">المرحلة 2: المتطلبات</span>
+                </div>
+                <div class="status-badge">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="en-text">Due: 2 Weeks</span>
+                    <span class="ar-text">موعد التسليم: أسبوعين</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <button class="tab-btn active" data-tab="shouq">
+                <i class="fas fa-diagram-project"></i>
+                <span class="en-text">Shouq</span>
+                <span class="ar-text">شوق</span>
+            </button>
+            <button class="tab-btn" data-tab="ghala">
+                <i class="fas fa-list-check"></i>
+                <span class="en-text">Ghala</span>
+                <span class="ar-text">غلا</span>
+            </button>
+            <button class="tab-btn" data-tab="gala">
+                <i class="fas fa-chart-line"></i>
+                <span class="en-text">Gala</span>
+                <span class="ar-text">جلا</span>
+            </button>
+            <button class="tab-btn" data-tab="salma">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span class="en-text">Salma</span>
+                <span class="ar-text">سلمى</span>
+            </button>
+            <button class="tab-btn" data-tab="shared">
+                <i class="fas fa-users"></i>
+                <span class="en-text">Shared Work</span>
+                <span class="ar-text">العمل المشترك</span>
+            </button>
+            <button class="tab-btn" data-tab="notes">
+                <i class="fas fa-sticky-note"></i>
+                <span class="en-text">Notes</span>
+                <span class="ar-text">الملاحظات</span>
+            </button>
+            <button class="tab-btn" data-tab="tools">
+                <i class="fas fa-tools"></i>
+                <span class="en-text">Tools</span>
+                <span class="ar-text">الأدوات</span>
+            </button>
+        </div>
+
+        <!-- Shouq's Tab -->
+        <div id="shouq" class="tab-content active">
+            <div class="task-grid">
+                <!-- Task 1 -->
+                <div class="task-card" data-task="1">
+                    <div class="task-header">
+                        <div class="task-title en-text">Use Case Diagram Creation</div>
+                        <div class="task-title ar-text">إنشاء مخطط حالات الاستخدام</div>
+                        <div class="task-assignee">
+                            <i class="fas fa-user-check"></i>
+                            <span>Shouq</span>
+                        </div>
+                    </div>
+
+                    <i class="fas fa-chevron-down expand-icon"></i>
+
+                    <div class="task-summary en-text">
+                        Create a comprehensive use case diagram for the Course Registration System based on stakeholder inputs from the elicitation notes. Identify all actors and their goals.
+                    </div>
+                    <div class="task-summary ar-text">
+                        إنشاء مخطط حالات استخدام شامل لنظام تسجيل المقررات بناءً على مدخلات أصحاب المصلحة من ملاحظات الاستقصاء. تحديد جميع الجهات الفاعلة وأهدافها.
+                    </div>
+
+                    <!-- ✅ Functional progress (NEW structure) -->
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span class="en-text">Progress</span>
+                            <span class="ar-text">التقدم</span>
+                            <span class="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-list-ol"></i>
+                                <span class="en-text">Step-by-Step Instructions</span>
+                                <span class="ar-text">تعليمات خطوة بخطوة</span>
+                            </div>
+                            <ol class="steps-list">
+                                <li class="en-text"><strong>Review Elicitation Notes:</strong> Highlight actions mentioned by stakeholders and extract verbs like register/drop/view/check prerequisites/waitlist/notify.</li>
+                                <li class="ar-text"><strong>مراجعة ملاحظات الاستقصاء:</strong> تحديد الإجراءات المذكورة واستخراج أفعال مثل تسجيل/حذف/عرض/التحقق من المتطلبات المسبقة/قائمة الانتظار/إشعار.</li>
+
+                                <li class="en-text"><strong>Identify Actors:</strong> Student, Registrar, IT Administrator, Faculty Member + external SIS integration.</li>
+                                <li class="ar-text"><strong>تحديد الجهات الفاعلة:</strong> الطالب، المسجل، مشرف تقنية المعلومات، عضو هيئة التدريس + تكامل نظام SIS.</li>
+
+                                <li class="en-text"><strong>Define Use Cases:</strong> Register/Drop/View Schedule/Check Availability/View Waitlist/Manage Offerings/Reports/Monitor Performance.</li>
+                                <li class="ar-text"><strong>تحديد حالات الاستخدام:</strong> تسجيل/حذف/عرض الجدول/التحقق من التوفر/عرض حالة الانتظار/إدارة عروض المقررات/تقارير/مراقبة الأداء.</li>
+
+                                <li class="en-text"><strong>Create Visual Diagram:</strong> Use Lucidchart or Draw.io with UML notation and logical grouping.</li>
+                                <li class="ar-text"><strong>إنشاء مخطط مرئي:</strong> استخدام Lucidchart أو Draw.io مع ترميز UML وتجميع منطقي.</li>
+
+                                <li class="en-text"><strong>Write Use Case Descriptions:</strong> ID, Actor, Preconditions, Basic flow, Alternatives, Postconditions.</li>
+                                <li class="ar-text"><strong>كتابة أوصاف حالات الاستخدام:</strong> معرف، جهة فاعلة، شروط مسبقة، تدفق أساسي، بدائل، شروط لاحقة.</li>
+
+                                <li class="en-text"><strong>Validate Coverage:</strong> Ensure each requirement maps to at least one use case.</li>
+                                <li class="ar-text"><strong>التحقق من التغطية:</strong> التأكد أن كل متطلب مرتبط بحالة استخدام واحدة على الأقل.</li>
+
+                                <li class="en-text"><strong>Peer Review:</strong> Walk through with team and refine.</li>
+                                <li class="ar-text"><strong>مراجعة الأقران:</strong> مراجعة مع الفريق والتحسين.</li>
+                            </ol>
+                        </div>
+
+                        <!-- ✅ Checklist that drives progress (NEW) -->
+                        <div class="details-section checklist-section">
+                            <div class="section-title">
+                                <i class="fas fa-check-square"></i>
+                                <span class="en-text">Checklist</span>
+                                <span class="ar-text">قائمة التحقق</span>
+                            </div>
+
+                            <ul class="deliverables-list checklist">
+                                <li>
+                                    <label>
+                                        <input type="checkbox" class="progress-check" data-check="review-notes">
+                                        <span class="en-text">Reviewed elicitation notes</span>
+                                        <span class="ar-text">راجعت ملاحظات الاستقصاء</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" class="progress-check" data-check="actors">
+                                        <span class="en-text">Identified all actors (incl. SIS)</span>
+                                        <span class="ar-text">حددت كل الجهات الفاعلة (مع SIS)</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" class="progress-check" data-check="use-cases">
+                                        <span class="en-text">Defined use cases list</span>
+                                        <span class="ar-text">حددت قائمة حالات الاستخدام</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" class="progress-check" data-check="diagram">
+                                        <span class="en-text">Created the UML use case diagram</span>
+                                        <span class="ar-text">أنشأت مخطط حالات الاستخدام UML</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" class="progress-check" data-check="descriptions">
+                                        <span class="en-text">Wrote use case descriptions</span>
+                                        <span class="ar-text">كتبت أوصاف حالات الاستخدام</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" class="progress-check" data-check="validation">
+                                        <span class="en-text">Validated coverage + mapped requirements</span>
+                                        <span class="ar-text">تحققت من التغطية وربطت المتطلبات</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-tools"></i>
+                                <span class="en-text">Tools Needed</span>
+                                <span class="ar-text">الأدوات المطلوبة</span>
+                            </div>
+                            <ul class="tools-list">
+                                <li><i class="fas fa-drafting-compass"></i> <span class="en-text">Lucidchart (primary tool)</span><span class="ar-text">Lucidchart (الأداة الأساسية)</span></li>
+                                <li><i class="fas fa-project-diagram"></i> <span class="en-text">Draw.io (free alternative)</span><span class="ar-text">Draw.io (بديل مجاني)</span></li>
+                                <li><i class="fas fa-file-alt"></i> <span class="en-text">Google Docs for descriptions</span><span class="ar-text">Google Docs للأوصاف</span></li>
+                                <li><i class="fas fa-figma"></i> <span class="en-text">Figma for brainstorming</span><span class="ar-text">Figma للعصف الذهني</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-clipboard-check"></i>
+                                <span class="en-text">Deliverables</span>
+                                <span class="ar-text">المخرجات</span>
+                            </div>
+                            <ul class="deliverables-list">
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Use Case Diagram (PDF/PNG format)</span><span class="ar-text">مخطط حالات الاستخدام (PDF/PNG)</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Use Case Documentation</span><span class="ar-text">توثيق حالات الاستخدام</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Actor Definitions List</span><span class="ar-text">تعريفات الجهات الفاعلة</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Traceability Matrix</span><span class="ar-text">مصفوفة التتبع</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-tags"></i>
+                                <span class="en-text">Tags</span>
+                                <span class="ar-text">العلامات</span>
+                            </div>
+                            <div>
+                                <span class="tag en-text">UML</span>
+                                <span class="tag ar-text">UML</span>
+                                <span class="tag en-text">Visual Design</span>
+                                <span class="tag ar-text">تصميم مرئي</span>
+                                <span class="tag en-text">Stakeholder Analysis</span>
+                                <span class="tag ar-text">تحليل أصحاب المصلحة</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 2 -->
+                <div class="task-card" data-task="2">
+                    <div class="task-header">
+                        <div class="task-title en-text">Actor & System Boundary Definition</div>
+                        <div class="task-title ar-text">تعريف الجهات الفاعلة وحدود النظام</div>
+                        <div class="task-assignee">
+                            <i class="fas fa-user-check"></i>
+                            <span>Shouq</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+
+                    <div class="task-summary en-text">
+                        Define clear system boundaries and detailed actor specifications. Document actor hierarchies, relationships, and access control requirements.
+                    </div>
+                    <div class="task-summary ar-text">
+                        تعريف حدود نظام واضحة ومواصفات جهات فاعلة مفصلة. توثيق التسلسل الهرمي، العلاقات، ومتطلبات التحكم في الوصول.
+                    </div>
+
+                    <!-- ✅ Functional progress -->
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span class="en-text">Progress</span>
+                            <span class="ar-text">التقدم</span>
+                            <span class="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-list-ol"></i>
+                                <span class="en-text">Step-by-Step Instructions</span>
+                                <span class="ar-text">تعليمات خطوة بخطوة</span>
+                            </div>
+                            <ol class="steps-list">
+                                <li class="en-text"><strong>Analyze Stakeholder Roles:</strong> Role-based access control for admins, faculty, and students.</li>
+                                <li class="ar-text"><strong>تحليل الأدوار:</strong> التحكم في الوصول قائم على الدور للمسؤولين وهيئة التدريس والطلاب.</li>
+
+                                <li class="en-text"><strong>Define Actor Hierarchy:</strong> Student → Faculty → Registrar → IT Admin.</li>
+                                <li class="ar-text"><strong>تحديد التسلسل:</strong> الطالب → هيئة التدريس → المسجل → مشرف تقنية المعلومات.</li>
+
+                                <li class="en-text"><strong>Document Actor Specifications:</strong> Goals, access level, use cases, constraints.</li>
+                                <li class="ar-text"><strong>توثيق المواصفات:</strong> أهداف، مستوى وصول، حالات استخدام، قيود.</li>
+
+                                <li class="en-text"><strong>Define System Boundaries:</strong> internal vs external (SIS, notifications).</li>
+                                <li class="ar-text"><strong>تحديد الحدود:</strong> داخلي مقابل خارجي (SIS، الإشعارات).</li>
+
+                                <li class="en-text"><strong>Create Access Control Matrix:</strong> who can do what.</li>
+                                <li class="ar-text"><strong>إنشاء مصفوفة:</strong> من يستطيع تنفيذ ماذا.</li>
+
+                                <li class="en-text"><strong>Validate:</strong> ensure alignment with security/roles.</li>
+                                <li class="ar-text"><strong>التحقق:</strong> التأكد من الاتساق مع الأمان والأدوار.</li>
+                            </ol>
+                        </div>
+
+                        <!-- ✅ Checklist -->
+                        <div class="details-section checklist-section">
+                            <div class="section-title">
+                                <i class="fas fa-check-square"></i>
+                                <span class="en-text">Checklist</span>
+                                <span class="ar-text">قائمة التحقق</span>
+                            </div>
+                            <ul class="deliverables-list checklist">
+                                <li><label><input type="checkbox" class="progress-check" data-check="roles"><span class="en-text">Analyzed stakeholder roles</span><span class="ar-text">حللت أدوار أصحاب المصلحة</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="hierarchy"><span class="en-text">Defined actor hierarchy</span><span class="ar-text">حددت التسلسل الهرمي</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="specs"><span class="en-text">Wrote actor specifications</span><span class="ar-text">كتبت مواصفات الجهات</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="boundaries"><span class="en-text">Defined system boundaries</span><span class="ar-text">حددت حدود النظام</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="matrix"><span class="en-text">Created access control matrix</span><span class="ar-text">أنشأت مصفوفة التحكم</span></label></li>
+                            </ul>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-clipboard-check"></i>
+                                <span class="en-text">Deliverables</span>
+                                <span class="ar-text">المخرجات</span>
+                            </div>
+                            <ul class="deliverables-list">
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Actor Specification Document</span><span class="ar-text">وثيقة مواصفات الجهات الفاعلة</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Access Control Matrix</span><span class="ar-text">مصفوفة التحكم في الوصول</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">System Boundaries Diagram</span><span class="ar-text">مخطط حدود النظام</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Role Hierarchy Chart</span><span class="ar-text">مخطط تسلسل الأدوار</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ghala's Tab -->
+        <div id="ghala" class="tab-content">
+            <div class="task-grid">
+                <!-- Task 1 -->
+                <div class="task-card" data-task="1">
+                    <div class="task-header">
+                        <div class="task-title en-text">Functional Requirements Extraction</div>
+                        <div class="task-title ar-text">استخراج المتطلبات الوظيفية</div>
+                        <div class="task-assignee">
+                            <i class="fas fa-user-check"></i>
+                            <span>Ghala</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+
+                    <div class="task-summary en-text">
+                        Extract, categorize, and prioritize all functional requirements from stakeholder inputs. Create structured requirements with IDs and acceptance criteria.
+                    </div>
+                    <div class="task-summary ar-text">
+                        استخراج وتصنيف وترتيب أولويات المتطلبات الوظيفية من مدخلات أصحاب المصلحة. إنشاء متطلبات منظمة بمعرفات ومعايير قبول.
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span class="en-text">Progress</span>
+                            <span class="ar-text">التقدم</span>
+                            <span class="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-list-ol"></i>
+                                <span class="en-text">Step-by-Step Instructions</span>
+                                <span class="ar-text">تعليمات خطوة بخطوة</span>
+                            </div>
+                            <ol class="steps-list">
+                                <li class="en-text"><strong>Extract Raw Requirements:</strong> Spreadsheet: raw text, source, type, notes.</li>
+                                <li class="ar-text"><strong>استخراج أولي:</strong> جدول: النص، المصدر، النوع، ملاحظات.</li>
+
+                                <li class="en-text"><strong>Categorize:</strong> Student/Admin/System/Integration.</li>
+                                <li class="ar-text"><strong>تصنيف:</strong> طالب/إداري/نظام/تكامل.</li>
+
+                                <li class="en-text"><strong>MoSCoW:</strong> Must/Should/Could/Won’t.</li>
+                                <li class="ar-text"><strong>MoSCoW:</strong> يجب/ينبغي/يمكن/لن.</li>
+
+                                <li class="en-text"><strong>Structured Requirements:</strong> FR-IDs + acceptance criteria.</li>
+                                <li class="ar-text"><strong>متطلبات منظمة:</strong> معرفات + معايير قبول.</li>
+
+                                <li class="en-text"><strong>Traceability:</strong> map to use cases.</li>
+                                <li class="ar-text"><strong>تتبع:</strong> الربط بحالات الاستخدام.</li>
+                            </ol>
+                        </div>
+
+                        <div class="details-section checklist-section">
+                            <div class="section-title">
+                                <i class="fas fa-check-square"></i>
+                                <span class="en-text">Checklist</span>
+                                <span class="ar-text">قائمة التحقق</span>
+                            </div>
+                            <ul class="deliverables-list checklist">
+                                <li><label><input type="checkbox" class="progress-check" data-check="raw"><span class="en-text">Built raw requirements spreadsheet</span><span class="ar-text">أنشأت جدول المتطلبات الأولية</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="cats"><span class="en-text">Categorized requirements</span><span class="ar-text">صنفت المتطلبات</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="moscow"><span class="en-text">Applied MoSCoW priority</span><span class="ar-text">طبقت MoSCoW</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="acs"><span class="en-text">Wrote acceptance criteria</span><span class="ar-text">كتبت معايير القبول</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="trace"><span class="en-text">Mapped to use cases (traceability)</span><span class="ar-text">ربطت بحالات الاستخدام</span></label></li>
+                            </ul>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-clipboard-check"></i>
+                                <span class="en-text">Deliverables</span>
+                                <span class="ar-text">المخرجات</span>
+                            </div>
+                            <ul class="deliverables-list">
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Functional Requirements Document</span><span class="ar-text">وثيقة المتطلبات الوظيفية</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Requirements Spreadsheet</span><span class="ar-text">جدول بيانات المتطلبات</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">MoSCoW Matrix</span><span class="ar-text">مصفوفة MoSCoW</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Traceability Matrix</span><span class="ar-text">مصفوفة التتبع</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 2 -->
+                <div class="task-card" data-task="2">
+                    <div class="task-header">
+                        <div class="task-title en-text">Requirements Prioritization & Validation</div>
+                        <div class="task-title ar-text">ترتيب أولويات المتطلبات والتحقق منها</div>
+                        <div class="task-assignee">
+                            <i class="fas fa-user-check"></i>
+                            <span>Ghala</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+
+                    <div class="task-summary en-text">
+                        Prioritize requirements using MoSCoW and validate with stakeholders. Create traceability linking requirements to objectives.
+                    </div>
+                    <div class="task-summary ar-text">
+                        ترتيب أولويات المتطلبات باستخدام MoSCoW والتحقق منها مع أصحاب المصلحة. إنشاء تتبع يربط المتطلبات بالأهداف.
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span class="en-text">Progress</span>
+                            <span class="ar-text">التقدم</span>
+                            <span class="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-list-ol"></i>
+                                <span class="en-text">Step-by-Step Instructions</span>
+                                <span class="ar-text">تعليمات خطوة بخطوة</span>
+                            </div>
+                            <ol class="steps-list">
+                                <li class="en-text"><strong>MoSCoW Categorization:</strong> assign M/S/C/W.</li>
+                                <li class="ar-text"><strong>تصنيف MoSCoW:</strong> تحديد الأولوية.</li>
+
+                                <li class="en-text"><strong>Stakeholder Validation:</strong> review prioritized list.</li>
+                                <li class="ar-text"><strong>التحقق مع أصحاب المصلحة:</strong> مراجعة القائمة.</li>
+
+                                <li class="en-text"><strong>Traceability:</strong> link to objectives/use cases/test cases.</li>
+                                <li class="ar-text"><strong>التتبع:</strong> ربط بالأهداف/حالات الاستخدام/الاختبار.</li>
+                            </ol>
+                        </div>
+
+                        <div class="details-section checklist-section">
+                            <div class="section-title">
+                                <i class="fas fa-check-square"></i>
+                                <span class="en-text">Checklist</span>
+                                <span class="ar-text">قائمة التحقق</span>
+                            </div>
+                            <ul class="deliverables-list checklist">
+                                <li><label><input type="checkbox" class="progress-check" data-check="moscow2"><span class="en-text">Finalized MoSCoW priorities</span><span class="ar-text">ثبتت أولويات MoSCoW</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="session"><span class="en-text">Completed validation session</span><span class="ar-text">أنهيت جلسة التحقق</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="trace2"><span class="en-text">Built objective traceability</span><span class="ar-text">أنشأت تتبع الأهداف</span></label></li>
+                            </ul>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-clipboard-check"></i>
+                                <span class="en-text">Deliverables</span>
+                                <span class="ar-text">المخرجات</span>
+                            </div>
+                            <ul class="deliverables-list">
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Prioritized Requirements List</span><span class="ar-text">قائمة المتطلبات ذات الأولوية</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Stakeholder Validation Report</span><span class="ar-text">تقرير التحقق</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Complete Traceability Matrix</span><span class="ar-text">مصفوفة التتبع الكاملة</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gala's Tab -->
+        <div id="gala" class="tab-content">
+            <div class="task-grid">
+                <!-- Task 1 -->
+                <div class="task-card" data-task="1">
+                    <div class="task-header">
+                        <div class="task-title en-text">Non-Functional Requirements Analysis</div>
+                        <div class="task-title ar-text">تحليل المتطلبات غير الوظيفية</div>
+                        <div class="task-assignee">
+                            <i class="fas fa-user-check"></i>
+                            <span>Gala</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+
+                    <div class="task-summary en-text">
+                        Identify and quantify non-functional requirements (performance, security, usability) and constraints from both Course Registration and Sillah.
+                    </div>
+                    <div class="task-summary ar-text">
+                        تحديد وقياس المتطلبات غير الوظيفية (الأداء، الأمان، سهولة الاستخدام) والقيود من تسجيل المقررات وسلة.
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span class="en-text">Progress</span>
+                            <span class="ar-text">التقدم</span>
+                            <span class="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="details-section checklist-section">
+                            <div class="section-title">
+                                <i class="fas fa-check-square"></i>
+                                <span class="en-text">Checklist</span>
+                                <span class="ar-text">قائمة التحقق</span>
+                            </div>
+                            <ul class="deliverables-list checklist">
+                                <li><label><input type="checkbox" class="progress-check" data-check="nfr-cats"><span class="en-text">Defined NFR categories</span><span class="ar-text">حددت فئات NFR</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="extract"><span class="en-text">Extracted NFRs from both projects</span><span class="ar-text">استخرجت NFR من المشروعين</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="smart"><span class="en-text">Converted to measurable (SMART)</span><span class="ar-text">حولتها لقابلة للقياس</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="constraints"><span class="en-text">Created constraints matrix</span><span class="ar-text">أنشأت مصفوفة القيود</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="scenarios"><span class="en-text">Wrote quality attribute scenarios</span><span class="ar-text">كتبت سيناريوهات الجودة</span></label></li>
+                            </ul>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-clipboard-check"></i>
+                                <span class="en-text">Deliverables</span>
+                                <span class="ar-text">المخرجات</span>
+                            </div>
+                            <ul class="deliverables-list">
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">NFR Document (measurable)</span><span class="ar-text">وثيقة NFR قابلة للقياس</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Constraints Matrix</span><span class="ar-text">مصفوفة القيود</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Compliance Checklist</span><span class="ar-text">قائمة الامتثال</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 2 -->
+                <div class="task-card" data-task="2">
+                    <div class="task-header">
+                        <div class="task-title en-text">Quality Attribute Specification</div>
+                        <div class="task-title ar-text">تحديد سمات الجودة</div>
+                        <div class="task-assignee">
+                            <i class="fas fa-user-check"></i>
+                            <span>Gala</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+
+                    <div class="task-summary en-text">
+                        Define measurable quality attributes including performance metrics, security standards, and usability requirements.
+                    </div>
+                    <div class="task-summary ar-text">
+                        تحديد سمات جودة قابلة للقياس تشمل مقاييس الأداء ومعايير الأمان ومتطلبات سهولة الاستخدام.
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span class="en-text">Progress</span>
+                            <span class="ar-text">التقدم</span>
+                            <span class="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="details-section checklist-section">
+                            <div class="section-title">
+                                <i class="fas fa-check-square"></i>
+                                <span class="en-text">Checklist</span>
+                                <span class="ar-text">قائمة التحقق</span>
+                            </div>
+                            <ul class="deliverables-list checklist">
+                                <li><label><input type="checkbox" class="progress-check" data-check="perf"><span class="en-text">Specified performance metrics</span><span class="ar-text">حددت مقاييس الأداء</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="sec"><span class="en-text">Established security standards</span><span class="ar-text">حددت معايير الأمان</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="ux"><span class="en-text">Specified usability requirements</span><span class="ar-text">حددت متطلبات سهولة الاستخدام</span></label></li>
+                            </ul>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-clipboard-check"></i>
+                                <span class="en-text">Deliverables</span>
+                                <span class="ar-text">المخرجات</span>
+                            </div>
+                            <ul class="deliverables-list">
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Quality Attributes Spec</span><span class="ar-text">وثيقة سمات الجودة</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Performance Metrics</span><span class="ar-text">مقاييس الأداء</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Security Compliance Report</span><span class="ar-text">تقرير الامتثال الأمني</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salma's Tab -->
+        <div id="salma" class="tab-content">
+            <div class="task-grid">
+                <!-- Task 1 -->
+                <div class="task-card" data-task="1">
+                    <div class="task-header">
+                        <div class="task-title en-text">Risk & Assumptions Analysis</div>
+                        <div class="task-title ar-text">تحليل المخاطر والافتراضات</div>
+                        <div class="task-assignee">
+                            <i class="fas fa-user-check"></i>
+                            <span>Salma</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+
+                    <div class="task-summary en-text">
+                        Identify and document risks, assumptions, and dependencies for the Course Registration System using a structured risk register.
+                    </div>
+                    <div class="task-summary ar-text">
+                        تحديد وتوثيق المخاطر والافتراضات والتبعيات لنظام تسجيل المقررات باستخدام سجل مخاطر منظم.
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span class="en-text">Progress</span>
+                            <span class="ar-text">التقدم</span>
+                            <span class="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="details-section checklist-section">
+                            <div class="section-title">
+                                <i class="fas fa-check-square"></i>
+                                <span class="en-text">Checklist</span>
+                                <span class="ar-text">قائمة التحقق</span>
+                            </div>
+                            <ul class="deliverables-list checklist">
+                                <li><label><input type="checkbox" class="progress-check" data-check="risk-cats"><span class="en-text">Listed risks by category</span><span class="ar-text">حددت المخاطر حسب الفئة</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="prob-impact"><span class="en-text">Scored probability & impact</span><span class="ar-text">قيّمت الاحتمالية والتأثير</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="assumptions"><span class="en-text">Documented assumptions</span><span class="ar-text">وثقت الافتراضات</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="deps"><span class="en-text">Documented dependencies</span><span class="ar-text">وثقت التبعيات</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="register"><span class="en-text">Created risk register</span><span class="ar-text">أنشأت سجل المخاطر</span></label></li>
+                            </ul>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-clipboard-check"></i>
+                                <span class="en-text">Deliverables</span>
+                                <span class="ar-text">المخرجات</span>
+                            </div>
+                            <ul class="deliverables-list">
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Risk Register</span><span class="ar-text">سجل المخاطر</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Risk Matrix/Heat Map</span><span class="ar-text">مصفوفة/خريطة حرارة</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Assumptions Log</span><span class="ar-text">سجل الافتراضات</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Dependencies Tracker</span><span class="ar-text">متتبع التبعيات</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 2 -->
+                <div class="task-card" data-task="2">
+                    <div class="task-header">
+                        <div class="task-title en-text">Mitigation Strategy Development</div>
+                        <div class="task-title ar-text">تطوير استراتيجيات التخفيف</div>
+                        <div class="task-assignee">
+                            <i class="fas fa-user-check"></i>
+                            <span>Salma</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+
+                    <div class="task-summary en-text">
+                        Develop mitigation strategies and contingency plans for high-priority risks across both projects.
+                    </div>
+                    <div class="task-summary ar-text">
+                        تطوير استراتيجيات التخفيف وخطط الطوارئ للمخاطر ذات الأولوية العالية في كلا المشروعين.
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span class="en-text">Progress</span>
+                            <span class="ar-text">التقدم</span>
+                            <span class="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="details-section checklist-section">
+                            <div class="section-title">
+                                <i class="fas fa-check-square"></i>
+                                <span class="en-text">Checklist</span>
+                                <span class="ar-text">قائمة التحقق</span>
+                            </div>
+                            <ul class="deliverables-list checklist">
+                                <li><label><input type="checkbox" class="progress-check" data-check="high"><span class="en-text">Selected high-risk items (15+)</span><span class="ar-text">حددت المخاطر العالية (15+)</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="mit"><span class="en-text">Wrote mitigation strategies</span><span class="ar-text">كتبت استراتيجيات التخفيف</span></label></li>
+                                <li><label><input type="checkbox" class="progress-check" data-check="cont"><span class="en-text">Wrote contingency plans</span><span class="ar-text">كتبت خطط الطوارئ</span></label></li>
+                            </ul>
+                        </div>
+
+                        <div class="details-section">
+                            <div class="section-title">
+                                <i class="fas fa-clipboard-check"></i>
+                                <span class="en-text">Deliverables</span>
+                                <span class="ar-text">المخرجات</span>
+                            </div>
+                            <ul class="deliverables-list">
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Mitigation Strategies Document</span><span class="ar-text">وثيقة استراتيجيات التخفيف</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Contingency Plans</span><span class="ar-text">خطط الطوارئ</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="en-text">Risk Response Matrix</span><span class="ar-text">مصفوفة استجابة المخاطر</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shared Work Tab -->
+        <div id="shared" class="tab-content">
+            <div class="shared-grid">
+                <div class="collaboration-card">
+                    <div class="collab-title">
+                        <i class="fas fa-handshake"></i>
+                        <span class="en-text">Team Collaboration Strategy</span>
+                        <span class="ar-text">استراتيجية تعاون الفريق</span>
+                    </div>
+                    <div class="en-text" style="margin-bottom: 15px; color: var(--text-light);">
+                        All team members work in parallel with minimal dependencies. Weekly sync meetings ensure alignment without blocking individual progress.
+                    </div>
+                    <div class="ar-text" style="margin-bottom: 15px; color: var(--text-light);">
+                        يعمل جميع أعضاء الفريق بالتوازي مع تبعيات قليلة. اجتماعات المزامنة الأسبوعية تضمان المحاذاة دون عرقلة التقدم الفردي.
+                    </div>
+                    <ul class="deliverables-list">
+                        <li><i class="fas fa-calendar-check"></i> <span class="en-text">Weekly 30-minute sync meetings (Zoom/Teams)</span><span class="ar-text">اجتماعات تزامن أسبوعية مدتها 30 دقيقة (Zoom/Teams)</span></li>
+                        <li><i class="fas fa-user-friends"></i> <span class="en-text">Peer review system</span><span class="ar-text">نظام مراجعة الأقران</span></li>
+                        <li><i class="fas fa-check-double"></i> <span class="en-text">Consistency check</span><span class="ar-text">فحص الاتساق</span></li>
+                        <li><i class="fas fa-cube"></i> <span class="en-text">Final integration meeting</span><span class="ar-text">اجتماع التكامل النهائي</span></li>
+                    </ul>
+                </div>
+
+                <div class="collaboration-card">
+                    <div class="collab-title">
+                        <i class="fas fa-link"></i>
+                        <span class="en-text">Integration Points</span>
+                        <span class="ar-text">نقاط التكامل</span>
+                    </div>
+                    <div class="en-text" style="margin-bottom: 15px; color: var(--text-light);">
+                        Critical connections between team members' work that require coordination.
+                    </div>
+                    <div class="ar-text" style="margin-bottom: 15px; color: var(--text-light);">
+                        اتصالات حرجة بين عمل أعضاء الفريق تتطلب التنسيق.
+                    </div>
+                    <ul class="deliverables-list">
+                        <li><i class="fas fa-exchange-alt"></i> <span class="en-text">Shouq → Ghala: Use cases map to functional requirements</span><span class="ar-text">شوق → غلا: حالات الاستخدام ↔ المتطلبات الوظيفية</span></li>
+                        <li><i class="fas fa-exchange-alt"></i> <span class="en-text">Ghala → Gala: FRs inform NFR needs</span><span class="ar-text">غلا → جلا: المتطلبات الوظيفية توجه NFR</span></li>
+                        <li><i class="fas fa-exchange-alt"></i> <span class="en-text">All → Salma: Requirements feed risks</span><span class="ar-text">الجميع → سلمى: المتطلبات تغذي المخاطر</span></li>
+                        <li><i class="fas fa-exchange-alt"></i> <span class="en-text">Cross-project patterns</span><span class="ar-text">أنماط مشتركة</span></li>
+                    </ul>
+                </div>
+
+                <div class="collaboration-card">
+                    <div class="collab-title">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="en-text">Timeline & Milestones</span>
+                        <span class="ar-text">الجدول الزمني والمعالم</span>
+                    </div>
+                    <div class="en-text" style="margin-bottom: 15px; color: var(--text-light);">
+                        5-day schedule for completing Phase 2 requirements.
+                    </div>
+                    <div class="ar-text" style="margin-bottom: 15px; color: var(--text-light);">
+                        جدول زمني مدته 5 أيام لإكمال متطلبات المرحلة 2.
+                    </div>
+                    <ul class="deliverables-list">
+                        <li><i class="fas fa-calendar-day"></i> <span class="en-text">Days 1-2: Individual tasks</span><span class="ar-text">اليوم 1-2: مهام فردية</span></li>
+                        <li><i class="fas fa-calendar-day"></i> <span class="en-text">Day 3: Peer review</span><span class="ar-text">اليوم 3: مراجعة الأقران</span></li>
+                        <li><i class="fas fa-calendar-day"></i> <span class="en-text">Day 4: Revisions</span><span class="ar-text">اليوم 4: المراجعات</span></li>
+                        <li><i class="fas fa-calendar-day"></i> <span class="en-text">Day 5: Integration & final SRS</span><span class="ar-text">اليوم 5: التكامل و SRS</span></li>
+                    </ul>
+                </div>
+
+                <div class="collaboration-card">
+                    <div class="collab-title">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="en-text">Final SRS Integration</span>
+                        <span class="ar-text">تكامل SRS النهائي</span>
+                    </div>
+                    <div class="en-text" style="margin-bottom: 15px; color: var(--text-light);">
+                        Combine all individual deliverables into a unified Software Requirements Specification.
+                    </div>
+                    <div class="ar-text" style="margin-bottom: 15px; color: var(--text-light);">
+                        دمج جميع المخرجات الفردية في وثيقة متطلبات موحدة.
+                    </div>
+                    <ul class="deliverables-list">
+                        <li><i class="fas fa-copy"></i> <span class="en-text">Combine: Use Cases + FR + NFR + Risk</span><span class="ar-text">دمج: حالات الاستخدام + FR + NFR + المخاطر</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span class="en-text">Consistent terminology</span><span class="ar-text">مصطلحات متسقة</span></li>
+                        <li><i class="fas fa-sync-alt"></i> <span class="en-text">Verify traceability</span><span class="ar-text">التحقق من التتبع</span></li>
+                        <li><i class="fas fa-clipboard-list"></i> <span class="en-text">Final quality review</span><span class="ar-text">مراجعة الجودة النهائية</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Tab -->
+        <div id="notes" class="tab-content">
+            <div class="notes-container">
+                <div class="note-card">
+                    <div class="note-title">
+                        <i class="fas fa-lightbulb"></i>
+                        <span class="en-text">Key Project Insights</span>
+                        <span class="ar-text">رؤى المشروع الرئيسية</span>
+                    </div>
+                    <div class="en-text" style="color: var(--text-light); line-height: 1.7;">
+                        <p><strong>Common Patterns:</strong> Both systems require role-based access control, audit logging, and user-friendly interfaces.</p>
+                        <p><strong>Different Constraints:</strong> Course Registration emphasizes peak-load performance; Sillah emphasizes PDPL compliance and health data privacy.</p>
+                        <p><strong>Reusable Components:</strong> Authentication, notifications, and reporting modules can be reused across both.</p>
+                    </div>
+                    <div class="ar-text" style="color: var(--text-light); line-height: 1.7; display: none;">
+                        <p><strong>أنماط مشتركة:</strong> كلا النظامين يتطلبان التحكم في الوصول وتسجيل المراجعة وواجهة سهلة الاستخدام.</p>
+                        <p><strong>قيود مختلفة:</strong> تسجيل المقررات يركز على الأداء وقت الذروة، وسلة تركز على امتثال PDPL وخصوصية البيانات الصحية.</p>
+                        <p><strong>مكونات قابلة لإعادة الاستخدام:</strong> المصادقة والإشعارات والتقارير يمكن إعادة استخدامها.</p>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <div class="note-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span class="en-text">Critical Constraints</span>
+                        <span class="ar-text">قيود حرجة</span>
+                    </div>
+                    <div class="en-text" style="color: var(--text-light); line-height: 1.7;">
+                        <p><strong>Course Registration System:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Live by Fall 2025</li>
+                            <li>Custom-built preferred</li>
+                            <li>Integrate with SIS</li>
+                            <li>Budget limits advanced features</li>
+                        </ul>
+                        <p style="margin-top:10px;"><strong>Sillah Health Platform:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Saudi PDPL compliance</li>
+                            <li>Mobile-first</li>
+                            <li>Bilingual (AR/EN)</li>
+                            <li>Semester timeline</li>
+                        </ul>
+                    </div>
+                    <div class="ar-text" style="color: var(--text-light); line-height: 1.7; display: none;">
+                        <p><strong>نظام تسجيل المقررات:</strong></p>
+                        <ul style="margin-right: 20px; margin-top: 10px;">
+                            <li>جاهز لخريف 2025</li>
+                            <li>حل مخصص مفضل</li>
+                            <li>تكامل مع SIS</li>
+                            <li>قيود ميزانية</li>
+                        </ul>
+                        <p style="margin-top:10px;"><strong>منصة سلة الصحية:</strong></p>
+                        <ul style="margin-right: 20px; margin-top: 10px;">
+                            <li>الامتثال لـ PDPL</li>
+                            <li>هاتف أولاً</li>
+                            <li>ثنائية اللغة</li>
+                            <li>مدة فصل دراسي</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="note-card">
+                    <div class="note-title">
+                        <i class="fas fa-users"></i>
+                        <span class="en-text">Stakeholder Priority Summary</span>
+                        <span class="ar-text">ملخص أولوية أصحاب المصلحة</span>
+                    </div>
+                    <div class="en-text" style="color: var(--text-light); line-height: 1.7;">
+                        <p><strong>Omar (Registrar):</strong> Reduce data entry errors, real-time availability, automated prerequisites, waitlisting.</p>
+                        <p><strong>Ali (IT Manager):</strong> Integration, security/privacy, peak-load performance, audit logging.</p>
+                        <p><strong>Sara (Student):</strong> Easy UI with calendar view, transparent availability, notifications, simple add/drop.</p>
+                    </div>
+                    <div class="ar-text" style="color: var(--text-light); line-height: 1.7; display: none;">
+                        <p><strong>عمر (المسجل):</strong> تقليل أخطاء الإدخال، توفر فوري، متطلبات مسبقة تلقائية، قائمة انتظار.</p>
+                        <p><strong>علي (مدير IT):</strong> التكامل، الأمان/الخصوصية، أداء وقت الذروة، سجل المراجعة.</p>
+                        <p><strong>سارة (الطالبة):</strong> واجهة سهلة + تقويم، شفافية التوفر، إشعارات، إضافة/حذف بسيطة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools Tab -->
+        <div id="tools" class="tab-content">
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-drafting-compass"></i></div>
+                    <div class="tool-name en-text">Diagramming Tools</div>
+                    <div class="tool-name ar-text">أدوات الرسم البياني</div>
+                    <div class="tool-category en-text">Visual Design</div>
+                    <div class="tool-category ar-text">تصميم مرئي</div>
+                    <p class="tool-desc en-text">Lucidchart, Draw.io, Figma for UML diagrams and system designs.</p>
+                    <p class="tool-desc ar-text">Lucidchart و Draw.io و Figma لمخططات UML وتصميم النظام.</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="tool-name en-text">Documentation</div>
+                    <div class="tool-name ar-text">التوثيق</div>
+                    <div class="tool-category en-text">Requirements Management</div>
+                    <div class="tool-category ar-text">إدارة المتطلبات</div>
+                    <p class="tool-desc en-text">Docs/Sheets/Notion for writing and organizing requirements.</p>
+                    <p class="tool-desc ar-text">Docs و Sheets و Notion لكتابة وتنظيم المتطلبات.</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fab fa-jira"></i></div>
+                    <div class="tool-name en-text">Project Management</div>
+                    <div class="tool-name ar-text">إدارة المشاريع</div>
+                    <div class="tool-category en-text">Task Tracking</div>
+                    <div class="tool-category ar-text">تتبع المهام</div>
+                    <p class="tool-desc en-text">Jira/Trello/Asana for tracking and prioritization.</p>
+                    <p class="tool-desc ar-text">Jira و Trello و Asana للتتبع وترتيب الأولويات.</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="tool-name en-text">Analysis Tools</div>
+                    <div class="tool-name ar-text">أدوات التحليل</div>
+                    <div class="tool-category en-text">Risk & Quality</div>
+                    <div class="tool-category ar-text">المخاطر والجودة</div>
+                    <p class="tool-desc en-text">Risk matrices, SWOT, SMART criteria tools.</p>
+                    <p class="tool-desc ar-text">مصفوفات المخاطر، SWOT، أدوات SMART.</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-cloud"></i></div>
+                    <div class="tool-name en-text">Collaboration</div>
+                    <div class="tool-name ar-text">التعاون</div>
+                    <div class="tool-category en-text">Team Communication</div>
+                    <div class="tool-category ar-text">تواصل الفريق</div>
+                    <p class="tool-desc en-text">Zoom/Teams/Drive for meetings and file sharing.</p>
+                    <p class="tool-desc ar-text">Zoom و Teams و Drive للاجتماعات ومشاركة الملفات.</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-code"></i></div>
+                    <div class="tool-name en-text">Version Control</div>
+                    <div class="tool-name ar-text">التحكم في الإصدارات</div>
+                    <div class="tool-category en-text">Document Management</div>
+                    <div class="tool-category ar-text">إدارة المستندات</div>
+                    <p class="tool-desc en-text">GitHub/GitLab/version history to track changes.</p>
+                    <p class="tool-desc ar-text">GitHub و GitLab وسجل الإصدارات لتتبع التغييرات.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dark Mode Toggle -->
+<button class="dark-mode-toggle" id="darkModeToggle">
+    <i class="fas fa-moon"></i>
+</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // ===== Tabs switching =====
+    document.querySelectorAll('.tab-btn, .member').forEach(element => {
+        element.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            const tabBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+            if (tabBtn) tabBtn.classList.add('active');
+
+            // Update member selection
+            document.querySelectorAll('.member').forEach(member => member.classList.remove('active'));
+            const memBtn = document.querySelector(`.member[data-tab="${tabId}"]`);
+            if (memBtn) memBtn.classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            const content = document.getElementById(tabId);
+            if (content) content.classList.add('active');
+
+            // Close expanded cards
+            closeAllExpandedCards();
+
+            // Refresh progress UI
+            document.querySelectorAll('.task-card').forEach(updateProgressUI);
+        });
+    });
+
+    // ===== Language switching =====
+    const langEnBtn = document.getElementById('langEn');
+    const langArBtn = document.getElementById('langAr');
+
+    langEnBtn.addEventListener('click', function() { switchLanguage('en'); });
+    langArBtn.addEventListener('click', function() { switchLanguage('ar'); });
+
+    function switchLanguage(lang) {
+        langEnBtn.classList.remove('active');
+        langArBtn.classList.remove('active');
+
+        if (lang === 'en') {
+            langEnBtn.classList.add('active');
+            document.querySelectorAll('.en-text').forEach(el => el.style.display = '');
+            document.querySelectorAll('.ar-text').forEach(el => el.style.display = 'none');
+            document.body.style.direction = 'ltr';
+            document.body.style.textAlign = 'left';
+        } else {
+            langArBtn.classList.add('active');
+            document.querySelectorAll('.en-text').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.ar-text').forEach(el => el.style.display = '');
+            document.body.style.direction = 'rtl';
+            document.body.style.textAlign = 'right';
+        }
+
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.textAlign = (lang === 'ar') ? 'right' : 'left';
+    }
+
+    // ===== Expandable card functionality =====
+    const taskCards = document.querySelectorAll('.task-card');
+    const expandIcons = document.querySelectorAll('.expand-icon');
+
+    function closeAllExpandedCards() {
+        taskCards.forEach(card => card.classList.remove('expanded'));
+    }
+
+    expandIcons.forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const card = this.closest('.task-card');
+            const isExpanded = card.classList.contains('expanded');
+
+            closeAllExpandedCards();
+
+            if (!isExpanded) {
+                card.classList.add('expanded');
+                setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+            }
+        });
+    });
+
+    taskCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (e.target.classList.contains('expand-icon') || e.target.closest('.expand-icon')) return;
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) return;
+
+            const isExpanded = this.classList.contains('expanded');
+            closeAllExpandedCards();
+
+            if (!isExpanded) {
+                this.classList.add('expanded');
+                setTimeout(() => this.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+            }
+        });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.task-card')) closeAllExpandedCards();
+    });
+
+    // ===== Search functionality =====
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('keyup', function() {
+        const searchTerm = this.value.toLowerCase();
+        const activeTab = document.querySelector('.tab-content.active');
+        if (!activeTab) return;
+
+        if (searchTerm.length < 2) {
+            if (activeTab.id === 'shared' || activeTab.id === 'notes' || activeTab.id === 'tools') {
+                activeTab.querySelectorAll('.collaboration-card, .note-card, .tool-card').forEach(card => card.style.display = 'block');
+            } else {
+                activeTab.querySelectorAll('.task-card').forEach(card => card.style.display = 'block');
+            }
+            return;
+        }
+
+        if (activeTab.id === 'shared' || activeTab.id === 'notes' || activeTab.id === 'tools') {
+            activeTab.querySelectorAll('.collaboration-card, .note-card, .tool-card').forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                card.style.display = cardText.includes(searchTerm) ? 'block' : 'none';
+            });
+        } else {
+            activeTab.querySelectorAll('.task-card').forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                card.style.display = cardText.includes(searchTerm) ? 'block' : 'none';
+            });
+        }
+    });
+
+    // ===== Dark mode toggle =====
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            localStorage.setItem('theme', 'light');
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    });
+
+    // ===== ✅ Progress Checklist Engine (NEW) =====
+    function getTaskKey(taskCard) {
+        const tab = taskCard.closest('.tab-content')?.id || 'unknownTab';
+        const task = taskCard.getAttribute('data-task') || 'unknownTask';
+        return `taskProgress:${tab}:${task}`;
+    }
+
+    function loadChecks(taskCard) {
+        const key = getTaskKey(taskCard);
+        const saved = localStorage.getItem(key);
+        if (!saved) return;
+
+        let obj;
+        try { obj = JSON.parse(saved); } catch { return; }
+
+        taskCard.querySelectorAll('.progress-check').forEach(cb => {
+            const id = cb.getAttribute('data-check');
+            if (id && obj[id] !== undefined) cb.checked = !!obj[id];
+        });
+    }
+
+    function saveChecks(taskCard) {
+        const key = getTaskKey(taskCard);
+        const obj = {};
+        taskCard.querySelectorAll('.progress-check').forEach(cb => {
+            const id = cb.getAttribute('data-check');
+            if (id) obj[id] = cb.checked;
+        });
+        localStorage.setItem(key, JSON.stringify(obj));
+    }
+
+    function updateProgressUI(taskCard) {
+        const checks = Array.from(taskCard.querySelectorAll('.progress-check'));
+        const percentEl = taskCard.querySelector('.progress-percent');
+        const fillEl = taskCard.querySelector('.progress-fill');
+
+        if (checks.length === 0 || !percentEl || !fillEl) return;
+
+        const checked = checks.filter(c => c.checked).length;
+        const percent = Math.round((checked / checks.length) * 100);
+
+        percentEl.textContent = `${percent}%`;
+        // animate from 0 on first paint
+        requestAnimationFrame(() => {
+            fillEl.style.width = `${percent}%`;
+        });
+    }
+
+    function wireTaskCard(taskCard) {
+        loadChecks(taskCard);
+        updateProgressUI(taskCard);
+
+        taskCard.querySelectorAll('.progress-check').forEach(cb => {
+            cb.addEventListener('change', (e) => {
+                // prevent checkbox click from collapsing card
+                e.stopPropagation();
+                saveChecks(taskCard);
+                updateProgressUI(taskCard);
+            });
+        });
+
+        // prevent label clicks from collapsing card
+        taskCard.querySelectorAll('.checklist label').forEach(lbl => {
+            lbl.addEventListener('click', (e) => e.stopPropagation());
+        });
+    }
+
+    document.querySelectorAll('.task-card').forEach(wireTaskCard);
+
+    // Initialize with English
+    switchLanguage('en');
+});
+</script>
+</body>
+</html>

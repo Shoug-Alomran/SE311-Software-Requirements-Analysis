@@ -19,3 +19,5 @@
 
 > The *Sillah (صلة)* project originated in **SE201** and was expanded in **SE311** using the full Requirements Engineering lifecycle, including inception, elicitation, analysis, specification, and validation.  
 > The documentation website was developed using **MkDocs (Material Theme)** to ensure clarity, traceability, and academic consistency.
+
+**Project Plan Dashboard (Roles & Tasks):** [Open the Roles Dashboard](./Project Plan.html)
