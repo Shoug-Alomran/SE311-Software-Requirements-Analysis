@@ -2,8 +2,8 @@
 
 **Prince Sultan University**
 College of Computer and Information Sciences (CCIS)  
-Course: SE311 – Software Requirements Engineering  
-Instructor: Ms. Alhanouf Almutairi  
+**Course:** SE311 – Software Requirements Engineering  
+**Instructor:** Ms. Alhanouf Almutairi  
 
 ---
 
