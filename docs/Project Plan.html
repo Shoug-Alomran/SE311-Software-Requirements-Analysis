@@ -24,7 +24,6 @@
       --warning: #ffb347;
       --danger: #ff6b6b;
 
-      /* Member accent (optional) */
       --shouq: #4cc9b0;
       --ghala: #6c63ff;
       --gala:  #ff6584;
@@ -35,7 +34,6 @@
     }
 
     body.dark-mode {
-      /* Dark mode */
       --primary: #7d76ff;
       --primary-light: #9a94ff;
       --secondary: #ff7a96;
@@ -67,19 +65,10 @@
       min-height: 100vh;
     }
 
-    /* Language visibility (IMPORTANT: avoid inline display conflicts) */
-    .ar-text {
-      display: none;
-      direction: rtl;
-      text-align: right;
-    }
+    .ar-text { display: none; direction: rtl; text-align: right; }
 
-    .container {
-      display: flex;
-      min-height: 100vh;
-    }
+    .container { display: flex; min-height: 100vh; }
 
-    /* Sidebar */
     .sidebar {
       width: 280px;
       background: linear-gradient(180deg, var(--primary) 0%, #5a52d5 100%);
@@ -99,8 +88,6 @@
       font-weight: 800;
       gap: 10px;
     }
-
-    .logo i { font-size: 24px; }
 
     .search-box { margin-bottom: 20px; position: relative; }
     .search-box input {
@@ -196,7 +183,6 @@
       padding-top: 12px;
     }
 
-    /* Main content */
     .main-content {
       flex: 1;
       padding: 30px;
@@ -229,7 +215,6 @@
       white-space: nowrap;
     }
 
-    /* Tabs */
     .tabs-container {
       display: flex;
       flex-wrap: wrap;
@@ -262,7 +247,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Task cards */
     .task-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -389,25 +373,6 @@
     }
     .steps-list li:last-child { border-bottom: none; }
 
-    .tools-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding-left: 0;
-    }
-    .tools-list li {
-      background-color: var(--surface);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid var(--border);
-    }
-    .tools-list li i { color: var(--primary); }
-
     .deliverables-list {
       list-style: none;
       padding-left: 6px;
@@ -422,19 +387,6 @@
     .deliverables-list li:last-child { border-bottom: none; }
     .deliverables-list li i { color: var(--success); margin-top: 3px; }
 
-    .tag {
-      display: inline-block;
-      padding: 6px 12px;
-      background-color: var(--primary-light);
-      color: #fff;
-      border-radius: 999px;
-      font-size: 12px;
-      margin-right: 8px;
-      margin-bottom: 8px;
-      font-weight: 800;
-    }
-
-    /* Progress */
     .progress-container { margin-top: 12px; }
     .progress-label {
       display: flex;
@@ -458,7 +410,6 @@
       transition: width 0.5s ease;
     }
 
-    /* Checklist */
     .checklist label {
       display: flex;
       gap: 10px;
@@ -474,7 +425,6 @@
       cursor: pointer;
     }
 
-    /* Shared / Notes / Tools */
     .shared-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -522,7 +472,6 @@
     }
     .tool-desc { font-size: 13px; color: var(--text-light); }
 
-    /* Dark mode toggle */
     .dark-mode-toggle {
       position: fixed;
       bottom: 24px;
@@ -542,7 +491,13 @@
       border: none;
     }
 
-    /* Responsive */
+    .hint {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
     @media (max-width: 1100px) {
       .container { flex-direction: column; }
       .sidebar { width: 100%; padding: 18px; }
@@ -563,7 +518,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container">
     <!-- Sidebar -->
@@ -595,18 +549,18 @@
           <div class="member active" data-tab="shouq">
             <div class="member-avatar">ش</div>
             <div>
-              <div class="member-name">Shouq Alomran</div>
-              <div class="member-task en-text">Team Lead: Elicitation Pack + Final Prioritized UR</div>
-              <div class="member-task ar-text">قائدة الفريق: ملف الاستقصاء + قائمة متطلبات المستخدم النهائية</div>
+              <div class="member-name">Shoug Alomran</div>
+              <div class="member-task en-text">Elicitation Plan & Stakeholders · Family URs · Final Package</div>
+              <div class="member-task ar-text">خطة الاستقصاء وأصحاب المصلحة · متطلبات الأسرة · الحزمة النهائية</div>
             </div>
           </div>
 
           <div class="member" data-tab="ghala">
             <div class="member-avatar">غ</div>
             <div>
-              <div class="member-name">Ghala Alsager</div>
-              <div class="member-task en-text">User Requirements (Core Features) + MoSCoW</div>
-              <div class="member-task ar-text">متطلبات المستخدم (الميزات الأساسية) + MoSCoW</div>
+              <div class="member-name">Ghala Alsaqer</div>
+              <div class="member-task en-text">Interviews · Healthcare Provider URs</div>
+              <div class="member-task ar-text">المقابلات · متطلبات مقدمي الرعاية</div>
             </div>
           </div>
 
@@ -614,8 +568,8 @@
             <div class="member-avatar">ج</div>
             <div>
               <div class="member-name">Gala Alalula</div>
-              <div class="member-task en-text">NFR + Constraints (PDPL, Security, RTL/LTR, Usability)</div>
-              <div class="member-task ar-text">غير وظيفية + قيود (PDPL، الأمان، RTL/LTR، سهولة الاستخدام)</div>
+              <div class="member-task en-text">Survey · Admin URs</div>
+              <div class="member-task ar-text">الاستبيان · متطلبات الإداري</div>
             </div>
           </div>
 
@@ -623,8 +577,8 @@
             <div class="member-avatar">س</div>
             <div>
               <div class="member-name">Salma Al Khaldi</div>
-              <div class="member-task en-text">Risks/Assumptions Log + Prioritization Rationale</div>
-              <div class="member-task ar-text">سجل المخاطر/الافتراضات + تبرير ترتيب الأولويات</div>
+              <div class="member-task en-text">Doc/Observation/Competitive · Consolidation & Prioritization</div>
+              <div class="member-task ar-text">تحليل وثائق/ملاحظة/تنافسي · دمج وترتيب</div>
             </div>
           </div>
         </div>
@@ -632,7 +586,7 @@
 
       <div class="sidebar-footer">
         <div class="en-text">Sillah (صلة) — Family Health Management System</div>
-        <div class="ar-text">سِلّة (صلة) — نظام إدارة صحة الأسرة</div>
+        <div class="ar-text">صلة — نظام إدارة صحة الأسرة</div>
       </div>
     </div>
 
@@ -640,20 +594,20 @@
     <div class="main-content">
       <div class="header">
         <div>
-          <h1 class="en-text">Requirements Engineering Dashboard</h1>
-          <h1 class="ar-text">لوحة هندسة المتطلبات</h1>
+          <h1 class="en-text">Requirements Engineering Dashboard – Phase 2</h1>
+          <h1 class="ar-text">لوحة هندسة المتطلبات – المرحلة 2</h1>
         </div>
 
         <div class="project-status">
           <div class="status-badge">
             <i class="fas fa-tasks"></i>
-            <span class="en-text">Deliverable 2: Elicitation + Prioritized User Requirements</span>
-            <span class="ar-text">التسليم 2: الاستقصاء + ترتيب متطلبات المستخدم</span>
+            <span class="en-text">Deliverable: Elicitation Notes/Evidence + Prioritized User Requirements</span>
+            <span class="ar-text">التسليم: ملاحظات/أدلة الاستقصاء + متطلبات المستخدم ذات الأولوية</span>
           </div>
           <div class="status-badge">
             <i class="fas fa-calendar-alt"></i>
-            <span class="en-text">Due: Apr 2, 2026 • 11:00 PM</span>
-            <span class="ar-text">موعد التسليم: ٢ أبريل ٢٠٢٦ • ١١:٠٠ م</span>
+            <span class="en-text">Due: (set by instructor)</span>
+            <span class="ar-text">موعد التسليم: (حسب ما تحدده الدكتورة)</span>
           </div>
         </div>
       </div>
@@ -662,40 +616,34 @@
       <div class="tabs-container">
         <button class="tab-btn active" data-tab="shouq">
           <i class="fas fa-user-gear"></i>
-          <span class="en-text">Shouq</span>
+          <span class="en-text">Shoug</span>
           <span class="ar-text">شوق</span>
         </button>
-
         <button class="tab-btn" data-tab="ghala">
-          <i class="fas fa-list-check"></i>
+          <i class="fas fa-people-roof"></i>
           <span class="en-text">Ghala</span>
           <span class="ar-text">غلا</span>
         </button>
-
         <button class="tab-btn" data-tab="gala">
-          <i class="fas fa-shield-halved"></i>
+          <i class="fas fa-user-doctor"></i>
           <span class="en-text">Gala</span>
           <span class="ar-text">جلا</span>
         </button>
-
         <button class="tab-btn" data-tab="salma">
-          <i class="fas fa-triangle-exclamation"></i>
+          <i class="fas fa-user-shield"></i>
           <span class="en-text">Salma</span>
           <span class="ar-text">سلمى</span>
         </button>
-
         <button class="tab-btn" data-tab="shared">
           <i class="fas fa-users"></i>
-          <span class="en-text">Shared Work</span>
-          <span class="ar-text">العمل المشترك</span>
+          <span class="en-text">Submission Checklist</span>
+          <span class="ar-text">قائمة التسليم</span>
         </button>
-
         <button class="tab-btn" data-tab="notes">
           <i class="fas fa-sticky-note"></i>
-          <span class="en-text">Notes</span>
-          <span class="ar-text">الملاحظات</span>
+          <span class="en-text">Scope Notes</span>
+          <span class="ar-text">ملاحظات النطاق</span>
         </button>
-
         <button class="tab-btn" data-tab="tools">
           <i class="fas fa-tools"></i>
           <span class="en-text">Tools</span>
@@ -703,32 +651,25 @@
         </button>
       </div>
 
-      <!-- =========================
-           SHOUQ TAB
-      ========================== -->
+      <!-- ========== SHOUG TAB ========== -->
       <div id="shouq" class="tab-content active">
         <div class="task-grid">
-          <!-- Task 1 -->
-          <div class="task-card" data-task="1">
+          <div class="task-card" data-task="elicitationPlan">
             <div class="task-header">
               <div>
-                <div class="task-title en-text">Deliverable 2 Submission Pack (Elicitation Notes + Evidence)</div>
-                <div class="task-title ar-text">حزمة تسليم 2 (ملاحظات الاستقصاء + الأدلة)</div>
+                <div class="task-title en-text">Elicitation Plan + Stakeholder Analysis</div>
+                <div class="task-title ar-text">خطة الاستقصاء + تحليل أصحاب المصلحة</div>
               </div>
-              <div class="task-assignee">
-                <i class="fas fa-user-check"></i><span>Shouq</span>
-              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Shoug</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
 
             <div class="task-summary en-text">
-              Compile the Deliverable 2 package for Sillah: finalized elicitation notes (interview/workshop/survey),
-              proof of elicitation (screenshots, forms, consent, meeting agenda), and a clean folder structure for submission.
+              Create the Elicitation Plan and Stakeholder Analysis aligned to the project scope. Keep it simple and traceable: objectives, methods, participants, schedule, and risks (with mitigation).
             </div>
             <div class="task-summary ar-text">
-              تجهيز حزمة تسليم 2 لسِلّة: ملاحظات الاستقصاء النهائية (مقابلات/ورشة/استبيان)،
-              وأدلة الاستقصاء (صور/نماذج/موافقة/أجندة)، وترتيب الملفات بشكل جاهز للتسليم.
+              إعداد خطة الاستقصاء وتحليل أصحاب المصلحة بشكل واضح وقابل للتتبع: الأهداف، الأساليب، المشاركين، الجدول، والمخاطر مع التخفيف.
             </div>
 
             <div class="progress-container">
@@ -743,25 +684,15 @@
               <div class="details-section">
                 <div class="section-title">
                   <i class="fas fa-list-ol"></i>
-                  <span class="en-text">Step-by-Step Instructions</span>
-                  <span class="ar-text">تعليمات خطوة بخطوة</span>
+                  <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
                 </div>
-
                 <ol class="steps-list">
-                  <li class="en-text"><strong>Finalize notes:</strong> clean the elicitation notes (consistent stakeholder names, dates, and key quotes).</li>
-                  <li class="ar-text"><strong>تدقيق الملاحظات:</strong> ترتيب ملاحظات الاستقصاء وتوحيد أسماء أصحاب المصلحة والتواريخ والنقاط الأساسية.</li>
-
-                  <li class="en-text"><strong>Evidence folder:</strong> screenshots of survey, interview agenda, meeting invite, consent (if used), and attendance proof.</li>
-                  <li class="ar-text"><strong>مجلد الأدلة:</strong> صور للاستبيان، أجندة المقابلة/الورشة، الدعوة، الموافقة إن وجدت، وإثبات الحضور.</li>
-
-                  <li class="en-text"><strong>Index page:</strong> create a one-page “Elicitation Summary” listing methods, participants, and artifacts.</li>
-                  <li class="ar-text"><strong>صفحة ملخص:</strong> إنشاء صفحة واحدة تلخص الطرق، المشاركين، والملفات الناتجة.</li>
-
-                  <li class="en-text"><strong>Consistency check:</strong> make sure every major feature has at least one elicitation source.</li>
-                  <li class="ar-text"><strong>فحص الاتساق:</strong> التأكد أن كل ميزة رئيسية لها مصدر استقصاء واضح.</li>
-
-                  <li class="en-text"><strong>Submission structure:</strong> zip folder as: /Deliverable2/Notes /Evidence /PrioritizedRequirements /NFR /Risks.</li>
-                  <li class="ar-text"><strong>هيكلة التسليم:</strong> ضغط الملفات: /Deliverable2/Notes /Evidence /PrioritizedRequirements /NFR /Risks.</li>
+                  <li class="en-text"><strong>Elicitation Plan:</strong> objectives, selected techniques (interviews/survey/doc analysis/observation), schedule, resources, risks & mitigation (3–5).</li>
+                  <li class="ar-text"><strong>خطة الاستقصاء:</strong> الأهداف، التقنيات، الجدول، الموارد، المخاطر والتخفيف (٣–٥).</li>
+                  <li class="en-text"><strong>Stakeholders:</strong> list ≥6 stakeholders and how you will engage each one.</li>
+                  <li class="ar-text"><strong>أصحاب المصلحة:</strong> تحديد ≥٦ وكيفية إشراك كل واحد.</li>
+                  <li class="en-text"><strong>Mapping table:</strong> stakeholder, role, interest, influence, availability, elicitation method.</li>
+                  <li class="ar-text"><strong>جدول الربط:</strong> صاحب المصلحة، الدور، الاهتمام، التأثير، التوفر، أسلوب الاستقصاء.</li>
                 </ol>
               </div>
 
@@ -770,84 +701,51 @@
                   <i class="fas fa-check-square"></i>
                   <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
                 </div>
-
                 <ul class="deliverables-list checklist">
-                  <li><label><input type="checkbox" class="progress-check" data-check="notes-final">
-                    <span class="en-text">Finalized elicitation notes</span><span class="ar-text">أنهيت ملاحظات الاستقصاء</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="evidence">
-                    <span class="en-text">Collected elicitation evidence</span><span class="ar-text">جمعت أدلة الاستقصاء</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="summary">
-                    <span class="en-text">Created elicitation summary page</span><span class="ar-text">أنشأت صفحة ملخص الاستقصاء</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="structure">
-                    <span class="en-text">Prepared submission folder structure</span><span class="ar-text">جهزت هيكلة مجلد التسليم</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="review">
-                    <span class="en-text">Completed team review of deliverable pack</span><span class="ar-text">تمت مراجعة الحزمة مع الفريق</span></label></li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="plan">
+                      <span class="en-text">Elicitation Plan (doc)</span>
+                      <span class="ar-text">خطة الاستقصاء (ملف)</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="stake">
+                      <span class="en-text">Stakeholder Analysis (doc)</span>
+                      <span class="ar-text">تحليل أصحاب المصلحة (ملف)</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="risk">
+                      <span class="en-text">Risks + mitigation included</span>
+                      <span class="ar-text">تضمين المخاطر + التخفيف</span>
+                    </label>
+                  </li>
                 </ul>
-              </div>
-
-              <div class="details-section">
-                <div class="section-title">
-                  <i class="fas fa-tools"></i>
-                  <span class="en-text">Tools Needed</span><span class="ar-text">الأدوات المطلوبة</span>
-                </div>
-                <ul class="tools-list">
-                  <li><i class="fas fa-file-alt"></i><span class="en-text">Google Docs / Word</span><span class="ar-text">Google Docs / Word</span></li>
-                  <li><i class="fas fa-folder-open"></i><span class="en-text">Drive / OneDrive</span><span class="ar-text">Drive / OneDrive</span></li>
-                  <li><i class="fas fa-camera"></i><span class="en-text">Screenshots (evidence)</span><span class="ar-text">لقطات شاشة (أدلة)</span></li>
-                </ul>
-              </div>
-
-              <div class="details-section">
-                <div class="section-title">
-                  <i class="fas fa-clipboard-check"></i>
-                  <span class="en-text">Deliverables</span><span class="ar-text">المخرجات</span>
-                </div>
-                <ul class="deliverables-list">
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Elicitation Notes (clean)</span><span class="ar-text">ملاحظات الاستقصاء (مرتبة)</span></li>
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Elicitation Evidence Pack</span><span class="ar-text">حزمة أدلة الاستقصاء</span></li>
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Elicitation Summary (1 page)</span><span class="ar-text">ملخص الاستقصاء (صفحة واحدة)</span></li>
-                </ul>
-              </div>
-
-              <div class="details-section">
-                <div class="section-title">
-                  <i class="fas fa-tags"></i>
-                  <span class="en-text">Tags</span><span class="ar-text">العلامات</span>
-                </div>
-                <div>
-                  <span class="tag en-text">Deliverable 2</span><span class="tag ar-text">التسليم 2</span>
-                  <span class="tag en-text">Elicitation</span><span class="tag ar-text">الاستقصاء</span>
-                  <span class="tag en-text">Evidence</span><span class="tag ar-text">الأدلة</span>
-                </div>
+                <div class="hint en-text">Internal naming is optional — only keep if your instructor requires it.</div>
+                <div class="hint ar-text">التسمية الداخلية اختيارية — فقط استخدميها إذا كانت مطلوبة من الدكتورة.</div>
               </div>
             </div>
           </div>
 
-          <!-- Task 2 -->
-          <div class="task-card" data-task="2">
+          <div class="task-card" data-task="familyURs">
             <div class="task-header">
               <div>
-                <div class="task-title en-text">Actors + System Boundary (Sillah)</div>
-                <div class="task-title ar-text">الجهات الفاعلة + حدود النظام (سِلّة)</div>
+                <div class="task-title en-text">Family User Requirements (Prioritized)</div>
+                <div class="task-title ar-text">متطلبات الأسرة (ذات أولوية)</div>
               </div>
-              <div class="task-assignee">
-                <i class="fas fa-user-check"></i><span>Shouq</span>
-              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Shoug</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
 
             <div class="task-summary en-text">
-              Define Sillah actors and system boundaries for core scope: Families (primary users), Healthcare Providers,
-              Administrators. Clarify simulated vs real (clinic booking is simulated; no EHR integration; no diagnosis).
+              Write 8–10 family user requirements. Each requirement must link to evidence (interview/survey/observation/doc). Prioritize using MoSCoW (Must/Should/Could/Won’t).
             </div>
             <div class="task-summary ar-text">
-              تحديد الجهات الفاعلة وحدود نظام سِلّة ضمن النطاق الأساسي: العائلات (المستخدم الأساسي)، مقدمي الرعاية،
-              الإداريين. توضيح ما هو محاكاة وما هو فعلي (حجز العيادة محاكاة؛ بدون تكامل EHR؛ بدون تشخيص).
+              كتابة ٨–١٠ متطلبات مستخدم للأسرة. كل متطلب لازم يكون مرتبط بدليل (مقابلة/استبيان/ملاحظة/وثائق). ترتيب الأولويات باستخدام MoSCoW.
             </div>
 
             <div class="progress-container">
@@ -862,25 +760,15 @@
               <div class="details-section">
                 <div class="section-title">
                   <i class="fas fa-list-ol"></i>
-                  <span class="en-text">Step-by-Step Instructions</span>
-                  <span class="ar-text">تعليمات خطوة بخطوة</span>
+                  <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
                 </div>
-
                 <ol class="steps-list">
-                  <li class="en-text"><strong>List actors:</strong> Parent/Guardian, Family Member, Healthcare Provider, Admin, (optional) Awareness Content Manager.</li>
-                  <li class="ar-text"><strong>تحديد الجهات:</strong> ولي الأمر/الوصي، فرد من الأسرة، مقدم رعاية صحية، إداري، (اختياري) مسؤول المحتوى.</li>
-
-                  <li class="en-text"><strong>Boundary statement:</strong> what Sillah does vs what it doesn’t (no diagnosis, no EHR integration, simulated booking).</li>
-                  <li class="ar-text"><strong>حدود النظام:</strong> ما الذي يقدمه سِلّة وما لا يقدمه (لا تشخيص، لا تكامل EHR، الحجز محاكاة).</li>
-
-                  <li class="en-text"><strong>Permissions:</strong> draft RBAC rules (who can view/edit health events, alerts, family profiles).</li>
-                  <li class="ar-text"><strong>الصلاحيات:</strong> مسودة RBAC (من يستطيع عرض/تعديل الأحداث الصحية، التنبيهات، ملفات الأسرة).</li>
-
-                  <li class="en-text"><strong>External touchpoints:</strong> notifications (SMS/email/app), guidelines source for rules (manual updates).</li>
-                  <li class="ar-text"><strong>نقاط خارجية:</strong> الإشعارات (SMS/Email/داخل التطبيق)، مصدر القواعد (تحديث يدوي).</li>
-
-                  <li class="en-text"><strong>Review with team:</strong> align with requirements list and NFR constraints.</li>
-                  <li class="ar-text"><strong>مراجعة مع الفريق:</strong> التأكد من الاتساق مع متطلبات المستخدم وقيود NFR.</li>
+                  <li class="en-text"><strong>Gather evidence</strong> from all elicitation streams.</li>
+                  <li class="ar-text"><strong>جمع الأدلة</strong> من جميع مسارات الاستقصاء.</li>
+                  <li class="en-text"><strong>Write URs</strong> in a consistent format: ID, statement/user story, rationale, source evidence, priority (MoSCoW), acceptance criteria.</li>
+                  <li class="ar-text"><strong>كتابة المتطلبات</strong> بصيغة ثابتة: معرف، صياغة/قصة، مبرر، مصدر الدليل، أولوية (MoSCoW)، معايير القبول.</li>
+                  <li class="en-text"><strong>Keep traceability</strong> (each UR must point to at least 1 piece of evidence).</li>
+                  <li class="ar-text"><strong>الحفاظ على التتبع</strong> (كل متطلب مرتبط بدليل واحد على الأقل).</li>
                 </ol>
               </div>
 
@@ -889,53 +777,130 @@
                   <i class="fas fa-check-square"></i>
                   <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
                 </div>
-
                 <ul class="deliverables-list checklist">
-                  <li><label><input type="checkbox" class="progress-check" data-check="actors">
-                    <span class="en-text">Defined Sillah actors</span><span class="ar-text">حددت الجهات الفاعلة</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="boundary">
-                    <span class="en-text">Wrote system boundary statement</span><span class="ar-text">كتبت حدود النظام</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="rbac">
-                    <span class="en-text">Drafted RBAC/permissions</span><span class="ar-text">جهزت صلاحيات RBAC</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="touchpoints">
-                    <span class="en-text">Listed external touchpoints</span><span class="ar-text">حددت النقاط الخارجية</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="alignment">
-                    <span class="en-text">Aligned with UR/NFR lists</span><span class="ar-text">تأكدت من الاتساق مع UR/NFR</span></label></li>
-                </ul>
-              </div>
-
-              <div class="details-section">
-                <div class="section-title">
-                  <i class="fas fa-clipboard-check"></i>
-                  <span class="en-text">Deliverables</span><span class="ar-text">المخرجات</span>
-                </div>
-
-                <ul class="deliverables-list">
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Actors List + Definitions</span><span class="ar-text">قائمة الجهات الفاعلة + تعريفاتها</span></li>
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">System Boundary Notes</span><span class="ar-text">ملاحظات حدود النظام</span></li>
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">RBAC / Permissions Draft</span><span class="ar-text">مسودة الصلاحيات RBAC</span></li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="famUR">
+                      <span class="en-text">Family UR list (8–10) written</span>
+                      <span class="ar-text">كتابة متطلبات الأسرة (٨–١٠)</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="famPrio">
+                      <span class="en-text">MoSCoW priority assigned</span>
+                      <span class="ar-text">تحديد الأولوية (MoSCoW)</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="famTrace">
+                      <span class="en-text">Each UR links to evidence</span>
+                      <span class="ar-text">كل متطلب مرتبط بدليل</span>
+                    </label>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
+
+          <div class="task-card" data-task="finalPackage">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Team Leader: Final Submission Package</div>
+                <div class="task-title ar-text">قائدة الفريق: الحزمة النهائية للتسليم</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Shoug</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Collect all notes + evidence and the prioritized user requirements list(s) from the team. Ensure everything is organized, traceable, and ready to submit.
+            </div>
+            <div class="task-summary ar-text">
+              جمع جميع الملاحظات + الأدلة وقوائم المتطلبات ذات الأولوية من الفريق. التأكد أن كل شيء مرتب وقابل للتتبع وجاهز للتسليم.
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section">
+                <div class="section-title">
+                  <i class="fas fa-list-ol"></i>
+                  <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
+                </div>
+                <ol class="steps-list">
+                  <li class="en-text"><strong>Collect</strong> all elicitation notes + evidence from each member.</li>
+                  <li class="ar-text"><strong>جمع</strong> جميع ملاحظات + أدلة الاستقصاء من كل عضو.</li>
+                  <li class="en-text"><strong>Collect</strong> each member’s prioritized UR list.</li>
+                  <li class="ar-text"><strong>جمع</strong> قوائم المتطلبات ذات الأولوية.</li>
+                  <li class="en-text"><strong>Check traceability:</strong> requirements point to evidence (file name / screenshot / link).</li>
+                  <li class="ar-text"><strong>التأكد من التتبع:</strong> المتطلبات مرتبطة بدليل (اسم ملف / لقطة / رابط).</li>
+                  <li class="en-text"><strong>Organize</strong> into simple folders: Evidence/ and Prioritized_URs/.</li>
+                  <li class="ar-text"><strong>ترتيب</strong> في مجلدات واضحة: Evidence/ و Prioritized_URs/.</li>
+                  <li class="en-text"><strong>Zip</strong> and submit.</li>
+                  <li class="ar-text"><strong>ضغط</strong> وتسليم.</li>
+                </ol>
+              </div>
+
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="collected">
+                      <span class="en-text">All notes + evidence collected</span>
+                      <span class="ar-text">جمع جميع الملاحظات + الأدلة</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="reqs">
+                      <span class="en-text">Prioritized UR lists collected</span>
+                      <span class="ar-text">جمع قوائم المتطلبات ذات الأولوية</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="traceOK">
+                      <span class="en-text">Traceability checked</span>
+                      <span class="ar-text">التأكد من التتبع</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="zip">
+                      <span class="en-text">Final .zip ready</span>
+                      <span class="ar-text">الملف المضغوط النهائي جاهز</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- =========================
-           GHALA TAB
-      ========================== -->
+      <!-- ========== GHALA TAB ========== -->
       <div id="ghala" class="tab-content">
         <div class="task-grid">
-          <!-- Task 1 -->
-          <div class="task-card" data-task="1">
+          <div class="task-card" data-task="interviews">
             <div class="task-header">
               <div>
-                <div class="task-title en-text">User Requirements Draft (UR-IDs) — Core Features</div>
-                <div class="task-title ar-text">مسودة متطلبات المستخدم (UR-IDs) — الميزات الأساسية</div>
+                <div class="task-title en-text">Interviews (Elicitation Notes + Evidence)</div>
+                <div class="task-title ar-text">المقابلات (ملاحظات + أدلة)</div>
               </div>
               <div class="task-assignee"><i class="fas fa-user-check"></i><span>Ghala</span></div>
             </div>
@@ -943,14 +908,10 @@
             <i class="fas fa-chevron-down expand-icon"></i>
 
             <div class="task-summary en-text">
-              Draft Sillah User Requirements (UR-IDs) for core features: family member management, health events recording,
-              rule-based risk detection, alerts/recommendations, awareness hub, alert history, and basic clinic booking simulation.
-              Include acceptance criteria and elicitation source.
+              Conduct interviews and document them as elicitation notes (like the instructor example). Keep clean notes, key findings, extracted requirements, and attach evidence.
             </div>
             <div class="task-summary ar-text">
-              كتابة متطلبات المستخدم لسِلّة (UR-IDs) للميزات الأساسية: إدارة أفراد الأسرة، تسجيل الأحداث الصحية،
-              كشف المخاطر بالقواعد، التنبيهات/التوصيات، مركز التوعية، سجل التنبيهات، ومحاكاة حجز العيادة.
-              مع معايير قبول ومصدر الاستقصاء.
+              إجراء مقابلات وتوثيقها كملاحظات استقصاء (مثل مثال الدكتورة). ملاحظات واضحة + نتائج + متطلبات مستخلصة + أدلة.
             </div>
 
             <div class="progress-container">
@@ -963,65 +924,41 @@
 
             <div class="task-details">
               <div class="details-section">
-                <div class="section-title"><i class="fas fa-list-ol"></i>
-                  <span class="en-text">Step-by-Step Instructions</span><span class="ar-text">تعليمات خطوة بخطوة</span>
+                <div class="section-title">
+                  <i class="fas fa-list-ol"></i>
+                  <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
                 </div>
-
                 <ol class="steps-list">
-                  <li class="en-text"><strong>Extract URs:</strong> from elicitation notes; keep original wording in “source” column.</li>
-                  <li class="ar-text"><strong>استخراج المتطلبات:</strong> من ملاحظات الاستقصاء مع حفظ الصياغة الأصلية في خانة المصدر.</li>
-
-                  <li class="en-text"><strong>Structure:</strong> UR-01..UR-xx with “As a [actor], I want [capability], so that [value]”.</li>
-                  <li class="ar-text"><strong>تنظيم:</strong> ترقيم UR-01.. مع صيغة “كمستخدم/جهة، أريد… لكي…”.</li>
-
-                  <li class="en-text"><strong>Acceptance criteria:</strong> 2–4 bullet checks per UR (clear and testable).</li>
-                  <li class="ar-text"><strong>معايير القبول:</strong> 2–4 نقاط لكل متطلب تكون واضحة وقابلة للاختبار.</li>
-
-                  <li class="en-text"><strong>Group by feature:</strong> family, events, risk rules, alerts, awareness, booking simulation.</li>
-                  <li class="ar-text"><strong>تجميع حسب الميزة:</strong> الأسرة، الأحداث، قواعد المخاطر، التنبيهات، التوعية، الحجز (محاكاة).</li>
-
-                  <li class="en-text"><strong>Trace source:</strong> link each UR to stakeholder/method (interview/workshop/survey).</li>
-                  <li class="ar-text"><strong>ربط المصدر:</strong> ربط كل UR بصاحب المصلحة وطريقة الاستقصاء.</li>
+                  <li class="en-text"><strong>Prepare</strong> an interview guide.</li>
+                  <li class="ar-text"><strong>تجهيز</strong> دليل أسئلة للمقابلة.</li>
+                  <li class="en-text"><strong>Conduct</strong> 3–5 interviews (family + healthcare provider).</li>
+                  <li class="ar-text"><strong>إجراء</strong> ٣–٥ مقابلات (عائلة + مقدم رعاية).</li>
+                  <li class="en-text"><strong>Write elicitation notes</strong>: participants, objectives, questions, answers, key findings, extracted requirements, open issues.</li>
+                  <li class="ar-text"><strong>كتابة ملاحظات الاستقصاء</strong>: المشاركون، الأهداف، الأسئلة، الأجوبة، النتائج، المتطلبات، نقاط مفتوحة.</li>
+                  <li class="en-text"><strong>Attach evidence</strong> (screenshots/recording log).</li>
+                  <li class="ar-text"><strong>إرفاق الأدلة</strong> (لقطات/سجل التسجيل).</li>
                 </ol>
               </div>
 
               <div class="details-section checklist-section">
-                <div class="section-title"><i class="fas fa-check-square"></i>
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
                   <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
                 </div>
                 <ul class="deliverables-list checklist">
-                  <li><label><input type="checkbox" class="progress-check" data-check="sheet">
-                    <span class="en-text">Created UR spreadsheet (UR-IDs)</span><span class="ar-text">أنشأت جدول UR-IDs</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="core">
-                    <span class="en-text">Covered all core features</span><span class="ar-text">غطّيت كل الميزات الأساسية</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="ac">
-                    <span class="en-text">Added acceptance criteria</span><span class="ar-text">أضفت معايير القبول</span></label></li>
-
-                  <li><label><input type="checkbox" class="progress-check" data-check="source">
-                    <span class="en-text">Linked elicitation sources</span><span class="ar-text">ربطت مصادر الاستقصاء</span></label></li>
-                </ul>
-              </div>
-
-              <div class="details-section">
-                <div class="section-title"><i class="fas fa-clipboard-check"></i>
-                  <span class="en-text">Deliverables</span><span class="ar-text">المخرجات</span>
-                </div>
-                <ul class="deliverables-list">
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">User Requirements List (UR-IDs)</span><span class="ar-text">قائمة متطلبات المستخدم (UR-IDs)</span></li>
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Acceptance Criteria per UR</span><span class="ar-text">معايير قبول لكل متطلب</span></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="guide"> <span class="en-text">Interview guide completed</span><span class="ar-text">إكمال دليل المقابلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="notes"> <span class="en-text">Interview notes written (per session)</span><span class="ar-text">كتابة ملاحظات لكل مقابلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="evid"> <span class="en-text">Evidence attached</span><span class="ar-text">إرفاق الأدلة</span></label></li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- Task 2 -->
-          <div class="task-card" data-task="2">
+          <div class="task-card" data-task="hcpURs">
             <div class="task-header">
               <div>
-                <div class="task-title en-text">Prioritization (MoSCoW) + Validation Notes</div>
-                <div class="task-title ar-text">ترتيب الأولويات (MoSCoW) + ملاحظات التحقق</div>
+                <div class="task-title en-text">Healthcare Provider URs (Prioritized)</div>
+                <div class="task-title ar-text">متطلبات مقدم الرعاية (ذات أولوية)</div>
               </div>
               <div class="task-assignee"><i class="fas fa-user-check"></i><span>Ghala</span></div>
             </div>
@@ -1029,12 +966,10 @@
             <i class="fas fa-chevron-down expand-icon"></i>
 
             <div class="task-summary en-text">
-              Prioritize Sillah user requirements using MoSCoW. For each UR include rationale (impact, frequency, risk).
-              Produce the final “Prioritized User Requirements List” required for Deliverable 2.
+              Derive 8–10 provider requirements from interview notes. Prioritize using MoSCoW and link each requirement to interview evidence.
             </div>
             <div class="task-summary ar-text">
-              ترتيب أولويات متطلبات المستخدم باستخدام MoSCoW. لكل متطلب أضف تبرير (الأثر، التكرار، المخاطر).
-              المخرج النهائي: “قائمة متطلبات المستخدم ذات الأولوية” المطلوبة في تسليم 2.
+              اشتقاق ٨–١٠ متطلبات من ملاحظات المقابلات. ترتيب باستخدام MoSCoW وربط كل متطلب بالدليل.
             </div>
 
             <div class="progress-container">
@@ -1046,47 +981,15 @@
             </div>
 
             <div class="task-details">
-              <div class="details-section">
-                <div class="section-title"><i class="fas fa-list-ol"></i>
-                  <span class="en-text">Step-by-Step Instructions</span><span class="ar-text">تعليمات خطوة بخطوة</span>
-                </div>
-
-                <ol class="steps-list">
-                  <li class="en-text"><strong>MoSCoW:</strong> mark each UR Must/Should/Could/Won’t for this release.</li>
-                  <li class="ar-text"><strong>MoSCoW:</strong> تصنيف كل UR إلى Must/Should/Could/Won’t للإصدار الحالي.</li>
-
-                  <li class="en-text"><strong>Rationale:</strong> add 1–2 lines why (safety impact, adoption, PDPL, effort).</li>
-                  <li class="ar-text"><strong>التبرير:</strong> سطر أو سطرين يوضح السبب (أثر صحي، تبني، PDPL، جهد).</li>
-
-                  <li class="en-text"><strong>Conflicts:</strong> flag any conflicts/ambiguity for team discussion.</li>
-                  <li class="ar-text"><strong>التعارض:</strong> تحديد التعارض أو الغموض للنقاش مع الفريق.</li>
-
-                  <li class="en-text"><strong>Validation notes:</strong> record what stakeholders agreed on (or what needs follow-up).</li>
-                  <li class="ar-text"><strong>ملاحظات التحقق:</strong> توثيق ما تم الاتفاق عليه وما يحتاج متابعة.</li>
-                </ol>
-              </div>
-
               <div class="details-section checklist-section">
-                <div class="section-title"><i class="fas fa-check-square"></i>
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
                   <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
                 </div>
                 <ul class="deliverables-list checklist">
-                  <li><label><input type="checkbox" class="progress-check" data-check="moscow">
-                    <span class="en-text">Applied MoSCoW to all URs</span><span class="ar-text">طبقت MoSCoW على جميع المتطلبات</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="rationale">
-                    <span class="en-text">Added prioritization rationale</span><span class="ar-text">أضفت تبرير ترتيب الأولويات</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="validation">
-                    <span class="en-text">Documented validation notes</span><span class="ar-text">وثقت ملاحظات التحقق</span></label></li>
-                </ul>
-              </div>
-
-              <div class="details-section">
-                <div class="section-title"><i class="fas fa-clipboard-check"></i>
-                  <span class="en-text">Deliverables</span><span class="ar-text">المخرجات</span>
-                </div>
-                <ul class="deliverables-list">
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Prioritized User Requirements List</span><span class="ar-text">قائمة متطلبات المستخدم ذات الأولوية</span></li>
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">MoSCoW Matrix + Rationale</span><span class="ar-text">مصفوفة MoSCoW + التبرير</span></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="hcpUR"> <span class="en-text">Provider UR list (8–10) written</span><span class="ar-text">كتابة متطلبات مقدم الرعاية (٨–١٠)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="hcpMoscow"> <span class="en-text">MoSCoW priority assigned</span><span class="ar-text">تحديد الأولوية (MoSCoW)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="hcpTrace"> <span class="en-text">Each UR links to interview evidence</span><span class="ar-text">ربط كل متطلب بدليل المقابلة</span></label></li>
                 </ul>
               </div>
             </div>
@@ -1095,17 +998,14 @@
         </div>
       </div>
 
-      <!-- =========================
-           GALA TAB
-      ========================== -->
+      <!-- ========== GALA TAB ========== -->
       <div id="gala" class="tab-content">
         <div class="task-grid">
-          <!-- Task 1 -->
-          <div class="task-card" data-task="1">
+          <div class="task-card" data-task="survey">
             <div class="task-header">
               <div>
-                <div class="task-title en-text">Non-Functional Requirements + Constraints (SMART)</div>
-                <div class="task-title ar-text">المتطلبات غير الوظيفية + القيود (قابلة للقياس)</div>
+                <div class="task-title en-text">Survey (Notes + Evidence)</div>
+                <div class="task-title ar-text">الاستبيان (ملاحظات + أدلة)</div>
               </div>
               <div class="task-assignee"><i class="fas fa-user-check"></i><span>Gala</span></div>
             </div>
@@ -1113,12 +1013,139 @@
             <i class="fas fa-chevron-down expand-icon"></i>
 
             <div class="task-summary en-text">
-              Identify Sillah NFRs and constraints: PDPL compliance for health data, security (auth/RBAC, session handling),
-              bilingual RTL/LTR, mobile-first usability, reliability and clarity. Convert them into measurable (SMART) statements.
+              Design and deploy a bilingual survey. Keep evidence: questionnaire PDF, response export, and a short analysis summary (charts/screenshots).
             </div>
             <div class="task-summary ar-text">
-              تحديد المتطلبات غير الوظيفية والقيود: الامتثال لـ PDPL لبيانات الصحة، الأمان (تسجيل الدخول/RBAC/الجلسات)،
-              ثنائية اللغة RTL/LTR، سهولة الاستخدام للهاتف، الاعتمادية والوضوح. تحويلها لمتطلبات قابلة للقياس (SMART).
+              تصميم ونشر استبيان ثنائي اللغة. حفظ الأدلة: PDF للأسئلة، ملف الردود، وملخص تحليل مختصر (رسوم/لقطات).
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="surveyQ"> <span class="en-text">Survey questionnaire (EN/AR)</span><span class="ar-text">أسئلة الاستبيان (عربي/إنجليزي)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="surveyData"> <span class="en-text">Responses exported</span><span class="ar-text">تصدير الردود</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="surveyAnalysis"> <span class="en-text">Short analysis + charts/screenshots</span><span class="ar-text">تحليل مختصر + رسوم/لقطات</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" data-task="adminURs">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Administrator URs (Prioritized)</div>
+                <div class="task-title ar-text">متطلبات الإداري (ذات أولوية)</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Gala</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Derive 8–10 admin requirements from survey + other evidence. Prioritize using MoSCoW and link each requirement to evidence.
+            </div>
+            <div class="task-summary ar-text">
+              اشتقاق ٨–١٠ متطلبات للإداري من الاستبيان + الأدلة الأخرى. ترتيب باستخدام MoSCoW وربط كل متطلب بالدليل.
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="adminUR"> <span class="en-text">Admin UR list (8–10) written</span><span class="ar-text">كتابة متطلبات الإداري (٨–١٠)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="adminMoscow"> <span class="en-text">MoSCoW priority assigned</span><span class="ar-text">تحديد الأولوية (MoSCoW)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="adminTrace"> <span class="en-text">Each UR links to evidence</span><span class="ar-text">ربط كل متطلب بدليل</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========== SALMA TAB ========== -->
+      <div id="salma" class="tab-content">
+        <div class="task-grid">
+          <div class="task-card" data-task="docObsComp">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Document/Observation/Competitive (Evidence)</div>
+                <div class="task-title ar-text">وثائق/ملاحظة/تنافسي (أدلة)</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Salma</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Analyze documents and/or apps and record findings as elicitation evidence. Keep screenshots/links and write clear notes that point to extracted requirements.
+            </div>
+            <div class="task-summary ar-text">
+              تحليل وثائق و/أو تطبيقات وتوثيق النتائج كأدلة استقصاء. حفظ لقطات/روابط وكتابة ملاحظات واضحة لاستخراج المتطلبات.
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="doc"> <span class="en-text">Document analysis notes + evidence</span><span class="ar-text">ملاحظات تحليل الوثائق + أدلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="obs"> <span class="en-text">Observation notes + evidence</span><span class="ar-text">ملاحظات الملاحظة + أدلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="comp"> <span class="en-text">Competitive analysis notes + screenshots</span><span class="ar-text">تحليل تنافسي + لقطات</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" data-task="consolidation">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Consolidation + Prioritization (Master)</div>
+                <div class="task-title ar-text">الدمج + ترتيب الأولويات (قائمة رئيسية)</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Salma</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Combine URs from all members, remove duplicates, keep traceability, and produce one prioritized master list using MoSCoW (no extra scoring rules unless required by instructor).
+            </div>
+            <div class="task-summary ar-text">
+              دمج المتطلبات من الجميع، إزالة التكرار، الحفاظ على التتبع، وإنشاء قائمة موحدة ذات أولوية باستخدام MoSCoW (بدون قواعد تقييم إضافية إلا إذا كانت مطلوبة).
             </div>
 
             <div class="progress-container">
@@ -1131,430 +1158,158 @@
 
             <div class="task-details">
               <div class="details-section">
-                <div class="section-title"><i class="fas fa-list-ol"></i>
-                  <span class="en-text">Step-by-Step Instructions</span><span class="ar-text">تعليمات خطوة بخطوة</span>
+                <div class="section-title">
+                  <i class="fas fa-list-ol"></i>
+                  <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
                 </div>
-
                 <ol class="steps-list">
-                  <li class="en-text"><strong>Categories:</strong> Security, Privacy/PDPL, Usability, Performance, Reliability, Maintainability, Accessibility.</li>
-                  <li class="ar-text"><strong>الفئات:</strong> الأمان، الخصوصية/PDPL، سهولة الاستخدام، الأداء، الاعتمادية، القابلية للصيانة، الإتاحة.</li>
-
-                  <li class="en-text"><strong>Make measurable:</strong> response time targets, audit-log retention, password policy, availability, error rates.</li>
-                  <li class="ar-text"><strong>قابلة للقياس:</strong> زمن الاستجابة، مدة الاحتفاظ بالسجلات، سياسة كلمات المرور، التوفر، نسب الأخطاء.</li>
-
-                  <li class="en-text"><strong>RTL/LTR:</strong> ensure layout parity + correct direction switching.</li>
-                  <li class="ar-text"><strong>RTL/LTR:</strong> ضمان تساوي التصميم واتجاه النص عند التبديل.</li>
-
-                  <li class="en-text"><strong>Security baseline:</strong> RBAC, least privilege, session timeout, and secure storage notes.</li>
-                  <li class="ar-text"><strong>خط أساس الأمان:</strong> RBAC، أقل صلاحية، انتهاء الجلسة، وملاحظات التخزين الآمن.</li>
+                  <li class="en-text"><strong>Collect</strong> the three UR lists (family/provider/admin).</li>
+                  <li class="ar-text"><strong>جمع</strong> قوائم المتطلبات الثلاث.</li>
+                  <li class="en-text"><strong>Remove duplicates</strong> and merge similar requirements.</li>
+                  <li class="ar-text"><strong>إزالة التكرار</strong> ودمج المتطلبات المتشابهة.</li>
+                  <li class="en-text"><strong>Maintain traceability</strong> (each master UR must reference evidence and source owner).</li>
+                  <li class="ar-text"><strong>الحفاظ على التتبع</strong> (كل متطلب في القائمة مرتبط بدليل وصاحبه).</li>
+                  <li class="en-text"><strong>Prioritize using MoSCoW</strong> based on team agreement + dependencies.</li>
+                  <li class="ar-text"><strong>ترتيب باستخدام MoSCoW</strong> بناءً على اتفاق الفريق + التبعيات.</li>
                 </ol>
               </div>
 
               <div class="details-section checklist-section">
-                <div class="section-title"><i class="fas fa-check-square"></i>
-                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
-                </div>
-
-                <ul class="deliverables-list checklist">
-                  <li><label><input type="checkbox" class="progress-check" data-check="cats">
-                    <span class="en-text">Defined NFR categories</span><span class="ar-text">حددت فئات NFR</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="pdpl">
-                    <span class="en-text">Added PDPL/privacy constraints</span><span class="ar-text">أضفت قيود الخصوصية وPDPL</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="smart">
-                    <span class="en-text">Converted NFRs to SMART</span><span class="ar-text">حولت NFR إلى قابلة للقياس</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="rtl">
-                    <span class="en-text">Documented RTL/LTR requirements</span><span class="ar-text">وثقت متطلبات RTL/LTR</span></label></li>
-                </ul>
-              </div>
-
-              <div class="details-section">
-                <div class="section-title"><i class="fas fa-clipboard-check"></i>
-                  <span class="en-text">Deliverables</span><span class="ar-text">المخرجات</span>
-                </div>
-                <ul class="deliverables-list">
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">NFR Document (SMART)</span><span class="ar-text">وثيقة NFR (قابلة للقياس)</span></li>
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Constraints List</span><span class="ar-text">قائمة القيود</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Task 2 -->
-          <div class="task-card" data-task="2">
-            <div class="task-header">
-              <div>
-                <div class="task-title en-text">Quality Attribute Scenarios (Usability/Security/Privacy)</div>
-                <div class="task-title ar-text">سيناريوهات سمات الجودة (سهولة الاستخدام/الأمان/الخصوصية)</div>
-              </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Gala</span></div>
-            </div>
-
-            <i class="fas fa-chevron-down expand-icon"></i>
-
-            <div class="task-summary en-text">
-              Write quality attribute scenarios (stimulus → response) for key qualities: privacy/PDPL handling of health data,
-              authentication/RBAC, and mobile usability. Keep them short and test-oriented.
-            </div>
-            <div class="task-summary ar-text">
-              كتابة سيناريوهات الجودة (مثير → استجابة) للخصائص الأساسية: الخصوصية/PDPL لبيانات الصحة،
-              المصادقة/RBAC، وسهولة استخدام الهاتف. تكون قصيرة وقابلة للاختبار.
-            </div>
-
-            <div class="progress-container">
-              <div class="progress-label">
-                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
-                <span class="progress-percent">0%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill"></div></div>
-            </div>
-
-            <div class="task-details">
-              <div class="details-section checklist-section">
-                <div class="section-title"><i class="fas fa-check-square"></i>
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
                   <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
                 </div>
                 <ul class="deliverables-list checklist">
-                  <li><label><input type="checkbox" class="progress-check" data-check="sec">
-                    <span class="en-text">Security scenarios written</span><span class="ar-text">كتبت سيناريوهات الأمان</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="privacy">
-                    <span class="en-text">Privacy/PDPL scenarios written</span><span class="ar-text">كتبت سيناريوهات الخصوصية/PDPL</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="ux">
-                    <span class="en-text">Usability scenarios written</span><span class="ar-text">كتبت سيناريوهات سهولة الاستخدام</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="master"> <span class="en-text">Master UR list created</span><span class="ar-text">إنشاء قائمة موحدة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="moscow"> <span class="en-text">MoSCoW priorities assigned</span><span class="ar-text">تحديد الأولويات (MoSCoW)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="trace"> <span class="en-text">Traceability maintained</span><span class="ar-text">الحفاظ على التتبع</span></label></li>
                 </ul>
               </div>
 
-              <div class="details-section">
-                <div class="section-title"><i class="fas fa-clipboard-check"></i>
-                  <span class="en-text">Deliverables</span><span class="ar-text">المخرجات</span>
-                </div>
-                <ul class="deliverables-list">
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Quality Attribute Scenarios</span><span class="ar-text">سيناريوهات سمات الجودة</span></li>
-                </ul>
-              </div>
             </div>
           </div>
 
         </div>
       </div>
 
-      <!-- =========================
-           SALMA TAB
-      ========================== -->
-      <div id="salma" class="tab-content">
-        <div class="task-grid">
-          <!-- Task 1 -->
-          <div class="task-card" data-task="1">
-            <div class="task-header">
-              <div>
-                <div class="task-title en-text">Risk & Assumptions Log (Sillah)</div>
-                <div class="task-title ar-text">سجل المخاطر والافتراضات (سِلّة)</div>
-              </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Salma</span></div>
-            </div>
-
-            <i class="fas fa-chevron-down expand-icon"></i>
-
-            <div class="task-summary en-text">
-              Build Sillah risk/assumption log focused on adoption trust, data quality, guideline changes (rule updates),
-              PDPL/security complexity, and usability dropout. Score probability/impact and keep mitigation notes.
-            </div>
-            <div class="task-summary ar-text">
-              إنشاء سجل مخاطر/افتراضات لسِلّة يركز على الثقة والتبني، جودة البيانات، تغيّر الإرشادات (تحديث القواعد)،
-              تعقيد PDPL/الأمان، ومخاطر ضعف سهولة الاستخدام. مع تقييم احتمال/تأثير وخطط تخفيف.
-            </div>
-
-            <div class="progress-container">
-              <div class="progress-label">
-                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
-                <span class="progress-percent">0%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill"></div></div>
-            </div>
-
-            <div class="task-details">
-              <div class="details-section checklist-section">
-                <div class="section-title"><i class="fas fa-check-square"></i>
-                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
-                </div>
-
-                <ul class="deliverables-list checklist">
-                  <li><label><input type="checkbox" class="progress-check" data-check="list">
-                    <span class="en-text">Listed risks by category</span><span class="ar-text">حددت المخاطر حسب الفئة</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="score">
-                    <span class="en-text">Scored probability & impact</span><span class="ar-text">قيّمت الاحتمالية والتأثير</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="assume">
-                    <span class="en-text">Documented assumptions</span><span class="ar-text">وثقت الافتراضات</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="mitigate">
-                    <span class="en-text">Drafted mitigation notes</span><span class="ar-text">جهزت ملاحظات التخفيف</span></label></li>
-                </ul>
-              </div>
-
-              <div class="details-section">
-                <div class="section-title"><i class="fas fa-clipboard-check"></i>
-                  <span class="en-text">Deliverables</span><span class="ar-text">المخرجات</span>
-                </div>
-                <ul class="deliverables-list">
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Risk Register</span><span class="ar-text">سجل المخاطر</span></li>
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Assumptions Log</span><span class="ar-text">سجل الافتراضات</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Task 2 -->
-          <div class="task-card" data-task="2">
-            <div class="task-header">
-              <div>
-                <div class="task-title en-text">Mitigation Plan + Prioritization Rationale Support</div>
-                <div class="task-title ar-text">خطة التخفيف + دعم تبرير ترتيب الأولويات</div>
-              </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Salma</span></div>
-            </div>
-
-            <i class="fas fa-chevron-down expand-icon"></i>
-
-            <div class="task-summary en-text">
-              For high-priority risks, write mitigation actions and what the team should do if risk happens.
-              Provide short notes that help justify UR prioritization (safety/privacy risk vs effort).
-            </div>
-            <div class="task-summary ar-text">
-              للمخاطر ذات الأولوية العالية: كتابة إجراءات التخفيف وماذا نفعل إذا حدثت.
-              وإضافة ملاحظات تساعد في تبرير ترتيب UR (مخاطر سلامة/خصوصية مقابل الجهد).
-            </div>
-
-            <div class="progress-container">
-              <div class="progress-label">
-                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
-                <span class="progress-percent">0%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill"></div></div>
-            </div>
-
-            <div class="task-details">
-              <div class="details-section checklist-section">
-                <div class="section-title"><i class="fas fa-check-square"></i>
-                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
-                </div>
-
-                <ul class="deliverables-list checklist">
-                  <li><label><input type="checkbox" class="progress-check" data-check="top">
-                    <span class="en-text">Selected top/high risks</span><span class="ar-text">حددت أعلى المخاطر</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="plan">
-                    <span class="en-text">Wrote mitigation + contingency</span><span class="ar-text">كتبت التخفيف + الطوارئ</span></label></li>
-                  <li><label><input type="checkbox" class="progress-check" data-check="rationale2">
-                    <span class="en-text">Added notes supporting UR priorities</span><span class="ar-text">أضفت ملاحظات تدعم ترتيب UR</span></label></li>
-                </ul>
-              </div>
-
-              <div class="details-section">
-                <div class="section-title"><i class="fas fa-clipboard-check"></i>
-                  <span class="en-text">Deliverables</span><span class="ar-text">المخرجات</span>
-                </div>
-                <ul class="deliverables-list">
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Mitigation/Contingency Notes</span><span class="ar-text">ملاحظات التخفيف/الطوارئ</span></li>
-                  <li><i class="fas fa-check-circle"></i><span class="en-text">Risk-based Prioritization Rationale</span><span class="ar-text">تبرير ترتيب الأولويات بناءً على المخاطر</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- =========================
-           SHARED WORK TAB
-      ========================== -->
+      <!-- ========== SUBMISSION CHECKLIST TAB (REPLACED SHARED WORK) ========== -->
       <div id="shared" class="tab-content">
         <div class="shared-grid">
           <div class="collaboration-card">
             <div class="collab-title">
-              <i class="fas fa-handshake"></i>
-              <span class="en-text">How We Will Coordinate</span>
-              <span class="ar-text">كيف سنتعاون</span>
+              <i class="fas fa-file-circle-check"></i>
+              <span class="en-text">What the Instructor Asked For</span>
+              <span class="ar-text">المطلوب حسب الدكتورة</span>
             </div>
 
             <div class="en-text" style="margin-bottom: 12px; color: var(--text-light);">
-              Deliverable 2 requires (1) elicitation notes + evidence and (2) a prioritized user requirements list.
-              Work in parallel, then merge into one consistent submission pack.
+              <strong>Team leader submits:</strong><br/>
+              1) Elicitation notes + evidence (interviews, surveys, etc.)<br/>
+              2) A list of prioritized user requirements (on behalf of the team)
             </div>
             <div class="ar-text" style="margin-bottom: 12px; color: var(--text-light);">
-              تسليم 2 يتطلب: (1) ملاحظات الاستقصاء + الأدلة، و(2) قائمة متطلبات المستخدم ذات الأولوية.
-              نعمل بالتوازي ثم ندمج كل شيء في حزمة واحدة متسقة.
+              <strong>قائدة الفريق تسلم:</strong><br/>
+              ١) ملاحظات الاستقصاء + الأدلة (مقابلات، استبيانات، إلخ)<br/>
+              ٢) قائمة متطلبات مستخدم ذات أولوية (بالنيابة عن الفريق)
             </div>
 
-            <ul class="deliverables-list">
-              <li><i class="fas fa-calendar-check"></i><span class="en-text">Weekly sync (30 min)</span><span class="ar-text">اجتماع أسبوعي (30 دقيقة)</span></li>
-              <li><i class="fas fa-user-friends"></i><span class="en-text">Peer review across sections</span><span class="ar-text">مراجعة الأقران بين الأقسام</span></li>
-              <li><i class="fas fa-check-double"></i><span class="en-text">Terminology consistency (UR/NFR/Risk)</span><span class="ar-text">اتساق المصطلحات (UR/NFR/مخاطر)</span></li>
-              <li><i class="fas fa-file-zipper"></i><span class="en-text">One final zip structure</span><span class="ar-text">ملف مضغوط نهائي واحد</span></li>
+            <ul class="deliverables-list checklist">
+              <li>
+                <label>
+                  <input type="checkbox" class="progress-check" data-check="sub_evidence">
+                  <span class="en-text">Elicitation notes + evidence folder ready</span>
+                  <span class="ar-text">مجلد الملاحظات + الأدلة جاهز</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" class="progress-check" data-check="sub_prioritized">
+                  <span class="en-text">Prioritized user requirements list ready</span>
+                  <span class="ar-text">قائمة المتطلبات ذات الأولوية جاهزة</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" class="progress-check" data-check="sub_zip">
+                  <span class="en-text">Final .zip packaged for submission</span>
+                  <span class="ar-text">الملف المضغوط النهائي جاهز للتسليم</span>
+                </label>
+              </li>
             </ul>
+
+            <div class="hint en-text">
+              If your instructor did NOT require exact filenames, keep them simple: Evidence/ and Prioritized_URs/.
+            </div>
+            <div class="hint ar-text">
+              إذا الدكتورة ما طلبت أسماء ملفات محددة، خليها بسيطة: Evidence/ و Prioritized_URs/.
+            </div>
           </div>
 
           <div class="collaboration-card">
             <div class="collab-title">
-              <i class="fas fa-link"></i>
-              <span class="en-text">Integration Points</span>
-              <span class="ar-text">نقاط التكامل</span>
+              <i class="fas fa-folder-open"></i>
+              <span class="en-text">Suggested Folder Layout (Optional)</span>
+              <span class="ar-text">هيكل مجلدات مقترح (اختياري)</span>
             </div>
 
             <ul class="deliverables-list">
-              <li><i class="fas fa-exchange-alt"></i><span class="en-text">Shouq → Ghala: elicitation sources for each UR</span><span class="ar-text">شوق → غلا: مصادر الاستقصاء لكل UR</span></li>
-              <li><i class="fas fa-exchange-alt"></i><span class="en-text">Ghala → Gala: UR priorities influence NFR constraints (security/privacy)</span><span class="ar-text">غلا → جلا: الأولويات تؤثر على قيود الأمان/الخصوصية</span></li>
-              <li><i class="fas fa-exchange-alt"></i><span class="en-text">All → Salma: UR/NFR feed risk register</span><span class="ar-text">الجميع → سلمى: UR/NFR تغذي سجل المخاطر</span></li>
-              <li><i class="fas fa-exchange-alt"></i><span class="en-text">Salma → Ghala: risk-based rationale for MoSCoW</span><span class="ar-text">سلمى → غلا: تبرير ترتيب الأولويات بناءً على المخاطر</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Evidence/</strong> (Interviews/, Survey/, Observation/, Docs/, Competitive/)</span><span class="ar-text"><strong>Evidence/</strong> (Interviews/, Survey/, Observation/, Docs/, Competitive/)</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Prioritized_URs/</strong> (Family_URs.docx, Provider_URs.docx, Admin_URs.docx, Master_URs.docx)</span><span class="ar-text"><strong>Prioritized_URs/</strong> (Family_URs.docx, Provider_URs.docx, Admin_URs.docx, Master_URs.docx)</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Submission.zip</strong></span><span class="ar-text"><strong>Submission.zip</strong></span></li>
             </ul>
-          </div>
 
-          <div class="collaboration-card">
-            <div class="collab-title">
-              <i class="fas fa-calendar-alt"></i>
-              <span class="en-text">Milestones (Suggested)</span>
-              <span class="ar-text">المعالم (اقتراح)</span>
-            </div>
-
-            <ul class="deliverables-list">
-              <li><i class="fas fa-calendar-day"></i><span class="en-text">Day 1–2: UR draft + evidence collection</span><span class="ar-text">اليوم 1–2: مسودة UR + جمع الأدلة</span></li>
-              <li><i class="fas fa-calendar-day"></i><span class="en-text">Day 3: MoSCoW + NFR SMART + risks scoring</span><span class="ar-text">اليوم 3: MoSCoW + NFR قابلة للقياس + تقييم المخاطر</span></li>
-              <li><i class="fas fa-calendar-day"></i><span class="en-text">Day 4: Peer review + fixes</span><span class="ar-text">اليوم 4: مراجعة + تعديلات</span></li>
-              <li><i class="fas fa-calendar-day"></i><span class="en-text">Day 5: Final merge + submission zip</span><span class="ar-text">اليوم 5: دمج نهائي + ملف التسليم</span></li>
-            </ul>
-          </div>
-
-          <div class="collaboration-card">
-            <div class="collab-title">
-              <i class="fas fa-file-alt"></i>
-              <span class="en-text">Deliverable 2 Output Map</span>
-              <span class="ar-text">خريطة مخرجات تسليم 2</span>
-            </div>
-
-            <ul class="deliverables-list">
-              <li><i class="fas fa-check-circle"></i><span class="en-text">Elicitation Notes + Evidence (Shouq)</span><span class="ar-text">ملاحظات الاستقصاء + الأدلة (شوق)</span></li>
-              <li><i class="fas fa-check-circle"></i><span class="en-text">Prioritized User Requirements (Ghala)</span><span class="ar-text">متطلبات المستخدم ذات الأولوية (غلا)</span></li>
-              <li><i class="fas fa-check-circle"></i><span class="en-text">NFR/Constraints (Gala)</span><span class="ar-text">غير وظيفية/قيود (جلا)</span></li>
-              <li><i class="fas fa-check-circle"></i><span class="en-text">Risk/Assumptions + Mitigation (Salma)</span><span class="ar-text">مخاطر/افتراضات + تخفيف (سلمى)</span></li>
-            </ul>
+            <div class="hint en-text">Only use this if your team needs structure; it’s not “official” unless your instructor says so.</div>
+            <div class="hint ar-text">استخدميه فقط للتنظيم الداخلي؛ مو رسمي إلا إذا الدكتورة قالت.</div>
           </div>
         </div>
       </div>
 
-      <!-- =========================
-           NOTES TAB
-      ========================== -->
+      <!-- ========== SCOPE NOTES TAB ========== -->
       <div id="notes" class="tab-content">
         <div class="notes-container">
           <div class="note-card">
             <div class="note-title">
               <i class="fas fa-lightbulb"></i>
-              <span class="en-text">Sillah Scope Reminder</span>
-              <span class="ar-text">تذكير بنطاق سِلّة</span>
+              <span class="en-text">Scope Notes (Keep as “Working Draft”)</span>
+              <span class="ar-text">ملاحظات النطاق (مسودة عمل)</span>
             </div>
 
             <div class="en-text" style="color: var(--text-light); line-height: 1.75;">
-              <p><strong>Core Release Focus:</strong> family profiles, health-event recording, rule-based risk detection, alerts/recommendations, awareness hub, alert history, and simulated clinic booking.</p>
-              <p><strong>Out of Scope (for now):</strong> medical diagnosis, real EHR integrations, and full hospital appointment systems.</p>
-              <p><strong>Non-Functional Baselines:</strong> PDPL/privacy, RBAC, bilingual RTL/LTR, mobile-first usability.</p>
+              <p><strong>✅ In scope (draft):</strong> family member management, recording health events, rule-based risk alerts (as agreed by the team), awareness content, bilingual UI (AR/EN).</p>
+              <p><strong>🚫 Out of scope (draft):</strong> real medical diagnosis, integration with hospital/EHR systems, AI/ML predictions, real-time clinic availability.</p>
+              <p><strong>⚠️ Important:</strong> Do not present legal/compliance standards or numeric targets as final requirements unless you have evidence and the instructor asked for them. Treat them as “to validate”.</p>
             </div>
 
             <div class="ar-text" style="color: var(--text-light); line-height: 1.75;">
-              <p><strong>تركيز الإصدار الأساسي:</strong> ملفات الأسرة، تسجيل الأحداث الصحية، كشف المخاطر بالقواعد، التنبيهات/التوصيات، مركز التوعية، سجل التنبيهات، ومحاكاة حجز العيادة.</p>
-              <p><strong>خارج النطاق حالياً:</strong> التشخيص الطبي، تكاملات EHR الحقيقية، وأنظمة مواعيد المستشفيات الكاملة.</p>
-              <p><strong>أساسيات غير وظيفية:</strong> الخصوصية/PDPL، RBAC، ثنائية اللغة RTL/LTR، سهولة استخدام الهاتف.</p>
-            </div>
-          </div>
-
-          <div class="note-card">
-            <div class="note-title">
-              <i class="fas fa-users"></i>
-              <span class="en-text">Stakeholder Priorities (Sillah)</span>
-              <span class="ar-text">أولويات أصحاب المصلحة (سِلّة)</span>
-            </div>
-
-            <div class="en-text" style="color: var(--text-light); line-height: 1.75;">
-              <p><strong>Families/Guardians:</strong> simple entry, clear alerts, trust, and privacy for sensitive family data.</p>
-              <p><strong>Healthcare Providers (advisory):</strong> safe guidance framing, clarity, and avoiding “diagnosis” language.</p>
-              <p><strong>Administrators:</strong> content governance, rule updates, audit logs, and PDPL alignment.</p>
-            </div>
-
-            <div class="ar-text" style="color: var(--text-light); line-height: 1.75;">
-              <p><strong>العائلات/أولياء الأمور:</strong> إدخال بسيط، تنبيهات واضحة، ثقة، وخصوصية للبيانات الحساسة.</p>
-              <p><strong>مقدمو الرعاية (استشاري):</strong> صياغة إرشادات آمنة وواضحة وتجنب لغة “التشخيص”.</p>
-              <p><strong>الإداريون:</strong> إدارة المحتوى، تحديث القواعد، سجلات التدقيق، والالتزام بـ PDPL.</p>
-            </div>
-          </div>
-
-          <div class="note-card">
-            <div class="note-title">
-              <i class="fas fa-exclamation-triangle"></i>
-              <span class="en-text">Common Risks to Watch</span>
-              <span class="ar-text">مخاطر شائعة</span>
-            </div>
-
-            <div class="en-text" style="color: var(--text-light); line-height: 1.75;">
-              <ul style="margin-left: 18px; margin-top: 10px;">
-                <li>User-entered data quality (incomplete/inaccurate events)</li>
-                <li>Trust/adoption risk if alerts feel “medical”</li>
-                <li>Rule updates if guidelines change</li>
-                <li>Privacy/security complexity (PDPL)</li>
-                <li>Usability drop-off on mobile</li>
-              </ul>
-            </div>
-
-            <div class="ar-text" style="color: var(--text-light); line-height: 1.75;">
-              <ul style="margin-right: 18px; margin-top: 10px;">
-                <li>جودة بيانات المستخدم (نقص/عدم دقة)</li>
-                <li>مخاطر الثقة إذا بدت التنبيهات “طبية”</li>
-                <li>تحديث القواعد عند تغيّر الإرشادات</li>
-                <li>تعقيد الخصوصية/الأمان (PDPL)</li>
-                <li>ضعف سهولة الاستخدام على الهاتف</li>
-              </ul>
+              <p><strong>✅ ضمن النطاق (مسودة):</strong> إدارة أفراد الأسرة، تسجيل الأحداث الصحية، تنبيهات مخاطر مبنية على قواعد (حسب اتفاق الفريق)، محتوى توعوي، واجهة ثنائية اللغة (عربي/إنجليزي).</p>
+              <p><strong>🚫 خارج النطاق (مسودة):</strong> تشخيص طبي حقيقي، تكامل مع أنظمة المستشفيات/السجلات، تنبؤ بالذكاء الاصطناعي، توفر عيادات بشكل لحظي.</p>
+              <p><strong>⚠️ مهم:</strong> لا تعرضي المعايير القانونية/الامتثال أو أرقام كأهداف كأنها متطلبات نهائية إلا إذا عندكم دليل والدكتورة طلبتها. اعتبريها “للتأكد”.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- =========================
-           TOOLS TAB
-      ========================== -->
+      <!-- ========== TOOLS TAB ========== -->
       <div id="tools" class="tab-content">
         <div class="tools-grid">
           <div class="tool-card">
             <div class="tool-icon"><i class="fas fa-file-signature"></i></div>
-            <div class="tool-name en-text">Elicitation Artifacts</div>
-            <div class="tool-name ar-text">ملفات الاستقصاء</div>
-            <div class="tool-category en-text">Deliverable 2</div>
-            <div class="tool-category ar-text">التسليم 2</div>
-            <p class="tool-desc en-text">Interview notes, workshop notes, survey forms, and evidence screenshots.</p>
-            <p class="tool-desc ar-text">ملاحظات مقابلات/ورش/استبيانات + لقطات شاشة للأدلة.</p>
+            <div class="tool-name en-text">Elicitation Note Template</div>
+            <div class="tool-name ar-text">قالب ملاحظات الاستقصاء</div>
+            <div class="tool-category en-text">Interviews / Survey / Observation</div>
+            <div class="tool-category ar-text">مقابلات / استبيان / ملاحظة</div>
+            <p class="tool-desc en-text">Use a consistent structure: participants, objectives, questions, answers, findings, extracted requirements, open issues, evidence.</p>
+            <p class="tool-desc ar-text">استخدمي هيكل ثابت: المشاركون، الأهداف، الأسئلة، الأجوبة، النتائج، المتطلبات، نقاط مفتوحة، الأدلة.</p>
           </div>
 
           <div class="tool-card">
             <div class="tool-icon"><i class="fas fa-table"></i></div>
-            <div class="tool-name en-text">Requirements Spreadsheet</div>
-            <div class="tool-name ar-text">جدول المتطلبات</div>
+            <div class="tool-name en-text">Requirements List</div>
+            <div class="tool-name ar-text">قائمة المتطلبات</div>
             <div class="tool-category en-text">UR + MoSCoW</div>
             <div class="tool-category ar-text">UR + MoSCoW</div>
-            <p class="tool-desc en-text">UR-IDs, sources, acceptance criteria, MoSCoW priority, rationale.</p>
-            <p class="tool-desc ar-text">UR-IDs، المصادر، معايير القبول، MoSCoW، والتبرير.</p>
-          </div>
-
-          <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-shield-halved"></i></div>
-            <div class="tool-name en-text">Security & Privacy Checklist</div>
-            <div class="tool-name ar-text">قائمة الأمان والخصوصية</div>
-            <div class="tool-category en-text">NFR / PDPL</div>
-            <div class="tool-category ar-text">NFR / PDPL</div>
-            <p class="tool-desc en-text">RBAC notes, audit logging, privacy constraints, session policy.</p>
-            <p class="tool-desc ar-text">RBAC، سجلات التدقيق، قيود الخصوصية، سياسة الجلسات.</p>
-          </div>
-
-          <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-triangle-exclamation"></i></div>
-            <div class="tool-name en-text">Risk Register</div>
-            <div class="tool-name ar-text">سجل المخاطر</div>
-            <div class="tool-category en-text">Risk & Assumptions</div>
-            <div class="tool-category ar-text">مخاطر وافتراضات</div>
-            <p class="tool-desc en-text">Probability/impact scoring, mitigation, contingency, notes.</p>
-            <p class="tool-desc ar-text">تقييم احتمال/تأثير، تخفيف، طوارئ، ملاحظات.</p>
+            <p class="tool-desc en-text">Keep each UR linked to evidence and prioritized (Must/Should/Could/Won’t).</p>
+            <p class="tool-desc ar-text">خلي كل متطلب مرتبط بدليل وله أولوية (Must/Should/Could/Won’t).</p>
           </div>
 
           <div class="tool-card">
@@ -1563,21 +1318,22 @@
             <div class="tool-name ar-text">التعاون</div>
             <div class="tool-category en-text">Team Work</div>
             <div class="tool-category ar-text">عمل الفريق</div>
-            <p class="tool-desc en-text">Drive/OneDrive + shared naming conventions + final zip.</p>
-            <p class="tool-desc ar-text">Drive/OneDrive + تسمية موحدة + ملف تسليم مضغوط.</p>
+            <p class="tool-desc en-text">Shared drive + clear evidence folders + one UR format.</p>
+            <p class="tool-desc ar-text">مجلد مشترك + أدلة مرتبة + صيغة موحدة للمتطلبات.</p>
           </div>
 
           <div class="tool-card">
             <div class="tool-icon"><i class="fas fa-code-branch"></i></div>
             <div class="tool-name en-text">Versioning</div>
             <div class="tool-name ar-text">إدارة الإصدارات</div>
-            <div class="tool-category en-text">Document Control</div>
-            <div class="tool-category ar-text">ضبط الوثائق</div>
-            <p class="tool-desc en-text">Use version history or Git for tracking edits and merging.</p>
-            <p class="tool-desc ar-text">استخدام سجل الإصدارات أو Git لتتبع التعديلات والدمج.</p>
+            <div class="tool-category en-text">Optional</div>
+            <div class="tool-category ar-text">اختياري</div>
+            <p class="tool-desc en-text">If your instructor didn’t require naming rules, keep it simple and consistent.</p>
+            <p class="tool-desc ar-text">إذا الدكتورة ما طلبت نظام تسمية، خليها بسيطة وثابتة.</p>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -1588,24 +1344,19 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-
-      // ===== Tabs switching =====
       const tabTriggers = document.querySelectorAll(".tab-btn, .member");
       tabTriggers.forEach((element) => {
         element.addEventListener("click", function () {
           const tabId = this.getAttribute("data-tab");
 
-          // Update tab buttons
           document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.remove("active"));
           const tabBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
           if (tabBtn) tabBtn.classList.add("active");
 
-          // Update member selection
           document.querySelectorAll(".member").forEach((m) => m.classList.remove("active"));
           const memBtn = document.querySelector(`.member[data-tab="${tabId}"]`);
           if (memBtn) memBtn.classList.add("active");
 
-          // Update tab content
           document.querySelectorAll(".tab-content").forEach((content) => content.classList.remove("active"));
           const content = document.getElementById(tabId);
           if (content) content.classList.add("active");
@@ -1615,10 +1366,8 @@
         });
       });
 
-      // ===== Language switching =====
       const langEnBtn = document.getElementById("langEn");
       const langArBtn = document.getElementById("langAr");
-
       langEnBtn.addEventListener("click", function () { switchLanguage("en"); });
       langArBtn.addEventListener("click", function () { switchLanguage("ar"); });
 
@@ -1644,7 +1393,6 @@
         sidebar.style.textAlign = (lang === "ar") ? "right" : "left";
       }
 
-      // ===== Expandable cards =====
       const taskCards = document.querySelectorAll(".task-card");
       const expandIcons = document.querySelectorAll(".expand-icon");
 
@@ -1657,7 +1405,6 @@
           e.stopPropagation();
           const card = this.closest(".task-card");
           const isExpanded = card.classList.contains("expanded");
-
           closeAllExpandedCards();
           if (!isExpanded) {
             card.classList.add("expanded");
@@ -1684,7 +1431,6 @@
         if (!e.target.closest(".task-card")) closeAllExpandedCards();
       });
 
-      // ===== Search =====
       const searchInput = document.getElementById("searchInput");
       searchInput.addEventListener("keyup", function () {
         const searchTerm = this.value.toLowerCase();
@@ -1715,11 +1461,10 @@
         }
       });
 
-      // ===== Dark mode toggle =====
       const darkModeToggle = document.getElementById("darkModeToggle");
       const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
       const currentTheme = localStorage.getItem("theme");
+
       if (currentTheme === "dark" || (!currentTheme && prefersDarkScheme.matches)) {
         document.body.classList.add("dark-mode");
         darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
@@ -1738,7 +1483,6 @@
         }
       });
 
-      // ===== Progress Checklist Engine =====
       function getTaskKey(taskCard) {
         const tab = taskCard.closest(".tab-content")?.id || "unknownTab";
         const task = taskCard.getAttribute("data-task") || "unknownTask";
@@ -1749,10 +1493,8 @@
         const key = getTaskKey(taskCard);
         const saved = localStorage.getItem(key);
         if (!saved) return;
-
         let obj;
         try { obj = JSON.parse(saved); } catch { return; }
-
         taskCard.querySelectorAll(".progress-check").forEach((cb) => {
           const id = cb.getAttribute("data-check");
           if (id && obj[id] !== undefined) cb.checked = !!obj[id];
@@ -1773,12 +1515,10 @@
         const checks = Array.from(taskCard.querySelectorAll(".progress-check"));
         const percentEl = taskCard.querySelector(".progress-percent");
         const fillEl = taskCard.querySelector(".progress-fill");
-
         if (checks.length === 0 || !percentEl || !fillEl) return;
 
         const checked = checks.filter((c) => c.checked).length;
         const percent = Math.round((checked / checks.length) * 100);
-
         percentEl.textContent = `${percent}%`;
         requestAnimationFrame(() => { fillEl.style.width = `${percent}%`; });
       }
@@ -1786,7 +1526,6 @@
       function wireTaskCard(taskCard) {
         loadChecks(taskCard);
         updateProgressUI(taskCard);
-
         taskCard.querySelectorAll(".progress-check").forEach((cb) => {
           cb.addEventListener("change", (e) => {
             e.stopPropagation();
@@ -1794,15 +1533,12 @@
             updateProgressUI(taskCard);
           });
         });
-
         taskCard.querySelectorAll(".checklist label").forEach((lbl) => {
           lbl.addEventListener("click", (e) => e.stopPropagation());
         });
       }
 
       document.querySelectorAll(".task-card").forEach(wireTaskCard);
-
-      // Initialize with English
       switchLanguage("en");
     });
   </script>
