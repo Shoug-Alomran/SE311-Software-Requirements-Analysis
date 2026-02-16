@@ -1,6 +1,15 @@
+/* =========================
+   styles/extra.css (UPDATED)
+   - Dark mode gradient DARKER
+   ========================= */
+
 :root{
   --green-1:#2e7d32;
   --green-2:#43a047;
+
+  /* DARKER dark-mode greens (updated) */
+  --green-d1:#0f3d1a;  /* was #1b5e20 */
+  --green-d2:#1b5e20;  /* was #2e7d32 */
 
   /* Soft states derived from your green (no palette change) */
   --green-hover: rgba(255,255,255,0.14);
@@ -8,18 +17,58 @@
   --green-soft-strong: rgba(67,160,71,0.22);
 
   --ink: #0f172a;
+
+  /* Dark tokens */
+  --dark-bg:#0b1220;
+  --dark-surface:#0f172a;
+  --dark-text:rgba(255,255,255,0.88);
+  --dark-text-soft:rgba(255,255,255,0.72);
+  --dark-border:rgba(255,255,255,0.10);
 }
 
 /* =========================================================
-   HEADER + TABS (KEEP GRADIENT + FIX DESKTOP CLAMP)
+   MATERIAL DARK MODE CORE FIX
    ========================================================= */
-.md-header{
+[data-md-color-scheme="slate"]{
+  --md-default-bg-color: var(--dark-bg);
+  --md-default-fg-color: var(--dark-text);
+  --md-default-fg-color--light: var(--dark-text-soft);
+
+  --md-code-bg-color: rgba(255,255,255,0.06);
+  --md-typeset-a-color: #7ee08a;
+  --md-accent-fg-color: #7ee08a;
+
+  --md-admonition-bg-color: rgba(255,255,255,0.06);
+}
+
+/* Give "surfaces" a consistent dark feel */
+[data-md-color-scheme="slate"] .md-container{
+  background: var(--md-default-bg-color) !important;
+}
+[data-md-color-scheme="slate"] .md-content,
+[data-md-color-scheme="slate"] .md-sidebar,
+[data-md-color-scheme="slate"] .md-sidebar__inner{
+  background: transparent !important;
+}
+
+/* =========================================================
+   HEADER + TABS (SCHEME-AWARE GRADIENTS)
+   ========================================================= */
+
+/* Light mode */
+[data-md-color-scheme="default"] .md-header,
+[data-md-color-scheme="default"] .md-tabs{
   background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
   color:#fff !important;
 }
-.md-tabs{
-  background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
+
+/* Dark mode (NOW DARKER) */
+[data-md-color-scheme="slate"] .md-header,
+[data-md-color-scheme="slate"] .md-tabs{
+  background:linear-gradient(90deg,var(--green-d1),var(--green-d2)) !important;
+  color:#fff !important;
 }
+
 .md-header__inner,
 .md-tabs__inner{
   background:transparent !important;
@@ -77,8 +126,6 @@
 
 /* =========================================================
    LEFT SIDEBAR (PRIMARY NAV)
-   - Normal links stay normal
-   - GROUP / SECTION titles become GREEN gradient pills everywhere
    ========================================================= */
 .md-nav--primary{ padding-top:12px !important; }
 
@@ -101,13 +148,7 @@
   font-weight:700 !important;
 }
 
-/*
-  IMPORTANT:
-  Material uses different DOM depending on nesting/settings.
-  These selectors catch ALL “group titles” like:
-  - Phase 1 - Inception (parent/group)
-  - Any nav item that has children (nested)
-*/
+/* Group titles pills */
 .md-nav--primary .md-nav__item--section > :is(.md-nav__title, .md-nav__link),
 .md-nav--primary .md-nav__item--nested  > :is(.md-nav__title, .md-nav__link),
 .md-nav--primary .md-nav__item--section > .md-nav__title .md-nav__button,
@@ -128,6 +169,12 @@
 
   box-sizing:border-box !important;
   min-width:0 !important;
+}
+
+/* Dark mode: darker pill gradient (NOW DARKER) */
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav__item--section > :is(.md-nav__title, .md-nav__link),
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav__item--nested  > :is(.md-nav__title, .md-nav__link){
+  background:linear-gradient(90deg,var(--green-d1),var(--green-d2)) !important;
 }
 
 /* Keep chevron readable and not boxed separately */
@@ -168,11 +215,11 @@
 }
 
 /* =========================================================
-   RIGHT SIDEBAR (TOC) — “Table of contents” MUST BE A PILL
+   RIGHT SIDEBAR (TOC)
    ========================================================= */
 .md-nav--secondary{ padding-top:12px !important; }
 
-/* Title pill (Table of contents) */
+/* Title pill */
 .md-nav--secondary .md-nav__title{
   background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
   color:#fff !important;
@@ -183,6 +230,9 @@
 
   font-weight:700 !important;
   letter-spacing:0.2px !important;
+}
+[data-md-color-scheme="slate"] .md-nav--secondary .md-nav__title{
+  background:linear-gradient(90deg,var(--green-d1),var(--green-d2)) !important;
 }
 
 /* TOC links */
@@ -201,7 +251,7 @@
 .md-nav--secondary .md-nav__link--active *{ color:inherit !important; }
 
 /* =========================================================
-   CUSTOM FOOTER (MATCH HEADER GRADIENT + REAL LAYOUT)
+   CUSTOM FOOTER (SCHEME-AWARE)
    ========================================================= */
 .custom-footer{
   background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
@@ -209,6 +259,9 @@
 
   padding:56px 16px !important;
   border-top:1px solid rgba(255,255,255,0.14) !important;
+}
+[data-md-color-scheme="slate"] .custom-footer{
+  background:linear-gradient(90deg,var(--green-d1),var(--green-d2)) !important;
 }
 
 .custom-footer__inner{
@@ -315,31 +368,29 @@
   color:#fff !important;
   text-decoration:underline !important;
 }
-/* =========================================================
-   FIX: FOOTER'S FOOTER (md-footer-meta) MATCHES GREEN THEME
-   Put this at the VERY END of extra.css
-   ========================================================= */
 
-/* Remove default Material dark bar styling */
+/* =========================================================
+   FOOTER META (SCHEME-AWARE)
+   ========================================================= */
 .md-footer-meta,
-.md-footer-meta__inner {
+.md-footer-meta__inner{
   background: transparent !important;
   border-top: 0 !important;
 }
 
-/* Apply SAME gradient as header/custom-footer */
-.md-footer-meta {
+.md-footer-meta{
   background: linear-gradient(90deg, var(--green-1), var(--green-2)) !important;
   color: rgba(255, 255, 255, 0.88) !important;
 }
+[data-md-color-scheme="slate"] .md-footer-meta{
+  background: linear-gradient(90deg, var(--green-d1), var(--green-d2)) !important;
+}
 
-/* Force all text/links/icons inside to inherit white */
 .md-footer-meta,
-.md-footer-meta * {
+.md-footer-meta *{
   color: rgba(255, 255, 255, 0.88) !important;
 }
 
-/* Optional: make the two sections look like one piece */
-.md-footer-meta__inner {
+.md-footer-meta__inner{
   padding-top: 14px !important;
 }
