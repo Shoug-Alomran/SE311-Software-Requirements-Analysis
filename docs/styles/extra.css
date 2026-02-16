@@ -315,3 +315,31 @@
   color:#fff !important;
   text-decoration:underline !important;
 }
+/* =========================================================
+   FIX: FOOTER'S FOOTER (md-footer-meta) MATCHES GREEN THEME
+   Put this at the VERY END of extra.css
+   ========================================================= */
+
+/* Remove default Material dark bar styling */
+.md-footer-meta,
+.md-footer-meta__inner {
+  background: transparent !important;
+  border-top: 0 !important;
+}
+
+/* Apply SAME gradient as header/custom-footer */
+.md-footer-meta {
+  background: linear-gradient(90deg, var(--green-1), var(--green-2)) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* Force all text/links/icons inside to inherit white */
+.md-footer-meta,
+.md-footer-meta * {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* Optional: make the two sections look like one piece */
+.md-footer-meta__inner {
+  padding-top: 14px !important;
+}
