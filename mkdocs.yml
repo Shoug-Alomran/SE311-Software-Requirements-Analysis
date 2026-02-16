@@ -40,6 +40,7 @@ nav:
       - Business Requirements: Phase 1 - Inception/business-requirements.md
       - Scope & Limitations: Phase 1 - Inception/scope-and-limitations.md
       - Business Context: Phase 1 - Inception/business-context.md
+      - PDF Report: Phase 1 - Inception/Phase 1.pdf
 
   - Phase 2 - Elicitation:
       - Overview: Phase 2 - Elicitation/index.md
@@ -87,3 +88,5 @@ markdown_extensions:
 
 extra_css:
   - styles/extra.css
+extra_javascript:
+  - javascripts/cta-footer.js

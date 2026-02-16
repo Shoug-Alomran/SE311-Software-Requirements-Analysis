@@ -1,13 +1,18 @@
 :root{
   --green-1:#2e7d32;
   --green-2:#43a047;
+
+  /* Soft states derived from your green (no palette change) */
+  --green-hover: rgba(255,255,255,0.14);
+  --green-soft: rgba(67,160,71,0.14);
+  --green-soft-strong: rgba(67,160,71,0.22);
+
+  --ink: #0f172a;
 }
 
-/* =========================
-   HEADER + TABS (DESKTOP FIX)
-   ========================= */
-
-/* Keep your gradients */
+/* =========================================================
+   HEADER + TABS (KEEP GRADIENT + FIX DESKTOP CLAMP)
+   ========================================================= */
 .md-header{
   background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
   color:#fff !important;
@@ -15,9 +20,12 @@
 .md-tabs{
   background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
 }
+.md-header__inner,
+.md-tabs__inner{
+  background:transparent !important;
+}
 
-/* IMPORTANT: Material clamps header/tabs content inside .md-grid with a max-width.
-   Remove that clamp so tabs don't get visually cut off on laptops/desktops. */
+/* Remove Material max-width clamp so tabs don't get cut on laptop/desktop */
 .md-header__inner.md-grid,
 .md-tabs__inner.md-grid{
   max-width:100% !important;
@@ -28,14 +36,12 @@
   box-sizing:border-box !important;
 }
 
-/* Make the TABS row scroll horizontally when it exceeds viewport width */
+/* Tabs horizontal scroll when too many items */
 .md-tabs__inner{
   overflow-x:auto !important;
   overflow-y:hidden !important;
   -webkit-overflow-scrolling:touch !important;
 }
-
-/* Ensure the list becomes content-sized (so scrolling actually engages) */
 .md-tabs__list{
   display:inline-flex !important;
   flex-wrap:nowrap !important;
@@ -43,23 +49,21 @@
   min-width:100% !important;
   padding-right:1.5rem !important;
 }
-.md-tabs__item{
-  flex:0 0 auto !important;
-}
+.md-tabs__item{ flex:0 0 auto !important; }
 
-/* Prevent ellipsis clipping inside tab labels */
 .md-tabs__link,
 .md-tabs__link .md-ellipsis{
   white-space:nowrap !important;
   overflow:visible !important;
   text-overflow:clip !important;
 }
-
-/* Hover */
 .md-tabs__link:hover{
-  background-color:rgba(255,255,255,0.15) !important;
+  background-color: rgba(255,255,255,0.15) !important;
 }
 
+/* Header icons + search stay white */
+.md-header .md-header__button,
+.md-header .md-header__button *,
 .md-search__form,
 .md-search__input,
 .md-search__icon,
@@ -68,81 +72,71 @@
   color:#fff !important;
 }
 
-/* Optional: show scrollbar on WebKit (doesn't affect behavior) */
-.md-tabs__inner::-webkit-scrollbar{
-  height:8px;
-}
+/* Optional scrollbar styling */
+.md-tabs__inner::-webkit-scrollbar{ height:8px; }
 
-/* =========================
-   SIDEBAR / TOC (your existing styling)
-   ========================= */
+/* =========================================================
+   LEFT SIDEBAR (PRIMARY NAV)
+   - Normal links stay normal
+   - GROUP / SECTION titles become GREEN gradient pills everywhere
+   ========================================================= */
+.md-nav--primary{ padding-top:12px !important; }
 
-.md-header__inner,
-.md-tabs__inner{
-  background:transparent !important;
-}
-
+/* Normal links (NEVER gradient) */
 .md-nav--primary .md-nav__link{
   background:transparent !important;
   color:inherit !important;
   font-weight:400 !important;
   border-radius:8px !important;
+  padding:6px 10px !important;
+}
+.md-nav--primary .md-nav__link:hover{
+  background-color: rgba(67,160,71,0.10) !important;
 }
 
-.md-nav--primary .md-nav__item--section > .md-nav__title,
-.md-nav--primary .md-nav__item--section > .md-nav__link{
-  display:flex !important;
+/* Active page link highlight */
+.md-nav--primary .md-nav__link--active{
+  background-color: rgba(67,160,71,0.18) !important;
+  color: var(--green-1) !important;
+  font-weight:700 !important;
+}
+
+/*
+  IMPORTANT:
+  Material uses different DOM depending on nesting/settings.
+  These selectors catch ALL “group titles” like:
+  - Phase 1 - Inception (parent/group)
+  - Any nav item that has children (nested)
+*/
+.md-nav--primary .md-nav__item--section > :is(.md-nav__title, .md-nav__link),
+.md-nav--primary .md-nav__item--nested  > :is(.md-nav__title, .md-nav__link),
+.md-nav--primary .md-nav__item--section > .md-nav__title .md-nav__button,
+.md-nav--primary .md-nav__item--nested  > .md-nav__title .md-nav__button{
+  display:inline-flex !important;
   align-items:center !important;
-  width:auto !important;
+  width:fit-content !important;
+
   margin:8px !important;
   padding:8px 12px !important;
+
   background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
   color:#fff !important;
-  border-radius:12px !important;
+
+  border-radius:999px !important;
   font-weight:700 !important;
+  letter-spacing:0.2px !important;
+
   box-sizing:border-box !important;
   min-width:0 !important;
 }
 
-.md-nav--primary .md-nav__item--section > .md-nav__title .md-nav__button{
-  margin-left:auto !important;
+/* Keep chevron readable and not boxed separately */
+.md-nav--primary .md-nav__item--section > .md-nav__title .md-nav__button,
+.md-nav--primary .md-nav__item--nested  > .md-nav__title .md-nav__button{
+  margin-left:8px !important;
   background:transparent !important;
   color:inherit !important;
-  flex:0 0 auto !important;
-}
-
-.md-nav--primary .md-nav__link--active{
-  background-color:rgba(67,160,71,0.18) !important;
-  color:var(--green-1) !important;
-  font-weight:700 !important;
-}
-
-.md-nav--secondary{
-  padding-top:12px !important;
-}
-
-.md-nav--secondary .md-nav__title{
-  background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
-  color:#fff !important;
-  border-radius:10px !important;
-  padding:10px 12px !important;
-  margin-bottom:10px !important;
-  font-weight:700 !important;
-}
-
-.md-nav--secondary .md-nav__link{
-  border-radius:8px !important;
-  padding:6px 10px !important;
-}
-
-.md-nav--secondary .md-nav__link:hover{
-  background-color:rgba(67,160,71,0.10) !important;
-}
-
-.md-nav--secondary .md-nav__link--active{
-  background-color:rgba(67,160,71,0.20) !important;
-  color:var(--green-1) !important;
-  font-weight:700 !important;
+  opacity:1 !important;
 }
 
 /* Sidebar scrolling safety */
@@ -156,7 +150,7 @@
   overflow:visible !important;
 }
 
-/* Avoid text clipping in sidebar items */
+/* Avoid text clipping */
 .md-nav__link,
 .md-nav__title{
   overflow:visible !important;
@@ -170,50 +164,154 @@
 }
 
 @media (min-width:76.25em){
-  .md-sidebar--primary{
-    width:16rem !important;
-  }
-}
-/* ACTIVE PAGE LINK (was hard-coded rgba mint) */
-.md-nav--primary .md-nav__link--active {
-  background-color: var(--mint-soft) !important;
-  color: var(--accent) !important;
-  font-weight: 700 !important;
+  .md-sidebar--primary{ width:16rem !important; }
 }
 
-/* =======================================================
-   RIGHT SIDEBAR (TOC)
-   ======================================================= */
-.md-nav--secondary {
-  padding-top: 12px;
+/* =========================================================
+   RIGHT SIDEBAR (TOC) — “Table of contents” MUST BE A PILL
+   ========================================================= */
+.md-nav--secondary{ padding-top:12px !important; }
+
+/* Title pill (Table of contents) */
+.md-nav--secondary .md-nav__title{
+  background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
+  color:#fff !important;
+
+  border-radius:999px !important;
+  padding:10px 12px !important;
+  margin:0 0 10px 0 !important;
+
+  font-weight:700 !important;
+  letter-spacing:0.2px !important;
 }
 
-.md-nav--secondary .md-nav__title {
-  background: linear-gradient(90deg, var(--mint-1), var(--mint-2)) !important;
+/* TOC links */
+.md-nav--secondary .md-nav__link{
+  border-radius:8px !important;
+  padding:6px 10px !important;
+}
+.md-nav--secondary .md-nav__link:hover{
+  background-color: rgba(67,160,71,0.10) !important;
+}
+.md-nav--secondary .md-nav__link--active{
+  background-color: rgba(67,160,71,0.20) !important;
+  color: var(--green-1) !important;
+  font-weight:700 !important;
+}
+.md-nav--secondary .md-nav__link--active *{ color:inherit !important; }
+
+/* =========================================================
+   CUSTOM FOOTER (MATCH HEADER GRADIENT + REAL LAYOUT)
+   ========================================================= */
+.custom-footer{
+  background:linear-gradient(90deg,var(--green-1),var(--green-2)) !important;
+  color:#fff !important;
+
+  padding:56px 16px !important;
+  border-top:1px solid rgba(255,255,255,0.14) !important;
+}
+
+.custom-footer__inner{
+  max-width:1200px !important;
+  margin:0 auto !important;
+
+  display:grid !important;
+  grid-template-columns: 1.2fr 1fr !important;
+  gap:32px !important;
+}
+
+@media (max-width: 900px){
+  .custom-footer__inner{ grid-template-columns:1fr !important; }
+}
+
+.custom-footer__brand{
+  font-size:1.1rem !important;
+  font-weight:800 !important;
+  opacity:0.95 !important;
+  margin-bottom:10px !important;
+}
+
+.custom-footer__title{
+  font-size:1.8rem !important;
+  font-weight:900 !important;
+  margin-bottom:18px !important;
+  line-height:1.15 !important;
+}
+
+.custom-footer__form{
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+
+  max-width:560px !important;
+  padding:10px !important;
+
+  border-radius:999px !important;
+  background: rgba(255,255,255,0.12) !important;
+  border:1px solid rgba(255,255,255,0.18) !important;
+}
+
+.custom-footer__input{
+  flex:1 !important;
+  border:none !important;
+  outline:none !important;
+  background:transparent !important;
+
+  padding:10px 14px !important;
+  font-size:1rem !important;
+  color:#fff !important;
+}
+.custom-footer__input::placeholder{
+  color:rgba(255,255,255,0.78) !important;
+}
+
+.custom-footer__button{
+  border:none !important;
+  cursor:pointer !important;
+
+  border-radius:999px !important;
+  padding:10px 16px !important;
+
+  font-weight:900 !important;
+  background: rgba(255,255,255,0.92) !important;
   color: var(--ink) !important;
-  border-radius: 10px;
-  padding: 10px 12px !important;
-  margin-bottom: 10px !important;
-  font-weight: 700;
+
+  transition: opacity 120ms ease, transform 120ms ease !important;
+}
+.custom-footer__button:hover{
+  opacity:0.92 !important;
+  transform: translateY(-1px) !important;
 }
 
-.md-nav--secondary .md-nav__link {
-  border-radius: 8px;
-  padding: 6px 10px;
+.custom-footer__note{
+  margin-top:14px !important;
+  font-size:0.95rem !important;
+  max-width:560px !important;
+  color:rgba(255,255,255,0.85) !important;
 }
 
-/* TOC hover (was hard-coded rgba mint-2) */
-.md-nav--secondary .md-nav__link:hover {
-  background-color: var(--mint-soft-hover) !important;
+.custom-footer__right{
+  display:grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap:26px !important;
+}
+@media (max-width: 900px){
+  .custom-footer__right{ grid-template-columns:1fr !important; }
 }
 
-/* TOC active (was hard-coded rgba mint-1) */
-.md-nav--secondary .md-nav__link--active {
-  background-color: var(--mint-soft) !important;
-  color: var(--accent) !important;
-  font-weight: 700 !important;
+.footer-col__title{
+  font-weight:900 !important;
+  margin-bottom:10px !important;
+  font-size:1.05rem !important;
 }
 
-.md-nav--secondary .md-nav__link--active * {
-  color: inherit !important;
+.footer-link{
+  display:block !important;
+  padding:6px 0 !important;
+  text-decoration:none !important;
+  color:rgba(255,255,255,0.88) !important;
+}
+.footer-link:hover{
+  color:#fff !important;
+  text-decoration:underline !important;
 }
