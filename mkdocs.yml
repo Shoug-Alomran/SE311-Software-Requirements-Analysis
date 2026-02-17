@@ -44,9 +44,16 @@ nav:
 
   - Phase 2 - Elicitation:
       - Overview: Phase 2 - Elicitation/index.md
-      - Stakeholders: Phase 2 - Elicitation/stakeholders.md
       - Elicitation Plan: Phase 2 - Elicitation/elicitation-plan.md
-      - Elicitation Notes: Phase 2 - Elicitation/elicitation-notes.md
+      - Stakeholder Analysis: Phase 2 - Elicitation/stakeholders.md
+      - Interviews & Notes: Phase 2 - Elicitation/elicitation-notes.md
+      - Family Requirements: Phase 2 - Elicitation/family-requirements.md
+      - Healthcare Provider Requirements: Phase 2 - Elicitation/provider-requirements.md
+      - Survey: Phase 2 - Elicitation/survey.md
+      - Administrator Requirements: Phase 2 - Elicitation/admin-requirements.md
+      - Document & Competitive Analysis: Phase 2 - Elicitation/document-analysis.md
+      - PDF Report: Phase 2 - Elicitation/Phase 2.pdf
+
 
   - Phase 3 - Analysis:
       - Overview: Phase 3 - Analysis/index.md
