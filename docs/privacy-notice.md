@@ -2,30 +2,46 @@
 
 _Last updated: 2026_
 
-This website was created as part of the **SE 311: Software Requirements Engineering** course project.
+This website is an academic project developed for  
+**SE311 — Software Requirements Engineering**  
+Prince Sultan University
 
-## Information Collection
+---
 
-This website does **not** collect, store, or process personal data.
+<div class="grid cards" markdown>
 
-- No user accounts are created.
-- No cookies are used for tracking.
-- No analytics services are integrated.
-- No form submissions are stored in a database.
+-   ### :material-lock: Information Collection
 
-If you choose to contact the project author via email, your message is handled through your own email provider and is not stored by this website.
+    This website does **not** collect, store, or process personal data.
 
-## Academic Context
+    - No user accounts  
+    - No login functionality  
+    - No cookies or tracking mechanisms  
+    - No analytics services  
+    - No stored form submissions  
 
-Any data displayed within this project is either:
+-   ### :material-school: Academic Context
 
-- Sample data created for demonstration purposes, or  
-- Mock data used strictly for academic evaluation.
+    This platform is a static academic documentation site created to
+    demonstrate structured Requirements Engineering practices.
 
-No real patient, medical, or personal records are used.
+    It is **not** a production healthcare system.
 
-## Contact
+-   ### :material-database: Data Usage
 
-For questions regarding this notice, please contact:
+    All data presented within this project is:
 
-**inquiry@shoug-tech.com**
+    - Fictional or simulated  
+    - Generated for academic demonstration  
+    - Not linked to real individuals  
+
+    No real medical, personal, or confidential records are used.
+
+-   ### :material-email: Contact
+
+    If you choose to contact the project author via email, communication is
+    handled through your own email provider.
+
+    **inquiry@shoug-tech.com**
+
+</div>

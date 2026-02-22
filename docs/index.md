@@ -1,43 +1,64 @@
-# SE311 – Sillah (صلة): Family Health Management System
+# SE311 — Sillah (صلة): Family Health Management System
 
-**Prince Sultan University**
+## :school: Academic Context
+
+**Prince Sultan University**  
 College of Computer and Information Sciences (CCIS)  
-**Course:** SE311: Software Requirements Engineering  
+**Course:** SE311 — Software Requirements Engineering  
 **Instructor:** Ms. Alhanouf Almutairi  
 
 ---
 
-## Introduction
+## :heart: Project Introduction
 
-**Sillah (صلة)** is a preventive family health management system designed to help Saudi families identify hereditary cardiac risks and take proactive steps toward early detection. The system allows users to record family medical histories, detect inherited risk patterns, receive automated alerts, and simulate preventive clinic appointments.
+**Sillah (صلة)** is a preventive family health management system designed to help Saudi families identify hereditary cardiac risks and take proactive steps toward early detection.
 
-The project was originally developed in **SE201**, where the focus was on defining the problem, identifying stakeholders, and establishing high‑level requirements. In **SE311**, Sillah is expanded using the full Requirements Engineering (RE) process described in Chapter 1:  
-**Inception → Elicitation → Analysis → Specification → Validation → Requirements Management**.
+The system enables users to:
 
-This website documents the complete SE311 expansion of Sillah, demonstrating how structured requirements engineering techniques are applied to a real‑world e‑health system.
+- Record structured family medical histories  
+- Detect inherited cardiac risk patterns  
+- Receive automated alerts and preventive recommendations  
+- Simulate preventive clinic appointment workflows  
+
+Originally developed in **SE201**, the project focused on problem definition, stakeholder identification, and high-level requirement formulation.
+
+In **SE311**, Sillah evolves into a fully engineered requirements project following the complete Requirements Engineering lifecycle:
+
+**Inception → Elicitation → Analysis → Specification → Validation → Requirements Management**
+
+This site documents the structured expansion of Sillah using formal RE methods, modeling techniques, and documentation standards.
 
 ---
 
-## Phases Overview
+## :triangular_ruler: Project Phases
 
-| Phase | Title                     | Description |
-|-------|---------------------------|-------------|
-| I     | Vision & Scope            | Problem definition, goals, stakeholders, and system boundaries |
-| II    | Requirements Development  | Elicitation, analysis, functional & non‑functional requirements |
-| III   | Modeling & Specification  | UML diagrams, goal modeling (GRL/URN), SRS documentation |
-| IV    | Validation & Management   | Requirement validation, prioritization, traceability, and change management |
+<div class="grid cards" markdown>
+
+- ### Phase I — Vision & Scope  
+  Definition of the problem domain, business goals, stakeholder analysis, and system boundaries.
+
+- ### Phase II — Requirements Development  
+  Requirements elicitation, analysis, prioritization, and definition of functional and non-functional requirements.
+
+- ### Phase III — Modeling & Specification  
+  UML diagrams, goal modeling (GRL/URN), domain modeling, and full Software Requirements Specification (SRS) documentation.
+
+- ### Phase IV — Validation & Management  
+  Requirement validation techniques, prioritization strategies, traceability matrices, and change management processes.
+
+</div>
 
 ---
 
-## Course Context
+## :brain: Course Focus
 
-This project is developed for **SE311 – Software Requirements Engineering**, which focuses on:
+SE311 emphasizes disciplined and structured Requirements Engineering, including:
 
-- Requirements elicitation  
-- Requirements analysis and modeling  
-- Documentation standards (IEEE 830)  
-- Goal modeling (GRL/URN)  
-- Validation and negotiation  
-- Requirements management and traceability  
+- Stakeholder analysis and elicitation techniques  
+- Conflict resolution and negotiation  
+- UML and goal-oriented modeling  
+- IEEE 830 documentation standards  
+- Requirements validation and verification  
+- Traceability and lifecycle management  
 
-Sillah serves as a complete case study demonstrating the full lifecycle of Requirements Engineering as taught in SE311.
+Sillah serves as a comprehensive case study demonstrating how formal Requirements Engineering transforms an initial idea into a complete, validated, and traceable system specification.

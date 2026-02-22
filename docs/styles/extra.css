@@ -394,3 +394,78 @@
 .md-footer-meta__inner{
   padding-top: 14px !important;
 }
+
+.home-hero{
+  margin: 0 0 18px 0;
+}
+
+.home-hero__text{
+  border-radius: 18px;
+  padding: 22px 22px;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+
+  /* light blue card */
+  background:
+    radial-gradient(800px 240px at 20% 0%, rgba(37, 99, 235, 0.14), transparent 60%),
+    linear-gradient(180deg, rgba(37, 99, 235, 0.08), rgba(37, 99, 235, 0.04));
+
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);
+}
+
+/* Better spacing/typography inside the hero */
+.home-hero__text h1{
+  margin-top: 0 !important;
+}
+
+.home-hero__text p{
+  max-width: 90ch;
+}
+
+/* Buttons look like a "pair" */
+.home-hero__text .md-button{
+  margin-right: 10px;
+  margin-top: 6px;
+}
+
+/* Dark mode version */
+[data-md-color-scheme="slate"] .home-hero__text{
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  background:
+    radial-gradient(800px 240px at 20% 0%, rgba(96, 165, 250, 0.14), transparent 60%),
+    linear-gradient(180deg, rgba(96, 165, 250, 0.10), rgba(15, 23, 42, 0.35));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+/* =========================================
+   WIDER LAYOUT — More Content Space
+   ========================================= */
+
+/* Increase overall layout width */
+@media (min-width: 1400px){
+  .md-grid{
+    max-width: 1900px;  /* increase from 1400 */
+  }
+}
+
+/* Increase gap between sidebars and content */
+@media (min-width: 1200px){
+  .md-main__inner{
+    column-gap: 4rem;  /* default ~2rem */
+  }
+}
+.md-typeset > h1{
+  display: block;
+  padding: 28px 32px;
+  border-radius: 22px;
+
+  border: 1px solid rgba(46,125,50,0.25);
+
+  background:
+    radial-gradient(800px 240px at 20% 0%, rgba(67,160,71,0.22), transparent 60%),
+    linear-gradient(180deg, rgba(67,160,71,0.14), rgba(67,160,71,0.06));
+
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);
+
+  font-weight: 900 !important;
+  letter-spacing: -0.4px;
+  margin-bottom: 1.6rem !important;
+}

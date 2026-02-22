@@ -2,28 +2,49 @@
 
 This website is an academic project developed for:
 
-**SE 311: Software Requirements Engineering**
+**SE311 — Software Requirements Engineering**  
+Prince Sultan University
 
-The purpose of this site is to demonstrate:
+---
 
-- Database design principles  
-- Conceptual and logical modeling  
-- SQL implementation  
-- Application integration  
-- System documentation  
+<div class="grid cards" markdown>
 
-## Educational Purpose Only
+-   ### :material-school: Educational Purpose
 
-This project is intended solely for educational and evaluation purposes.
+    This project was developed to demonstrate the structured application of
+    Requirements Engineering concepts, including:
 
-It is **not** a production system and should not be used for real-world data management or decision-making.
+    - Problem analysis and vision definition  
+    - Stakeholder identification and elicitation  
+    - Functional and non-functional requirements specification  
+    - UML and goal modeling  
+    - Requirements validation and traceability  
+    - Requirements management practices  
 
-## Data Usage
+    It is intended strictly for academic evaluation.
 
-All data presented within this project is fictional or generated for demonstration purposes.
+-   ### :material-alert: Non-Production System
 
-No real individuals, medical records, or confidential information are used.
+    Sillah is **not** a production healthcare platform.
 
-## Intellectual Ownership
+    The system models, workflows, and simulations presented on this site
+    are conceptual and designed exclusively for coursework purposes.
 
-All content, documentation, and implementation work presented here are part of a university coursework submission.
+-   ### :material-database-outline: Data Usage
+
+    All data presented within this project is:
+
+    - Fictional or simulated  
+    - Generated for academic demonstration  
+    - Not linked to real individuals  
+
+    No real medical records, patient information, or confidential data are used.
+
+-   ### :material-copyright: Intellectual Ownership
+
+    All documentation, diagrams, models, and written content on this site
+    were produced as part of a university coursework submission for SE311.
+
+    This project is maintained as an academic portfolio artifact.
+
+</div>
