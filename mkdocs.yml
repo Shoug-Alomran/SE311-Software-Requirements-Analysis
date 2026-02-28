@@ -6,6 +6,9 @@ copyright: © 2026 Shoug Fawaz Alomran · All rights reserved
 
 theme:
   name: material
+  font:
+    text: Nunito Sans
+    code: JetBrains Mono
   icon:
     logo: material/ambulance
   features:
@@ -24,15 +27,15 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
-      accent: cyan
+      primary: green
+      accent: red
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: teal
-      accent: cyan
+      primary: green
+      accent: red
       toggle:
         icon: material/white-balance-sunny
         name: Switch to light mode

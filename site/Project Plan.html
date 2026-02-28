@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Requirements Engineering Dashboard | Sillah (صلة) Family Health Management System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      /* Light mode */
+      --primary: #6c63ff;
+      --primary-light: #8a84ff;
+      --secondary: #ff6584;
+      --accent: #36d1dc;
+      --background: #ffffff;
+      --surface: #f9f7fe;
+      --text: #333344;
+      --text-light: #666677;
+      --border: #e1deff;
+      --shadow: rgba(108, 99, 255, 0.1);
+      --card: #ffffff;
+      --success: #4cc9b0;
+      --warning: #ffb347;
+      --danger: #ff6b6b;
+
+      --shouq: #4cc9b0;
+      --ghala: #6c63ff;
+      --gala:  #ff6584;
+      --salma: #ffb347;
+      --shared:#8a84ff;
+      --notes: #36d1dc;
+      --tools: #ff6b6b;
+    }
+
+    body.dark-mode {
+      --primary: #7d76ff;
+      --primary-light: #9a94ff;
+      --secondary: #ff7a96;
+      --accent: #4de0eb;
+      --background: #1a1a2e;
+      --surface: #252542;
+      --text: #f0f0ff;
+      --text-light: #b0b0cc;
+      --border: #3a3a5e;
+      --shadow: rgba(0, 0, 0, 0.3);
+      --card: #252542;
+      --success: #5ad9c5;
+      --warning: #ffc074;
+      --danger: #ff7b7b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.25s, color 0.2s, border-color 0.25s;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .ar-text { display: none; direction: rtl; text-align: right; }
+
+    .container { display: flex; min-height: 100vh; }
+
+    .sidebar {
+      width: 280px;
+      background: linear-gradient(180deg, var(--primary) 0%, #5a52d5 100%);
+      padding: 25px 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 5px 0 15px var(--shadow);
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 28px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+      gap: 10px;
+    }
+
+    .search-box { margin-bottom: 20px; position: relative; }
+    .search-box input {
+      width: 100%;
+      padding: 12px 15px 12px 45px;
+      border-radius: 50px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+    .search-box input::placeholder { color: rgba(255,255,255,0.75); }
+    .search-box i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+    }
+
+    .language-toggle {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      padding: 8px;
+      display: flex;
+      margin-bottom: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      gap: 8px;
+    }
+    .lang-btn {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 50px;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .lang-btn.active { background-color: #fff; color: var(--primary); }
+
+    .team-members { margin-bottom: 18px; }
+    .team-title {
+      color: #fff;
+      font-size: 15px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .members-list { display: flex; flex-direction: column; gap: 12px; }
+    .member {
+      display: flex;
+      align-items: center;
+      padding: 12px 14px;
+      background-color: rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.25s;
+      gap: 12px;
+    }
+    .member:hover { background-color: rgba(255, 255, 255, 0.2); transform: translateX(5px); }
+    .member.active {
+      background-color: #fff;
+      color: var(--primary);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    .member-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      flex: 0 0 40px;
+    }
+    .member-name { font-weight: 800; font-size: 14px; }
+    .member-task { font-size: 12px; opacity: 0.9; margin-top: 2px; }
+
+    .sidebar-footer {
+      margin-top: auto;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 12px;
+      text-align: center;
+      padding-top: 12px;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 26px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header h1 { font-size: 26px; color: var(--primary); font-weight: 900; }
+
+    .project-status { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+    .status-badge {
+      background-color: var(--primary-light);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .tabs-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .tab-btn {
+      padding: 12px 18px;
+      background-color: transparent;
+      border: none;
+      border-radius: 50px;
+      color: var(--text-light);
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tab-btn:hover { color: var(--primary); background-color: var(--shadow); }
+    .tab-btn.active { background-color: var(--primary); color: #fff; }
+
+    .tab-content { display: none; animation: fadeIn 0.35s; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 22px;
+    }
+
+    .task-card {
+      background-color: var(--card);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 10px 25px var(--shadow);
+      border: 1px solid var(--border);
+      transition: all 0.25s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .task-card:hover { transform: translateY(-4px); box-shadow: 0 15px 32px var(--shadow); }
+    .task-card.expanded { grid-column: 1 / -1; z-index: 10; }
+
+    .task-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      gap: 10px;
+    }
+
+    .task-title { font-size: 18px; color: var(--primary); font-weight: 900; }
+    .task-assignee {
+      display: inline-flex;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-light);
+      white-space: nowrap;
+      gap: 8px;
+      padding-top: 2px;
+    }
+    .task-assignee i { color: var(--secondary); }
+
+    .task-summary {
+      color: var(--text-light);
+      margin-bottom: 16px;
+      max-height: 96px;
+      overflow: hidden;
+      transition: max-height 0.25s;
+    }
+    .task-card.expanded .task-summary { max-height: none; }
+
+    .expand-icon {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      color: var(--text-light);
+      transition: transform 0.25s;
+      font-size: 18px;
+      background: rgba(255, 255, 255, 0.12);
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    body.dark-mode .expand-icon { background: rgba(0,0,0,0.18); }
+    .task-card.expanded .expand-icon { transform: rotate(180deg); color: var(--warning); }
+
+    .task-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease;
+      margin-top: 0;
+      border-top: 1px solid transparent;
+    }
+    .task-card.expanded .task-details {
+      max-height: 2500px;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+      margin-top: 14px;
+    }
+
+    .details-section { margin-bottom: 22px; }
+
+    .section-title {
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 12px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title i { color: var(--accent); }
+
+    .steps-list {
+      list-style: none;
+      counter-reset: step-counter;
+      padding-left: 0;
+    }
+    .steps-list li {
+      padding: 12px 0 12px 58px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .steps-list li:before {
+      content: counter(step-counter);
+      counter-increment: step-counter;
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 38px;
+      height: 38px;
+      background-color: var(--primary);
+      color: #fff;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+    }
+    .steps-list li:last-child { border-bottom: none; }
+
+    .deliverables-list {
+      list-style: none;
+      padding-left: 6px;
+    }
+    .deliverables-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .deliverables-list li:last-child { border-bottom: none; }
+    .deliverables-list li i { color: var(--success); margin-top: 3px; }
+
+    .progress-container { margin-top: 12px; }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: var(--text-light);
+      font-weight: 800;
+    }
+    .progress-bar {
+      height: 8px;
+      background-color: var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      border-radius: 6px;
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    .checklist label {
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+      width: 100%;
+      align-items: flex-start;
+    }
+    .checklist input[type="checkbox"] {
+      transform: translateY(3px);
+      width: 16px;
+      height: 16px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .shared-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 22px;
+    }
+    .collaboration-card,
+    .note-card,
+    .tool-card {
+      background-color: var(--card);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 10px 25px var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .collab-title,
+    .note-title {
+      font-size: 18px;
+      color: var(--primary);
+      font-weight: 900;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 18px;
+    }
+    .tool-card { text-align: center; transition: transform 0.25s; }
+    .tool-card:hover { transform: translateY(-4px); }
+    .tool-icon { font-size: 38px; color: var(--primary); margin-bottom: 12px; }
+    .tool-name { font-size: 16px; font-weight: 900; margin-bottom: 8px; color: var(--text); }
+    .tool-category {
+      font-size: 12px;
+      color: var(--text-light);
+      background-color: var(--border);
+      padding: 5px 10px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+    .tool-desc { font-size: 13px; color: var(--text-light); }
+
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--primary);
+      color: #fff;
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      z-index: 100;
+      border: none;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1100px) {
+      .container { flex-direction: column; }
+      .sidebar { width: 100%; padding: 18px; }
+      .members-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .member { flex: 1; min-width: 220px; max-width: 320px; }
+      .project-status { justify-content: flex-start; }
+    }
+
+    @media (max-width: 768px) {
+      .task-grid { grid-template-columns: 1fr; }
+      .header { flex-direction: column; align-items: flex-start; }
+      .steps-list li { padding-left: 52px; font-size: 14px; }
+      .steps-list li:before { width: 34px; height: 34px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        <i class="fas fa-project-diagram"></i>
+        <span class="en-text">Requirements Dashboard</span>
+        <span class="ar-text">لوحة المتطلبات</span>
+      </div>
+
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search tasks, deliverables, tools..." />
+      </div>
+
+      <div class="language-toggle">
+        <button class="lang-btn active" id="langEn">EN</button>
+        <button class="lang-btn" id="langAr">AR</button>
+      </div>
+
+      <div class="team-members">
+        <div class="team-title">
+          <i class="fas fa-users"></i>
+          <span class="en-text">Team Members</span>
+          <span class="ar-text">أعضاء الفريق</span>
+        </div>
+
+        <div class="members-list">
+          <div class="member active" data-tab="shouq">
+            <div class="member-avatar">ش</div>
+            <div>
+              <div class="member-name">Shoug Alomran</div>
+              <div class="member-task en-text">Elicitation Plan & Stakeholders · Family URs · Final Package</div>
+              <div class="member-task ar-text">خطة الاستقصاء وأصحاب المصلحة · متطلبات الأسرة · الحزمة النهائية</div>
+            </div>
+          </div>
+
+          <div class="member" data-tab="ghala">
+            <div class="member-avatar">غ</div>
+            <div>
+              <div class="member-name">Ghala Alsaqer</div>
+              <div class="member-task en-text">Interviews · Healthcare Provider URs</div>
+              <div class="member-task ar-text">المقابلات · متطلبات مقدمي الرعاية</div>
+            </div>
+          </div>
+
+          <div class="member" data-tab="gala">
+            <div class="member-avatar">غ</div>
+            <div>
+              <div class="member-name">Gala Alalula</div>
+              <div class="member-task en-text">Survey · Admin URs</div>
+              <div class="member-task ar-text">الاستبيان · متطلبات الإداري</div>
+            </div>
+          </div>
+
+          <div class="member" data-tab="salma">
+            <div class="member-avatar">س</div>
+            <div>
+              <div class="member-name">Salma Al Khaldi</div>
+              <div class="member-task en-text">Doc/Observation/Competitive · Consolidation & Prioritization</div>
+              <div class="member-task ar-text">تحليل وثائق/ملاحظة/تنافسي · دمج وترتيب</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="en-text">Sillah (صلة) — Family Health Management System</div>
+        <div class="ar-text">صلة — نظام إدارة صحة الأسرة</div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header">
+        <div>
+          <h1 class="en-text">Requirements Engineering Dashboard – Phase 2</h1>
+          <h1 class="ar-text">لوحة هندسة المتطلبات – المرحلة 2</h1>
+        </div>
+
+        <div class="project-status">
+          <div class="status-badge">
+            <i class="fas fa-tasks"></i>
+            <span class="en-text">Deliverable: Elicitation Notes/Evidence + Prioritized User Requirements</span>
+            <span class="ar-text">التسليم: ملاحظات/أدلة الاستقصاء + متطلبات المستخدم ذات الأولوية</span>
+          </div>
+          <div class="status-badge">
+            <i class="fas fa-calendar-alt"></i>
+            <span class="en-text">Due: (set by instructor)</span>
+            <span class="ar-text">موعد التسليم: (حسب ما تحدده الدكتورة)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs-container">
+        <button class="tab-btn active" data-tab="shouq">
+          <i class="fas fa-user-gear"></i>
+          <span class="en-text">Shoug</span>
+          <span class="ar-text">شوق</span>
+        </button>
+        <button class="tab-btn" data-tab="ghala">
+          <i class="fas fa-people-roof"></i>
+          <span class="en-text">Ghala</span>
+          <span class="ar-text">غلا</span>
+        </button>
+        <button class="tab-btn" data-tab="gala">
+          <i class="fas fa-user-doctor"></i>
+          <span class="en-text">Gala</span>
+          <span class="ar-text">جلا</span>
+        </button>
+        <button class="tab-btn" data-tab="salma">
+          <i class="fas fa-user-shield"></i>
+          <span class="en-text">Salma</span>
+          <span class="ar-text">سلمى</span>
+        </button>
+        <button class="tab-btn" data-tab="shared">
+          <i class="fas fa-users"></i>
+          <span class="en-text">Submission Checklist</span>
+          <span class="ar-text">قائمة التسليم</span>
+        </button>
+        <button class="tab-btn" data-tab="notes">
+          <i class="fas fa-sticky-note"></i>
+          <span class="en-text">Scope Notes</span>
+          <span class="ar-text">ملاحظات النطاق</span>
+        </button>
+        <button class="tab-btn" data-tab="tools">
+          <i class="fas fa-tools"></i>
+          <span class="en-text">Tools</span>
+          <span class="ar-text">الأدوات</span>
+        </button>
+      </div>
+
+      <!-- ========== SHOUG TAB ========== -->
+      <div id="shouq" class="tab-content active">
+        <div class="task-grid">
+          <div class="task-card" data-task="elicitationPlan">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Elicitation Plan + Stakeholder Analysis</div>
+                <div class="task-title ar-text">خطة الاستقصاء + تحليل أصحاب المصلحة</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Shoug</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Create the Elicitation Plan and Stakeholder Analysis aligned to the project scope. Keep it simple and traceable: objectives, methods, participants, schedule, and risks (with mitigation).
+            </div>
+            <div class="task-summary ar-text">
+              إعداد خطة الاستقصاء وتحليل أصحاب المصلحة بشكل واضح وقابل للتتبع: الأهداف، الأساليب، المشاركين، الجدول، والمخاطر مع التخفيف.
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section">
+                <div class="section-title">
+                  <i class="fas fa-list-ol"></i>
+                  <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
+                </div>
+                <ol class="steps-list">
+                  <li class="en-text"><strong>Elicitation Plan:</strong> objectives, selected techniques (interviews/survey/doc analysis/observation), schedule, resources, risks & mitigation (3–5).</li>
+                  <li class="ar-text"><strong>خطة الاستقصاء:</strong> الأهداف، التقنيات، الجدول، الموارد، المخاطر والتخفيف (٣–٥).</li>
+                  <li class="en-text"><strong>Stakeholders:</strong> list ≥6 stakeholders and how you will engage each one.</li>
+                  <li class="ar-text"><strong>أصحاب المصلحة:</strong> تحديد ≥٦ وكيفية إشراك كل واحد.</li>
+                  <li class="en-text"><strong>Mapping table:</strong> stakeholder, role, interest, influence, availability, elicitation method.</li>
+                  <li class="ar-text"><strong>جدول الربط:</strong> صاحب المصلحة، الدور، الاهتمام، التأثير، التوفر، أسلوب الاستقصاء.</li>
+                </ol>
+              </div>
+
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="plan">
+                      <span class="en-text">Elicitation Plan (doc)</span>
+                      <span class="ar-text">خطة الاستقصاء (ملف)</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="stake">
+                      <span class="en-text">Stakeholder Analysis (doc)</span>
+                      <span class="ar-text">تحليل أصحاب المصلحة (ملف)</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="risk">
+                      <span class="en-text">Risks + mitigation included</span>
+                      <span class="ar-text">تضمين المخاطر + التخفيف</span>
+                    </label>
+                  </li>
+                </ul>
+                <div class="hint en-text">Internal naming is optional — only keep if your instructor requires it.</div>
+                <div class="hint ar-text">التسمية الداخلية اختيارية — فقط استخدميها إذا كانت مطلوبة من الدكتورة.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" data-task="familyURs">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Family User Requirements (Prioritized)</div>
+                <div class="task-title ar-text">متطلبات الأسرة (ذات أولوية)</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Shoug</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Write 8–10 family user requirements. Each requirement must link to evidence (interview/survey/observation/doc). Prioritize using MoSCoW (Must/Should/Could/Won’t).
+            </div>
+            <div class="task-summary ar-text">
+              كتابة ٨–١٠ متطلبات مستخدم للأسرة. كل متطلب لازم يكون مرتبط بدليل (مقابلة/استبيان/ملاحظة/وثائق). ترتيب الأولويات باستخدام MoSCoW.
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section">
+                <div class="section-title">
+                  <i class="fas fa-list-ol"></i>
+                  <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
+                </div>
+                <ol class="steps-list">
+                  <li class="en-text"><strong>Gather evidence</strong> from all elicitation streams.</li>
+                  <li class="ar-text"><strong>جمع الأدلة</strong> من جميع مسارات الاستقصاء.</li>
+                  <li class="en-text"><strong>Write URs</strong> in a consistent format: ID, statement/user story, rationale, source evidence, priority (MoSCoW), acceptance criteria.</li>
+                  <li class="ar-text"><strong>كتابة المتطلبات</strong> بصيغة ثابتة: معرف، صياغة/قصة، مبرر، مصدر الدليل، أولوية (MoSCoW)، معايير القبول.</li>
+                  <li class="en-text"><strong>Keep traceability</strong> (each UR must point to at least 1 piece of evidence).</li>
+                  <li class="ar-text"><strong>الحفاظ على التتبع</strong> (كل متطلب مرتبط بدليل واحد على الأقل).</li>
+                </ol>
+              </div>
+
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="famUR">
+                      <span class="en-text">Family UR list (8–10) written</span>
+                      <span class="ar-text">كتابة متطلبات الأسرة (٨–١٠)</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="famPrio">
+                      <span class="en-text">MoSCoW priority assigned</span>
+                      <span class="ar-text">تحديد الأولوية (MoSCoW)</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="famTrace">
+                      <span class="en-text">Each UR links to evidence</span>
+                      <span class="ar-text">كل متطلب مرتبط بدليل</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" data-task="finalPackage">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Team Leader: Final Submission Package</div>
+                <div class="task-title ar-text">قائدة الفريق: الحزمة النهائية للتسليم</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Shoug</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Collect all notes + evidence and the prioritized user requirements list(s) from the team. Ensure everything is organized, traceable, and ready to submit.
+            </div>
+            <div class="task-summary ar-text">
+              جمع جميع الملاحظات + الأدلة وقوائم المتطلبات ذات الأولوية من الفريق. التأكد أن كل شيء مرتب وقابل للتتبع وجاهز للتسليم.
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section">
+                <div class="section-title">
+                  <i class="fas fa-list-ol"></i>
+                  <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
+                </div>
+                <ol class="steps-list">
+                  <li class="en-text"><strong>Collect</strong> all elicitation notes + evidence from each member.</li>
+                  <li class="ar-text"><strong>جمع</strong> جميع ملاحظات + أدلة الاستقصاء من كل عضو.</li>
+                  <li class="en-text"><strong>Collect</strong> each member’s prioritized UR list.</li>
+                  <li class="ar-text"><strong>جمع</strong> قوائم المتطلبات ذات الأولوية.</li>
+                  <li class="en-text"><strong>Check traceability:</strong> requirements point to evidence (file name / screenshot / link).</li>
+                  <li class="ar-text"><strong>التأكد من التتبع:</strong> المتطلبات مرتبطة بدليل (اسم ملف / لقطة / رابط).</li>
+                  <li class="en-text"><strong>Organize</strong> into simple folders: Evidence/ and Prioritized_URs/.</li>
+                  <li class="ar-text"><strong>ترتيب</strong> في مجلدات واضحة: Evidence/ و Prioritized_URs/.</li>
+                  <li class="en-text"><strong>Zip</strong> and submit.</li>
+                  <li class="ar-text"><strong>ضغط</strong> وتسليم.</li>
+                </ol>
+              </div>
+
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="collected">
+                      <span class="en-text">All notes + evidence collected</span>
+                      <span class="ar-text">جمع جميع الملاحظات + الأدلة</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="reqs">
+                      <span class="en-text">Prioritized UR lists collected</span>
+                      <span class="ar-text">جمع قوائم المتطلبات ذات الأولوية</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="traceOK">
+                      <span class="en-text">Traceability checked</span>
+                      <span class="ar-text">التأكد من التتبع</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" class="progress-check" data-check="zip">
+                      <span class="en-text">Final .zip ready</span>
+                      <span class="ar-text">الملف المضغوط النهائي جاهز</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========== GHALA TAB ========== -->
+      <div id="ghala" class="tab-content">
+        <div class="task-grid">
+          <div class="task-card" data-task="interviews">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Interviews (Elicitation Notes + Evidence)</div>
+                <div class="task-title ar-text">المقابلات (ملاحظات + أدلة)</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Ghala</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Conduct interviews and document them as elicitation notes (like the instructor example). Keep clean notes, key findings, extracted requirements, and attach evidence.
+            </div>
+            <div class="task-summary ar-text">
+              إجراء مقابلات وتوثيقها كملاحظات استقصاء (مثل مثال الدكتورة). ملاحظات واضحة + نتائج + متطلبات مستخلصة + أدلة.
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section">
+                <div class="section-title">
+                  <i class="fas fa-list-ol"></i>
+                  <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
+                </div>
+                <ol class="steps-list">
+                  <li class="en-text"><strong>Prepare</strong> an interview guide.</li>
+                  <li class="ar-text"><strong>تجهيز</strong> دليل أسئلة للمقابلة.</li>
+                  <li class="en-text"><strong>Conduct</strong> 3–5 interviews (family + healthcare provider).</li>
+                  <li class="ar-text"><strong>إجراء</strong> ٣–٥ مقابلات (عائلة + مقدم رعاية).</li>
+                  <li class="en-text"><strong>Write elicitation notes</strong>: participants, objectives, questions, answers, key findings, extracted requirements, open issues.</li>
+                  <li class="ar-text"><strong>كتابة ملاحظات الاستقصاء</strong>: المشاركون، الأهداف، الأسئلة، الأجوبة، النتائج، المتطلبات، نقاط مفتوحة.</li>
+                  <li class="en-text"><strong>Attach evidence</strong> (screenshots/recording log).</li>
+                  <li class="ar-text"><strong>إرفاق الأدلة</strong> (لقطات/سجل التسجيل).</li>
+                </ol>
+              </div>
+
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="guide"> <span class="en-text">Interview guide completed</span><span class="ar-text">إكمال دليل المقابلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="notes"> <span class="en-text">Interview notes written (per session)</span><span class="ar-text">كتابة ملاحظات لكل مقابلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="evid"> <span class="en-text">Evidence attached</span><span class="ar-text">إرفاق الأدلة</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" data-task="hcpURs">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Healthcare Provider URs (Prioritized)</div>
+                <div class="task-title ar-text">متطلبات مقدم الرعاية (ذات أولوية)</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Ghala</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Derive 8–10 provider requirements from interview notes. Prioritize using MoSCoW and link each requirement to interview evidence.
+            </div>
+            <div class="task-summary ar-text">
+              اشتقاق ٨–١٠ متطلبات من ملاحظات المقابلات. ترتيب باستخدام MoSCoW وربط كل متطلب بالدليل.
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="hcpUR"> <span class="en-text">Provider UR list (8–10) written</span><span class="ar-text">كتابة متطلبات مقدم الرعاية (٨–١٠)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="hcpMoscow"> <span class="en-text">MoSCoW priority assigned</span><span class="ar-text">تحديد الأولوية (MoSCoW)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="hcpTrace"> <span class="en-text">Each UR links to interview evidence</span><span class="ar-text">ربط كل متطلب بدليل المقابلة</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========== GALA TAB ========== -->
+      <div id="gala" class="tab-content">
+        <div class="task-grid">
+          <div class="task-card" data-task="survey">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Survey (Notes + Evidence)</div>
+                <div class="task-title ar-text">الاستبيان (ملاحظات + أدلة)</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Gala</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Design and deploy a bilingual survey. Keep evidence: questionnaire PDF, response export, and a short analysis summary (charts/screenshots).
+            </div>
+            <div class="task-summary ar-text">
+              تصميم ونشر استبيان ثنائي اللغة. حفظ الأدلة: PDF للأسئلة، ملف الردود، وملخص تحليل مختصر (رسوم/لقطات).
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="surveyQ"> <span class="en-text">Survey questionnaire (EN/AR)</span><span class="ar-text">أسئلة الاستبيان (عربي/إنجليزي)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="surveyData"> <span class="en-text">Responses exported</span><span class="ar-text">تصدير الردود</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="surveyAnalysis"> <span class="en-text">Short analysis + charts/screenshots</span><span class="ar-text">تحليل مختصر + رسوم/لقطات</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" data-task="adminURs">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Administrator URs (Prioritized)</div>
+                <div class="task-title ar-text">متطلبات الإداري (ذات أولوية)</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Gala</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Derive 8–10 admin requirements from survey + other evidence. Prioritize using MoSCoW and link each requirement to evidence.
+            </div>
+            <div class="task-summary ar-text">
+              اشتقاق ٨–١٠ متطلبات للإداري من الاستبيان + الأدلة الأخرى. ترتيب باستخدام MoSCoW وربط كل متطلب بالدليل.
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="adminUR"> <span class="en-text">Admin UR list (8–10) written</span><span class="ar-text">كتابة متطلبات الإداري (٨–١٠)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="adminMoscow"> <span class="en-text">MoSCoW priority assigned</span><span class="ar-text">تحديد الأولوية (MoSCoW)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="adminTrace"> <span class="en-text">Each UR links to evidence</span><span class="ar-text">ربط كل متطلب بدليل</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========== SALMA TAB ========== -->
+      <div id="salma" class="tab-content">
+        <div class="task-grid">
+          <div class="task-card" data-task="docObsComp">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Document/Observation/Competitive (Evidence)</div>
+                <div class="task-title ar-text">وثائق/ملاحظة/تنافسي (أدلة)</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Salma</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Analyze documents and/or apps and record findings as elicitation evidence. Keep screenshots/links and write clear notes that point to extracted requirements.
+            </div>
+            <div class="task-summary ar-text">
+              تحليل وثائق و/أو تطبيقات وتوثيق النتائج كأدلة استقصاء. حفظ لقطات/روابط وكتابة ملاحظات واضحة لاستخراج المتطلبات.
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="doc"> <span class="en-text">Document analysis notes + evidence</span><span class="ar-text">ملاحظات تحليل الوثائق + أدلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="obs"> <span class="en-text">Observation notes + evidence</span><span class="ar-text">ملاحظات الملاحظة + أدلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="comp"> <span class="en-text">Competitive analysis notes + screenshots</span><span class="ar-text">تحليل تنافسي + لقطات</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-card" data-task="consolidation">
+            <div class="task-header">
+              <div>
+                <div class="task-title en-text">Consolidation + Prioritization (Master)</div>
+                <div class="task-title ar-text">الدمج + ترتيب الأولويات (قائمة رئيسية)</div>
+              </div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Salma</span></div>
+            </div>
+
+            <i class="fas fa-chevron-down expand-icon"></i>
+
+            <div class="task-summary en-text">
+              Combine URs from all members, remove duplicates, keep traceability, and produce one prioritized master list using MoSCoW (no extra scoring rules unless required by instructor).
+            </div>
+            <div class="task-summary ar-text">
+              دمج المتطلبات من الجميع، إزالة التكرار، الحفاظ على التتبع، وإنشاء قائمة موحدة ذات أولوية باستخدام MoSCoW (بدون قواعد تقييم إضافية إلا إذا كانت مطلوبة).
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-label">
+                <span class="en-text">Progress</span><span class="ar-text">التقدم</span>
+                <span class="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+
+            <div class="task-details">
+              <div class="details-section">
+                <div class="section-title">
+                  <i class="fas fa-list-ol"></i>
+                  <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
+                </div>
+                <ol class="steps-list">
+                  <li class="en-text"><strong>Collect</strong> the three UR lists (family/provider/admin).</li>
+                  <li class="ar-text"><strong>جمع</strong> قوائم المتطلبات الثلاث.</li>
+                  <li class="en-text"><strong>Remove duplicates</strong> and merge similar requirements.</li>
+                  <li class="ar-text"><strong>إزالة التكرار</strong> ودمج المتطلبات المتشابهة.</li>
+                  <li class="en-text"><strong>Maintain traceability</strong> (each master UR must reference evidence and source owner).</li>
+                  <li class="ar-text"><strong>الحفاظ على التتبع</strong> (كل متطلب في القائمة مرتبط بدليل وصاحبه).</li>
+                  <li class="en-text"><strong>Prioritize using MoSCoW</strong> based on team agreement + dependencies.</li>
+                  <li class="ar-text"><strong>ترتيب باستخدام MoSCoW</strong> بناءً على اتفاق الفريق + التبعيات.</li>
+                </ol>
+              </div>
+
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-check-square"></i>
+                  <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="master"> <span class="en-text">Master UR list created</span><span class="ar-text">إنشاء قائمة موحدة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="moscow"> <span class="en-text">MoSCoW priorities assigned</span><span class="ar-text">تحديد الأولويات (MoSCoW)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="trace"> <span class="en-text">Traceability maintained</span><span class="ar-text">الحفاظ على التتبع</span></label></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========== SUBMISSION CHECKLIST TAB (REPLACED SHARED WORK) ========== -->
+      <div id="shared" class="tab-content">
+        <div class="shared-grid">
+          <div class="collaboration-card">
+            <div class="collab-title">
+              <i class="fas fa-file-circle-check"></i>
+              <span class="en-text">What the Instructor Asked For</span>
+              <span class="ar-text">المطلوب حسب الدكتورة</span>
+            </div>
+
+            <div class="en-text" style="margin-bottom: 12px; color: var(--text-light);">
+              <strong>Team leader submits:</strong><br/>
+              1) Elicitation notes + evidence (interviews, surveys, etc.)<br/>
+              2) A list of prioritized user requirements (on behalf of the team)
+            </div>
+            <div class="ar-text" style="margin-bottom: 12px; color: var(--text-light);">
+              <strong>قائدة الفريق تسلم:</strong><br/>
+              ١) ملاحظات الاستقصاء + الأدلة (مقابلات، استبيانات، إلخ)<br/>
+              ٢) قائمة متطلبات مستخدم ذات أولوية (بالنيابة عن الفريق)
+            </div>
+
+            <ul class="deliverables-list checklist">
+              <li>
+                <label>
+                  <input type="checkbox" class="progress-check" data-check="sub_evidence">
+                  <span class="en-text">Elicitation notes + evidence folder ready</span>
+                  <span class="ar-text">مجلد الملاحظات + الأدلة جاهز</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" class="progress-check" data-check="sub_prioritized">
+                  <span class="en-text">Prioritized user requirements list ready</span>
+                  <span class="ar-text">قائمة المتطلبات ذات الأولوية جاهزة</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" class="progress-check" data-check="sub_zip">
+                  <span class="en-text">Final .zip packaged for submission</span>
+                  <span class="ar-text">الملف المضغوط النهائي جاهز للتسليم</span>
+                </label>
+              </li>
+            </ul>
+
+            <div class="hint en-text">
+              If your instructor did NOT require exact filenames, keep them simple: Evidence/ and Prioritized_URs/.
+            </div>
+            <div class="hint ar-text">
+              إذا الدكتورة ما طلبت أسماء ملفات محددة، خليها بسيطة: Evidence/ و Prioritized_URs/.
+            </div>
+          </div>
+
+          <div class="collaboration-card">
+            <div class="collab-title">
+              <i class="fas fa-folder-open"></i>
+              <span class="en-text">Suggested Folder Layout (Optional)</span>
+              <span class="ar-text">هيكل مجلدات مقترح (اختياري)</span>
+            </div>
+
+            <ul class="deliverables-list">
+              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Evidence/</strong> (Interviews/, Survey/, Observation/, Docs/, Competitive/)</span><span class="ar-text"><strong>Evidence/</strong> (Interviews/, Survey/, Observation/, Docs/, Competitive/)</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Prioritized_URs/</strong> (Family_URs.docx, Provider_URs.docx, Admin_URs.docx, Master_URs.docx)</span><span class="ar-text"><strong>Prioritized_URs/</strong> (Family_URs.docx, Provider_URs.docx, Admin_URs.docx, Master_URs.docx)</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Submission.zip</strong></span><span class="ar-text"><strong>Submission.zip</strong></span></li>
+            </ul>
+
+            <div class="hint en-text">Only use this if your team needs structure; it’s not “official” unless your instructor says so.</div>
+            <div class="hint ar-text">استخدميه فقط للتنظيم الداخلي؛ مو رسمي إلا إذا الدكتورة قالت.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== SCOPE NOTES TAB ========== -->
+      <div id="notes" class="tab-content">
+        <div class="notes-container">
+          <div class="note-card">
+            <div class="note-title">
+              <i class="fas fa-lightbulb"></i>
+              <span class="en-text">Scope Notes (Keep as “Working Draft”)</span>
+              <span class="ar-text">ملاحظات النطاق (مسودة عمل)</span>
+            </div>
+
+            <div class="en-text" style="color: var(--text-light); line-height: 1.75;">
+              <p><strong>✅ In scope (draft):</strong> family member management, recording health events, rule-based risk alerts (as agreed by the team), awareness content, bilingual UI (AR/EN).</p>
+              <p><strong>🚫 Out of scope (draft):</strong> real medical diagnosis, integration with hospital/EHR systems, AI/ML predictions, real-time clinic availability.</p>
+              <p><strong>⚠️ Important:</strong> Do not present legal/compliance standards or numeric targets as final requirements unless you have evidence and the instructor asked for them. Treat them as “to validate”.</p>
+            </div>
+
+            <div class="ar-text" style="color: var(--text-light); line-height: 1.75;">
+              <p><strong>✅ ضمن النطاق (مسودة):</strong> إدارة أفراد الأسرة، تسجيل الأحداث الصحية، تنبيهات مخاطر مبنية على قواعد (حسب اتفاق الفريق)، محتوى توعوي، واجهة ثنائية اللغة (عربي/إنجليزي).</p>
+              <p><strong>🚫 خارج النطاق (مسودة):</strong> تشخيص طبي حقيقي، تكامل مع أنظمة المستشفيات/السجلات، تنبؤ بالذكاء الاصطناعي، توفر عيادات بشكل لحظي.</p>
+              <p><strong>⚠️ مهم:</strong> لا تعرضي المعايير القانونية/الامتثال أو أرقام كأهداف كأنها متطلبات نهائية إلا إذا عندكم دليل والدكتورة طلبتها. اعتبريها “للتأكد”.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== TOOLS TAB ========== -->
+      <div id="tools" class="tab-content">
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-icon"><i class="fas fa-file-signature"></i></div>
+            <div class="tool-name en-text">Elicitation Note Template</div>
+            <div class="tool-name ar-text">قالب ملاحظات الاستقصاء</div>
+            <div class="tool-category en-text">Interviews / Survey / Observation</div>
+            <div class="tool-category ar-text">مقابلات / استبيان / ملاحظة</div>
+            <p class="tool-desc en-text">Use a consistent structure: participants, objectives, questions, answers, findings, extracted requirements, open issues, evidence.</p>
+            <p class="tool-desc ar-text">استخدمي هيكل ثابت: المشاركون، الأهداف، الأسئلة، الأجوبة، النتائج، المتطلبات، نقاط مفتوحة، الأدلة.</p>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-icon"><i class="fas fa-table"></i></div>
+            <div class="tool-name en-text">Requirements List</div>
+            <div class="tool-name ar-text">قائمة المتطلبات</div>
+            <div class="tool-category en-text">UR + MoSCoW</div>
+            <div class="tool-category ar-text">UR + MoSCoW</div>
+            <p class="tool-desc en-text">Keep each UR linked to evidence and prioritized (Must/Should/Could/Won’t).</p>
+            <p class="tool-desc ar-text">خلي كل متطلب مرتبط بدليل وله أولوية (Must/Should/Could/Won’t).</p>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-icon"><i class="fas fa-cloud"></i></div>
+            <div class="tool-name en-text">Collaboration</div>
+            <div class="tool-name ar-text">التعاون</div>
+            <div class="tool-category en-text">Team Work</div>
+            <div class="tool-category ar-text">عمل الفريق</div>
+            <p class="tool-desc en-text">Shared drive + clear evidence folders + one UR format.</p>
+            <p class="tool-desc ar-text">مجلد مشترك + أدلة مرتبة + صيغة موحدة للمتطلبات.</p>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-icon"><i class="fas fa-code-branch"></i></div>
+            <div class="tool-name en-text">Versioning</div>
+            <div class="tool-name ar-text">إدارة الإصدارات</div>
+            <div class="tool-category en-text">Optional</div>
+            <div class="tool-category ar-text">اختياري</div>
+            <p class="tool-desc en-text">If your instructor didn’t require naming rules, keep it simple and consistent.</p>
+            <p class="tool-desc ar-text">إذا الدكتورة ما طلبت نظام تسمية، خليها بسيطة وثابتة.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabTriggers = document.querySelectorAll(".tab-btn, .member");
+      tabTriggers.forEach((element) => {
+        element.addEventListener("click", function () {
+          const tabId = this.getAttribute("data-tab");
+
+          document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.remove("active"));
+          const tabBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+          if (tabBtn) tabBtn.classList.add("active");
+
+          document.querySelectorAll(".member").forEach((m) => m.classList.remove("active"));
+          const memBtn = document.querySelector(`.member[data-tab="${tabId}"]`);
+          if (memBtn) memBtn.classList.add("active");
+
+          document.querySelectorAll(".tab-content").forEach((content) => content.classList.remove("active"));
+          const content = document.getElementById(tabId);
+          if (content) content.classList.add("active");
+
+          closeAllExpandedCards();
+          document.querySelectorAll(".task-card").forEach(updateProgressUI);
+        });
+      });
+
+      const langEnBtn = document.getElementById("langEn");
+      const langArBtn = document.getElementById("langAr");
+      langEnBtn.addEventListener("click", function () { switchLanguage("en"); });
+      langArBtn.addEventListener("click", function () { switchLanguage("ar"); });
+
+      function switchLanguage(lang) {
+        langEnBtn.classList.remove("active");
+        langArBtn.classList.remove("active");
+
+        if (lang === "en") {
+          langEnBtn.classList.add("active");
+          document.querySelectorAll(".en-text").forEach((el) => el.style.display = "");
+          document.querySelectorAll(".ar-text").forEach((el) => el.style.display = "none");
+          document.body.style.direction = "ltr";
+          document.body.style.textAlign = "left";
+        } else {
+          langArBtn.classList.add("active");
+          document.querySelectorAll(".en-text").forEach((el) => el.style.display = "none");
+          document.querySelectorAll(".ar-text").forEach((el) => el.style.display = "");
+          document.body.style.direction = "rtl";
+          document.body.style.textAlign = "right";
+        }
+
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.style.textAlign = (lang === "ar") ? "right" : "left";
+      }
+
+      const taskCards = document.querySelectorAll(".task-card");
+      const expandIcons = document.querySelectorAll(".expand-icon");
+
+      function closeAllExpandedCards() {
+        taskCards.forEach((card) => card.classList.remove("expanded"));
+      }
+
+      expandIcons.forEach((icon) => {
+        icon.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const card = this.closest(".task-card");
+          const isExpanded = card.classList.contains("expanded");
+          closeAllExpandedCards();
+          if (!isExpanded) {
+            card.classList.add("expanded");
+            setTimeout(() => card.scrollIntoView({ behavior: "smooth", block: "nearest" }), 80);
+          }
+        });
+      });
+
+      taskCards.forEach((card) => {
+        card.addEventListener("click", function (e) {
+          if (e.target.classList.contains("expand-icon") || e.target.closest(".expand-icon")) return;
+          if (e.target.tagName === "A" || e.target.tagName === "BUTTON" || e.target.closest("a") || e.target.closest("button")) return;
+
+          const isExpanded = this.classList.contains("expanded");
+          closeAllExpandedCards();
+          if (!isExpanded) {
+            this.classList.add("expanded");
+            setTimeout(() => this.scrollIntoView({ behavior: "smooth", block: "nearest" }), 80);
+          }
+        });
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".task-card")) closeAllExpandedCards();
+      });
+
+      const searchInput = document.getElementById("searchInput");
+      searchInput.addEventListener("keyup", function () {
+        const searchTerm = this.value.toLowerCase();
+        const activeTab = document.querySelector(".tab-content.active");
+        if (!activeTab) return;
+
+        const isSpecial = (activeTab.id === "shared" || activeTab.id === "notes" || activeTab.id === "tools");
+
+        if (searchTerm.length < 2) {
+          if (isSpecial) {
+            activeTab.querySelectorAll(".collaboration-card, .note-card, .tool-card").forEach((card) => card.style.display = "block");
+          } else {
+            activeTab.querySelectorAll(".task-card").forEach((card) => card.style.display = "block");
+          }
+          return;
+        }
+
+        if (isSpecial) {
+          activeTab.querySelectorAll(".collaboration-card, .note-card, .tool-card").forEach((card) => {
+            const cardText = card.textContent.toLowerCase();
+            card.style.display = cardText.includes(searchTerm) ? "block" : "none";
+          });
+        } else {
+          activeTab.querySelectorAll(".task-card").forEach((card) => {
+            const cardText = card.textContent.toLowerCase();
+            card.style.display = cardText.includes(searchTerm) ? "block" : "none";
+          });
+        }
+      });
+
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+      const currentTheme = localStorage.getItem("theme");
+
+      if (currentTheme === "dark" || (!currentTheme && prefersDarkScheme.matches)) {
+        document.body.classList.add("dark-mode");
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+
+      darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+          localStorage.setItem("theme", "dark");
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+          localStorage.setItem("theme", "light");
+          darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+      });
+
+      function getTaskKey(taskCard) {
+        const tab = taskCard.closest(".tab-content")?.id || "unknownTab";
+        const task = taskCard.getAttribute("data-task") || "unknownTask";
+        return `taskProgress:${tab}:${task}`;
+      }
+
+      function loadChecks(taskCard) {
+        const key = getTaskKey(taskCard);
+        const saved = localStorage.getItem(key);
+        if (!saved) return;
+        let obj;
+        try { obj = JSON.parse(saved); } catch { return; }
+        taskCard.querySelectorAll(".progress-check").forEach((cb) => {
+          const id = cb.getAttribute("data-check");
+          if (id && obj[id] !== undefined) cb.checked = !!obj[id];
+        });
+      }
+
+      function saveChecks(taskCard) {
+        const key = getTaskKey(taskCard);
+        const obj = {};
+        taskCard.querySelectorAll(".progress-check").forEach((cb) => {
+          const id = cb.getAttribute("data-check");
+          if (id) obj[id] = cb.checked;
+        });
+        localStorage.setItem(key, JSON.stringify(obj));
+      }
+
+      function updateProgressUI(taskCard) {
+        const checks = Array.from(taskCard.querySelectorAll(".progress-check"));
+        const percentEl = taskCard.querySelector(".progress-percent");
+        const fillEl = taskCard.querySelector(".progress-fill");
+        if (checks.length === 0 || !percentEl || !fillEl) return;
+
+        const checked = checks.filter((c) => c.checked).length;
+        const percent = Math.round((checked / checks.length) * 100);
+        percentEl.textContent = `${percent}%`;
+        requestAnimationFrame(() => { fillEl.style.width = `${percent}%`; });
+      }
+
+      function wireTaskCard(taskCard) {
+        loadChecks(taskCard);
+        updateProgressUI(taskCard);
+        taskCard.querySelectorAll(".progress-check").forEach((cb) => {
+          cb.addEventListener("change", (e) => {
+            e.stopPropagation();
+            saveChecks(taskCard);
+            updateProgressUI(taskCard);
+          });
+        });
+        taskCard.querySelectorAll(".checklist label").forEach((lbl) => {
+          lbl.addEventListener("click", (e) => e.stopPropagation());
+        });
+      }
+
+      document.querySelectorAll(".task-card").forEach(wireTaskCard);
+      switchLanguage("en");
+    });
+  </script>
+</body>
+</html>

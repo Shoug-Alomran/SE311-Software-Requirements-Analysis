@@ -1,64 +1,177 @@
-# SE311 — Sillah (صلة): Family Health Management System
+<div class="home-hero" markdown>
 
-## :school: Academic Context
+<span class="home-kicker">Family Cardiac Prevention</span>
 
-**Prince Sultan University**  
-College of Computer and Information Sciences (CCIS)  
-**Course:** SE311 — Software Requirements Engineering  
-**Instructor:** Ms. Alhanouf Almutairi  
+# Sillah (صلة) Family Health Management System
 
----
+Sillah is a preventive health platform focused on reducing hereditary heart disease risk in Saudi families through early detection, structured family history tracking, and timely clinical action.
 
-## :heart: Project Introduction
-
-**Sillah (صلة)** is a preventive family health management system designed to help Saudi families identify hereditary cardiac risks and take proactive steps toward early detection.
-
-The system enables users to:
-
-- Record structured family medical histories  
-- Detect inherited cardiac risk patterns  
-- Receive automated alerts and preventive recommendations  
-- Simulate preventive clinic appointment workflows  
-
-Originally developed in **SE201**, the project focused on problem definition, stakeholder identification, and high-level requirement formulation.
-
-In **SE311**, Sillah evolves into a fully engineered requirements project following the complete Requirements Engineering lifecycle:
-
-**Inception → Elicitation → Analysis → Specification → Validation → Requirements Management**
-
-This site documents the structured expansion of Sillah using formal RE methods, modeling techniques, and documentation standards.
-
----
-
-## :triangular_ruler: Project Phases
-
-<div class="grid cards" markdown>
-
-- ### Phase I — Vision & Scope  
-  Definition of the problem domain, business goals, stakeholder analysis, and system boundaries.
-
-- ### Phase II — Requirements Development  
-  Requirements elicitation, analysis, prioritization, and definition of functional and non-functional requirements.
-
-- ### Phase III — Modeling & Specification  
-  UML diagrams, goal modeling (GRL/URN), domain modeling, and full Software Requirements Specification (SRS) documentation.
-
-- ### Phase IV — Validation & Management  
-  Requirement validation techniques, prioritization strategies, traceability matrices, and change management processes.
+- **University:** Prince Sultan University (CCIS)
+- **Course:** SE311 - Software Requirements Engineering
+- **Approach:** Full requirements lifecycle from inception to management
 
 </div>
 
----
+<div class="home-grid" markdown>
 
-## :brain: Course Focus
+<div class="home-card span-4" markdown>
 
-SE311 emphasizes disciplined and structured Requirements Engineering, including:
+### Mission
 
-- Stakeholder analysis and elicitation techniques  
-- Conflict resolution and negotiation  
-- UML and goal-oriented modeling  
-- IEEE 830 documentation standards  
-- Requirements validation and verification  
-- Traceability and lifecycle management  
+Build a prevention-first system that helps families move from reactive treatment to proactive risk awareness and early intervention.
 
-Sillah serves as a comprehensive case study demonstrating how formal Requirements Engineering transforms an initial idea into a complete, validated, and traceable system specification.
+</div>
+
+<div class="home-card span-4" markdown>
+
+### Problem Area
+
+Inherited cardiac conditions are often identified late. Families need simple tools to capture health history and trigger preventive follow-up before critical events.
+
+</div>
+
+<div class="home-card span-4" markdown>
+
+### Outcome
+
+A documented software requirements baseline for a health prevention system, including validated scope, traceability, and testable requirements.
+
+</div>
+
+</div>
+
+## Prevention Impact Snapshot
+
+<div class="home-grid" markdown>
+
+<div class="metric-card span-4" markdown>
+
+<div class="metric-number">6</div>
+
+Lifecycle phases completed in this documentation set.
+
+</div>
+
+<div class="metric-card span-4" markdown>
+
+<div class="metric-number">3</div>
+
+Core stakeholder groups analyzed: families, providers, administrators.
+
+</div>
+
+<div class="metric-card span-4" markdown>
+
+<div class="metric-number">100%</div>
+
+Requirements mapped toward prevention-oriented decisions and workflows.
+
+</div>
+
+</div>
+
+<div class="callout-critical" markdown>
+
+**Why prevention matters:** cardiac risk signals in family history are often visible before severe outcomes occur. Sillah prioritizes earlier alerts, guidance, and scheduling support.
+
+</div>
+
+## Prevention Design Focus
+
+<div class="prevention-focus" markdown>
+
+<div class="home-grid" markdown>
+
+<div class="focus-card span-6" markdown>
+
+### 1) Early Risk Identification
+
+Capture and structure family history to detect inherited risk patterns as soon as possible.
+
+</div>
+
+<div class="focus-card span-6" markdown>
+
+### 2) Preventive Guidance
+
+Provide understandable recommendations and reminders that encourage regular screening and healthy behavior.
+
+</div>
+
+<div class="focus-card span-6" markdown>
+
+### 3) Clinical Readiness
+
+Support appointment simulation workflows so users can move quickly from alert to provider action.
+
+</div>
+
+<div class="focus-card span-6" markdown>
+
+### 4) Governance and Trust
+
+Use traceability, validation, and change control to keep health-related requirements reliable over time.
+
+</div>
+
+</div>
+
+</div>
+
+## SE311 Requirements Lifecycle
+
+<div class="timeline-wrap" markdown>
+
+<div class="timeline-card" markdown>
+
+### Phase 1 - Inception
+
+Defines business goals, project boundaries, and strategic context for a family cardiac prevention platform.
+
+</div>
+
+<div class="timeline-card" markdown>
+
+### Phase 2 - Elicitation
+
+Collects stakeholder needs through interviews, surveys, and document analysis to uncover prevention-driven requirements.
+
+</div>
+
+<div class="timeline-card" markdown>
+
+### Phase 3 - Analysis
+
+Converts collected inputs into structured models, prioritized requirements, and measurable quality constraints.
+
+</div>
+
+<div class="timeline-card" markdown>
+
+### Phase 4 - Specification
+
+Consolidates requirements into an SRS aligned with formal standards and implementation readiness.
+
+</div>
+
+<div class="timeline-card" markdown>
+
+### Phase 5 - Validation
+
+Verifies requirement quality and consistency to ensure the specification supports safe preventive workflows.
+
+</div>
+
+<div class="timeline-card" markdown>
+
+### Phase 6 - Requirements Management
+
+Maintains traceability and controlled change so the system can evolve without losing prevention objectives.
+
+</div>
+
+</div>
+
+## Navigate the Documentation
+
+Use the navigation tabs and side menu to explore each phase, supporting artifacts, and the final report.

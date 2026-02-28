@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://software-requirements-analysis.shoug-tech.com/sitemap.xml
