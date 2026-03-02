@@ -322,7 +322,7 @@
       border-top: 1px solid transparent;
     }
     .task-card.expanded .task-details {
-      max-height: 2500px;
+      max-height: 9000px;
       border-top: 1px solid var(--border);
       padding-top: 18px;
       margin-top: 14px;
@@ -498,6 +498,65 @@
       line-height: 1.6;
     }
 
+    .prompt-box,
+    .output-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      background: var(--surface);
+      margin-top: 10px;
+    }
+    .prompt-box { border-left: 4px solid var(--accent); }
+    .output-box { border-left: 4px solid var(--success); }
+    .box-title {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .output-template {
+      font-size: 12px;
+      color: var(--text-light);
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 8px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    .table-wrap {
+      margin-top: 10px;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card);
+    }
+    .expected-table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .expected-table th,
+    .expected-table td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      vertical-align: top;
+      color: var(--text);
+    }
+    .expected-table th {
+      background: var(--surface);
+      font-weight: 900;
+      text-align: left;
+    }
+    .expected-table .muted {
+      color: var(--text-light);
+      font-size: 12px;
+      display: block;
+      margin-top: 4px;
+    }
+
     @media (max-width: 1100px) {
       .container { flex-direction: column; }
       .sidebar { width: 100%; padding: 18px; }
@@ -549,7 +608,8 @@
           <div class="member active" data-tab="shouq">
             <div class="member-avatar">ش</div>
             <div>
-              <div class="member-name">Shoug Alomran</div>
+              <div class="member-name en-text">Shoug Alomran</div>
+              <div class="member-name ar-text">شوق العمران</div>
               <div class="member-task en-text">Elicitation Plan & Stakeholders · Family URs · Final Package</div>
               <div class="member-task ar-text">خطة الاستقصاء وأصحاب المصلحة · متطلبات الأسرة · الحزمة النهائية</div>
             </div>
@@ -558,7 +618,8 @@
           <div class="member" data-tab="ghala">
             <div class="member-avatar">غ</div>
             <div>
-              <div class="member-name">Ghala Alsaqer</div>
+              <div class="member-name en-text">Ghala Alalula</div>
+              <div class="member-name ar-text">غلا العلولا</div>
               <div class="member-task en-text">Interviews · Healthcare Provider URs</div>
               <div class="member-task ar-text">المقابلات · متطلبات مقدمي الرعاية</div>
             </div>
@@ -567,18 +628,20 @@
           <div class="member" data-tab="gala">
             <div class="member-avatar">غ</div>
             <div>
-              <div class="member-name">Gala Alalula</div>
-              <div class="member-task en-text">Survey · Admin URs</div>
-              <div class="member-task ar-text">الاستبيان · متطلبات الإداري</div>
+              <div class="member-name en-text">Gala Alsaqer</div>
+              <div class="member-name ar-text">جلا الصقر</div>
+              <div class="member-task en-text">Survey (Patients/Family) · Survey-Based URs</div>
+              <div class="member-task ar-text">الاستبيان (مرضى/أسرة) · متطلبات مبنية على الاستبيان</div>
             </div>
           </div>
 
           <div class="member" data-tab="salma">
             <div class="member-avatar">س</div>
             <div>
-              <div class="member-name">Salma Al Khaldi</div>
-              <div class="member-task en-text">Doc/Observation/Competitive · Consolidation & Prioritization</div>
-              <div class="member-task ar-text">تحليل وثائق/ملاحظة/تنافسي · دمج وترتيب</div>
+              <div class="member-name en-text">Salma Al Khaldi</div>
+              <div class="member-name ar-text">سلمى الخالدي</div>
+              <div class="member-task en-text">Official Docs (Security/Access) · RBAC/Compliance URs + Consolidation</div>
+              <div class="member-task ar-text">وثائق رسمية (أمن/وصول) · متطلبات الصلاحيات/الامتثال + دمج</div>
             </div>
           </div>
         </div>
@@ -636,18 +699,18 @@
         </button>
         <button class="tab-btn" data-tab="shared">
           <i class="fas fa-users"></i>
-          <span class="en-text">Submission Checklist</span>
-          <span class="ar-text">قائمة التسليم</span>
+          <span class="en-text">Final Submission</span>
+          <span class="ar-text">التسليم النهائي للفريق</span>
         </button>
         <button class="tab-btn" data-tab="notes">
           <i class="fas fa-sticky-note"></i>
-          <span class="en-text">Scope Notes</span>
-          <span class="ar-text">ملاحظات النطاق</span>
+          <span class="en-text">Phase 1 Alignment</span>
+          <span class="ar-text">توافقنا مع المرحلة 1</span>
         </button>
         <button class="tab-btn" data-tab="tools">
           <i class="fas fa-tools"></i>
-          <span class="en-text">Tools</span>
-          <span class="ar-text">الأدوات</span>
+          <span class="en-text">Execution Aids</span>
+          <span class="ar-text">مساعدات الشغل</span>
         </button>
       </div>
 
@@ -660,7 +723,7 @@
                 <div class="task-title en-text">Elicitation Plan + Stakeholder Analysis</div>
                 <div class="task-title ar-text">خطة الاستقصاء + تحليل أصحاب المصلحة</div>
               </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Shoug</span></div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span class="en-text">Shoug</span><span class="ar-text">شوق</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
@@ -687,7 +750,7 @@
                   <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
                 </div>
                 <ol class="steps-list">
-                  <li class="en-text"><strong>Elicitation Plan:</strong> objectives, selected techniques (interviews/survey/doc analysis/observation), schedule, resources, risks & mitigation (3–5).</li>
+                  <li class="en-text"><strong>Elicitation Plan:</strong> objectives, selected techniques (survey for patients/family, doctor interviews, official document analysis for security/access and compliance), schedule, resources, risks & mitigation (3–5).</li>
                   <li class="ar-text"><strong>خطة الاستقصاء:</strong> الأهداف، التقنيات، الجدول، الموارد، المخاطر والتخفيف (٣–٥).</li>
                   <li class="en-text"><strong>Stakeholders:</strong> list ≥6 stakeholders and how you will engage each one.</li>
                   <li class="ar-text"><strong>أصحاب المصلحة:</strong> تحديد ≥٦ وكيفية إشراك كل واحد.</li>
@@ -736,7 +799,7 @@
                 <div class="task-title en-text">Family User Requirements (Prioritized)</div>
                 <div class="task-title ar-text">متطلبات الأسرة (ذات أولوية)</div>
               </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Shoug</span></div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span class="en-text">Shoug</span><span class="ar-text">شوق</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
@@ -810,7 +873,7 @@
                 <div class="task-title en-text">Team Leader: Final Submission Package</div>
                 <div class="task-title ar-text">قائدة الفريق: الحزمة النهائية للتسليم</div>
               </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Shoug</span></div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span class="en-text">Shoug</span><span class="ar-text">شوق</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
@@ -896,19 +959,19 @@
       <!-- ========== GHALA TAB ========== -->
       <div id="ghala" class="tab-content">
         <div class="task-grid">
-          <div class="task-card" data-task="interviews">
+          <div class="task-card expanded" data-task="interviews">
             <div class="task-header">
               <div>
-                <div class="task-title en-text">Interviews (Elicitation Notes + Evidence)</div>
+                <div class="task-title en-text">Doctor Interviews (Elicitation Notes + Evidence)</div>
                 <div class="task-title ar-text">المقابلات (ملاحظات + أدلة)</div>
               </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Ghala</span></div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span class="en-text">Ghala</span><span class="ar-text">غلا</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
 
             <div class="task-summary en-text">
-              Conduct interviews and document them as elicitation notes (like the instructor example). Keep clean notes, key findings, extracted requirements, and attach evidence.
+              Conduct a small number of doctor interviews and document them as elicitation notes (like the instructor example). Keep clean notes, key findings, extracted requirements, and attach evidence.
             </div>
             <div class="task-summary ar-text">
               إجراء مقابلات وتوثيقها كملاحظات استقصاء (مثل مثال الدكتورة). ملاحظات واضحة + نتائج + متطلبات مستخلصة + أدلة.
@@ -931,13 +994,132 @@
                 <ol class="steps-list">
                   <li class="en-text"><strong>Prepare</strong> an interview guide.</li>
                   <li class="ar-text"><strong>تجهيز</strong> دليل أسئلة للمقابلة.</li>
-                  <li class="en-text"><strong>Conduct</strong> 3–5 interviews (family + healthcare provider).</li>
-                  <li class="ar-text"><strong>إجراء</strong> ٣–٥ مقابلات (عائلة + مقدم رعاية).</li>
+                  <li class="en-text"><strong>Conduct</strong> 2–3 interviews with doctors (quality over quantity).</li>
+                  <li class="ar-text"><strong>إجراء</strong> ٢–٣ مقابلات مع الأطباء (التركيز على الجودة).</li>
                   <li class="en-text"><strong>Write elicitation notes</strong>: participants, objectives, questions, answers, key findings, extracted requirements, open issues.</li>
                   <li class="ar-text"><strong>كتابة ملاحظات الاستقصاء</strong>: المشاركون، الأهداف، الأسئلة، الأجوبة، النتائج، المتطلبات، نقاط مفتوحة.</li>
                   <li class="en-text"><strong>Attach evidence</strong> (screenshots/recording log).</li>
                   <li class="ar-text"><strong>إرفاق الأدلة</strong> (لقطات/سجل التسجيل).</li>
                 </ol>
+              </div>
+
+              <div class="details-section">
+                <div class="section-title">
+                  <i class="fas fa-circle-question"></i>
+                  <span class="en-text">Useful Interview Questions (Doctors)</span><span class="ar-text">أسئلة مقابلة مفيدة (الأطباء)</span>
+                </div>
+                <div class="prompt-box">
+                  <div class="box-title en-text">Ask these to extract actionable provider requirements:</div>
+                  <div class="box-title ar-text">استخدمي هذه الأسئلة لاستخراج متطلبات واضحة من الأطباء:</div>
+                  <ul class="deliverables-list">
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Do patients usually bring structured family history, or is it incomplete?</span><span class="ar-text">هل يجلب المرضى تاريخًا عائليًا منظمًا أم غالبًا يكون ناقصًا؟</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">What minimum fields must appear in a useful family-risk summary?</span><span class="ar-text">ما أقل الحقول التي يجب أن تظهر في ملخص المخاطر العائلية؟</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Which hereditary risk patterns should trigger a high-priority alert?</span><span class="ar-text">ما الأنماط الوراثية التي يجب أن تنتج تنبيهًا عالي الأولوية؟</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">What false-alert behavior would make you stop trusting the system?</span><span class="ar-text">ما نوع التنبيهات الخاطئة الذي قد يجعلك تفقد الثقة في النظام؟</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">What recommendation wording is clinically clear but easy for families?</span><span class="ar-text">ما صياغة التوصيات المناسبة طبيًا والمفهومة للأسرة؟</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">What privacy/consent details must be visible before using patient family data?</span><span class="ar-text">ما تفاصيل الخصوصية/الموافقة التي يجب إظهارها قبل استخدام بيانات العائلة؟</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Which doctor workflow steps should be kept short to avoid extra workload?</span><span class="ar-text">ما خطوات عمل الطبيب التي يجب أن تكون قصيرة لتجنب العبء الإضافي؟</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">If appointment booking is simulated, what output still helps clinical follow-up?</span><span class="ar-text">إذا كان حجز الموعد محاكاة فقط، ما المخرجات المفيدة للمتابعة السريرية؟</span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="details-section">
+                <div class="section-title">
+                  <i class="fas fa-table-list"></i>
+                  <span class="en-text">Expected Interview Output (Match Phase 1 + Prototype)</span><span class="ar-text">مخرجات المقابلة المطلوبة (مطابقة للمرحلة 1 والنموذج)</span>
+                </div>
+                <div class="output-box">
+                  <div class="box-title en-text">Target output package from doctor interviews:</div>
+                  <div class="box-title ar-text">حزمة المخرجات المستهدفة من مقابلات الأطباء:</div>
+                  <ul class="deliverables-list">
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Interview note per session: participant role, questions, key quotes, findings, open issues.</span><span class="ar-text">ملاحظة لكل مقابلة: دور المشارك، الأسئلة، الاقتباسات، النتائج، النقاط المفتوحة.</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">8–10 provider URs mapped to evidence and MoSCoW.</span><span class="ar-text">عدد ٨–١٠ متطلبات مقدم رعاية مرتبطة بالأدلة و MoSCoW.</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Prototype validation screenshots for doctor flow using `Doctor@gmai.com` / password `Testing`.</span><span class="ar-text">لقطات تحقق لتدفق الطبيب باستخدام حساب `Doctor@gmai.com` وكلمة المرور `Testing`.</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Evidence that outputs align with Phase 1 features: risk summaries, recommendations, appointment simulation, RBAC.</span><span class="ar-text">دليل مطابقة المخرجات مع ميزات المرحلة 1: ملخصات المخاطر، التوصيات، محاكاة المواعيد، التحكم بالأدوار.</span></li>
+                  </ul>
+                  <div class="output-template en-text">Suggested UR row format:
+ID | Requirement Statement | Source (Interview Q#) | Evidence File | MoSCoW | Acceptance Criteria</div>
+                  <div class="output-template ar-text">صيغة مقترحة لصف المتطلب:
+المعرف | نص المتطلب | المصدر (رقم السؤال) | ملف الدليل | MoSCoW | معيار القبول</div>
+                  <div class="box-title en-text" style="margin-top:10px;">Expected Outcome Table (Target Data to Gather)</div>
+                  <div class="box-title ar-text" style="margin-top:10px;">جدول المخرجات المتوقعة (بيانات مستهدفة للجمع)</div>
+                  <div class="table-wrap en-text">
+                    <table class="expected-table">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Requirement Statement</th>
+                          <th>Evidence Source</th>
+                          <th>Priority</th>
+                          <th>Acceptance Criteria</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>FUR-T01</td>
+                          <td>System provides a concise hereditary risk summary for doctor review.<span class="muted">Target to validate from interviews.</span></td>
+                          <td>Doctor Interview Q2, Q3</td>
+                          <td>MUST</td>
+                          <td>Doctor can view a readable summary with key family-risk indicators in one screen.</td>
+                        </tr>
+                        <tr>
+                          <td>FUR-T02</td>
+                          <td>System generates alerts only when predefined screening rules are met.<span class="muted">Target to reduce false positives.</span></td>
+                          <td>Doctor Interview Q3, Q4</td>
+                          <td>MUST</td>
+                          <td>Alert appears only when agreed rule conditions are satisfied.</td>
+                        </tr>
+                        <tr>
+                          <td>FUR-T03</td>
+                          <td>Each alert includes a clinically clear recommendation for next action.</td>
+                          <td>Doctor Interview Q5</td>
+                          <td>SHOULD</td>
+                          <td>Alert message includes screening/follow-up recommendation understandable by families.</td>
+                        </tr>
+                        <tr>
+                          <td>NFR-T04</td>
+                          <td>System presents explicit privacy/consent information before using family data.</td>
+                          <td>Doctor Interview Q6 + Doc Analysis</td>
+                          <td>MUST</td>
+                          <td>Consent notice is visible and must be acknowledged before protected actions.</td>
+                        </tr>
+                        <tr>
+                          <td>NFR-T05</td>
+                          <td>Doctor workflow remains short and does not add unnecessary operational load.</td>
+                          <td>Doctor Interview Q7</td>
+                          <td>SHOULD</td>
+                          <td>Core doctor review workflow can be completed in minimal steps.</td>
+                        </tr>
+                        <tr>
+                          <td>FUR-T06</td>
+                          <td>Appointment simulation output supports useful follow-up planning.</td>
+                          <td>Doctor Interview Q8 + Prototype Check</td>
+                          <td>SHOULD</td>
+                          <td>System shows clear simulated booking confirmation and follow-up context.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-list-check"></i>
+                  <span class="en-text">Execution Plan (Step-by-Step + Status)</span><span class="ar-text">خطة التنفيذ (خطوة بخطوة + الحالة)</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="int_target" checked> <span class="en-text">Target stakeholder fixed: doctors only</span><span class="ar-text">تم تحديد الفئة: الأطباء فقط</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="int_size" checked> <span class="en-text">Interview size fixed: 2–3 detailed interviews</span><span class="ar-text">تم تحديد العدد: ٢–٣ مقابلات مفصلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="int_qbank" checked> <span class="en-text">Useful interview questions prepared in this plan</span><span class="ar-text">تم تجهيز أسئلة مقابلة مفيدة داخل الخطة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="int_proto_accounts" checked> <span class="en-text">Prototype doctor account ready for validation (`Doctor@gmai.com` / `Testing`)</span><span class="ar-text">حساب الطبيب جاهز للتحقق من النموذج (`Doctor@gmai.com` / `Testing`)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="int_schedule"> <span class="en-text">Schedule and confirm doctor interview slots</span><span class="ar-text">جدولة وتأكيد مواعيد المقابلات مع الأطباء</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="int_run"> <span class="en-text">Conduct interviews and capture raw notes</span><span class="ar-text">تنفيذ المقابلات وتسجيل الملاحظات الأولية</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="int_structured_notes"> <span class="en-text">Write structured elicitation notes per session</span><span class="ar-text">كتابة ملاحظات استقصاء منظمة لكل مقابلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="int_extract_urs"> <span class="en-text">Extract 8–10 provider URs + MoSCoW + trace links</span><span class="ar-text">استخراج ٨–١٠ متطلبات مقدم رعاية + MoSCoW + روابط تتبع</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="int_evidence_pack"> <span class="en-text">Attach screenshots/evidence and finalize interview package</span><span class="ar-text">إرفاق اللقطات/الأدلة وإنهاء حزمة المقابلات</span></label></li>
+                </ul>
               </div>
 
               <div class="details-section checklist-section">
@@ -960,7 +1142,7 @@
                 <div class="task-title en-text">Healthcare Provider URs (Prioritized)</div>
                 <div class="task-title ar-text">متطلبات مقدم الرعاية (ذات أولوية)</div>
               </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Ghala</span></div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span class="en-text">Ghala</span><span class="ar-text">غلا</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
@@ -1001,19 +1183,19 @@
       <!-- ========== GALA TAB ========== -->
       <div id="gala" class="tab-content">
         <div class="task-grid">
-          <div class="task-card" data-task="survey">
+          <div class="task-card expanded" data-task="survey">
             <div class="task-header">
               <div>
-                <div class="task-title en-text">Survey (Notes + Evidence)</div>
+                <div class="task-title en-text">Survey on Patients & Family Members (Notes + Evidence)</div>
                 <div class="task-title ar-text">الاستبيان (ملاحظات + أدلة)</div>
               </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Gala</span></div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span class="en-text">Gala</span><span class="ar-text">جلا</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
 
             <div class="task-summary en-text">
-              Design and deploy a bilingual survey. Keep evidence: questionnaire PDF, response export, and a short analysis summary (charts/screenshots).
+              Design and deploy a bilingual survey targeting patients and family members (including students/family network where appropriate). Keep evidence: questionnaire PDF, response export, and a short analysis summary (charts/screenshots).
             </div>
             <div class="task-summary ar-text">
               تصميم ونشر استبيان ثنائي اللغة. حفظ الأدلة: PDF للأسئلة، ملف الردود، وملخص تحليل مختصر (رسوم/لقطات).
@@ -1028,6 +1210,127 @@
             </div>
 
             <div class="task-details">
+              <div class="details-section">
+                <div class="section-title">
+                  <i class="fas fa-circle-question"></i>
+                  <span class="en-text">Useful Survey Questions (Patients/Family)</span><span class="ar-text">أسئلة استبيان مفيدة (المرضى/الأسرة)</span>
+                </div>
+                <div class="prompt-box">
+                  <div class="box-title en-text">Use mostly multiple-choice/Likert to get high-volume analyzable data:</div>
+                  <div class="box-title ar-text">يفضل أسئلة اختيار/مقياس ليكرت للحصول على بيانات كثيرة قابلة للتحليل:</div>
+                  <ul class="deliverables-list">
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">How do you currently track family medical history? (paper / memory / app / not tracked)</span><span class="ar-text">كيف تتبعون حاليًا التاريخ الصحي العائلي؟ (ورقي/بالذاكرة/تطبيق/لا يوجد)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">How difficult is it to collect health info from all family members? (1–5)</span><span class="ar-text">ما مدى صعوبة جمع المعلومات الصحية من كل أفراد الأسرة؟ (١–٥)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Which conditions are most important to track? (heart disease, diabetes, hypertension, cholesterol, other)</span><span class="ar-text">ما الحالات الأهم للتتبع؟ (أمراض القلب، السكري، الضغط، الكوليسترول، أخرى)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Would automated hereditary-risk alerts be useful to you? (1–5)</span><span class="ar-text">هل التنبيهات الآلية للمخاطر الوراثية مفيدة لك؟ (١–٥)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Which alert channels do you prefer? (in-app / SMS / email)</span><span class="ar-text">ما قناة التنبيه المفضلة؟ (داخل التطبيق/رسائل/SMS/إيميل)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Would you follow personalized recommendations for screening/follow-up? (yes/no/maybe)</span><span class="ar-text">هل ستلتزم بتوصيات مخصصة للفحص/المتابعة؟ (نعم/لا/ربما)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">How important is Arabic/English bilingual support? (1–5)</span><span class="ar-text">ما أهمية دعم العربي/الإنجليزي؟ (١–٥)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">What privacy control do you expect before sharing family data? (consent popup / role limits / both)</span><span class="ar-text">ما خيار الخصوصية المتوقع قبل مشاركة بيانات العائلة؟ (موافقة/صلاحيات/كلاهما)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Would appointment booking simulation help you plan checkups? (1–5)</span><span class="ar-text">هل محاكاة حجز المواعيد تساعدك في التخطيط للمتابعة؟ (١–٥)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Open question: what one feature would make you trust and keep using Sillah?</span><span class="ar-text">سؤال مفتوح: ما الميزة الأهم التي تجعلك تثق وتستمر باستخدام صلة؟</span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="details-section">
+                <div class="section-title">
+                  <i class="fas fa-table-list"></i>
+                  <span class="en-text">Expected Survey Output (Match Phase 1 + Prototype)</span><span class="ar-text">مخرجات الاستبيان المطلوبة (مطابقة للمرحلة 1 والنموذج)</span>
+                </div>
+                <div class="output-box">
+                  <div class="box-title en-text">Target output package from survey analysis:</div>
+                  <div class="box-title ar-text">حزمة المخرجات المستهدفة من تحليل الاستبيان:</div>
+                  <ul class="deliverables-list">
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Questionnaire file (EN/AR) + response export + charts/screenshots.</span><span class="ar-text">ملف الاستبيان (عربي/إنجليزي) + تصدير الردود + رسوم/لقطات.</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">8–10 survey-derived patient/family URs with MoSCoW and evidence links.</span><span class="ar-text">عدد ٨–١٠ متطلبات مرضى/أسرة مشتقة من الاستبيان مع MoSCoW وروابط الأدلة.</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Prototype fit check using both roles on sillah-app.shoug-tech.com: `patient@gmai.com` + `Doctor@gmai.com` (password `Testing`).</span><span class="ar-text">فحص توافق مع النموذج باستخدام حسابي المريض والطبيب على الموقع مع كلمة المرور `Testing`.</span></li>
+                    <li><i class="fas fa-check-circle"></i><span class="en-text">Coverage proof for Phase 1 core features: family management, health event recording, risk alerts, recommendations, awareness hub, appointment simulation.</span><span class="ar-text">إثبات تغطية ميزات المرحلة 1: إدارة الأسرة، تسجيل الأحداث، تنبيهات المخاطر، التوصيات، التوعية، محاكاة المواعيد.</span></li>
+                  </ul>
+                  <div class="output-template en-text">Suggested summary metrics:
+N respondents | Top 5 needs by % | Top privacy concern | Preferred alert channel | UR candidates generated</div>
+                  <div class="output-template ar-text">مؤشرات ملخص مقترحة:
+عدد المشاركين | أعلى ٥ احتياجات بالنسبة | أهم قلق خصوصية | قناة التنبيه المفضلة | عدد المتطلبات المستخرجة</div>
+                  <div class="box-title en-text" style="margin-top:10px;">Expected Outcome Table (Target Data to Gather)</div>
+                  <div class="box-title ar-text" style="margin-top:10px;">جدول المخرجات المتوقعة (بيانات مستهدفة للجمع)</div>
+                  <div class="table-wrap en-text">
+                    <table class="expected-table">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Requirement Statement</th>
+                          <th>Evidence Source</th>
+                          <th>Priority</th>
+                          <th>Acceptance Criteria</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>FUR-T07</td>
+                          <td>System allows users to create and manage multiple family member profiles.<span class="muted">Validate demand level from survey.</span></td>
+                          <td>Survey Q1, Q2</td>
+                          <td>MUST</td>
+                          <td>Users can add, edit, and delete family profiles successfully.</td>
+                        </tr>
+                        <tr>
+                          <td>FUR-T08</td>
+                          <td>System records hereditary conditions (heart disease, diabetes, hypertension, cholesterol).</td>
+                          <td>Survey Q3</td>
+                          <td>MUST</td>
+                          <td>Entered condition data is saved and retrievable in user history.</td>
+                        </tr>
+                        <tr>
+                          <td>FUR-T09</td>
+                          <td>System generates personalized preventive alerts for hereditary risk patterns.</td>
+                          <td>Survey Q4 + Interview evidence</td>
+                          <td>MUST</td>
+                          <td>Users receive alerts when configured screening criteria are met.</td>
+                        </tr>
+                        <tr>
+                          <td>FUR-T10</td>
+                          <td>System supports bilingual UI (Arabic RTL and English LTR).</td>
+                          <td>Survey Q7 + Prototype Check</td>
+                          <td>MUST</td>
+                          <td>Users can switch languages and layout direction updates correctly.</td>
+                        </tr>
+                        <tr>
+                          <td>NFR-T11</td>
+                          <td>System enforces privacy controls and role-based access for sensitive health data.</td>
+                          <td>Survey Q8 + Doc Analysis</td>
+                          <td>MUST</td>
+                          <td>Only authorized roles can access protected features and data views.</td>
+                        </tr>
+                        <tr>
+                          <td>FUR-T12</td>
+                          <td>System provides simulated clinic appointment booking for follow-up planning.</td>
+                          <td>Survey Q9 + Prototype Check</td>
+                          <td>SHOULD</td>
+                          <td>User receives booking simulation confirmation after submission.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="details-section checklist-section">
+                <div class="section-title">
+                  <i class="fas fa-list-check"></i>
+                  <span class="en-text">Execution Plan (Step-by-Step + Status)</span><span class="ar-text">خطة التنفيذ (خطوة بخطوة + الحالة)</span>
+                </div>
+                <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="sur_target" checked> <span class="en-text">Survey audience fixed: patients + family members (including students/family network)</span><span class="ar-text">تم تحديد عينة الاستبيان: المرضى + أفراد الأسرة (بما يشمل شبكة الطلاب/العائلة)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="sur_qbank" checked> <span class="en-text">Useful survey question bank prepared in this plan</span><span class="ar-text">تم تجهيز بنك أسئلة الاستبيان داخل الخطة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="sur_proto_accounts" checked> <span class="en-text">Prototype validation accounts prepared (`patient@gmai.com` + `Doctor@gmai.com`, password `Testing`)</span><span class="ar-text">تم تجهيز حسابات التحقق من النموذج (`patient@gmai.com` + `Doctor@gmai.com`، كلمة المرور `Testing`)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="sur_form_build"> <span class="en-text">Build bilingual survey form (EN/AR)</span><span class="ar-text">بناء نموذج استبيان ثنائي اللغة (عربي/إنجليزي)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="sur_publish"> <span class="en-text">Publish/distribute survey link to target respondents</span><span class="ar-text">نشر/توزيع رابط الاستبيان على العينة المستهدفة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="sur_export"> <span class="en-text">Export responses and clean dataset</span><span class="ar-text">تصدير الردود وتنظيف البيانات</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="sur_analyze"> <span class="en-text">Create charts + concise findings summary</span><span class="ar-text">إعداد الرسوم + ملخص نتائج مختصر</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="sur_extract_urs"> <span class="en-text">Derive 8–10 survey-based URs + MoSCoW + trace links</span><span class="ar-text">اشتقاق ٨–١٠ متطلبات من الاستبيان + MoSCoW + روابط تتبع</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="sur_pack"> <span class="en-text">Finalize survey evidence package (questionnaire, export, charts, UR mapping)</span><span class="ar-text">إنهاء حزمة أدلة الاستبيان (الأسئلة، التصدير، الرسوم، ربط المتطلبات)</span></label></li>
+                </ul>
+              </div>
+
               <div class="details-section checklist-section">
                 <div class="section-title">
                   <i class="fas fa-check-square"></i>
@@ -1045,19 +1348,19 @@
           <div class="task-card" data-task="adminURs">
             <div class="task-header">
               <div>
-                <div class="task-title en-text">Administrator URs (Prioritized)</div>
-                <div class="task-title ar-text">متطلبات الإداري (ذات أولوية)</div>
+                <div class="task-title en-text">Patient/Family URs from Survey (Prioritized)</div>
+                <div class="task-title ar-text">متطلبات المرضى/الأسرة من الاستبيان (ذات أولوية)</div>
               </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Gala</span></div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span class="en-text">Gala</span><span class="ar-text">جلا</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
 
             <div class="task-summary en-text">
-              Derive 8–10 admin requirements from survey + other evidence. Prioritize using MoSCoW and link each requirement to evidence.
+              Derive 8–10 patient/family requirements from survey evidence. Prioritize using MoSCoW and link each requirement to evidence.
             </div>
             <div class="task-summary ar-text">
-              اشتقاق ٨–١٠ متطلبات للإداري من الاستبيان + الأدلة الأخرى. ترتيب باستخدام MoSCoW وربط كل متطلب بالدليل.
+              اشتقاق ٨–١٠ متطلبات للمرضى/الأسرة من أدلة الاستبيان. ترتيب باستخدام MoSCoW وربط كل متطلب بالدليل.
             </div>
 
             <div class="progress-container">
@@ -1075,7 +1378,7 @@
                   <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
                 </div>
                 <ul class="deliverables-list checklist">
-                  <li><label><input type="checkbox" class="progress-check" data-check="adminUR"> <span class="en-text">Admin UR list (8–10) written</span><span class="ar-text">كتابة متطلبات الإداري (٨–١٠)</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="adminUR"> <span class="en-text">Survey UR list (8–10) written</span><span class="ar-text">كتابة متطلبات الاستبيان (٨–١٠)</span></label></li>
                   <li><label><input type="checkbox" class="progress-check" data-check="adminMoscow"> <span class="en-text">MoSCoW priority assigned</span><span class="ar-text">تحديد الأولوية (MoSCoW)</span></label></li>
                   <li><label><input type="checkbox" class="progress-check" data-check="adminTrace"> <span class="en-text">Each UR links to evidence</span><span class="ar-text">ربط كل متطلب بدليل</span></label></li>
                 </ul>
@@ -1092,19 +1395,19 @@
           <div class="task-card" data-task="docObsComp">
             <div class="task-header">
               <div>
-                <div class="task-title en-text">Document/Observation/Competitive (Evidence)</div>
-                <div class="task-title ar-text">وثائق/ملاحظة/تنافسي (أدلة)</div>
+                <div class="task-title en-text">Official Documents (Security/Access & Compliance) + Evidence</div>
+                <div class="task-title ar-text">وثائق رسمية (أمن/وصول وامتثال) + أدلة داعمة</div>
               </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Salma</span></div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span class="en-text">Salma</span><span class="ar-text">سلمى</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
 
             <div class="task-summary en-text">
-              Analyze documents and/or apps and record findings as elicitation evidence. Keep screenshots/links and write clear notes that point to extracted requirements.
+              Analyze official documents for security/access and compliance constraints (RBAC, authentication, privacy/consent) and record findings as elicitation evidence. Supporting observation/competitive notes are optional add-ons.
             </div>
             <div class="task-summary ar-text">
-              تحليل وثائق و/أو تطبيقات وتوثيق النتائج كأدلة استقصاء. حفظ لقطات/روابط وكتابة ملاحظات واضحة لاستخراج المتطلبات.
+              حلّلوا الوثائق الرسمية لقيود الأمن/الوصول والامتثال (الصلاحيات، التحقق، الخصوصية/الموافقة) ووثّقوا النتائج كأدلة استقصاء. الملاحظة والتحليل التنافسي إضافي إذا احتجتوه.
             </div>
 
             <div class="progress-container">
@@ -1122,7 +1425,7 @@
                   <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
                 </div>
                 <ul class="deliverables-list checklist">
-                  <li><label><input type="checkbox" class="progress-check" data-check="doc"> <span class="en-text">Document analysis notes + evidence</span><span class="ar-text">ملاحظات تحليل الوثائق + أدلة</span></label></li>
+                  <li><label><input type="checkbox" class="progress-check" data-check="doc"> <span class="en-text">Official document analysis notes + evidence</span><span class="ar-text">ملاحظات تحليل الوثائق الرسمية + أدلة</span></label></li>
                   <li><label><input type="checkbox" class="progress-check" data-check="obs"> <span class="en-text">Observation notes + evidence</span><span class="ar-text">ملاحظات الملاحظة + أدلة</span></label></li>
                   <li><label><input type="checkbox" class="progress-check" data-check="comp"> <span class="en-text">Competitive analysis notes + screenshots</span><span class="ar-text">تحليل تنافسي + لقطات</span></label></li>
                 </ul>
@@ -1133,19 +1436,19 @@
           <div class="task-card" data-task="consolidation">
             <div class="task-header">
               <div>
-                <div class="task-title en-text">Consolidation + Prioritization (Master)</div>
-                <div class="task-title ar-text">الدمج + ترتيب الأولويات (قائمة رئيسية)</div>
+                <div class="task-title en-text">Security/Access (RBAC/Compliance) URs + Consolidation (Master)</div>
+                <div class="task-title ar-text">متطلبات الأمن/الوصول (الصلاحيات/الامتثال) + دمج نهائي (قائمة رئيسية)</div>
               </div>
-              <div class="task-assignee"><i class="fas fa-user-check"></i><span>Salma</span></div>
+              <div class="task-assignee"><i class="fas fa-user-check"></i><span class="en-text">Salma</span><span class="ar-text">سلمى</span></div>
             </div>
 
             <i class="fas fa-chevron-down expand-icon"></i>
 
             <div class="task-summary en-text">
-              Combine URs from all members, remove duplicates, keep traceability, and produce one prioritized master list using MoSCoW (no extra scoring rules unless required by instructor).
+              Extract security/access & compliance URs from official documents, then combine URs from all members, remove duplicates, keep traceability, and produce one prioritized master list using MoSCoW.
             </div>
             <div class="task-summary ar-text">
-              دمج المتطلبات من الجميع، إزالة التكرار، الحفاظ على التتبع، وإنشاء قائمة موحدة ذات أولوية باستخدام MoSCoW (بدون قواعد تقييم إضافية إلا إذا كانت مطلوبة).
+              استخرجوا متطلبات الأمن/الوصول والامتثال من الوثائق الرسمية، وبعدها ادمجوا متطلبات كل الفريق، شيّلوا التكرار، حافظوا على التتبع، وطلّعوا قائمة موحدة مرتبة بـ MoSCoW.
             </div>
 
             <div class="progress-container">
@@ -1163,14 +1466,16 @@
                   <span class="en-text">Step-by-Step</span><span class="ar-text">تعليمات خطوة بخطوة</span>
                 </div>
                 <ol class="steps-list">
-                  <li class="en-text"><strong>Collect</strong> the three UR lists (family/provider/admin).</li>
-                  <li class="ar-text"><strong>جمع</strong> قوائم المتطلبات الثلاث.</li>
+                  <li class="en-text"><strong>Extract security/access & compliance URs</strong> from official documents first (with evidence links).</li>
+                  <li class="ar-text"><strong>استخرجوا متطلبات الأمن/الوصول والامتثال</strong> من الوثائق الرسمية أول شي (مع روابط الأدلة).</li>
+                  <li class="en-text"><strong>Collect</strong> the UR lists (family/provider/survey-based).</li>
+                  <li class="ar-text"><strong>اجمعوا</strong> قوائم المتطلبات الثلاث.</li>
                   <li class="en-text"><strong>Remove duplicates</strong> and merge similar requirements.</li>
-                  <li class="ar-text"><strong>إزالة التكرار</strong> ودمج المتطلبات المتشابهة.</li>
+                  <li class="ar-text"><strong>شيّلوا التكرار</strong> وادمجوا المتطلبات المتشابهة.</li>
                   <li class="en-text"><strong>Maintain traceability</strong> (each master UR must reference evidence and source owner).</li>
-                  <li class="ar-text"><strong>الحفاظ على التتبع</strong> (كل متطلب في القائمة مرتبط بدليل وصاحبه).</li>
+                  <li class="ar-text"><strong>حافظوا على التتبع</strong> (كل متطلب في القائمة مربوط بدليل وصاحبه).</li>
                   <li class="en-text"><strong>Prioritize using MoSCoW</strong> based on team agreement + dependencies.</li>
-                  <li class="ar-text"><strong>ترتيب باستخدام MoSCoW</strong> بناءً على اتفاق الفريق + التبعيات.</li>
+                  <li class="ar-text"><strong>رتّبوا بـ MoSCoW</strong> بناءً على اتفاق الفريق + التبعيات.</li>
                 </ol>
               </div>
 
@@ -1180,6 +1485,7 @@
                   <span class="en-text">Checklist</span><span class="ar-text">قائمة التحقق</span>
                 </div>
                 <ul class="deliverables-list checklist">
+                  <li><label><input type="checkbox" class="progress-check" data-check="adminLegal"> <span class="en-text">Security/Access & Compliance UR list extracted from official docs</span><span class="ar-text">تم استخراج قائمة متطلبات الأمن/الوصول والامتثال من الوثائق الرسمية</span></label></li>
                   <li><label><input type="checkbox" class="progress-check" data-check="master"> <span class="en-text">Master UR list created</span><span class="ar-text">إنشاء قائمة موحدة</span></label></li>
                   <li><label><input type="checkbox" class="progress-check" data-check="moscow"> <span class="en-text">MoSCoW priorities assigned</span><span class="ar-text">تحديد الأولويات (MoSCoW)</span></label></li>
                   <li><label><input type="checkbox" class="progress-check" data-check="trace"> <span class="en-text">Traceability maintained</span><span class="ar-text">الحفاظ على التتبع</span></label></li>
@@ -1198,41 +1504,41 @@
           <div class="collaboration-card">
             <div class="collab-title">
               <i class="fas fa-file-circle-check"></i>
-              <span class="en-text">What the Instructor Asked For</span>
-              <span class="ar-text">المطلوب حسب الدكتورة</span>
+              <span class="en-text">Phase 2 Final Deliverables (Required)</span>
+              <span class="ar-text">تسليمات المرحلة 2 النهائية (لازم)</span>
             </div>
 
             <div class="en-text" style="margin-bottom: 12px; color: var(--text-light);">
-              <strong>Team leader submits:</strong><br/>
-              1) Elicitation notes + evidence (interviews, surveys, etc.)<br/>
-              2) A list of prioritized user requirements (on behalf of the team)
+              <strong>Team leader submission must include:</strong><br/>
+              1) Elicitation notes + evidence from all streams (doctor interviews, patient/family survey, official documents)<br/>
+              2) Prioritized user requirements list(s) with traceability (evidence source for each UR)
             </div>
             <div class="ar-text" style="margin-bottom: 12px; color: var(--text-light);">
-              <strong>قائدة الفريق تسلم:</strong><br/>
-              ١) ملاحظات الاستقصاء + الأدلة (مقابلات، استبيانات، إلخ)<br/>
-              ٢) قائمة متطلبات مستخدم ذات أولوية (بالنيابة عن الفريق)
+              <strong>تسليم قائدة الفريق لازم يشمل:</strong><br/>
+              ١) ملاحظات الاستقصاء + الأدلة من كل المسارات (مقابلات الأطباء، استبيان المرضى/الأسرة، الوثائق الرسمية)<br/>
+              ٢) قوائم متطلبات المستخدم المرتبة بالأولوية مع التتبع (مصدر دليل لكل متطلب)
             </div>
 
             <ul class="deliverables-list checklist">
               <li>
                 <label>
                   <input type="checkbox" class="progress-check" data-check="sub_evidence">
-                  <span class="en-text">Elicitation notes + evidence folder ready</span>
-                  <span class="ar-text">مجلد الملاحظات + الأدلة جاهز</span>
+                  <span class="en-text">All elicitation notes + evidence ready (Interviews/Survey/Docs)</span>
+                  <span class="ar-text">كل ملاحظات وأدلة الاستقصاء جاهزة (مقابلات/استبيان/وثائق)</span>
                 </label>
               </li>
               <li>
                 <label>
                   <input type="checkbox" class="progress-check" data-check="sub_prioritized">
-                  <span class="en-text">Prioritized user requirements list ready</span>
-                  <span class="ar-text">قائمة المتطلبات ذات الأولوية جاهزة</span>
+                  <span class="en-text">Prioritized URs ready with ID + priority + acceptance criteria + evidence link</span>
+                  <span class="ar-text">المتطلبات المرتبة جاهزة مع المعرف + الأولوية + معيار القبول + رابط الدليل</span>
                 </label>
               </li>
               <li>
                 <label>
                   <input type="checkbox" class="progress-check" data-check="sub_zip">
-                  <span class="en-text">Final .zip packaged for submission</span>
-                  <span class="ar-text">الملف المضغوط النهائي جاهز للتسليم</span>
+                  <span class="en-text">Final submission package reviewed and zipped</span>
+                  <span class="ar-text">تمت مراجعة حزمة التسليم النهائية وانضغطت</span>
                 </label>
               </li>
             </ul>
@@ -1247,19 +1553,86 @@
 
           <div class="collaboration-card">
             <div class="collab-title">
+              <i class="fas fa-clipboard-check"></i>
+              <span class="en-text">Current Team Status (March 3, 2026)</span>
+              <span class="ar-text">حالة الفريق الحالية (٣ مارس ٢٠٢٦)</span>
+            </div>
+
+            <ul class="deliverables-list checklist">
+              <li>
+                <label>
+                  <input type="checkbox" checked>
+                  <span class="en-text">Submission requirements clarified with instructor task statement</span>
+                  <span class="ar-text">تم توضيح متطلبات التسليم حسب المطلوب</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" checked>
+                  <span class="en-text">Data collection strategy finalized: survey targets patients/family members</span>
+                  <span class="ar-text">تم اعتماد استراتيجية جمع البيانات: الاستبيان للمرضى/أفراد الأسرة</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" checked>
+                  <span class="en-text">Interview strategy finalized: limited detailed interviews with doctors</span>
+                  <span class="ar-text">تم اعتماد استراتيجية المقابلات: عدد محدود ومفصل مع الأطباء</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" checked>
+                  <span class="en-text">Security/access & compliance evidence source finalized: official documents</span>
+                  <span class="ar-text">تم اعتماد مصدر أدلة الأمن/الوصول والامتثال: وثائق رسمية</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox">
+                  <span class="en-text">Survey responses collected and exported</span>
+                  <span class="ar-text">جمع وتصدير ردود الاستبيان</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox">
+                  <span class="en-text">Doctor interviews completed and documented</span>
+                  <span class="ar-text">إتمام مقابلات الأطباء وتوثيقها</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox">
+                  <span class="en-text">Official documents analyzed and security/access-compliance URs extracted</span>
+                  <span class="ar-text">تحليل الوثائق الرسمية واستخراج متطلبات الأمن/الوصول والامتثال</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox">
+                  <span class="en-text">Master prioritized UR list + final evidence package ready</span>
+                  <span class="ar-text">جاهزية القائمة الموحدة ذات الأولوية + حزمة الأدلة النهائية</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="collaboration-card">
+            <div class="collab-title">
               <i class="fas fa-folder-open"></i>
-              <span class="en-text">Suggested Folder Layout (Optional)</span>
-              <span class="ar-text">هيكل مجلدات مقترح (اختياري)</span>
+              <span class="en-text">Package Structure (Recommended)</span>
+              <span class="ar-text">هيكل الحزمة (مقترح)</span>
             </div>
 
             <ul class="deliverables-list">
-              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Evidence/</strong> (Interviews/, Survey/, Observation/, Docs/, Competitive/)</span><span class="ar-text"><strong>Evidence/</strong> (Interviews/, Survey/, Observation/, Docs/, Competitive/)</span></li>
-              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Prioritized_URs/</strong> (Family_URs.docx, Provider_URs.docx, Admin_URs.docx, Master_URs.docx)</span><span class="ar-text"><strong>Prioritized_URs/</strong> (Family_URs.docx, Provider_URs.docx, Admin_URs.docx, Master_URs.docx)</span></li>
-              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Submission.zip</strong></span><span class="ar-text"><strong>Submission.zip</strong></span></li>
+              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Evidence/</strong> (Interviews/, Survey/, Observation/, Docs/, Competitive/)</span><span class="ar-text"><strong>Evidence/</strong> (مقابلات/، استبيان/، ملاحظة/، وثائق/، تحليل تنافسي/)</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Prioritized_URs/</strong> (Family_URs.docx, Provider_URs.docx, Security_Access_Compliance_URs.docx, Master_URs.docx)</span><span class="ar-text"><strong>Prioritized_URs/</strong> (متطلبات_الأسرة.docx، متطلبات_مقدم_الرعاية.docx، متطلبات_الأمن_والوصول_والامتثال.docx، القائمة_الموحدة.docx)</span></li>
+              <li><i class="fas fa-check-circle"></i><span class="en-text"><strong>Submission.zip</strong></span><span class="ar-text"><strong>الملف_النهائي.zip</strong></span></li>
             </ul>
 
-            <div class="hint en-text">Only use this if your team needs structure; it’s not “official” unless your instructor says so.</div>
-            <div class="hint ar-text">استخدميه فقط للتنظيم الداخلي؛ مو رسمي إلا إذا الدكتورة قالت.</div>
+            <div class="hint en-text">This structure keeps evidence traceable and prevents missing files at submission time.</div>
+            <div class="hint ar-text">هذا الهيكل يساعدكم على التتبع ويقلل نسيان أي ملف وقت التسليم.</div>
           </div>
         </div>
       </div>
@@ -1270,20 +1643,22 @@
           <div class="note-card">
             <div class="note-title">
               <i class="fas fa-lightbulb"></i>
-              <span class="en-text">Scope Notes (Keep as “Working Draft”)</span>
-              <span class="ar-text">ملاحظات النطاق (مسودة عمل)</span>
+              <span class="en-text">Phase 1 Alignment Checkpoints</span>
+              <span class="ar-text">نقاط التوافق مع المرحلة 1</span>
             </div>
 
             <div class="en-text" style="color: var(--text-light); line-height: 1.75;">
-              <p><strong>✅ In scope (draft):</strong> family member management, recording health events, rule-based risk alerts (as agreed by the team), awareness content, bilingual UI (AR/EN).</p>
-              <p><strong>🚫 Out of scope (draft):</strong> real medical diagnosis, integration with hospital/EHR systems, AI/ML predictions, real-time clinic availability.</p>
-              <p><strong>⚠️ Important:</strong> Do not present legal/compliance standards or numeric targets as final requirements unless you have evidence and the instructor asked for them. Treat them as “to validate”.</p>
+              <p><strong>✅ Keep these as core requirement targets:</strong> family profile management, hereditary condition recording, rule-based risk alerts, recommendations, alert history, bilingual UI (AR/EN), simulated appointments, RBAC/authentication.</p>
+              <p><strong>✅ Current elicitation strategy (approved):</strong> survey = patients/family, interviews = doctors (2–3 deep sessions), security/access/compliance = official documents.</p>
+              <p><strong>🚫 Keep out of current release:</strong> real diagnosis, real EHR integration, AI prediction, real-time clinic availability.</p>
+              <p><strong>⚠️ Evidence rule:</strong> any requirement kept in final list must link to at least one evidence item (survey result, interview note, document source, or prototype check).</p>
             </div>
 
             <div class="ar-text" style="color: var(--text-light); line-height: 1.75;">
-              <p><strong>✅ ضمن النطاق (مسودة):</strong> إدارة أفراد الأسرة، تسجيل الأحداث الصحية، تنبيهات مخاطر مبنية على قواعد (حسب اتفاق الفريق)، محتوى توعوي، واجهة ثنائية اللغة (عربي/إنجليزي).</p>
-              <p><strong>🚫 خارج النطاق (مسودة):</strong> تشخيص طبي حقيقي، تكامل مع أنظمة المستشفيات/السجلات، تنبؤ بالذكاء الاصطناعي، توفر عيادات بشكل لحظي.</p>
-              <p><strong>⚠️ مهم:</strong> لا تعرضي المعايير القانونية/الامتثال أو أرقام كأهداف كأنها متطلبات نهائية إلا إذا عندكم دليل والدكتورة طلبتها. اعتبريها “للتأكد”.</p>
+              <p><strong>✅ هذي الأهداف الأساسية للمتطلبات:</strong> إدارة ملفات الأسرة، تسجيل الحالات الوراثية، تنبيهات مخاطر مبنية على قواعد، التوصيات، سجل التنبيهات، واجهة ثنائية اللغة، محاكاة المواعيد، الصلاحيات/التحقق.</p>
+              <p><strong>✅ خطة الاستقصاء الحالية (معتمدة):</strong> الاستبيان = مرضى/أسرة، المقابلات = أطباء (٢–٣ مقابلات متعمقة)، الأمن/الوصول/الامتثال = وثائق رسمية.</p>
+              <p><strong>🚫 برا نطاق الإصدار الحالي:</strong> تشخيص طبي فعلي، تكامل فعلي مع السجلات الطبية، تنبؤ ذكاء اصطناعي، توفر عيادات بشكل لحظي.</p>
+              <p><strong>⚠️ قاعدة الأدلة:</strong> أي متطلب في القائمة النهائية لازم يكون مربوط بدليل واحد على الأقل (نتيجة استبيان، ملاحظة مقابلة، مصدر وثيقة، أو تحقق من النموذج).</p>
             </div>
           </div>
         </div>
@@ -1294,42 +1669,42 @@
         <div class="tools-grid">
           <div class="tool-card">
             <div class="tool-icon"><i class="fas fa-file-signature"></i></div>
-            <div class="tool-name en-text">Elicitation Note Template</div>
-            <div class="tool-name ar-text">قالب ملاحظات الاستقصاء</div>
-            <div class="tool-category en-text">Interviews / Survey / Observation</div>
-            <div class="tool-category ar-text">مقابلات / استبيان / ملاحظة</div>
-            <p class="tool-desc en-text">Use a consistent structure: participants, objectives, questions, answers, findings, extracted requirements, open issues, evidence.</p>
-            <p class="tool-desc ar-text">استخدمي هيكل ثابت: المشاركون، الأهداف، الأسئلة، الأجوبة، النتائج، المتطلبات، نقاط مفتوحة، الأدلة.</p>
+            <div class="tool-name en-text">Interview Output Pack</div>
+            <div class="tool-name ar-text">حزمة مخرجات المقابلات</div>
+            <div class="tool-category en-text">Doctors (2–3 sessions)</div>
+            <div class="tool-category ar-text">الأطباء (٢–٣ جلسات)</div>
+            <p class="tool-desc en-text">Deliver: interview guide, session notes, extracted provider URs (ID/priority/acceptance), and evidence screenshots from doctor flow.</p>
+            <p class="tool-desc ar-text">المطلوب: دليل المقابلة، ملاحظات الجلسات، متطلبات مقدم الرعاية (معرف/أولوية/معيار قبول)، ولقطات أدلة من تدفق الطبيب.</p>
           </div>
 
           <div class="tool-card">
             <div class="tool-icon"><i class="fas fa-table"></i></div>
-            <div class="tool-name en-text">Requirements List</div>
-            <div class="tool-name ar-text">قائمة المتطلبات</div>
-            <div class="tool-category en-text">UR + MoSCoW</div>
-            <div class="tool-category ar-text">UR + MoSCoW</div>
-            <p class="tool-desc en-text">Keep each UR linked to evidence and prioritized (Must/Should/Could/Won’t).</p>
-            <p class="tool-desc ar-text">خلي كل متطلب مرتبط بدليل وله أولوية (Must/Should/Could/Won’t).</p>
+            <div class="tool-name en-text">Survey Output Pack</div>
+            <div class="tool-name ar-text">حزمة مخرجات الاستبيان</div>
+            <div class="tool-category en-text">Patients / Family</div>
+            <div class="tool-category ar-text">المرضى / الأسرة</div>
+            <p class="tool-desc en-text">Deliver: bilingual questionnaire, response export, charts summary, and survey-derived UR table matching your required format.</p>
+            <p class="tool-desc ar-text">المطلوب: استبيان ثنائي اللغة، تصدير الردود، ملخص الرسوم، وجدول متطلبات مشتق من الاستبيان بنفس الصيغة المطلوبة.</p>
           </div>
 
           <div class="tool-card">
             <div class="tool-icon"><i class="fas fa-cloud"></i></div>
-            <div class="tool-name en-text">Collaboration</div>
-            <div class="tool-name ar-text">التعاون</div>
-            <div class="tool-category en-text">Team Work</div>
-            <div class="tool-category ar-text">عمل الفريق</div>
-            <p class="tool-desc en-text">Shared drive + clear evidence folders + one UR format.</p>
-            <p class="tool-desc ar-text">مجلد مشترك + أدلة مرتبة + صيغة موحدة للمتطلبات.</p>
+            <div class="tool-name en-text">Security/Access Evidence Pack</div>
+            <div class="tool-name ar-text">حزمة أدلة الأمن/الوصول</div>
+            <div class="tool-category en-text">Official Documents</div>
+            <div class="tool-category ar-text">وثائق رسمية</div>
+            <p class="tool-desc en-text">Deliver: RBAC/auth/privacy-consent constraints with source references and extracted URs for security/compliance scope.</p>
+            <p class="tool-desc ar-text">المطلوب: قيود الصلاحيات/التحقق/الخصوصية والموافقة مع المراجع، واستخراج متطلبات لنطاق الأمن والامتثال.</p>
           </div>
 
           <div class="tool-card">
             <div class="tool-icon"><i class="fas fa-code-branch"></i></div>
-            <div class="tool-name en-text">Versioning</div>
-            <div class="tool-name ar-text">إدارة الإصدارات</div>
-            <div class="tool-category en-text">Optional</div>
-            <div class="tool-category ar-text">اختياري</div>
-            <p class="tool-desc en-text">If your instructor didn’t require naming rules, keep it simple and consistent.</p>
-            <p class="tool-desc ar-text">إذا الدكتورة ما طلبت نظام تسمية، خليها بسيطة وثابتة.</p>
+            <div class="tool-name en-text">Master Merge Rules</div>
+            <div class="tool-name ar-text">قواعد الدمج النهائي</div>
+            <div class="tool-category en-text">Traceability + MoSCoW</div>
+            <div class="tool-category ar-text">التتبع + MoSCoW</div>
+            <p class="tool-desc en-text">Before final zip: remove duplicates, keep one UR format, enforce evidence link per UR, then finalize master prioritized list.</p>
+            <p class="tool-desc ar-text">قبل الضغط النهائي: شيّلوا التكرار، وحّدوا صيغة المتطلبات، لازم كل متطلب معه رابط دليل، وبعدها اعتمدوا القائمة الموحدة النهائية.</p>
           </div>
         </div>
       </div>
@@ -1362,6 +1737,7 @@
           if (content) content.classList.add("active");
 
           closeAllExpandedCards();
+          openDefaultCardsForTab(tabId);
           document.querySelectorAll(".task-card").forEach(updateProgressUI);
         });
       });
@@ -1374,6 +1750,8 @@
       function switchLanguage(lang) {
         langEnBtn.classList.remove("active");
         langArBtn.classList.remove("active");
+        const searchInputEl = document.getElementById("searchInput");
+        const inlineTags = new Set(["SPAN", "I", "B", "STRONG", "SMALL", "A"]);
 
         if (lang === "en") {
           langEnBtn.classList.add("active");
@@ -1381,12 +1759,16 @@
           document.querySelectorAll(".ar-text").forEach((el) => el.style.display = "none");
           document.body.style.direction = "ltr";
           document.body.style.textAlign = "left";
+          if (searchInputEl) searchInputEl.placeholder = "Search tasks, deliverables, tools...";
         } else {
           langArBtn.classList.add("active");
           document.querySelectorAll(".en-text").forEach((el) => el.style.display = "none");
-          document.querySelectorAll(".ar-text").forEach((el) => el.style.display = "");
+          document.querySelectorAll(".ar-text").forEach((el) => {
+            el.style.display = inlineTags.has(el.tagName) ? "inline" : "block";
+          });
           document.body.style.direction = "rtl";
           document.body.style.textAlign = "right";
+          if (searchInputEl) searchInputEl.placeholder = "ابحثي عن المهام، التسليمات، الأدوات...";
         }
 
         const sidebar = document.querySelector(".sidebar");
@@ -1398,6 +1780,17 @@
 
       function closeAllExpandedCards() {
         taskCards.forEach((card) => card.classList.remove("expanded"));
+      }
+
+      function openDefaultCardsForTab(tabId) {
+        if (tabId === "ghala") {
+          const interviewsCard = document.querySelector('#ghala .task-card[data-task="interviews"]');
+          if (interviewsCard) interviewsCard.classList.add("expanded");
+        }
+        if (tabId === "gala") {
+          const surveyCard = document.querySelector('#gala .task-card[data-task="survey"]');
+          if (surveyCard) surveyCard.classList.add("expanded");
+        }
       }
 
       expandIcons.forEach((icon) => {

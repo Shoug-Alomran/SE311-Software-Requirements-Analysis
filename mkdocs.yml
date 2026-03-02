@@ -48,46 +48,45 @@ nav:
   - Team: team.md
 
   - Phase 1 - Inception:
-      - Overview: Phase 1 - Inception/index.md
-      - Business Requirements: Phase 1 - Inception/business-requirements.md
-      - Scope & Limitations: Phase 1 - Inception/scope-and-limitations.md
-      - Business Context: Phase 1 - Inception/business-context.md
-      - PDF Report: Phase 1 - Inception/Phase 1.pdf
+      - Overview: Phase-1-Inception/index.md
+      - Business Requirements: Phase-1-Inception/business-requirements.md
+      - Scope & Limitations: Phase-1-Inception/scope-and-limitations.md
+      - Business Context: Phase-1-Inception/business-context.md
+      - PDF Report: report/Phase-1.pdf
 
   - Phase 2 - Elicitation:
-      - Overview: Phase 2 - Elicitation/index.md
-      - Elicitation Plan: Phase 2 - Elicitation/elicitation-plan.md
-      - Stakeholder Analysis: Phase 2 - Elicitation/stakeholders.md
-      - Interviews & Notes: Phase 2 - Elicitation/elicitation-notes.md
-      - Family Requirements: Phase 2 - Elicitation/family-requirements.md
-      - Healthcare Provider Requirements: Phase 2 - Elicitation/provider-requirements.md
-      - Survey: Phase 2 - Elicitation/survey.md
-      - Administrator Requirements: Phase 2 - Elicitation/admin-requirements.md
-      - Document & Competitive Analysis: Phase 2 - Elicitation/document-analysis.md
-      - PDF Report: Phase 2 - Elicitation/Phase 2.pdf
+      - Overview: Phase-2-Elicitation/index.md
+      - Elicitation Plan: Phase-2-Elicitation/elicitation-plan.md
+      - Stakeholder Analysis: Phase-2-Elicitation/stakeholders.md
+      - Interviews & Notes: Phase-2-Elicitation/elicitation-notes.md
+      - Family Requirements: Phase-2-Elicitation/family-requirements.md
+      - Healthcare Provider Requirements: Phase-2-Elicitation/provider-requirements.md
+      - Survey: Phase-2-Elicitation/survey.md
+      - Administrator Requirements: Phase-2-Elicitation/admin-requirements.md
+      - Document & Competitive Analysis: Phase-2-Elicitation/document-analysis.md
+      - PDF Report: report/Phase-2.pdf
 
 
   - Phase 3 - Analysis:
-      - Overview: Phase 3 - Analysis/index.md
-      - Domain Model: Phase 3 - Analysis/domain-model.md
-      - Use Cases: Phase 3 - Analysis/use-cases.md
-      - Functional Requirements: Phase 3 - Analysis/functional-requirements.md
-      - Non-Functional Requirements: Phase 3 - Analysis/nonfunctional-requirements.md
-      - Prioritization: Phase 3 - Analysis/prioritization.md
+      - Overview: Phase-3-Analysis/index.md
+      - Domain Model: Phase-3-Analysis/domain-model.md
+      - Use Cases: Phase-3-Analysis/use-cases.md
+      - Functional Requirements: Phase-3-Analysis/functional-requirements.md
+      - Non-Functional Requirements: Phase-3-Analysis/nonfunctional-requirements.md
+      - Prioritization: Phase-3-Analysis/prioritization.md
 
   - Phase 4 – Specification:
-      - Overview: Phase 4 – Specification/index.md
-      - SRS: Phase 4 – Specification/srs.md
+      - Overview: Phase-4-Specification/index.md
+      - SRS: Phase-4-Specification/srs.md
 
   - Phase 5 – Validation:
-      - Overview: Phase 5 – Validation/index.md
-      - Validation Results: Phase 5 – Validation/validation-results.md
+      - Overview: Phase-5-Validation/index.md
+      - Validation Results: Phase-5-Validation/validation-results.md
 
   - Phase 6 – Requirements Management:
-      - Overview: Phase 6 – Requirements Management/index.md
-      - Change Control: Phase 6 – Requirements Management/change-control.md
-      - Traceability Matrix: Phase 6 – Requirements Management/traceability-matrix.md
-
+      - Overview: Phase-6-Requirements-Management/index.md
+      - Change Control: Phase-6-Requirements-Management/change-control.md
+      - Traceability Matrix: Phase-6-Requirements-Management/traceability-matrix.md
 
   - Report:
       - View & Download: report/report.md
