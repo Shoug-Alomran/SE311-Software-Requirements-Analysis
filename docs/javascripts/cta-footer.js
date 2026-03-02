@@ -1,6 +1,8 @@
 (function () {
   const EMAIL = "inquiry@shoug-tech.com";
   const MAIN_WEBSITE = "https://shoug-tech.com/";
+  const COPYRIGHT_TEXT = "© 2026 Shoug Fawaz Alomran · All rights reserved";
+  const BLUEPRINT_URL = "https://blueprint.shoug-tech.com/";
   const PRIMARY_COLLAPSED_KEY = "sillah_nav_primary_collapsed";
   const SECONDARY_COLLAPSED_KEY = "sillah_nav_secondary_collapsed";
 
@@ -194,11 +196,24 @@
     else footer.prepend(block);
   }
 
+  function restoreCopyrightFooter() {
+    const copyright = document.querySelector(".md-copyright");
+    if (!copyright) return;
+
+    copyright.innerHTML = `
+      <div class="md-copyright__highlight">${COPYRIGHT_TEXT}</div>
+      <div class="md-copyright__highlight">
+        Made by <a href="${BLUEPRINT_URL}" target="_blank" rel="noopener">Blueprint</a>
+      </div>
+    `;
+  }
+
   function run() {
     applySidebarStates();
     addHeaderCTA();
     addSidebarToggleControls();
     addFooterBlock();
+    restoreCopyrightFooter();
   }
 
   if (typeof document$ !== "undefined" && document$.subscribe) {
