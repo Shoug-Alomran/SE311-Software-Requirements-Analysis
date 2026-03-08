@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  {% set site_root = config.site_url[:-1] if config.site_url.endswith('/') else config.site_url %}
+  {% set robots = "index, follow" %}
+  {% if page and page.meta and page.meta.robots %}
+    {% set robots = page.meta.robots %}
+  {% endif %}
+  <meta name="robots" content="{{ robots }}">
+  <meta property="og:url" content="{{ page.canonical_url if page and page.canonical_url else config.site_url }}">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "{{ config.site_name | e }}",
+      "url": "{{ site_root | e }}"
+    }
+  </script>
+  {% if page and page.canonical_url %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "{{ page.title | striptags | e }}",
+      "url": "{{ page.canonical_url | e }}",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "{{ config.site_name | e }}",
+        "url": "{{ site_root | e }}"
+      }
+    }
+  </script>
+  {% endif %}
+{% endblock %}

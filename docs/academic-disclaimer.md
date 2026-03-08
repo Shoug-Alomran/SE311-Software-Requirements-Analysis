@@ -1,3 +1,10 @@
+---
+robots: noindex, nofollow
+sitemap: false
+search:
+  exclude: true
+---
+
 # Academic Disclaimer
 
 This website is an academic project developed for:

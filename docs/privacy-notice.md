@@ -1,6 +1,13 @@
+---
+robots: noindex, nofollow
+sitemap: false
+search:
+  exclude: true
+---
+
 # Privacy Notice
 
-_Last updated: 2026_
+_Last updated: March 8, 2026_
 
 This website is an academic project developed for  
 **SE311 — Software Requirements Engineering**  

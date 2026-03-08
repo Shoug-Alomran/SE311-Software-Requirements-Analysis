@@ -1,11 +1,15 @@
 site_name: SE311 - Sillah (صلة) Family Health Management System
 site_description: Full SE311 Software Requirements Analysis Project Documentation
-site_url: https://Software-Requirements-Analysis.Shoug-Tech.com
+site_url: https://software-requirements-analysis.shoug-tech.com
 copyright: © 2026 Shoug Fawaz Alomran · All rights reserved
+strict: true
+hooks:
+  - hooks/seo.py
 
 
 theme:
   name: material
+  custom_dir: overrides
   logo: logo.png
   favicon: google.png
   font:
@@ -23,7 +27,6 @@ theme:
     - toc.follow
     - search.suggest
     - search.highlight
-    - search.share
     - content.code.copy
 
   palette:
@@ -48,48 +51,46 @@ nav:
   - Team: team.md
 
   - Phase 1 - Inception:
-      - Overview: Phase-1-Inception/index.md
-      - Business Requirements: Phase-1-Inception/business-requirements.md
-      - Scope & Limitations: Phase-1-Inception/scope-and-limitations.md
-      - Business Context: Phase-1-Inception/business-context.md
-      - PDF Report: report/Phase-1.pdf
+      - Overview: phase-1-inception/index.md
+      - Business Requirements: phase-1-inception/business-requirements.md
+      - Scope & Limitations: phase-1-inception/scope-and-limitations.md
+      - Business Context: phase-1-inception/business-context.md
 
   - Phase 2 - Elicitation:
-      - Overview: Phase-2-Elicitation/index.md
-      - Elicitation Plan: Phase-2-Elicitation/elicitation-plan.md
-      - Stakeholder Analysis: Phase-2-Elicitation/stakeholders.md
-      - Interviews & Notes: Phase-2-Elicitation/elicitation-notes.md
-      - Family Requirements: Phase-2-Elicitation/family-requirements.md
-      - Healthcare Provider Requirements: Phase-2-Elicitation/provider-requirements.md
-      - Survey: Phase-2-Elicitation/survey.md
-      - Administrator Requirements: Phase-2-Elicitation/admin-requirements.md
-      - Document & Competitive Analysis: Phase-2-Elicitation/document-analysis.md
-      - PDF Report: report/Phase-2.pdf
+      - Overview: phase-2-elicitation/index.md
+      - Elicitation Plan: phase-2-elicitation/elicitation-plan.md
+      - Stakeholder Analysis: phase-2-elicitation/stakeholders.md
+      - Interviews & Notes: phase-2-elicitation/elicitation-notes.md
+      - Family Requirements: phase-2-elicitation/family-requirements.md
+      - Healthcare Provider Requirements: phase-2-elicitation/provider-requirements.md
+      - Survey: phase-2-elicitation/survey.md
+      - Administrator Requirements: phase-2-elicitation/admin-requirements.md
+      - Document & Competitive Analysis: phase-2-elicitation/document-analysis.md
 
 
   - Phase 3 - Analysis:
-      - Overview: Phase-3-Analysis/index.md
-      - Domain Model: Phase-3-Analysis/domain-model.md
-      - Use Cases: Phase-3-Analysis/use-cases.md
-      - Functional Requirements: Phase-3-Analysis/functional-requirements.md
-      - Non-Functional Requirements: Phase-3-Analysis/nonfunctional-requirements.md
-      - Prioritization: Phase-3-Analysis/prioritization.md
+      - Overview: phase-3-analysis/index.md
+      - Domain Model: phase-3-analysis/domain-model.md
+      - Use Cases: phase-3-analysis/use-cases.md
+      - Functional Requirements: phase-3-analysis/functional-requirements.md
+      - Non-Functional Requirements: phase-3-analysis/nonfunctional-requirements.md
+      - Prioritization: phase-3-analysis/prioritization.md
 
   - Phase 4 – Specification:
-      - Overview: Phase-4-Specification/index.md
-      - SRS: Phase-4-Specification/srs.md
+      - Overview: phase-4-specification/index.md
+      - SRS: phase-4-specification/srs.md
 
   - Phase 5 – Validation:
-      - Overview: Phase-5-Validation/index.md
-      - Validation Results: Phase-5-Validation/validation-results.md
+      - Overview: phase-5-validation/index.md
+      - Validation Results: phase-5-validation/validation-results.md
 
   - Phase 6 – Requirements Management:
-      - Overview: Phase-6-Requirements-Management/index.md
-      - Change Control: Phase-6-Requirements-Management/change-control.md
-      - Traceability Matrix: Phase-6-Requirements-Management/traceability-matrix.md
+      - Overview: phase-6-requirements-management/index.md
+      - Change Control: phase-6-requirements-management/change-control.md
+      - Traceability Matrix: phase-6-requirements-management/traceability-matrix.md
 
   - Report:
-      - View & Download: report/report.md
+      - View & Download: report/index.md
 
   - Conclusion: conclusion.md
 

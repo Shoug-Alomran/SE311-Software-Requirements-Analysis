@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /*?*
+Disallow: /*.md$
+Disallow: /*.md?*
+Disallow: /404.html
 
 Sitemap: https://software-requirements-analysis.shoug-tech.com/sitemap.xml

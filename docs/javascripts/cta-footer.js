@@ -163,8 +163,7 @@
 
           <div class="footer-col">
             <div class="footer-col__title">Reports</div>
-            <a class="footer-link" href="${url("report/Phase 1.pdf")}">Phase 1 Report</a>
-            <a class="footer-link" href="${url("report/Phase 2.pdf")}">Phase 2 Report</a>
+            <a class="footer-link" href="${url("report/phase-1.pdf")}">Phase 1 Report</a>
             <a class="footer-link" href="${url("report/")}">Full Report Hub</a>
           </div>
 
