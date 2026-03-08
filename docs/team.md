@@ -59,4 +59,4 @@ to ensure clarity, traceability, and academic consistency.
 
 ### :material-view-dashboard-outline: Project Plan Dashboard
 
-[Open the Roles & Tasks Dashboard](./Project Plan.html)
+[Open the Roles & Tasks Dashboard](./project-plan.html)
