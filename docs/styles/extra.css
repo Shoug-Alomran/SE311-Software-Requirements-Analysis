@@ -236,9 +236,13 @@ body,
 }
 
 .md-typeset table:not([class]) {
+  display: table;
+  width: 100%;
+  max-width: 100%;
   border-radius: 14px;
   border: 1px solid var(--panel-border);
   background: var(--panel-bg);
+  table-layout: auto;
 }
 
 .md-typeset table:not([class]) th {
