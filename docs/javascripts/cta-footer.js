@@ -207,29 +207,54 @@
     syncButtonStates(controls);
   }
 
-  function enhanceTabletTocPanel() {
-    const sidebar = document.querySelector(".md-sidebar--secondary");
-    if (!sidebar) return;
+  function syncTabletTocSheet() {
+    const sheet = document.querySelector(".tablet-toc-sheet");
+    if (!sheet) return;
 
-    sidebar.classList.add("tablet-toc-panel");
+    const body = sheet.querySelector(".tablet-toc-sheet__body");
+    if (!body) return;
 
-    let closeButton = sidebar.querySelector(".tablet-toc-close");
-    if (!closeButton) {
-      closeButton = document.createElement("button");
-      closeButton.type = "button";
-      closeButton.className = "tablet-toc-close";
-      closeButton.setAttribute("aria-label", "Close table of contents");
-      closeButton.innerHTML = "&times;";
-      sidebar.appendChild(closeButton);
+    const sourceNav = document.querySelector(".md-sidebar--secondary .md-nav--secondary");
+    body.innerHTML = "";
+
+    if (!sourceNav) {
+      body.innerHTML = '<p class="tablet-toc-sheet__empty">No table of contents is available on this page.</p>';
+      return;
     }
 
-    if (!closeButton.dataset.bound) {
+    const clone = sourceNav.cloneNode(true);
+    const title = clone.querySelector(".md-nav__title");
+    if (title) title.remove();
+    body.appendChild(clone);
+  }
+
+  function ensureTabletTocSheet() {
+    let sheet = document.querySelector(".tablet-toc-sheet");
+    if (!sheet) {
+      sheet = document.createElement("aside");
+      sheet.className = "tablet-toc-sheet";
+      sheet.setAttribute("aria-label", "Table of contents");
+      sheet.innerHTML = `
+        <div class="tablet-toc-sheet__header">
+          <div class="tablet-toc-sheet__eyebrow">On this page</div>
+          <div class="tablet-toc-sheet__title">Table of contents</div>
+          <button type="button" class="tablet-toc-sheet__close" aria-label="Close table of contents">&times;</button>
+        </div>
+        <div class="tablet-toc-sheet__body"></div>
+      `;
+      document.body.appendChild(sheet);
+    }
+
+    const closeButton = sheet.querySelector(".tablet-toc-sheet__close");
+    if (closeButton && !closeButton.dataset.bound) {
       closeButton.addEventListener("click", function () {
         closeTabletToc();
         syncButtonStates(document.querySelector(".sidebar-toggle-group"));
       });
       closeButton.dataset.bound = "1";
     }
+
+    syncTabletTocSheet();
   }
 
   function addFooterBlock() {
@@ -319,7 +344,7 @@
     applySidebarStates();
     addHeaderCTA();
     addSidebarToggleControls();
-    enhanceTabletTocPanel();
+    ensureTabletTocSheet();
     addFooterBlock();
     restoreCopyrightFooter();
     if (!window.__codexTocHandlersBound) {
@@ -331,9 +356,9 @@
 
         if (
           target.closest(".sidebar-toggle--secondary") ||
-          target.closest(".md-sidebar--secondary")
+          target.closest(".tablet-toc-sheet")
         ) {
-          if (target.closest(".md-nav--secondary a")) {
+          if (target.closest(".tablet-toc-sheet a")) {
             closeTabletToc();
           }
           return;
