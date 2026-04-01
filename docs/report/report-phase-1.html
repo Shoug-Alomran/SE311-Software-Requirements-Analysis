@@ -46,7 +46,7 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
-    font-size: 15px;
+    font-size: clamp(14px, 0.35vw + 13px, 16px);
     transition: background 0.3s, color 0.3s;
     min-height: 100vh;
   }
@@ -82,7 +82,7 @@
   }
   .topbar-title {
     font-family: 'DM Mono', monospace;
-    font-size: 12px;
+    font-size: clamp(11px, 0.25vw + 10px, 12px);
     color: var(--text-dim);
     letter-spacing: 0.05em;
   }
@@ -197,7 +197,7 @@
     color: var(--accent);
   }
   .hero-sub {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 0.4vw + 0.85rem, 1.08rem);
     color: var(--text-dim);
     max-width: 560px;
     margin-bottom: 2rem;
@@ -228,7 +228,7 @@
   .hero-divider { width: 1px; height: 36px; background: var(--border); }
 
   /* LAYOUT */
-  .main { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+  .main { max-width: 900px; margin: 0 auto; padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem) 6rem; }
 
   /* SECTION */
   .section { margin-bottom: 3.5rem; scroll-margin-top: 70px; }
@@ -251,7 +251,7 @@
   }
   .section-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.35rem;
+    font-size: clamp(1.15rem, 0.8vw + 0.95rem, 1.45rem);
     color: var(--text);
   }
   .section-accent { display: block; width: 32px; height: 2px; border-radius: 2px; margin-left: auto; }
@@ -283,7 +283,7 @@
   }
   .card-body {
     color: var(--text-dim);
-    font-size: 0.9rem;
+    font-size: clamp(0.92rem, 0.2vw + 0.86rem, 1rem);
     line-height: 1.65;
   }
 
@@ -330,7 +330,7 @@
     flex-shrink: 0;
     margin-top: 2px;
   }
-  .feature-text { color: var(--text-dim); font-size: 0.9rem; }
+  .feature-text { color: var(--text-dim); font-size: clamp(0.9rem, 0.2vw + 0.84rem, 0.98rem); }
 
   /* RISK CARDS */
   .risk-card {
@@ -342,10 +342,10 @@
     margin-bottom: 0.75rem;
   }
   .risk-title { font-weight: 600; color: var(--text); font-size: 0.9rem; margin-bottom: 0.25rem; }
-  .risk-body { color: var(--text-dim); font-size: 0.87rem; }
+  .risk-body { color: var(--text-dim); font-size: clamp(0.88rem, 0.2vw + 0.82rem, 0.96rem); }
 
   /* STAKEHOLDER TABLE */
-  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
+  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); -webkit-overflow-scrolling: touch; }
   table { width: 100%; border-collapse: collapse; }
   th {
     background: var(--bg3);
@@ -361,7 +361,7 @@
   td {
     padding: 0.8rem 1rem;
     border-top: 1px solid var(--border);
-    font-size: 0.88rem;
+    font-size: clamp(0.88rem, 0.2vw + 0.82rem, 0.96rem);
     color: var(--text-dim);
     vertical-align: top;
   }
@@ -399,7 +399,7 @@
     border-radius: 8px;
     padding: 1.5rem 2rem;
     font-family: 'DM Serif Display', serif;
-    font-size: 1.05rem;
+    font-size: clamp(0.98rem, 0.45vw + 0.88rem, 1.1rem);
     font-style: italic;
     color: var(--text);
     line-height: 1.75;
@@ -515,7 +515,7 @@
   /* BG TEXT */
   .bg-text {
     color: var(--text-dim);
-    font-size: 0.92rem;
+    font-size: clamp(0.92rem, 0.2vw + 0.86rem, 1rem);
     line-height: 1.75;
     padding: 1rem 1.5rem;
     background: var(--bg2);
@@ -550,6 +550,118 @@
   .section:nth-child(7) { animation-delay: 0.35s; }
   @keyframes fadeUp {
     to { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 900px) {
+    .side-nav { right: 0.75rem; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+  }
+
+  @media (max-width: 720px) {
+    .topbar {
+      padding: 0.75rem 1rem;
+      height: auto;
+      gap: 0.75rem;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .topbar-left {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    .toggle-btn { align-self: flex-end; }
+    .hero-meta { flex-wrap: wrap; }
+    .hero-footer {
+      gap: 0.9rem;
+      align-items: flex-start;
+    }
+    .hero-divider {
+      width: 100%;
+      height: 1px;
+    }
+    .card,
+    .risk-card,
+    .vision-box,
+    .bg-text {
+      padding: 1rem;
+    }
+    .authors-row { gap: 0.75rem; }
+    .author-chip {
+      width: 100%;
+      justify-content: space-between;
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+    }
+    .feature-item,
+    .deploy-item {
+      gap: 0.65rem;
+    }
+    .side-nav { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .table-wrap {
+      overflow: visible;
+      border: none;
+      background: transparent;
+    }
+    .table-wrap table,
+    .table-wrap thead,
+    .table-wrap tbody,
+    .table-wrap tr,
+    .table-wrap th,
+    .table-wrap td {
+      display: block;
+      width: 100%;
+    }
+    .table-wrap thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .table-wrap tbody {
+      display: grid;
+      gap: 0.9rem;
+    }
+    .table-wrap tr {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.25rem 0;
+      box-shadow: var(--card-shadow);
+    }
+    .table-wrap td {
+      border: none;
+      border-top: 1px solid var(--border);
+      padding: 0.8rem 1rem;
+      min-width: 0;
+      white-space: normal;
+    }
+    .table-wrap td:first-child {
+      border-top: none;
+      padding-top: 0.95rem;
+    }
+    .table-wrap td::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: 0.35rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .td-name { white-space: normal; }
+    footer {
+      padding: 1.25rem 1rem 2rem;
+      line-height: 1.7;
+    }
   }
 </style>
 </head>
@@ -972,7 +1084,7 @@
 </main>
 
 <footer>
-  SE 311 — Software Requirements Engineering &nbsp;·&nbsp; Sillah Vision &amp; Scope Document v1.2 &nbsp;·&nbsp; Term 2024/2025
+  SE 311 — Software Requirements Engineering &nbsp;·&nbsp; Sillah Vision &amp; Scope Document v1.2 &nbsp;·&nbsp; Term 2025/2026
 </footer>
 
 <script>
@@ -1001,6 +1113,23 @@
   }
   window.addEventListener('scroll', updateDots);
   updateDots();
+
+  function enhanceResponsiveTables() {
+    document.querySelectorAll('.table-wrap table').forEach((table) => {
+      const headers = Array.from(table.querySelectorAll('thead th')).map((th) =>
+        th.textContent.trim()
+      );
+      table.querySelectorAll('tbody tr').forEach((row) => {
+        Array.from(row.children).forEach((cell, index) => {
+          if (cell.tagName === 'TD' && headers[index]) {
+            cell.setAttribute('data-label', headers[index]);
+          }
+        });
+      });
+    });
+  }
+
+  enhanceResponsiveTables();
 </script>
 </body>
 </html>

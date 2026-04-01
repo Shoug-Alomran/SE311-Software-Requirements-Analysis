@@ -207,6 +207,31 @@
     syncButtonStates(controls);
   }
 
+  function enhanceTabletTocPanel() {
+    const sidebar = document.querySelector(".md-sidebar--secondary");
+    if (!sidebar) return;
+
+    sidebar.classList.add("tablet-toc-panel");
+
+    let closeButton = sidebar.querySelector(".tablet-toc-close");
+    if (!closeButton) {
+      closeButton = document.createElement("button");
+      closeButton.type = "button";
+      closeButton.className = "tablet-toc-close";
+      closeButton.setAttribute("aria-label", "Close table of contents");
+      closeButton.innerHTML = "&times;";
+      sidebar.appendChild(closeButton);
+    }
+
+    if (!closeButton.dataset.bound) {
+      closeButton.addEventListener("click", function () {
+        closeTabletToc();
+        syncButtonStates(document.querySelector(".sidebar-toggle-group"));
+      });
+      closeButton.dataset.bound = "1";
+    }
+  }
+
   function addFooterBlock() {
     const footer = document.querySelector(".md-footer");
     if (!footer) return;
@@ -246,6 +271,7 @@
           <div class="footer-col">
             <div class="footer-col__title">Reports</div>
             <a class="footer-link" href="${url("report/phase-1.pdf")}">Phase 1 Report</a>
+            <a class="footer-link" href="${url("report/report-phase-1.html")}">Phase 1 HTML Report</a>
             <a class="footer-link" href="${url("report/")}">Full Report Hub</a>
           </div>
 
@@ -293,6 +319,7 @@
     applySidebarStates();
     addHeaderCTA();
     addSidebarToggleControls();
+    enhanceTabletTocPanel();
     addFooterBlock();
     restoreCopyrightFooter();
     if (!window.__codexTocHandlersBound) {
