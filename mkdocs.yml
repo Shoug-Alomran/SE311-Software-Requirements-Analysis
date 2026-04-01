@@ -76,18 +76,18 @@ nav:
       - Non-Functional Requirements: phase-3-analysis/nonfunctional-requirements.md
       - Prioritization: phase-3-analysis/prioritization.md
 
-  - Phase 4 – Specification:
-      - Overview: phase-4-specification/index.md
-      - SRS: phase-4-specification/srs.md
+ # - Phase 4 – Specification:
+  #    - Overview: phase-4-specification/index.md
+   #   - SRS: phase-4-specification/srs.md
 
-  - Phase 5 – Validation:
-      - Overview: phase-5-validation/index.md
-      - Validation Results: phase-5-validation/validation-results.md
+  # - Phase 5 – Validation:
+   #   - Overview: phase-5-validation/index.md
+    #  - Validation Results: phase-5-validation/validation-results.md
 
-  - Phase 6 – Requirements Management:
-      - Overview: phase-6-requirements-management/index.md
-      - Change Control: phase-6-requirements-management/change-control.md
-      - Traceability Matrix: phase-6-requirements-management/traceability-matrix.md
+  # - Phase 6 – Requirements Management:
+    #  - Overview: phase-6-requirements-management/index.md
+     # - Change Control: phase-6-requirements-management/change-control.md
+      #- Traceability Matrix: phase-6-requirements-management/traceability-matrix.md
 
   - Report:
       - View & Download: report/index.md
