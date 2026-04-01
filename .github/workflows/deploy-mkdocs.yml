@@ -24,20 +24,10 @@ jobs:
           python-version: "3.x"
       - run: pip install mkdocs-material
       - run: mkdocs build --clean
-      - name: Package GitHub Pages artifact
-        run: |
-          tar \
-            --dereference --hard-dereference \
-            --directory site \
-            -cvf github-pages.tar \
-            .
-          gzip -f github-pages.tar
       - name: Upload artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-pages-artifact@v4
         with:
-          name: github-pages
-          path: ./github-pages.tar.gz
-          retention-days: 1
+          path: ./site
 
   deploy:
     needs: build
@@ -48,4 +38,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4
