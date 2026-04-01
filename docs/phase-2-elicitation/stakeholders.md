@@ -10,17 +10,35 @@ requirements and manage potential conflicts during elicitation.
 
 ## 3.1 Stakeholder Identification
 
-The following stakeholder groups were identified:
+<div class="grid cards" markdown>
 
-- **Families (Primary Users)**  
-- **Healthcare Providers**  
-- **System Administrators**  
-- **Legal / Regulatory Authorities (PDPL)**  
-- **Public Health Authorities (Future Stakeholders)**  
+-   **Families**
 
-Only family members and healthcare providers participated directly
-in interviews. Regulatory and public-health perspectives were
-captured through document analysis.
+    Primary users who interact with hereditary-health records and
+    preventive alerts.
+
+-   **Healthcare Providers**
+
+    Clinical stakeholders who evaluate medical relevance and workflow
+    fit.
+
+-   **System Administrators**
+
+    Operational stakeholders responsible for governance and integrity.
+
+-   **Legal / Regulatory Authorities**
+
+    External authorities shaping privacy and compliance requirements.
+
+-   **Public Health Authorities**
+
+    Future strategic stakeholders for integration and scale.
+
+</div>
+
+Only family members and healthcare providers participated directly in
+interviews. Regulatory and public-health perspectives were captured
+through document analysis.
 
 ---
 
@@ -38,13 +56,25 @@ captured through document analysis.
 
 ## 3.3 Stakeholder Classification
 
-Stakeholders can be categorized based on their level of influence and
-direct involvement:
+<div class="grid cards" markdown>
 
-- **Primary Stakeholders:** Families, Healthcare Providers  
-- **Secondary Stakeholders:** System Administrators  
-- **External / Regulatory Stakeholders:** PDPL Authority  
-- **Future Strategic Stakeholders:** Public Health Authorities  
+-   **Primary Stakeholders**
+
+    Families and healthcare providers.
+
+-   **Secondary Stakeholders**
+
+    System administrators.
+
+-   **External / Regulatory Stakeholders**
+
+    PDPL-related authorities and compliance actors.
+
+-   **Future Strategic Stakeholders**
+
+    Public health authorities and integration partners.
+
+</div>
 
 Primary stakeholders were prioritized during elicitation to ensure
 alignment with user needs and preventive-health objectives.
@@ -53,14 +83,23 @@ alignment with user needs and preventive-health objectives.
 
 ## 3.4 Stakeholder Impact on Requirements
 
-- Families directly influenced usability, bilingual interface,
-  and alert transparency requirements.
+<div class="grid cards" markdown>
 
-- Healthcare providers influenced risk-detection logic clarity
-  and recommendation structure.
+-   :material-account-group: **Families**
 
-- Regulatory authorities influenced security and consent
-  management requirements.
+    Drove usability, bilingual interface, and alert transparency
+    requirements.
 
-- Future public-health stakeholders influenced scalability
-  and integration considerations.
+-   :material-stethoscope: **Healthcare Providers**
+
+    Shaped risk-detection logic clarity and recommendation structure.
+
+-   :material-gavel: **Regulatory Authorities**
+
+    Influenced security, privacy, and consent-management requirements.
+
+-   :material-earth: **Public-Health Stakeholders**
+
+    Informed scalability and future integration considerations.
+
+</div>

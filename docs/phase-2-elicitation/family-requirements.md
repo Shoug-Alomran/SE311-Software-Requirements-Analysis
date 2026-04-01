@@ -9,13 +9,29 @@ Requirements were prioritized using the **MoSCoW** technique.
 
 ## 5.1 Requirement Format
 
-Each Family User Requirement (**FUR**) is documented using:
+<div class="grid cards" markdown>
 
-- **ID** for traceability  
-- **Requirement Statement** written in mandatory form  
-- **Evidence Source** linked to elicitation activities  
-- **Priority** using MoSCoW  
-- **Acceptance Criteria** describing measurable validation conditions  
+-   **ID**
+
+    Unique identifier for traceability.
+
+-   **Requirement Statement**
+
+    Written in mandatory system behavior form.
+
+-   **Evidence Source**
+
+    Linked to the elicitation activity that supports it.
+
+-   **Priority**
+
+    Assigned using the MoSCoW method.
+
+-   **Acceptance Criteria**
+
+    Measurable conditions used to verify the requirement.
+
+</div>
 
 ---
 
@@ -37,7 +53,25 @@ Each Family User Requirement (**FUR**) is documented using:
 
 ## 5.3 Key Observations
 
-- Family users need profile-based tracking rather than a single-person record.
-- Preventive alerts and recommendations are expected to be personalized and easy to understand.
-- Bilingual usability is a core requirement, not an optional enhancement.
-- Security expectations are high because the platform stores sensitive family health information.
+<div class="grid cards" markdown>
+
+-   **Profile-Based Tracking**
+
+    Family users need multiple linked profiles rather than a
+    single-person record.
+
+-   **Personalized Guidance**
+
+    Preventive alerts and recommendations are expected to be relevant
+    and easy to understand.
+
+-   **Bilingual Experience**
+
+    Arabic and English support is a core requirement, not an optional
+    enhancement.
+
+-   **High Security Expectations**
+
+    Users expect strong protection for sensitive family health data.
+
+</div>

@@ -11,11 +11,29 @@ with real-world workflows.
 Each Healthcare Provider Requirement (**HPR**) follows the same
 structure used for family user requirements:
 
-- **ID** for traceability  
-- **Requirement Statement** written in "shall" form  
-- **Evidence Source** linked to elicitation activity  
-- **Priority** using MoSCoW  
-- **Acceptance Criteria** for validation  
+<div class="grid cards" markdown>
+
+-   **ID**
+
+    Unique identifier for provider-facing traceability.
+
+-   **Requirement Statement**
+
+    Written in clear "shall" form.
+
+-   **Evidence Source**
+
+    Linked to interview or survey evidence.
+
+-   **Priority**
+
+    Assigned through MoSCoW prioritization.
+
+-   **Acceptance Criteria**
+
+    Measurable validation conditions for review.
+
+</div>
 
 ---
 
@@ -37,7 +55,24 @@ structure used for family user requirements:
 
 ## 6.3 Interview-Based Insights
 
-- Providers currently collect family history manually from patients or parents.
-- Trust in patient-entered hereditary data is limited unless it is verified.
-- Providers prefer concise summaries and medically appropriate wording.
-- Adoption depends on a workflow-friendly design with minimal disruption.
+<div class="grid cards" markdown>
+
+-   **Manual History Collection**
+
+    Providers still rely on direct patient or parent reporting.
+
+-   **Need for Verification**
+
+    Patient-entered hereditary data is not fully trusted unless it is
+    verified.
+
+-   **Concise Clinical Summaries**
+
+    Providers prefer brief, medically appropriate presentation of key
+    patient information.
+
+-   **Workflow-Friendly Design**
+
+    Adoption depends on minimizing disruption during consultation.
+
+</div>

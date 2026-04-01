@@ -39,51 +39,49 @@ Key response patterns:
 
 ## 7.3 Analysis and Key Insights
 
-### Strong Demand for Family-Centered Functionality
+<div class="grid cards" markdown>
 
-Most respondents showed clear interest in managing multiple family
-member profiles, reinforcing the need for a family-based system model.
+-   :material-account-group: **Strong Demand for Family-Centered Functionality**
 
-### Need for Preventive Health Features
+    Most respondents showed clear interest in managing multiple family
+    member profiles, reinforcing the need for a family-based system
+    model.
 
-High interest in alerts and recommendations indicates that users value
-proactive health management and early risk detection.
+-   :material-bell-alert: **Need for Preventive Health Features**
 
-### Low Engagement with Existing Health Apps
+    High interest in alerts and recommendations indicates that users
+    value proactive health management and early risk detection.
 
-Since most respondents use health applications only occasionally or
-rarely, current solutions may lack relevance or usability.
+-   :material-cellphone-off: **Low Engagement with Existing Health Apps**
 
-This supports designing Sillah to be:
+    Most respondents use health applications only occasionally or
+    rarely, which suggests that current solutions may lack relevance or
+    usability.
 
-- Simple  
-- Clear  
-- Easy to navigate  
+    This supports designing Sillah to be simple, clear, and easy to
+    navigate.
 
-### Importance of Security and Privacy
+-   :material-shield-lock: **Importance of Security and Privacy**
 
-Strong agreement on restricted access highlights the need for:
+    Strong agreement on restricted access highlights the need for
+    Role-Based Access Control, secure authentication, and privacy-aware
+    handling aligned with PDPL.
 
-- Role-Based Access Control (RBAC)  
-- Secure authentication  
-- Privacy-aware data handling aligned with PDPL  
+-   :material-translate: **Requirement for Bilingual Support**
 
-### Requirement for Bilingual Support
+    The language split confirms the need for a bilingual system that
+    supports both Arabic (RTL) and English (LTR).
 
-The language split confirms the need for a bilingual system that
-supports both Arabic (RTL) and English (LTR).
+-   :material-lightbulb-on-outline: **Interest in Future Features**
 
-### Interest in Future Features
+    Open-ended responses suggested future enhancements such as AI-based
+    risk prediction, emergency alert systems, wearable integration, and
+    health trend tracking.
 
-Open-ended responses suggested several future enhancements:
+    These ideas are useful for the roadmap but remain outside the scope
+    of the initial release.
 
-- AI-based risk prediction  
-- Emergency alert systems  
-- Integration with wearable devices  
-- Health trend tracking  
-
-These ideas are out of scope for the initial release but useful for
-future roadmap planning.
+</div>
 
 ---
 

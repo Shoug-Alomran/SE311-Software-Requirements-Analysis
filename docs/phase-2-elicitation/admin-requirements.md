@@ -7,13 +7,29 @@ content oversight, and operational governance.
 
 ## 8.1 Requirement Format
 
-Each Administrator User Requirement (**AUR**) is documented using:
+<div class="grid cards" markdown>
 
-- **ID** for unique traceability  
-- **Requirement Statement** in "shall" form  
-- **Evidence Source** linked to elicitation evidence  
-- **Priority** using MoSCoW  
-- **Acceptance Criteria** to support validation  
+-   **ID**
+
+    Unique identifier for administrative traceability.
+
+-   **Requirement Statement**
+
+    Written in clear "shall" form.
+
+-   **Evidence Source**
+
+    Linked to interview, survey, or document evidence.
+
+-   **Priority**
+
+    Assigned using the MoSCoW technique.
+
+-   **Acceptance Criteria**
+
+    Validation conditions used to confirm correct behavior.
+
+</div>
 
 ---
 
@@ -35,8 +51,12 @@ Each Administrator User Requirement (**AUR**) is documented using:
 
 ## 8.3 Administrative Focus Areas
 
-- Role and permission management  
-- Account lifecycle control  
-- Secure access and privacy enforcement  
-- Educational content governance  
-- Auditability and operational monitoring
+<div class="grid cards" markdown>
+
+-   **Role and Permission Management**
+-   **Account Lifecycle Control**
+-   **Secure Access and Privacy Enforcement**
+-   **Educational Content Governance**
+-   **Auditability and Operational Monitoring**
+
+</div>

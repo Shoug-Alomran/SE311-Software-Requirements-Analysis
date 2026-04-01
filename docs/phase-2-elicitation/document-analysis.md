@@ -7,93 +7,89 @@ and explains how each source influenced system requirements.
 
 ## 9.1 Document Analysis
 
-### :material-file-document-outline: Regulatory Review
+<div class="grid cards" markdown>
 
-National data protection standards and SDAIA privacy policies were
-reviewed to identify legal and security requirements relevant to Sillah.
+-   :material-file-document-outline: **Regulatory Review**
 
-Key regulatory principles identified:
+    National data protection standards and SDAIA privacy policies were
+    reviewed to identify legal and security requirements relevant to
+    Sillah.
 
-- Personal data collection must be based on explicit user consent  
-- Users have the right to access, correct, delete, and withdraw consent  
-- Personal data must be securely stored within the Kingdom of Saudi Arabia  
-- Unauthorized data sharing is prohibited  
+-   :material-shield-check: **Key Principles**
 
-### Derived Requirements
+    Explicit consent, data access rights, secure in-KSA storage, and
+    prohibition of unauthorized data sharing were all emphasized.
 
-These findings justify the inclusion of:
+-   :material-cog-outline: **Derived Requirements**
 
-- Secure authentication mechanisms  
-- Role-Based Access Control (RBAC)  
-- Restricted data visibility policies  
-- Secure storage and encryption measures  
-- Consent management functionality  
+    Findings support secure authentication, RBAC, restricted visibility,
+    encryption, and consent-management functionality.
 
-### Sources
+-   :material-book-open-page-variant: **Sources**
 
-- SDAIA Privacy Policy  
-- Ministry of Health Awareness Platform  
-- WHO Resources  
+    SDAIA Privacy Policy, Ministry of Health Awareness Platform, and
+    WHO resources.
+
+</div>
 
 ---
 
 ## 9.2 Observation Notes
 
-### :material-eye-outline: Current User Behavior
+<div class="grid cards" markdown>
 
-Informal observation and background research indicate that families
-currently track hereditary health information using:
+-   :material-eye-outline: **Current User Behavior**
 
-- Personal memory  
-- Paper notes  
-- Fragmented mobile applications  
-- General health apps without hereditary focus  
+    Families currently rely on memory, paper notes, fragmented mobile
+    apps, and general health tools without hereditary focus.
 
-There is no centralized digital system dedicated specifically to
-structured hereditary preventive tracking.
+-   :material-alert-circle-outline: **Observed Gap**
 
-### Derived Requirements
+    There is no centralized system dedicated to structured hereditary
+    preventive-health tracking.
 
-This observation supports:
+-   :material-format-list-bulleted-square: **Derived Requirements**
 
-- Structured family profile management  
-- Health event recording functionality  
-- Automated risk-detection logic  
-- Preventive alert generation  
+    Observation supports family profile management, health event
+    recording, automated risk-detection logic, and preventive alerts.
+
+</div>
 
 ---
 
 ## 9.3 Competitive Review
 
-### :material-domain: Market Landscape
+<div class="grid cards" markdown>
 
-Existing health platforms primarily focus on:
+-   :material-domain: **Market Landscape**
 
-- Appointment booking  
-- Electronic medical records (EHR)  
-- General health tracking  
+    Existing platforms focus on appointment booking, EHR access, and
+    general health tracking.
 
-However, they do not emphasize:
+-   :material-close-circle-outline: **Missing from Competitors**
 
-- Hereditary risk pattern detection  
-- Family-based health modeling  
-- Personalized preventive alerts  
+    Hereditary risk-pattern detection, family-based modeling, and
+    personalized preventive alerts are not emphasized.
 
-### Strategic Insight
+-   :material-star-four-points-outline: **Strategic Insight**
 
-This gap reinforces the differentiation of Sillah as a
-family-centric preventive-health platform.
+    This gap reinforces Sillah's value as a family-centric
+    preventive-health platform.
+
+</div>
 
 ---
 
 ## 9.4 Evidence Artifacts
 
-The following materials were reviewed and archived as supporting evidence:
+<div class="grid cards" markdown>
 
-- SDAIA Privacy Policy documentation  
-- Ministry of Health Awareness portal  
-- WHO public health resources  
-- Screenshots of competing platforms  
+-   SDAIA Privacy Policy documentation
+-   Ministry of Health Awareness portal
+-   WHO public health resources
+-   Screenshots of competing platforms
+
+</div>
 
 These artifacts support traceability between external research and
 resulting system requirements.

@@ -16,14 +16,34 @@ The primary objective of elicitation is to transform high-level
 business requirements into well-defined, prioritized, and evidence-
 supported system requirements.
 
-Specifically, the process aims to:
+<div class="grid cards" markdown>
 
-- Clarify detailed family user workflows and preventive-health scenarios  
-- Validate rule-based hereditary risk detection expectations  
-- Confirm bilingual usability requirements (Arabic RTL / English LTR)  
-- Identify security and privacy expectations in alignment with PDPL  
-- Capture expectations regarding preventive alerts and recommendations  
-- Produce a traceable and prioritized set of user requirements  
+-   :material-family-tree: **Family Workflows**
+
+    Clarify detailed family-user workflows and preventive-health
+    scenarios.
+
+-   :material-stethoscope: **Risk Detection**
+
+    Validate expectations for rule-based hereditary-risk screening.
+
+-   :material-translate: **Bilingual Usability**
+
+    Confirm Arabic RTL and English LTR interface requirements.
+
+-   :material-shield-check: **Privacy and Security**
+
+    Identify privacy expectations and PDPL-aligned safeguards.
+
+-   :material-bell-ring-outline: **Alerts and Recommendations**
+
+    Capture expectations for preventive alerts and actionable guidance.
+
+-   :material-source-branch: **Traceable Outputs**
+
+    Produce a prioritized and evidence-backed requirement set.
+
+</div>
 
 ---
 
@@ -68,26 +88,56 @@ stakeholder input and requirement validation.
 
 ## 2.3 Participants
 
-The elicitation process involved the following stakeholder categories:
+<div class="grid cards" markdown>
 
-- Family Members (Primary End Users)  
-- Healthcare Providers  
-- Survey Respondents (General Users)  
+-   **Family Members**
 
-Regulatory and public-health perspectives were addressed through
-document analysis rather than direct interviews.
+    Primary end users who shaped profile management, alerts, and
+    usability expectations.
+
+-   **Healthcare Providers**
+
+    Domain experts who validated screening logic and recommendation
+    relevance.
+
+-   **Survey Respondents**
+
+    General users who broadened input on interface preferences and
+    access expectations.
+
+-   **Regulatory and Public-Health Perspectives**
+
+    Addressed through document analysis rather than direct interviews.
+
+</div>
 
 ---
 
 ## 2.4 Expected Outputs
 
-The elicitation process is expected to produce:
+<div class="grid cards" markdown>
 
-- Structured functional requirements  
-- Non-functional requirements (security, usability, reliability)  
-- Prioritized requirement list  
-- Evidence-backed requirement traceability  
-- Identified conflicts and resolution notes  
+-   **Functional Requirements**
+
+    Structured user-facing system capabilities.
+
+-   **Non-Functional Requirements**
+
+    Security, usability, reliability, and related quality constraints.
+
+-   **Prioritized Requirement List**
+
+    Requirements ranked using the MoSCoW model.
+
+-   **Traceable Evidence Links**
+
+    Connections between requirements and elicitation sources.
+
+-   **Conflict Notes**
+
+    Identified ambiguities and resolution outcomes.
+
+</div>
 
 ---
 

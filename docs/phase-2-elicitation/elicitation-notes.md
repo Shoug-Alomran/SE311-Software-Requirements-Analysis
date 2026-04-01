@@ -9,23 +9,34 @@ related to hereditary health tracking and preventive alerts.
 
 ## 4.1 Interview Guide
 
-### :material-clipboard-text-outline: Objectives
+<div class="grid cards" markdown>
 
-The interview guide was designed to:
+-   :material-history: **Current Tracking**
 
-- Understand current methods of tracking family health history  
-- Identify expectations regarding preventive alerts  
-- Explore privacy and trust concerns  
-- Assess usability requirements  
-- Identify workflow expectations from healthcare providers  
+    Understand how family health history is currently captured and used.
 
-### Stakeholder Groups Interviewed
+-   :material-bell-alert-outline: **Alert Expectations**
 
-- Family Users (Primary End Users)  
-- Healthcare Providers  
+    Identify what kinds of preventive alerts stakeholders find useful.
 
-Questions were aligned with project goals and structured to extract
-both functional and non-functional requirements.
+-   :material-lock-outline: **Trust and Privacy**
+
+    Explore privacy concerns and confidence in stored health data.
+
+-   :material-monitor-cellphone: **Usability**
+
+    Assess expectations for clarity, access, and ease of use.
+
+-   :material-hospital-box-outline: **Clinical Workflow**
+
+    Understand provider workflow needs and adoption barriers.
+
+-   :material-account-multiple: **Stakeholder Coverage**
+
+    Interview prompts were designed for family users and healthcare
+    providers to extract both functional and non-functional needs.
+
+</div>
 
 ---
 
@@ -45,55 +56,99 @@ focused on hereditary-risk workflows and preventive-health practices.
 
 ### Interview Themes
 
-Questions were grouped around:
+<div class="grid cards" markdown>
 
-1. Family profile management
-2. Health condition recording
-3. Preventive alert expectations
-4. Appointment-booking expectations
-5. Language and usability preferences
-6. Security and privacy concerns
+-   Family profile management
+-   Health condition recording
+-   Preventive alert expectations
+-   Appointment-booking expectations
+-   Language and usability preferences
+-   Security and privacy concerns
+
+</div>
 
 ---
 
 ## 4.3 Interview Session 2 — Healthcare Provider
 ### Observations & Responses
 
-The interviews revealed that:
+<div class="grid cards" markdown>
 
-- Healthcare providers currently collect family medical history directly
-  from patients or, in pediatric cases, from parents.
-- Cancer history and congenital heart disease were identified as
-  especially important hereditary conditions to track.
-- Both interviewees supported including children from birth to enable
-  early hereditary-risk screening.
-- Preventive follow-up actions should include screening tests,
-  specialist referrals, and lifestyle recommendations.
-- Trust in patient-entered family-history data is limited unless it can
-  be entered or validated by a healthcare professional.
-- Providers preferred concise patient summaries and medically
-  appropriate alert wording.
-- Time constraints and interruption of consultation workflows were
-  identified as barriers to adoption.
-- One provider highlighted future integration with national health
-  platforms as strategically important.
+-   **Current Practice**
+
+    Providers currently collect family history directly from patients
+    or parents in pediatric cases.
+
+-   **Priority Conditions**
+
+    Cancer history and congenital heart disease were highlighted as key
+    hereditary conditions to track.
+
+-   **Early Screening**
+
+    Both interviewees supported including children from birth for
+    preventive hereditary-risk screening.
+
+-   **Recommended Actions**
+
+    Follow-up actions should include screening tests, specialist
+    referrals, and lifestyle recommendations.
+
+-   **Data Reliability**
+
+    Trust in patient-entered data is limited unless the information can
+    be entered or validated by a healthcare professional.
+
+-   **Presentation Needs**
+
+    Providers preferred concise patient summaries and medically
+    appropriate alert wording.
+
+-   **Adoption Risks**
+
+    Time constraints and workflow disruption were identified as
+    practical barriers.
+
+-   **Future Direction**
+
+    One provider highlighted integration with national health
+    platforms as strategically important.
+
+</div>
 
 ---
 
 ## 4.4 Key Findings
 
-After analyzing both interview sessions, the following themes emerged:
+<div class="grid cards" markdown>
 
-- Structured family-history collection is essential for hereditary-risk screening.
-- Verified or clinician-entered data is preferred over unverified
-  patient-entered data for clinical trust.
-- Providers need concise patient summaries and clear, standardized
-  alert phrasing.
-- Workflow disruption is a major adoption risk, so the system should
-  minimize interaction overhead.
-- Pediatric support from birth is important for preventive screening.
-- Long-term interoperability with national health platforms is a
-  desirable future direction.
+-   **Structured History Collection**
+
+    Essential for meaningful hereditary-risk screening.
+
+-   **Clinically Trusted Data**
+
+    Verified or clinician-entered data is preferred over unverified
+    patient-entered records.
+
+-   **Clear Summaries and Alerts**
+
+    Providers need concise summaries and standardized alert phrasing.
+
+-   **Workflow Efficiency**
+
+    The system should minimize interaction overhead and disruption.
+
+-   **Pediatric Support**
+
+    Screening should support profiles from birth.
+
+-   **Interoperability**
+
+    Long-term value increases if the system can integrate with national
+    health platforms.
+
+</div>
 
 ---
 
@@ -115,12 +170,14 @@ The following requirements were derived from interview findings:
 
 ## 4.6 Attached Evidence
 
-The following artifacts are attached as supporting evidence:
+<div class="grid cards" markdown>
 
-- Interview transcripts (anonymized)  
-- Audio recordings (if applicable)  
-- Signed consent forms (if required)  
-- Interview notes  
+-   Interview transcripts (anonymized)
+-   Audio recordings (if applicable)
+-   Signed consent forms (if required)
+-   Interview notes
+
+</div>
 
 These materials support traceability between elicitation
 activities and derived system requirements.
