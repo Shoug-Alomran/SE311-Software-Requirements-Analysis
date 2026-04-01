@@ -68,6 +68,22 @@
     return input instanceof HTMLInputElement ? input : null;
   }
 
+  function triggerToggle(id) {
+    const input = getToggleInput(id);
+    if (!input) return false;
+
+    const label = document.querySelector(`label[for="${id}"]`);
+    if (label instanceof HTMLElement) {
+      label.click();
+    } else {
+      input.checked = !input.checked;
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+      input.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+
+    return true;
+  }
+
   function syncButtonStates(controls) {
     if (!controls) return;
 
@@ -135,10 +151,10 @@
     if (leftButton && !leftButton.dataset.bound) {
       leftButton.addEventListener("click", function () {
         if (!isDesktopSidebarMode()) {
-          if (drawerToggle) {
-            drawerToggle.checked = !drawerToggle.checked;
+          triggerToggle("__drawer");
+          window.requestAnimationFrame(function () {
             syncButtonStates(controls);
-          }
+          });
           return;
         }
 
@@ -153,10 +169,10 @@
     if (rightButton && !rightButton.dataset.bound) {
       rightButton.addEventListener("click", function () {
         if (!isDesktopSidebarMode()) {
-          if (tocToggle) {
-            tocToggle.checked = !tocToggle.checked;
+          triggerToggle("__toc");
+          window.requestAnimationFrame(function () {
             syncButtonStates(controls);
-          }
+          });
           return;
         }
 
