@@ -657,11 +657,28 @@ body,
   }
 
   .md-sidebar--secondary .md-sidebar__inner {
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important;
     padding: 0.45rem 0.2rem 1rem 0.25rem;
   }
 
   .md-sidebar--secondary .md-nav--secondary {
+    display: block !important;
+    position: static !important;
+    height: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
     padding: 0 0.35rem 0.35rem;
+  }
+
+  .md-sidebar--secondary .md-nav__toggle ~ .md-nav {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .md-sidebar--secondary .md-nav__list {
+    display: block;
   }
 
   .md-sidebar--secondary .md-nav__title {
