@@ -6,6 +6,8 @@
   const PRIMARY_COLLAPSED_KEY = "sillah_nav_primary_collapsed";
   const SECONDARY_COLLAPSED_KEY = "sillah_nav_secondary_collapsed";
   const DESKTOP_SIDEBAR_BREAKPOINT = "(min-width: 76.25em)";
+  const TABLET_BREAKPOINT = "(min-width: 48rem)";
+  const TABLET_TOC_OPEN_CLASS = "tablet-toc-open";
 
   function getBase() {
     try {
@@ -63,25 +65,29 @@
     return window.matchMedia(DESKTOP_SIDEBAR_BREAKPOINT).matches;
   }
 
+  function isTabletMode() {
+    return window.matchMedia(TABLET_BREAKPOINT).matches && !isDesktopSidebarMode();
+  }
+
   function getToggleInput(id) {
     const input = document.getElementById(id);
     return input instanceof HTMLInputElement ? input : null;
   }
 
-  function triggerToggle(id) {
-    const input = getToggleInput(id);
-    if (!input) return false;
+  function setTabletTocOpen(open) {
+    document.body.classList.toggle(TABLET_TOC_OPEN_CLASS, open);
+  }
 
-    const label = document.querySelector(`label[for="${id}"]`);
-    if (label instanceof HTMLElement) {
-      label.click();
-    } else {
-      input.checked = !input.checked;
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-      input.dispatchEvent(new Event("change", { bubbles: true }));
-    }
+  function isTabletTocOpen() {
+    return document.body.classList.contains(TABLET_TOC_OPEN_CLASS);
+  }
 
-    return true;
+  function closeTabletToc() {
+    setTabletTocOpen(false);
+  }
+
+  function toggleTabletToc() {
+    setTabletTocOpen(!isTabletTocOpen());
   }
 
   function syncButtonStates(controls) {
@@ -107,10 +113,8 @@
     }
 
     const drawerToggle = getToggleInput("__drawer");
-    const tocToggle = getToggleInput("__toc");
-
     updateToggleButtonState(leftButton, !(drawerToggle && drawerToggle.checked), "Open navigation", "Close navigation");
-    updateToggleButtonState(rightButton, !(tocToggle && tocToggle.checked), "Open table of contents", "Close table of contents");
+    updateToggleButtonState(rightButton, !isTabletTocOpen(), "Open table of contents", "Close table of contents");
   }
 
   function applySidebarStates() {
@@ -146,12 +150,11 @@
     const leftButton = controls.querySelector(".sidebar-toggle--primary");
     const rightButton = controls.querySelector(".sidebar-toggle--secondary");
     const drawerToggle = getToggleInput("__drawer");
-    const tocToggle = getToggleInput("__toc");
 
     if (leftButton && !leftButton.dataset.bound) {
       leftButton.addEventListener("click", function () {
         if (!isDesktopSidebarMode()) {
-          triggerToggle("__drawer");
+          if (drawerToggle) drawerToggle.checked = !drawerToggle.checked;
           window.requestAnimationFrame(function () {
             syncButtonStates(controls);
           });
@@ -169,7 +172,7 @@
     if (rightButton && !rightButton.dataset.bound) {
       rightButton.addEventListener("click", function () {
         if (!isDesktopSidebarMode()) {
-          triggerToggle("__toc");
+          toggleTabletToc();
           window.requestAnimationFrame(function () {
             syncButtonStates(controls);
           });
@@ -191,15 +194,11 @@
       drawerToggle.dataset.codexBound = "1";
     }
 
-    if (tocToggle && !tocToggle.dataset.codexBound) {
-      tocToggle.addEventListener("change", function () {
-        syncButtonStates(controls);
-      });
-      tocToggle.dataset.codexBound = "1";
-    }
-
     if (!controls.dataset.resizeBound) {
       window.addEventListener("resize", function () {
+        if (!isTabletMode()) {
+          closeTabletToc();
+        }
         syncButtonStates(controls);
       });
       controls.dataset.resizeBound = "1";
@@ -296,6 +295,29 @@
     addSidebarToggleControls();
     addFooterBlock();
     restoreCopyrightFooter();
+    if (!window.__codexTocHandlersBound) {
+      document.addEventListener("click", function (event) {
+        if (!isTabletMode() || !isTabletTocOpen()) return;
+
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+
+        if (
+          target.closest(".sidebar-toggle--secondary") ||
+          target.closest(".md-sidebar--secondary")
+        ) {
+          if (target.closest(".md-nav--secondary a")) {
+            closeTabletToc();
+          }
+          return;
+        }
+
+        closeTabletToc();
+        const controls = document.querySelector(".sidebar-toggle-group");
+        syncButtonStates(controls);
+      });
+      window.__codexTocHandlersBound = true;
+    }
   }
 
   if (typeof document$ !== "undefined" && document$.subscribe) {
