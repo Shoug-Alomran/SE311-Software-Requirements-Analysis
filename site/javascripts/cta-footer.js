@@ -5,6 +5,7 @@
   const BLUEPRINT_URL = "https://blueprint.shoug-tech.com/";
   const PRIMARY_COLLAPSED_KEY = "sillah_nav_primary_collapsed";
   const SECONDARY_COLLAPSED_KEY = "sillah_nav_secondary_collapsed";
+  const DESKTOP_SIDEBAR_BREAKPOINT = "(min-width: 76.25em)";
 
   function getBase() {
     try {
@@ -58,6 +59,44 @@
     document.body.classList.toggle(className, collapsed);
   }
 
+  function isDesktopSidebarMode() {
+    return window.matchMedia(DESKTOP_SIDEBAR_BREAKPOINT).matches;
+  }
+
+  function getToggleInput(id) {
+    const input = document.getElementById(id);
+    return input instanceof HTMLInputElement ? input : null;
+  }
+
+  function syncButtonStates(controls) {
+    if (!controls) return;
+
+    const leftButton = controls.querySelector(".sidebar-toggle--primary");
+    const rightButton = controls.querySelector(".sidebar-toggle--secondary");
+
+    if (isDesktopSidebarMode()) {
+      updateToggleButtonState(
+        leftButton,
+        document.body.classList.contains("nav-primary-collapsed"),
+        "Show left navigation",
+        "Hide left navigation"
+      );
+      updateToggleButtonState(
+        rightButton,
+        document.body.classList.contains("nav-secondary-collapsed"),
+        "Show table of contents",
+        "Hide table of contents"
+      );
+      return;
+    }
+
+    const drawerToggle = getToggleInput("__drawer");
+    const tocToggle = getToggleInput("__toc");
+
+    updateToggleButtonState(leftButton, !(drawerToggle && drawerToggle.checked), "Open navigation", "Close navigation");
+    updateToggleButtonState(rightButton, !(tocToggle && tocToggle.checked), "Open table of contents", "Close table of contents");
+  }
+
   function applySidebarStates() {
     setSidebarState("nav-primary-collapsed", getStoredFlag(PRIMARY_COLLAPSED_KEY));
     setSidebarState("nav-secondary-collapsed", getStoredFlag(SECONDARY_COLLAPSED_KEY));
@@ -90,39 +129,67 @@
 
     const leftButton = controls.querySelector(".sidebar-toggle--primary");
     const rightButton = controls.querySelector(".sidebar-toggle--secondary");
+    const drawerToggle = getToggleInput("__drawer");
+    const tocToggle = getToggleInput("__toc");
 
     if (leftButton && !leftButton.dataset.bound) {
       leftButton.addEventListener("click", function () {
+        if (!isDesktopSidebarMode()) {
+          if (drawerToggle) {
+            drawerToggle.checked = !drawerToggle.checked;
+            syncButtonStates(controls);
+          }
+          return;
+        }
+
         const next = !document.body.classList.contains("nav-primary-collapsed");
         setSidebarState("nav-primary-collapsed", next);
         setStoredFlag(PRIMARY_COLLAPSED_KEY, next);
-        updateToggleButtonState(leftButton, next, "Show left navigation", "Hide left navigation");
+        syncButtonStates(controls);
       });
       leftButton.dataset.bound = "1";
     }
 
     if (rightButton && !rightButton.dataset.bound) {
       rightButton.addEventListener("click", function () {
+        if (!isDesktopSidebarMode()) {
+          if (tocToggle) {
+            tocToggle.checked = !tocToggle.checked;
+            syncButtonStates(controls);
+          }
+          return;
+        }
+
         const next = !document.body.classList.contains("nav-secondary-collapsed");
         setSidebarState("nav-secondary-collapsed", next);
         setStoredFlag(SECONDARY_COLLAPSED_KEY, next);
-        updateToggleButtonState(rightButton, next, "Show table of contents", "Hide table of contents");
+        syncButtonStates(controls);
       });
       rightButton.dataset.bound = "1";
     }
 
-    updateToggleButtonState(
-      leftButton,
-      document.body.classList.contains("nav-primary-collapsed"),
-      "Show left navigation",
-      "Hide left navigation"
-    );
-    updateToggleButtonState(
-      rightButton,
-      document.body.classList.contains("nav-secondary-collapsed"),
-      "Show table of contents",
-      "Hide table of contents"
-    );
+    if (drawerToggle && !drawerToggle.dataset.codexBound) {
+      drawerToggle.addEventListener("change", function () {
+        syncButtonStates(controls);
+      });
+      drawerToggle.dataset.codexBound = "1";
+    }
+
+    if (tocToggle && !tocToggle.dataset.codexBound) {
+      tocToggle.addEventListener("change", function () {
+        syncButtonStates(controls);
+      });
+      tocToggle.dataset.codexBound = "1";
+    }
+
+    if (!controls.dataset.resizeBound) {
+      window.addEventListener("resize", function () {
+        syncButtonStates(controls);
+      });
+      controls.dataset.resizeBound = "1";
+    }
+
+    syncButtonStates(controls);
   }
 
   function addFooterBlock() {
