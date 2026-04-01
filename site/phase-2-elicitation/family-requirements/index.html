@@ -109,6 +109,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#5-family-user-requirements" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -929,6 +934,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Family Requirements
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -946,6 +971,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-requirement-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Requirement Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-prioritized-family-requirement-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Prioritized Family Requirement List
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-key-observations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Key Observations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1750,6 +1827,49 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-requirement-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Requirement Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-prioritized-family-requirement-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Prioritized Family Requirement List
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-key-observations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Key Observations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1814,9 +1934,106 @@
 
 
 
-  <h1>Family Requirements</h1>
-
-
+<h1 id="5-family-user-requirements">5. Family User Requirements<a class="headerlink" href="#5-family-user-requirements" title="Permanent link">&para;</a></h1>
+<p>The following family user requirements were derived from interview
+findings, survey validation, and supporting document analysis.</p>
+<p>Requirements were prioritized using the <strong>MoSCoW</strong> technique.</p>
+<hr />
+<h2 id="51-requirement-format">5.1 Requirement Format<a class="headerlink" href="#51-requirement-format" title="Permanent link">&para;</a></h2>
+<p>Each Family User Requirement (<strong>FUR</strong>) is documented using:</p>
+<ul>
+<li><strong>ID</strong> for traceability  </li>
+<li><strong>Requirement Statement</strong> written in mandatory form  </li>
+<li><strong>Evidence Source</strong> linked to elicitation activities  </li>
+<li><strong>Priority</strong> using MoSCoW  </li>
+<li><strong>Acceptance Criteria</strong> describing measurable validation conditions  </li>
+</ul>
+<hr />
+<h2 id="52-prioritized-family-requirement-list">5.2 Prioritized Family Requirement List<a class="headerlink" href="#52-prioritized-family-requirement-list" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement Statement</th>
+<th>Evidence Source</th>
+<th>Priority</th>
+<th>Acceptance Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FUR-01</strong></td>
+<td>The system must allow authenticated users to create, edit, and delete multiple family member profiles, where each profile includes demographic information such as age, gender, relationship, and associated health records.</td>
+<td>Family Interview</td>
+<td><strong>Must</strong></td>
+<td>Users can create, update, and delete profiles; required profile attributes are stored; data persists after saving; only authorized users can modify profiles.</td>
+</tr>
+<tr>
+<td><strong>FUR-02</strong></td>
+<td>The system must allow users to record hereditary conditions for each family member, including cardiac disease, diabetes, hypertension, and high cholesterol.</td>
+<td>Family Interview</td>
+<td><strong>Must</strong></td>
+<td>Users can select or enter conditions; conditions are stored per profile; data is retrievable and editable.</td>
+</tr>
+<tr>
+<td><strong>FUR-03</strong></td>
+<td>The system must generate personalized preventive alerts based on predefined screening rules applied to recorded family health data.</td>
+<td>Family Interview + Healthcare Provider Interview</td>
+<td><strong>Must</strong></td>
+<td>Alerts are triggered when rule conditions are met; alerts are specific to the user's data; alerts are displayed clearly in the interface.</td>
+</tr>
+<tr>
+<td><strong>FUR-04</strong></td>
+<td>The system must display preventive recommendations alongside generated alerts.</td>
+<td>Family Interview</td>
+<td><strong>Should</strong></td>
+<td>Each alert includes a corresponding recommendation; recommendations are relevant to the detected risk; recommendations are clearly distinguishable from alerts.</td>
+</tr>
+<tr>
+<td><strong>FUR-05</strong></td>
+<td>The system must support a bilingual interface in Arabic (RTL) and English (LTR), allowing users to switch languages dynamically.</td>
+<td>Survey Results</td>
+<td><strong>Must</strong></td>
+<td>Users can switch language at any time; layout adjusts correctly for RTL/LTR; interface text is translated consistently.</td>
+</tr>
+<tr>
+<td><strong>FUR-06</strong></td>
+<td>The system must allow users to simulate booking a clinic appointment.</td>
+<td>Family Interview</td>
+<td><strong>Should</strong></td>
+<td>Users can submit booking details; the system confirms submission; a confirmation message is displayed.</td>
+</tr>
+<tr>
+<td><strong>FUR-07</strong></td>
+<td>The system must allow users to view previously generated alerts and notification history.</td>
+<td>Family Interview</td>
+<td><strong>Should</strong></td>
+<td>Users can access alert history; alerts appear in a structured format such as a list or timeline; past alerts remain accessible after new alerts are generated.</td>
+</tr>
+<tr>
+<td><strong>FUR-08</strong></td>
+<td>The system must require secure authentication before allowing access to personal health data.</td>
+<td>Document Analysis</td>
+<td><strong>Must</strong></td>
+<td>Users must log in before accessing protected features; unauthorized access is denied; session management is enforced.</td>
+</tr>
+<tr>
+<td><strong>FUR-09</strong></td>
+<td>The system must restrict access to health data based on user role.</td>
+<td>Document Analysis</td>
+<td><strong>Must</strong></td>
+<td>Users can only access permitted data; role-based permissions are enforced; unauthorized actions are blocked.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="53-key-observations">5.3 Key Observations<a class="headerlink" href="#53-key-observations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Family users need profile-based tracking rather than a single-person record.</li>
+<li>Preventive alerts and recommendations are expected to be personalized and easy to understand.</li>
+<li>Bilingual usability is a core requirement, not an optional enhancement.</li>
+<li>Security expectations are high because the platform stores sensitive family health information.</li>
+</ul>
 
 
 

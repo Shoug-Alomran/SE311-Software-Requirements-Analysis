@@ -30,46 +30,53 @@ both functional and non-functional requirements.
 ---
 
 ## 4.2 Interview Session 1 — Family Users
+### Session Record
 
-### Participant Profile
-- Relationship status: (e.g., parent, adult child)
-- Familiarity with digital health tools:
-- Health tracking experience:
+The report includes two documented healthcare-provider interviews:
 
-### Key Questions Asked
-1. How do you currently track family health history?
-2. Would you use a digital system to record hereditary conditions?
-3. What concerns would you have about storing health data?
-4. What type of alerts would you find helpful?
-5. What would make the system easy to use?
+- **Session 1:** Dr. Lama Alalula, ENT Surgeon  
+  Interview date: **15 March 2026**
+- **Session 2:** Dr. Alhanouf Alaloola, Cardiac Surgeon  
+  Interview date: **28 March 2026**
 
-### Observations & Responses
-(To be completed)
+Although the original template separated family and provider sessions,
+the available report evidence primarily documents provider interviews
+focused on hereditary-risk workflows and preventive-health practices.
 
-### Preliminary Insights
-(To be completed)
+### Interview Themes
+
+Questions were grouped around:
+
+1. Family profile management
+2. Health condition recording
+3. Preventive alert expectations
+4. Appointment-booking expectations
+5. Language and usability preferences
+6. Security and privacy concerns
 
 ---
 
 ## 4.3 Interview Session 2 — Healthcare Provider
-
-### Participant Profile
-- Role (e.g., general practitioner, cardiologist)
-- Years of experience:
-- Experience with digital systems:
-
-### Key Questions Asked
-1. Do patients provide structured family health history?
-2. Would a summarized hereditary risk profile be useful?
-3. What information format would be most helpful?
-4. What concerns would you have about integrating such a system?
-5. What would increase your willingness to use it?
-
 ### Observations & Responses
-(To be completed)
 
-### Preliminary Insights
-(To be completed)
+The interviews revealed that:
+
+- Healthcare providers currently collect family medical history directly
+  from patients or, in pediatric cases, from parents.
+- Cancer history and congenital heart disease were identified as
+  especially important hereditary conditions to track.
+- Both interviewees supported including children from birth to enable
+  early hereditary-risk screening.
+- Preventive follow-up actions should include screening tests,
+  specialist referrals, and lifestyle recommendations.
+- Trust in patient-entered family-history data is limited unless it can
+  be entered or validated by a healthcare professional.
+- Providers preferred concise patient summaries and medically
+  appropriate alert wording.
+- Time constraints and interruption of consultation workflows were
+  identified as barriers to adoption.
+- One provider highlighted future integration with national health
+  platforms as strategically important.
 
 ---
 
@@ -77,10 +84,16 @@ both functional and non-functional requirements.
 
 After analyzing both interview sessions, the following themes emerged:
 
-- (Finding 1 — e.g., Strong privacy concerns among family users)
-- (Finding 2 — e.g., Providers require concise risk summaries)
-- (Finding 3 — e.g., High usability expectations for mobile interface)
-- (Finding 4 — e.g., Need for clear consent transparency)
+- Structured family-history collection is essential for hereditary-risk screening.
+- Verified or clinician-entered data is preferred over unverified
+  patient-entered data for clinical trust.
+- Providers need concise patient summaries and clear, standardized
+  alert phrasing.
+- Workflow disruption is a major adoption risk, so the system should
+  minimize interaction overhead.
+- Pediatric support from birth is important for preventive screening.
+- Long-term interoperability with national health platforms is a
+  desirable future direction.
 
 ---
 
@@ -90,12 +103,13 @@ The following requirements were derived from interview findings:
 
 | ID | Type | Requirement | Source |
 |----|------|------------|--------|
-| FR-? | Functional | System shall allow structured family profile creation | Interview – Family |
-| NFR-? | Security | System shall provide explicit consent confirmation | Interview – Family |
-| FR-? | Functional | System shall generate concise risk summaries | Interview – Provider |
-| NFR-? | Usability | System shall support mobile-first interaction | Interview – Family |
-
-(Complete with actual IDs once finalized.)
+| FUR-D01 | Functional | System shall allow healthcare professionals to enter or validate family health data | Interview – Sessions 1 & 2 |
+| FUR-D02 | Functional | System shall track cancer history as a key hereditary condition | Interview – Session 1 |
+| FUR-D03 | Functional | System shall track congenital heart disease as a key hereditary condition | Interview – Session 2 |
+| FUR-D04 | Functional | System shall support pediatric profiles from birth for early screening | Interview – Sessions 1 & 2 |
+| FUR-D05 | Usability | System shall provide a brief patient summary view | Interview – Session 1 |
+| FUR-D06 | Usability | System shall support appointment-tailored patient summaries | Interview – Session 2 |
+| FUR-D07 | Integration | System could support future integration with national health platforms | Interview – Session 1 |
 
 ---
 

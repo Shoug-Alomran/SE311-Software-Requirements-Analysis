@@ -109,6 +109,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#6-healthcare-provider-requirements" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -957,6 +962,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Healthcare Provider Requirements
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -974,6 +999,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-requirement-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Requirement Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-prioritized-healthcare-provider-requirement-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Prioritized Healthcare Provider Requirement List
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-interview-based-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Interview-Based Insights
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1750,6 +1827,49 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-requirement-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Requirement Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-prioritized-healthcare-provider-requirement-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Prioritized Healthcare Provider Requirement List
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-interview-based-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Interview-Based Insights
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1814,9 +1934,107 @@
 
 
 
-  <h1>Healthcare Provider Requirements</h1>
-
-
+<h1 id="6-healthcare-provider-requirements">6. Healthcare Provider Requirements<a class="headerlink" href="#6-healthcare-provider-requirements" title="Permanent link">&para;</a></h1>
+<p>These requirements were derived from healthcare provider interviews and
+supported by survey findings to ensure clinical relevance and alignment
+with real-world workflows.</p>
+<hr />
+<h2 id="61-requirement-format">6.1 Requirement Format<a class="headerlink" href="#61-requirement-format" title="Permanent link">&para;</a></h2>
+<p>Each Healthcare Provider Requirement (<strong>HPR</strong>) follows the same
+structure used for family user requirements:</p>
+<ul>
+<li><strong>ID</strong> for traceability  </li>
+<li><strong>Requirement Statement</strong> written in "shall" form  </li>
+<li><strong>Evidence Source</strong> linked to elicitation activity  </li>
+<li><strong>Priority</strong> using MoSCoW  </li>
+<li><strong>Acceptance Criteria</strong> for validation  </li>
+</ul>
+<hr />
+<h2 id="62-prioritized-healthcare-provider-requirement-list">6.2 Prioritized Healthcare Provider Requirement List<a class="headerlink" href="#62-prioritized-healthcare-provider-requirement-list" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement Statement</th>
+<th>Evidence Source</th>
+<th>Priority</th>
+<th>Acceptance Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HPR-01</strong></td>
+<td>The system shall allow healthcare providers to enter, update, and validate family medical history data to ensure accuracy and reliability.</td>
+<td>Interview (Sessions 1 &amp; 2)</td>
+<td><strong>Must</strong></td>
+<td>Providers can create and update family medical records; providers can mark data as verified; verified data is clearly distinguishable from unverified data.</td>
+</tr>
+<tr>
+<td><strong>HPR-02</strong></td>
+<td>The system shall allow healthcare providers to view a summarized patient profile that includes key medical history and hereditary conditions.</td>
+<td>Interview (Sessions 1 &amp; 2), Survey</td>
+<td><strong>Must</strong></td>
+<td>Summary includes major conditions and family history; information is concise; summary is accessible during consultation.</td>
+</tr>
+<tr>
+<td><strong>HPR-03</strong></td>
+<td>The system shall allow healthcare providers to access patient data relevant to the reason for the appointment.</td>
+<td>Interview (Session 2)</td>
+<td><strong>Should</strong></td>
+<td>The system highlights relevant medical data; displayed data aligns with appointment type; irrelevant information is minimized.</td>
+</tr>
+<tr>
+<td><strong>HPR-04</strong></td>
+<td>The system shall generate clinically appropriate preventive alerts based on patient and family health data.</td>
+<td>Interview (Sessions 1 &amp; 2), Survey</td>
+<td><strong>Must</strong></td>
+<td>Alerts are triggered using predefined rules; alerts are medically relevant; alerts are clearly displayed to providers.</td>
+</tr>
+<tr>
+<td><strong>HPR-05</strong></td>
+<td>The system shall provide healthcare providers with recommended actions following risk detection, including screening tests, specialist referrals, and lifestyle advice.</td>
+<td>Interview (Sessions 1 &amp; 2), Survey</td>
+<td><strong>Should</strong></td>
+<td>Each alert includes at least one recommendation; recommendations are relevant to detected risks; recommendations are clearly presented alongside alerts.</td>
+</tr>
+<tr>
+<td><strong>HPR-06</strong></td>
+<td>The system shall present alerts and recommendations using clear, standardized, and medically appropriate language.</td>
+<td>Interview (Sessions 1 &amp; 2)</td>
+<td><strong>Should</strong></td>
+<td>Alerts use consistent phrasing; language avoids ambiguity; providers can interpret alerts without additional clarification.</td>
+</tr>
+<tr>
+<td><strong>HPR-07</strong></td>
+<td>The system shall be designed to minimize disruption to healthcare providers' workflow.</td>
+<td>Interview (Session 2)</td>
+<td><strong>Should</strong></td>
+<td>Key information is accessible within minimal steps; system interaction requires minimal input during consultation; navigation is efficient and intuitive.</td>
+</tr>
+<tr>
+<td><strong>HPR-08</strong></td>
+<td>The system shall support pediatric patient profiles to enable early hereditary risk screening from birth.</td>
+<td>Interview (Sessions 1 &amp; 2)</td>
+<td><strong>Must</strong></td>
+<td>Providers can view and manage profiles for patients aged 0+; screening rules apply to pediatric profiles; pediatric data is handled consistently with adult data.</td>
+</tr>
+<tr>
+<td><strong>HPR-09</strong></td>
+<td>The system shall support future integration with existing national health platforms through secure APIs.</td>
+<td>Interview (Session 1)</td>
+<td><strong>Could</strong></td>
+<td>System architecture allows API integration; data exchange follows secure standards; integration does not negatively impact system performance.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="63-interview-based-insights">6.3 Interview-Based Insights<a class="headerlink" href="#63-interview-based-insights" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Providers currently collect family history manually from patients or parents.</li>
+<li>Trust in patient-entered hereditary data is limited unless it is verified.</li>
+<li>Providers prefer concise summaries and medically appropriate wording.</li>
+<li>Adoption depends on a workflow-friendly design with minimal disruption.</li>
+</ul>
 
 
 

@@ -109,6 +109,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#8-administrator-requirements" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1013,6 +1018,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrator Requirements
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -1030,6 +1055,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81-requirement-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Requirement Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82-prioritized-administrator-requirement-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Prioritized Administrator Requirement List
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83-administrative-focus-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Administrative Focus Areas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1750,6 +1827,49 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81-requirement-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Requirement Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82-prioritized-administrator-requirement-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Prioritized Administrator Requirement List
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83-administrative-focus-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Administrative Focus Areas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1814,9 +1934,106 @@
 
 
 
-  <h1>Administrator Requirements</h1>
-
-
+<h1 id="8-administrator-requirements">8. Administrator Requirements<a class="headerlink" href="#8-administrator-requirements" title="Permanent link">&para;</a></h1>
+<p>Administrator requirements focus on system management, access control,
+content oversight, and operational governance.</p>
+<hr />
+<h2 id="81-requirement-format">8.1 Requirement Format<a class="headerlink" href="#81-requirement-format" title="Permanent link">&para;</a></h2>
+<p>Each Administrator User Requirement (<strong>AUR</strong>) is documented using:</p>
+<ul>
+<li><strong>ID</strong> for unique traceability  </li>
+<li><strong>Requirement Statement</strong> in "shall" form  </li>
+<li><strong>Evidence Source</strong> linked to elicitation evidence  </li>
+<li><strong>Priority</strong> using MoSCoW  </li>
+<li><strong>Acceptance Criteria</strong> to support validation  </li>
+</ul>
+<hr />
+<h2 id="82-prioritized-administrator-requirement-list">8.2 Prioritized Administrator Requirement List<a class="headerlink" href="#82-prioritized-administrator-requirement-list" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement Statement</th>
+<th>Evidence Source</th>
+<th>Priority</th>
+<th>Acceptance Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AUR-01</strong></td>
+<td>The system shall allow administrators to manage user roles and enforce access permissions.</td>
+<td>Survey + Interview</td>
+<td><strong>Must</strong></td>
+<td>Admin can assign roles to users; access is restricted based on assigned role; unauthorized users cannot access restricted data.</td>
+</tr>
+<tr>
+<td><strong>AUR-02</strong></td>
+<td>The system shall allow administrators to manage user accounts, including create, update, and deactivate operations.</td>
+<td>Survey + System Logic</td>
+<td><strong>Must</strong></td>
+<td>Admin can create, update, and deactivate user accounts; changes are saved immediately; only authorized admins can modify accounts.</td>
+</tr>
+<tr>
+<td><strong>AUR-03</strong></td>
+<td>The system shall ensure secure authentication and protect user health data.</td>
+<td>Survey + Document Analysis</td>
+<td><strong>Must</strong></td>
+<td>Users must log in before accessing the system; unauthorized access is denied; user data is protected and not exposed.</td>
+</tr>
+<tr>
+<td><strong>AUR-04</strong></td>
+<td>The system shall allow administrators to manage awareness and educational content.</td>
+<td>Survey + Document Analysis</td>
+<td><strong>Must</strong></td>
+<td>Admin can add, edit, and delete awareness content; updated content is visible to users; content is stored correctly.</td>
+</tr>
+<tr>
+<td><strong>AUR-05</strong></td>
+<td>The system shall allow administrators or authorized roles to validate and ensure the accuracy of health data.</td>
+<td>Interview</td>
+<td><strong>Must</strong></td>
+<td>Admin or authorized role can verify health data; verified data is clearly marked; the system distinguishes verified from unverified data.</td>
+</tr>
+<tr>
+<td><strong>AUR-06</strong></td>
+<td>The system shall record all administrative actions in an audit log.</td>
+<td>Survey</td>
+<td><strong>Should</strong></td>
+<td>All admin actions are recorded; logs include action type and timestamp; logs can be accessed by admin users.</td>
+</tr>
+<tr>
+<td><strong>AUR-07</strong></td>
+<td>The system shall allow administrators to add and manage clinics in the system.</td>
+<td>Survey</td>
+<td><strong>Should</strong></td>
+<td>Admin can add new clinics; clinic information is stored and retrievable; users can view available clinics.</td>
+</tr>
+<tr>
+<td><strong>AUR-08</strong></td>
+<td>The system shall allow administrators to review and approve content before publishing.</td>
+<td>Interview + Document Analysis</td>
+<td><strong>Should</strong></td>
+<td>Admin can review content before publishing; only approved content is visible; the system tracks content status such as pending or approved.</td>
+</tr>
+<tr>
+<td><strong>AUR-09</strong></td>
+<td>The system shall allow administrators to monitor system activity.</td>
+<td>System Logic</td>
+<td><strong>Should</strong></td>
+<td>Admin can view system activity; system status is displayed; errors are logged and visible.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="83-administrative-focus-areas">8.3 Administrative Focus Areas<a class="headerlink" href="#83-administrative-focus-areas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Role and permission management  </li>
+<li>Account lifecycle control  </li>
+<li>Secure access and privacy enforcement  </li>
+<li>Educational content governance  </li>
+<li>Auditability and operational monitoring</li>
+</ul>
 
 
 
