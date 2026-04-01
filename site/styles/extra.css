@@ -623,6 +623,8 @@ body,
     top: 4.25rem;
     right: 0.8rem;
     bottom: 0.8rem;
+    height: calc(100vh - 5.05rem) !important;
+    height: calc(100dvh - 5.05rem) !important;
     width: min(23rem, 82vw);
     max-width: 100%;
     margin: 0;
