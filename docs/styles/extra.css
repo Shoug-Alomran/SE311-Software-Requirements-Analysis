@@ -583,6 +583,11 @@ body,
   border-color: rgba(255, 255, 255, 0.45);
 }
 
+/* Hidden by default; the tablet breakpoint below turns this into the slide-out TOC sheet. */
+.tablet-toc-sheet {
+  display: none;
+}
+
 @media (min-width: 76.25em) {
   body.nav-primary-collapsed .md-sidebar--primary {
     display: none !important;
