@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sillah Phase 2 — Requirements Elicitation</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root[data-theme="dark"] {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e29;
+    --border: #252a38;
+    --text: #e2e6f0;
+    --text-muted: #6b7490;
+    --text-dim: #9aa0b8;
+    --accent: #4e8cff;
+    --accent2: #2dd4bf;
+    --accent3: #a78bfa;
+    --accent4: #fb923c;
+    --tag-bg: #1e2535;
+    --card-shadow: 0 2px 24px rgba(0,0,0,0.4);
+    --hero-gradient: linear-gradient(135deg, #0d1526 0%, #0d0f14 60%, #12111c 100%);
+    --stripe: rgba(78,140,255,0.04);
+    --must: #ef4444; --must-bg: rgba(239,68,68,0.08); --must-border: rgba(239,68,68,0.25);
+    --should: #f59e0b; --should-bg: rgba(245,158,11,0.08); --should-border: rgba(245,158,11,0.25);
+    --could: #3b82f6; --could-bg: rgba(59,130,246,0.08); --could-border: rgba(59,130,246,0.25);
+    --wont: #6b7280; --wont-bg: rgba(107,114,128,0.08); --wont-border: rgba(107,114,128,0.25);
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f6fb;
+    --bg2: #ffffff;
+    --bg3: #edf0f8;
+    --border: #dde2f0;
+    --text: #1a1e2e;
+    --text-muted: #8892b0;
+    --text-dim: #4a5275;
+    --accent: #2563eb;
+    --accent2: #0d9488;
+    --accent3: #7c3aed;
+    --accent4: #ea580c;
+    --tag-bg: #e8ecf8;
+    --card-shadow: 0 2px 24px rgba(30,40,80,0.08);
+    --hero-gradient: linear-gradient(135deg, #dce8ff 0%, #f4f6fb 60%, #ece8ff 100%);
+    --stripe: rgba(37,99,235,0.03);
+    --must: #dc2626; --must-bg: rgba(220,38,38,0.06); --must-border: rgba(220,38,38,0.25);
+    --should: #d97706; --should-bg: rgba(217,119,6,0.07); --should-border: rgba(217,119,6,0.25);
+    --could: #2563eb; --could-bg: rgba(37,99,235,0.06); --could-border: rgba(37,99,235,0.25);
+    --wont: #6b7280; --wont-bg: rgba(107,114,128,0.06); --wont-border: rgba(107,114,128,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: clamp(15px, 0.35vw + 13.5px, 18px); transition: background 0.3s, color 0.3s; min-height: 100vh; }
+
+  /* TOPBAR */
+  .topbar { position: sticky; top: 0; z-index: 100; background: var(--bg2); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 52px; backdrop-filter: blur(12px); }
+  .topbar-left { display: flex; align-items: center; gap: 0.6rem; }
+  .topbar-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); background: var(--tag-bg); padding: 3px 8px; border-radius: 3px; }
+  .topbar-title { font-family: 'DM Mono', monospace; font-size: clamp(11px, 0.25vw + 10px, 12px); color: var(--text-dim); letter-spacing: 0.05em; }
+  .toggle-btn { display: flex; align-items: center; gap: 6px; background: var(--tag-bg); border: 1px solid var(--border); border-radius: 20px; padding: 5px 14px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); transition: all 0.2s; }
+  .toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* SIDE NAV */
+  .side-nav { position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 50; }
+  .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.2s; position: relative; }
+  .nav-dot:hover, .nav-dot.active { background: var(--accent); transform: scale(1.5); }
+  .nav-dot::after { content: attr(data-label); position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 10px; font-family: 'DM Mono', monospace; color: var(--text-muted); white-space: nowrap; opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+  .nav-dot:hover::after { opacity: 1; }
+
+  /* HERO */
+  .hero { background: var(--hero-gradient); border-bottom: 1px solid var(--border); padding: 5rem 3rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 80px, var(--stripe) 80px, var(--stripe) 81px); pointer-events: none; }
+  .hero-inner { max-width: min(1320px, calc(100vw - 7rem)); margin: 0 auto; position: relative; }
+  .hero-meta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .chip { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; border: 1px solid; }
+  .chip-blue { color: var(--accent); border-color: var(--accent); background: rgba(78,140,255,0.08); }
+  .chip-teal { color: var(--accent2); border-color: var(--accent2); background: rgba(45,212,191,0.08); }
+  .chip-purple { color: var(--accent3); border-color: var(--accent3); background: rgba(167,139,250,0.08); }
+  .chip-orange { color: var(--accent4); border-color: var(--accent4); background: rgba(251,146,60,0.08); }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.12; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.01em; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub { font-size: clamp(0.95rem, 0.4vw + 0.85rem, 1.08rem); color: var(--text-dim); max-width: 78ch; margin-bottom: 2rem; }
+  .hero-footer { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .hero-stat { display: flex; flex-direction: column; gap: 2px; }
+  .hero-stat-val { font-family: 'DM Mono', monospace; font-size: 1.1rem; font-weight: 500; color: var(--text); }
+  .hero-stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .hero-divider { width: 1px; height: 36px; background: var(--border); }
+
+  /* LAYOUT */
+  .main { max-width: min(1320px, calc(100vw - 7rem)); margin: 0 auto; padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem) 6rem; }
+
+  /* SECTION */
+  .section { margin-bottom: 3.5rem; scroll-margin-top: 70px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  .section:nth-child(1){animation-delay:.05s}.section:nth-child(2){animation-delay:.1s}.section:nth-child(3){animation-delay:.15s}.section:nth-child(4){animation-delay:.2s}.section:nth-child(5){animation-delay:.25s}.section:nth-child(6){animation-delay:.3s}.section:nth-child(7){animation-delay:.35s}.section:nth-child(8){animation-delay:.4s}.section:nth-child(9){animation-delay:.45s}.section:nth-child(10){animation-delay:.5s}
+  @keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+  .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .section-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); background: var(--tag-bg); padding: 2px 7px; border-radius: 3px; flex-shrink: 0; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.15rem, 0.8vw + 0.95rem, 1.45rem); color: var(--text); }
+  .section-accent { display: block; width: 32px; height: 2px; border-radius: 2px; margin-left: auto; }
+
+  /* CARD */
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; box-shadow: var(--card-shadow); transition: border-color 0.2s; }
+  .card:hover { border-color: var(--accent); }
+  .card-label { font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .card-body { color: var(--text-dim); font-size: clamp(1rem, 0.25vw + 0.9rem, 1.12rem); line-height: 1.65; }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  @media (max-width: 700px) { .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr; } }
+
+  /* STAT CARDS */
+  .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; text-align: center; }
+  .stat-value { font-family: 'DM Mono', monospace; font-size: 1.4rem; font-weight: 500; margin-bottom: 4px; }
+  .stat-desc { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* FEATURE ITEM */
+  .feature-item { display: flex; gap: 0.85rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .feature-item:last-child { border-bottom: none; }
+  .feature-code { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent); background: rgba(78,140,255,0.1); border: 1px solid rgba(78,140,255,0.2); padding: 2px 7px; border-radius: 3px; flex-shrink: 0; margin-top: 2px; white-space: nowrap; }
+  .feature-text { color: var(--text-dim); font-size: clamp(0.98rem, 0.22vw + 0.9rem, 1.08rem); }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1rem; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: var(--bg3); padding: 0.7rem 1rem; text-align: left; font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 500; white-space: nowrap; }
+  td { padding: 0.8rem 1rem; border-top: 1px solid var(--border); font-size: clamp(0.96rem, 0.22vw + 0.88rem, 1.04rem); color: var(--text-dim); vertical-align: top; }
+  tr:hover td { background: var(--bg3); }
+  .td-id { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); white-space: nowrap; font-weight: 500; }
+  .td-name { font-weight: 600; color: var(--text); }
+  .td-req { color: var(--text); font-size: clamp(0.96rem, 0.22vw + 0.88rem, 1.04rem); }
+
+  /* MOSCOW BADGES */
+  .moscow { display: inline-block; font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 3px; border: 1px solid; white-space: nowrap; letter-spacing: 0.05em; }
+  .m-must { color: var(--must); background: var(--must-bg); border-color: var(--must-border); }
+  .m-should { color: var(--should); background: var(--should-bg); border-color: var(--should-border); }
+  .m-could { color: var(--could); background: var(--could-bg); border-color: var(--could-border); }
+  .m-wont { color: var(--wont); background: var(--wont-bg); border-color: var(--wont-border); }
+
+  /* RISK CARD */
+  .risk-card { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--accent3); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
+  .risk-title { font-weight: 600; color: var(--text); font-size: 0.9rem; margin-bottom: 0.25rem; }
+  .risk-body { color: var(--text-dim); font-size: clamp(0.96rem, 0.2vw + 0.86rem, 1.04rem); }
+
+  /* AUTHORS */
+  .authors-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .author-chip { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 5px 14px; font-size: 0.85rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+  .author-id { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); }
+
+  /* INSIGHT BOX */
+  .insight { background: var(--bg2); border: 1px solid var(--border); border-left: 4px solid var(--accent2); border-radius: 8px; padding: 1rem 1.25rem; margin-top: 0.75rem; }
+  .insight-label { font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); margin-bottom: 0.35rem; }
+  .insight-text { color: var(--text-dim); font-size: clamp(0.96rem, 0.2vw + 0.86rem, 1.04rem); }
+
+  /* SESSION CARDS */
+  .session-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  @media (max-width: 600px) { .session-grid { grid-template-columns: 1fr; } }
+  .session-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+  .session-card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .session-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent); background: rgba(78,140,255,0.1); border: 1px solid rgba(78,140,255,0.2); padding: 2px 7px; border-radius: 3px; }
+  .session-name { font-weight: 600; color: var(--text); font-size: 0.95rem; }
+  .session-detail { font-size: clamp(0.94rem, 0.2vw + 0.84rem, 1rem); color: var(--text-dim); margin-bottom: 0.25rem; }
+  .session-detail span { color: var(--text-muted); font-size: 0.8rem; }
+
+  /* SURVEY STATS */
+  .survey-stat { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem 1.25rem; }
+  .survey-stat-pct { font-family: 'DM Mono', monospace; font-size: 1.5rem; font-weight: 500; }
+  .survey-stat-label { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
+  .bar-wrap { margin-top: 0.5rem; background: var(--bg3); border-radius: 4px; height: 5px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+
+  /* FINDING ITEM */
+  .finding-item { display: flex; gap: 0.85rem; padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .finding-item:last-child { border-bottom: none; }
+  .finding-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent3); background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.2); padding: 2px 7px; border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+  .finding-text { color: var(--text-dim); font-size: clamp(0.98rem, 0.2vw + 0.88rem, 1.06rem); }
+  .finding-title { font-weight: 600; color: var(--text); font-size: clamp(0.98rem, 0.2vw + 0.88rem, 1.06rem); margin-bottom: 0.2rem; }
+
+  /* MOSCOW LEGEND */
+  .moscow-legend { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--text-dim); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; } ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); }
+
+  @media (min-width: 1280px) {
+    .hero { padding: 5.5rem 3.5rem 4.5rem; }
+    .main { padding-left: 2rem; padding-right: 2rem; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
+    .card, .session-card, .survey-stat, .insight { padding: 1.5rem 1.75rem; }
+  }
+
+  @media (max-width: 900px) {
+    .side-nav { right: 0.75rem; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+    .hero-inner, .main { max-width: min(100%, 960px); }
+  }
+
+  @media (max-width: 720px) {
+    .topbar { padding: 0.75rem 1rem; height: auto; gap: 0.75rem; align-items: flex-start; flex-direction: column; }
+    .topbar-left { width: 100%; flex-wrap: wrap; }
+    .toggle-btn { align-self: flex-end; }
+    .hero-footer { gap: 0.9rem; align-items: flex-start; }
+    .hero-divider { width: 100%; height: 1px; }
+    .card, .risk-card, .session-card, .survey-stat, .insight { padding: 1rem; }
+    .authors-row { gap: 0.75rem; }
+    .author-chip { width: 100%; justify-content: space-between; border-radius: 12px; padding: 0.75rem 1rem; }
+    .feature-item, .finding-item { gap: 0.65rem; }
+    .side-nav { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .table-wrap { overflow: visible; border: none; background: transparent; }
+    .table-wrap table,
+    .table-wrap thead,
+    .table-wrap tbody,
+    .table-wrap tr,
+    .table-wrap th,
+    .table-wrap td { display: block; width: 100%; }
+    .table-wrap thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .table-wrap tbody { display: grid; gap: 0.9rem; }
+    .table-wrap tr {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.25rem 0;
+      box-shadow: var(--card-shadow);
+    }
+    .table-wrap td {
+      border: none;
+      border-top: 1px solid var(--border);
+      padding: 0.8rem 1rem;
+      min-width: 0;
+      white-space: normal;
+    }
+    .table-wrap td:first-child {
+      border-top: none;
+      padding-top: 0.95rem;
+    }
+    .table-wrap td::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: 0.35rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    footer { padding: 1.25rem 1rem 2rem; line-height: 1.7; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-tag">SE 311</span>
+    <span class="topbar-title">Sillah Phase 2 — Requirements Elicitation</span>
+  </div>
+  <button class="toggle-btn" onclick="toggleTheme()">
+    <span id="themeIcon">☀️</span>
+    <span id="themeLabel">Light</span>
+  </button>
+</nav>
+
+<nav class="side-nav" id="sideNav">
+  <div class="nav-dot" data-label="Overview" data-target="s0"></div>
+  <div class="nav-dot" data-label="Elicitation Plan" data-target="s1"></div>
+  <div class="nav-dot" data-label="Stakeholders" data-target="s2"></div>
+  <div class="nav-dot" data-label="Interviews" data-target="s3"></div>
+  <div class="nav-dot" data-label="Family URs" data-target="s4"></div>
+  <div class="nav-dot" data-label="Provider URs" data-target="s5"></div>
+  <div class="nav-dot" data-label="Survey" data-target="s6"></div>
+  <div class="nav-dot" data-label="Admin URs" data-target="s7"></div>
+  <div class="nav-dot" data-label="Analysis" data-target="s8"></div>
+  <div class="nav-dot" data-label="Master List" data-target="s9"></div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="s0">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="chip chip-blue">Phase 2</span>
+      <span class="chip chip-teal">Requirements Elicitation</span>
+      <span class="chip chip-purple">MoSCoW Prioritized</span>
+      <span class="chip chip-orange">Section 1342</span>
+    </div>
+    <h1><em>Sillah</em><br>Elicitation &amp; User Requirements</h1>
+    <p class="hero-sub">Transforming the Phase 1 Vision &amp; Scope into structured, traceable, and prioritized user requirements through interviews, surveys, document analysis, and competitive review.</p>
+    <div class="hero-footer">
+      <div class="hero-stat"><span class="hero-stat-val">5</span><span class="hero-stat-label">Techniques</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-val">32</span><span class="hero-stat-label">Survey Responses</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-val">2</span><span class="hero-stat-label">Interviews</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-val">28+</span><span class="hero-stat-label">Requirements</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- AUTHORS -->
+  <div class="section" style="margin-bottom:2.5rem;">
+    <div class="authors-row">
+      <div class="author-chip">Shoug Alomran <span class="author-id">223410392</span></div>
+      <div class="author-chip">Ghala Alsaqer <span class="author-id">223410837</span></div>
+      <div class="author-chip">Gala Alalula <span class="author-id">224410053</span></div>
+      <div class="author-chip">Salma Al Khaldi <span class="author-id">223410067</span></div>
+    </div>
+  </div>
+
+  <!-- S1: ELICITATION PLAN -->
+  <section class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Elicitation Plan</h2>
+      <span class="section-accent" style="background:var(--accent);"></span>
+    </div>
+
+    <div class="card" style="margin-bottom:1.25rem;">
+      <div class="card-label">Objectives</div>
+      <p class="card-body" style="margin-bottom:0.75rem;">The elicitation process aims to refine the Phase 1 Vision &amp; Scope into structured, traceable user requirements for the initial release of Sillah. Specifically:</p>
+      <div class="feature-item"><div class="feature-code">OBJ-1</div><span class="feature-text">Clarify detailed family user needs and workflows.</span></div>
+      <div class="feature-item"><div class="feature-code">OBJ-2</div><span class="feature-text">Validate rule-based hereditary risk detection expectations.</span></div>
+      <div class="feature-item"><div class="feature-code">OBJ-3</div><span class="feature-text">Confirm bilingual usability requirements (Arabic RTL / English LTR).</span></div>
+      <div class="feature-item"><div class="feature-code">OBJ-4</div><span class="feature-text">Identify security and privacy expectations aligned with PDPL.</span></div>
+      <div class="feature-item"><div class="feature-code">OBJ-5</div><span class="feature-text">Capture preventive health alert and recommendation expectations.</span></div>
+      <div class="feature-item"><div class="feature-code">OBJ-6</div><span class="feature-text">Produce a prioritized and evidence-supported set of user requirements.</span></div>
+    </div>
+
+    <div style="margin-bottom:1.25rem;">
+      <div class="card-label" style="margin-bottom:0.75rem;">Elicitation Techniques</div>
+      <div class="grid-2">
+        <div class="card" style="margin:0;border-left:3px solid var(--accent);">
+          <div class="card-label">Facilitated</div>
+          <div class="feature-item" style="padding:0.5rem 0;"><div class="feature-code">T-1</div><span class="feature-text">Interviews with healthcare providers</span></div>
+          <div class="feature-item" style="padding:0.5rem 0;border-bottom:none;"><div class="feature-code">T-2</div><span class="feature-text">Bilingual survey (Arabic + English)</span></div>
+        </div>
+        <div class="card" style="margin:0;border-left:3px solid var(--accent2);">
+          <div class="card-label">Independent</div>
+          <div class="feature-item" style="padding:0.5rem 0;"><div class="feature-code">T-3</div><span class="feature-text">Document analysis (PDPL + screening guidelines)</span></div>
+          <div class="feature-item" style="padding:0.5rem 0;"><div class="feature-code">T-4</div><span class="feature-text">Observation of family health tracking habits</span></div>
+          <div class="feature-item" style="padding:0.5rem 0;border-bottom:none;"><div class="feature-code">T-5</div><span class="feature-text">Competitive review of similar health platforms</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card-label" style="margin-bottom:0.75rem;">Risks &amp; Mitigation</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Risk</th><th>Impact</th><th>Mitigation</th></tr></thead>
+          <tbody>
+            <tr><td class="td-name">Incomplete interview data</td><td>Weak requirement clarity</td><td>Cross-validation with survey</td></tr>
+            <tr><td class="td-name">Conflicting stakeholder expectations</td><td>Requirement ambiguity</td><td>Consolidation discussion</td></tr>
+            <tr><td class="td-name">Scope expansion</td><td>Delay in delivery</td><td>Restrict to Phase 1 features</td></tr>
+            <tr><td class="td-name">Privacy concerns</td><td>Limited participation</td><td>Clarify confidentiality</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- S2: STAKEHOLDER ANALYSIS -->
+  <section class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Stakeholder Analysis</h2>
+      <span class="section-accent" style="background:var(--accent2);"></span>
+    </div>
+
+    <div style="margin-bottom:1.25rem;">
+      <div class="card-label" style="margin-bottom:0.75rem;">Identified Stakeholders</div>
+      <div class="grid-2">
+        <div class="card" style="margin:0;"><div class="card-label">Primary</div><div class="card-title" style="font-weight:600;color:var(--text);font-size:0.95rem;margin-bottom:0.3rem;">Families</div><div class="card-body">Individuals who use the system to track hereditary health conditions and receive preventive alerts.</div></div>
+        <div class="card" style="margin:0;"><div class="card-label">Clinical</div><div class="card-title" style="font-weight:600;color:var(--text);font-size:0.95rem;margin-bottom:0.3rem;">Healthcare Providers</div><div class="card-body">Doctors who validate the medical relevance of risk detection and recommendations.</div></div>
+        <div class="card" style="margin:0;"><div class="card-label">Operational</div><div class="card-title" style="font-weight:600;color:var(--text);font-size:0.95rem;margin-bottom:0.3rem;">System Administrators</div><div class="card-body">Responsible for managing content, user roles, and system integrity.</div></div>
+        <div class="card" style="margin:0;"><div class="card-label">Regulatory</div><div class="card-title" style="font-weight:600;color:var(--text);font-size:0.95rem;margin-bottom:0.3rem;">Legal / Regulatory (PDPL)</div><div class="card-body">Ensure compliance with the Personal Data Protection Law.</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card-label" style="margin-bottom:0.75rem;">Stakeholder Mapping</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Stakeholder</th><th>Role</th><th>Interest</th><th>Influence</th><th>Engagement</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="td-name">Families<br><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);">Primary Users</span></td>
+              <td>Track hereditary health and receive alerts</td>
+              <td>Early detection, usability, privacy</td>
+              <td><span class="moscow m-must">High</span></td>
+              <td>Survey</td>
+            </tr>
+            <tr>
+              <td class="td-name">Healthcare Providers</td>
+              <td>Validate medical screening logic</td>
+              <td>Clinical accuracy, preventive guidance</td>
+              <td><span class="moscow m-must">High</span></td>
+              <td>Interview</td>
+            </tr>
+            <tr>
+              <td class="td-name">System Administrators</td>
+              <td>Manage roles, content, system integrity</td>
+              <td>Secure access control, content reliability</td>
+              <td><span class="moscow m-should">Medium</span></td>
+              <td>Document Analysis</td>
+            </tr>
+            <tr>
+              <td class="td-name">Legal / PDPL Authority</td>
+              <td>Ensure data protection compliance</td>
+              <td>Protection of sensitive health data</td>
+              <td><span class="moscow m-must">High</span></td>
+              <td>Document Analysis</td>
+            </tr>
+            <tr>
+              <td class="td-name">Public Health Authority<br><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);">Future</span></td>
+              <td>Potential national integration partner</td>
+              <td>Population-level insights, Vision 2030 alignment</td>
+              <td><span class="moscow m-should">Medium</span></td>
+              <td>Document Analysis</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3: INTERVIEWS -->
+  <section class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Interviews</h2>
+      <span class="section-accent" style="background:var(--accent3);"></span>
+    </div>
+
+    <div class="session-grid">
+      <div class="session-card">
+        <div class="session-card-header"><span class="session-num">Session 1</span></div>
+        <div class="session-name">Dr. Lama Alalula</div>
+        <div class="session-detail">Ear-Nose-Throat (ENT) Surgeon</div>
+        <div class="session-detail"><span>Date: </span>15 March 2026</div>
+      </div>
+      <div class="session-card">
+        <div class="session-card-header"><span class="session-num">Session 2</span></div>
+        <div class="session-name">Dr. Alhanouf Alaloola</div>
+        <div class="session-detail">Cardiac Surgeon</div>
+        <div class="session-detail"><span>Date: </span>28 March 2026</div>
+      </div>
+    </div>
+
+    <!-- Key Findings -->
+    <div style="margin-bottom:1.5rem;">
+      <div class="card-label" style="margin-bottom:0.75rem;">Key Findings</div>
+      <div class="card" style="padding:0;">
+        <div class="finding-item">
+          <div>
+            <div class="finding-title">Functional Findings</div>
+            <div class="finding-text">Both providers collect family medical history directly from patients or parents. Chronic conditions, cancer history, and congenital heart disease were identified as the most valuable to track. Both agreed children should be included from birth for early risk detection. Preventive actions should include screening tests, specialist referrals, and lifestyle modifications.</div>
+          </div>
+        </div>
+        <div class="finding-item">
+          <div>
+            <div class="finding-title">Data Reliability Findings</div>
+            <div class="finding-text">Extended family medical information is often incomplete or unknown. Both providers expressed low trust in patient-entered data — one explicitly recommended that data should be entered or validated by a healthcare professional.</div>
+          </div>
+        </div>
+        <div class="finding-item">
+          <div>
+            <div class="finding-title">Usability &amp; Workflow Findings</div>
+            <div class="finding-text">Neither provider has used a dedicated family health platform. Both were uncertain about medically appropriate alert phrasing. One preferred a brief summary; the other preferred summaries tailored to appointment type. Time constraints and preference for direct patient interaction were identified as adoption barriers.</div>
+          </div>
+        </div>
+        <div class="finding-item" style="border-bottom:none;">
+          <div>
+            <div class="finding-title">System Integration Findings</div>
+            <div class="finding-text">One provider highlighted the importance of integration with existing national health platforms, suggesting that future scalability depends on interoperability with existing healthcare infrastructure.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extracted Requirements -->
+    <div>
+      <div class="card-label" style="margin-bottom:0.75rem;">Extracted Requirements from Interviews</div>
+      <div class="moscow-legend">
+        <div class="legend-item"><span class="moscow m-must">MUST</span></div>
+        <div class="legend-item"><span class="moscow m-should">SHOULD</span></div>
+        <div class="legend-item"><span class="moscow m-could">COULD</span></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ID</th><th>Requirement Statement</th><th>Evidence</th><th>Priority</th><th>Acceptance Criteria</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="td-id">HPR-I01</td>
+              <td class="td-req">The system allows healthcare professionals to enter or validate family health data to ensure reliability.</td>
+              <td style="white-space:nowrap;font-size:12px;color:var(--text-muted);">Session 1 &amp; 2</td>
+              <td><span class="moscow m-must">MUST</span></td>
+              <td style="font-size:0.82rem;">Verified data is clearly distinguished from patient-entered data.</td>
+            </tr>
+            <tr>
+              <td class="td-id">HPR-I02</td>
+              <td class="td-req">The system tracks the history of cancer as a key hereditary condition.</td>
+              <td style="white-space:nowrap;font-size:12px;color:var(--text-muted);">Session 1</td>
+              <td><span class="moscow m-must">MUST</span></td>
+              <td style="font-size:0.82rem;">Users can record cancer history with type, age of onset, and family relationship.</td>
+            </tr>
+            <tr>
+              <td class="td-id">HPR-I03</td>
+              <td class="td-req">The system tracks congenital heart disease as a key hereditary condition.</td>
+              <td style="white-space:nowrap;font-size:12px;color:var(--text-muted);">Session 2</td>
+              <td><span class="moscow m-must">MUST</span></td>
+              <td style="font-size:0.82rem;">Users can record congenital heart disease with diagnosis details and affected members.</td>
+            </tr>
+            <tr>
+              <td class="td-id">HPR-I04</td>
+              <td class="td-req">The system includes pediatric profiles from birth for early risk screening.</td>
+              <td style="white-space:nowrap;font-size:12px;color:var(--text-muted);">Session 1 &amp; 2</td>
+              <td><span class="moscow m-must">MUST</span></td>
+              <td style="font-size:0.82rem;">Users can add family members from age 0; risk screening applies to all age groups.</td>
+            </tr>
+            <tr>
+              <td class="td-id">HPR-I05</td>
+              <td class="td-req">The system provides a patient summary view with brief medical history.</td>
+              <td style="white-space:nowrap;font-size:12px;color:var(--text-muted);">Session 1</td>
+              <td><span class="moscow m-should">SHOULD</span></td>
+              <td style="font-size:0.82rem;">Summary displays key medical history including chronic conditions and family history.</td>
+            </tr>
+            <tr>
+              <td class="td-id">HPR-I06</td>
+              <td class="td-req">The system provides a patient summary view tailored to appointment reason.</td>
+              <td style="white-space:nowrap;font-size:12px;color:var(--text-muted);">Session 2</td>
+              <td><span class="moscow m-could">COULD</span></td>
+              <td style="font-size:0.82rem;">Summary highlights relevant health data based on the patient's scheduled appointment type.</td>
+            </tr>
+            <tr>
+              <td class="td-id">HPR-I07</td>
+              <td class="td-req">The system integrates with existing national health platforms.</td>
+              <td style="white-space:nowrap;font-size:12px;color:var(--text-muted);">Session 1</td>
+              <td><span class="moscow m-could">COULD</span></td>
+              <td style="font-size:0.82rem;">Future release supports API integration with national platforms for data exchange.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4: FAMILY URs -->
+  <section class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Family User Requirements</h2>
+      <span class="section-accent" style="background:var(--accent);"></span>
+    </div>
+
+    <div class="card" style="margin-bottom:1.25rem;">
+      <div class="card-label">Requirement Format</div>
+      <p class="card-body">Each Family User Requirement (FUR) includes: a unique ID for traceability, a requirement statement in the "must" format, the evidence source linked to an elicitation method, a MoSCoW priority, and measurable acceptance criteria for verification.</p>
+    </div>
+
+    <div class="moscow-legend">
+      <div class="legend-item"><span class="moscow m-must">MUST</span> — Essential</div>
+      <div class="legend-item"><span class="moscow m-should">SHOULD</span> — Important</div>
+      <div class="legend-item"><span class="moscow m-could">COULD</span> — Nice to have</div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Requirement Statement</th><th>Evidence</th><th>Priority</th><th>Acceptance Criteria</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-id">FUR-01</td>
+            <td class="td-req">The system must allow authenticated users to create, edit, and delete multiple family member profiles with demographic information and associated health records.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Family Interview</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Profiles include required attributes, persist after saving, and only authorized users can modify them.</td>
+          </tr>
+          <tr>
+            <td class="td-id">FUR-02</td>
+            <td class="td-req">The system must allow users to record hereditary conditions — cardiac disease, diabetes, hypertension, and high cholesterol — for each family member.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Family Interview</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Conditions are stored per profile and are retrievable and editable.</td>
+          </tr>
+          <tr>
+            <td class="td-id">FUR-03</td>
+            <td class="td-req">The system must generate personalized preventive alerts based on predefined screening rules applied to recorded family health data.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Family + HP Interviews</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Alerts triggered when rule conditions are met, specific to user data, clearly displayed.</td>
+          </tr>
+          <tr>
+            <td class="td-id">FUR-04</td>
+            <td class="td-req">The system must display preventive recommendations alongside generated alerts.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Family Interview</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">Each alert includes a corresponding recommendation, relevant to detected risk.</td>
+          </tr>
+          <tr>
+            <td class="td-id">FUR-05</td>
+            <td class="td-req">The system must support a bilingual interface (Arabic RTL and English LTR), allowing users to switch languages dynamically.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Survey Results</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Layout adjusts correctly (RTL/LTR) and all interface elements are translated.</td>
+          </tr>
+          <tr>
+            <td class="td-id">FUR-06</td>
+            <td class="td-req">The system must allow users to simulate booking a clinic appointment.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Family Interview</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">Users can submit booking details and receive a confirmation message.</td>
+          </tr>
+          <tr>
+            <td class="td-id">FUR-07</td>
+            <td class="td-req">The system must allow users to view previously generated alerts and notification history.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Family Interview</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">Alerts displayed in a structured format (list or timeline) and remain accessible after new alerts.</td>
+          </tr>
+          <tr>
+            <td class="td-id">FUR-08</td>
+            <td class="td-req">The system must require secure authentication before allowing access to personal health data.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Document Analysis</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Unauthorized access denied; session management enforced.</td>
+          </tr>
+          <tr>
+            <td class="td-id">FUR-09</td>
+            <td class="td-req">The system must restrict access to health data based on user role.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Document Analysis</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Role-based permissions enforced; unauthorized actions blocked.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- S5: HEALTHCARE PROVIDER URs -->
+  <section class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Healthcare Provider Requirements</h2>
+      <span class="section-accent" style="background:var(--accent2);"></span>
+    </div>
+
+    <div class="card" style="margin-bottom:1.25rem;">
+      <div class="card-label">Source &amp; Format</div>
+      <p class="card-body">Derived from healthcare provider interviews and supported by survey findings to ensure clinical relevance and real-world workflow alignment. Each requirement uses the "shall" format with a unique HPR identifier, MoSCoW priority, and measurable acceptance criteria.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Requirement Statement</th><th>Evidence</th><th>Priority</th><th>Acceptance Criteria</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-id">HPR-01</td>
+            <td class="td-req">The system shall allow healthcare providers to enter, update, and validate family medical history data to ensure accuracy and reliability.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Session 1 &amp; 2</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Providers can mark data as verified; verified data is clearly distinguishable from unverified.</td>
+          </tr>
+          <tr>
+            <td class="td-id">HPR-02</td>
+            <td class="td-req">The system shall allow healthcare providers to view a summarized patient profile including key medical history and hereditary conditions.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Session 1 &amp; 2, Survey</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Summary accessible during consultation in a concise format.</td>
+          </tr>
+          <tr>
+            <td class="td-id">HPR-03</td>
+            <td class="td-req">The system shall allow healthcare providers to access patient data relevant to the reason for the appointment.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Session 2</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">Data displayed aligns with appointment type; irrelevant information is minimized.</td>
+          </tr>
+          <tr>
+            <td class="td-id">HPR-04</td>
+            <td class="td-req">The system shall generate clinically appropriate preventive alerts based on patient and family health data.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Session 1 &amp; 2, Survey</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Alerts triggered on predefined rules; medically relevant and clearly displayed.</td>
+          </tr>
+          <tr>
+            <td class="td-id">HPR-05</td>
+            <td class="td-req">The system shall provide recommended actions after risk detection including screening tests, specialist referrals, and lifestyle advice.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Session 1 &amp; 2, Survey</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">Each alert includes at least one recommendation, relevant to detected risk.</td>
+          </tr>
+          <tr>
+            <td class="td-id">HPR-06</td>
+            <td class="td-req">The system shall present alerts and recommendations using clear, standardized, and medically appropriate language.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Session 1 &amp; 2</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">Alerts use consistent phrasing; providers can interpret without additional clarification.</td>
+          </tr>
+          <tr>
+            <td class="td-id">HPR-07</td>
+            <td class="td-req">The system shall be designed to minimize disruption to healthcare providers' workflow.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Session 2</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">Key information accessible within minimal steps; navigation is efficient and intuitive.</td>
+          </tr>
+          <tr>
+            <td class="td-id">HPR-08</td>
+            <td class="td-req">The system shall support pediatric patient profiles to enable early hereditary risk screening from birth.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Session 1 &amp; 2</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Providers can manage profiles for patients aged 0+; screening rules apply to pediatric profiles.</td>
+          </tr>
+          <tr>
+            <td class="td-id">HPR-09</td>
+            <td class="td-req">The system shall support future integration with existing national health platforms through secure APIs.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Session 1</td>
+            <td><span class="moscow m-could">COULD</span></td>
+            <td style="font-size:0.82rem;">Architecture allows API integration; data exchange follows secure standards.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- S6: SURVEY -->
+  <section class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Survey</h2>
+      <span class="section-accent" style="background:var(--accent4);"></span>
+    </div>
+
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="card-label">Survey Design</div>
+      <p class="card-body">A bilingual survey (Arabic and English) was distributed to collect general and role-specific requirements from patients, family members, healthcare providers, and administrative staff. Structured into three sections: demographic questions, general system usage and preferences, and role-specific questions. The purpose was to validate requirements from interviews and capture usability, functionality, security, and preventive health expectations.</p>
+    </div>
+
+    <!-- Response stats -->
+    <div style="margin-bottom:1.5rem;">
+      <div class="card-label" style="margin-bottom:0.75rem;">Response Summary — 32 Total Responses</div>
+      <div class="grid-3">
+        <div class="survey-stat">
+          <div class="survey-stat-pct" style="color:var(--accent3);">87.5%</div>
+          <div class="survey-stat-label">Female respondents</div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:87.5%;background:var(--accent3);"></div></div>
+        </div>
+        <div class="survey-stat">
+          <div class="survey-stat-pct" style="color:var(--accent);">84.4%</div>
+          <div class="survey-stat-label">Aged 19–25 years</div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:84.4%;background:var(--accent);"></div></div>
+        </div>
+        <div class="survey-stat">
+          <div class="survey-stat-pct" style="color:var(--accent2);">50%</div>
+          <div class="survey-stat-label">Used digital health tracking before</div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:50%;background:var(--accent2);"></div></div>
+        </div>
+        <div class="survey-stat">
+          <div class="survey-stat-pct" style="color:var(--accent4);">53.1%</div>
+          <div class="survey-stat-label">Use health apps only occasionally</div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:53.1%;background:var(--accent4);"></div></div>
+        </div>
+        <div class="survey-stat">
+          <div class="survey-stat-pct" style="color:var(--accent);">59.4%</div>
+          <div class="survey-stat-label">Interested in managing family profiles</div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:59.4%;background:var(--accent);"></div></div>
+        </div>
+        <div class="survey-stat">
+          <div class="survey-stat-pct" style="color:var(--accent3);">87.5%</div>
+          <div class="survey-stat-label">Agreed on role-based access control</div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:87.5%;background:var(--accent3);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Language preference -->
+    <div style="margin-bottom:1.5rem;">
+      <div class="card-label" style="margin-bottom:0.75rem;">Language Preferences</div>
+      <div class="grid-2">
+        <div class="survey-stat">
+          <div class="survey-stat-pct" style="color:var(--accent);">56.3%</div>
+          <div class="survey-stat-label">Preferred English interface</div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:56.3%;background:var(--accent);"></div></div>
+        </div>
+        <div class="survey-stat">
+          <div class="survey-stat-pct" style="color:var(--accent2);">40.6%</div>
+          <div class="survey-stat-label">Preferred Arabic interface</div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:40.6%;background:var(--accent2);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Insights -->
+    <div>
+      <div class="card-label" style="margin-bottom:0.75rem;">Key Insights</div>
+      <div class="card" style="padding:0;">
+        <div class="finding-item"><div class="finding-num">1</div><div><div class="finding-title">Strong Demand for Family-Centered Functionality</div><div class="finding-text">The majority showed clear interest in managing multiple family profiles, reinforcing the importance of a family-based system design.</div></div></div>
+        <div class="finding-item"><div class="finding-num">2</div><div><div class="finding-title">Need for Preventive Health Features</div><div class="finding-text">High interest in automated alerts and recommendations indicates users value proactive health management and early risk detection.</div></div></div>
+        <div class="finding-item"><div class="finding-num">3</div><div><div class="finding-title">Low Engagement with Existing Health Applications</div><div class="finding-text">Most users reported only occasional or rare use, suggesting current solutions may lack usability or relevance. The system should prioritize simplicity, clarity, and ease of use.</div></div></div>
+        <div class="finding-item"><div class="finding-num">4</div><div><div class="finding-title">Importance of Security and Privacy</div><div class="finding-text">Strong agreement on role-based access control highlights the importance of protecting sensitive health data and ensuring PDPL compliance.</div></div></div>
+        <div class="finding-item"><div class="finding-num">5</div><div><div class="finding-title">Requirement for Bilingual Support</div><div class="finding-text">The distribution of language preferences confirms the need for a bilingual system supporting both Arabic (RTL) and English (LTR).</div></div></div>
+        <div class="finding-item" style="border-bottom:none;"><div class="finding-num">6</div><div><div class="finding-title">Interest in Advanced Future Features</div><div class="finding-text">Open-ended responses suggested AI-based risk prediction, emergency alert systems, integration with wearable devices, and health trend tracking for future enhancements.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7: ADMIN URs -->
+  <section class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Administrator Requirements</h2>
+      <span class="section-accent" style="background:var(--accent3);"></span>
+    </div>
+
+    <div class="card" style="margin-bottom:1.25rem;">
+      <div class="card-label">Focus</div>
+      <p class="card-body">Administrator requirements (AUR) focus on system management, access control, and operational oversight. Each requirement uses the "shall" format with MoSCoW priority and measurable acceptance criteria.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Requirement Statement</th><th>Evidence</th><th>Priority</th><th>Acceptance Criteria</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-id">AUR-01</td>
+            <td class="td-req">The system shall allow administrators to manage user roles and enforce access permissions.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Survey + Interview</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Admin can assign roles; unauthorized users cannot access restricted data.</td>
+          </tr>
+          <tr>
+            <td class="td-id">AUR-02</td>
+            <td class="td-req">The system shall allow administrators to manage user accounts (create, update, deactivate).</td>
+            <td style="font-size:12px;color:var(--text-muted);">Survey + System Logic</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Changes are saved and reflected immediately; only authorized admin can modify accounts.</td>
+          </tr>
+          <tr>
+            <td class="td-id">AUR-03</td>
+            <td class="td-req">The system shall ensure secure authentication and protect user health data.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Survey + Doc Analysis</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Users must log in before accessing; unauthorized access is denied; data is protected.</td>
+          </tr>
+          <tr>
+            <td class="td-id">AUR-04</td>
+            <td class="td-req">The system shall allow administrators to manage awareness and educational content.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Survey + Doc Analysis</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Admin can add, edit, and delete content; updates visible to users; content stored correctly.</td>
+          </tr>
+          <tr>
+            <td class="td-id">AUR-05</td>
+            <td class="td-req">The system shall allow administrators or authorized roles to validate and ensure the accuracy of health data.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Interview</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:0.82rem;">Verified data is clearly marked; system distinguishes verified from unverified data.</td>
+          </tr>
+          <tr>
+            <td class="td-id">AUR-06</td>
+            <td class="td-req">The system shall record all administrative actions in an audit log.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Survey</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">All admin actions recorded with action type and timestamp; logs accessible by admin.</td>
+          </tr>
+          <tr>
+            <td class="td-id">AUR-07</td>
+            <td class="td-req">The system shall allow administrators to add and manage clinics in the system.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Survey</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">Admin can add new clinics; clinic information is stored, retrievable, and visible to users.</td>
+          </tr>
+          <tr>
+            <td class="td-id">AUR-08</td>
+            <td class="td-req">The system shall allow administrators to review and approve content before publishing.</td>
+            <td style="font-size:12px;color:var(--text-muted);">Interview + Doc Analysis</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">Only approved content is visible; system tracks content status (approved/pending).</td>
+          </tr>
+          <tr>
+            <td class="td-id">AUR-09</td>
+            <td class="td-req">The system shall allow administrators to monitor system activity.</td>
+            <td style="font-size:12px;color:var(--text-muted);">System Logic</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:0.82rem;">Admin can view system activity; errors are logged and visible.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- S8: DOCUMENT/OBSERVATION/COMPETITIVE -->
+  <section class="section" id="s8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Document, Observation &amp; Competitive Analysis</h2>
+      <span class="section-accent" style="background:var(--accent4);"></span>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:1.5rem;">
+      <div class="card" style="margin:0;border-top:3px solid var(--accent);">
+        <div class="card-label">Document Analysis</div>
+        <p class="card-body">Reviewed PDPL of Saudi Arabia, preventive health screening guidelines for hereditary conditions, data protection best practices, and privacy policy guidelines. Objective: identify legal/regulatory constraints, privacy requirements, authentication mechanisms, and user consent considerations.</p>
+      </div>
+      <div class="card" style="margin:0;border-top:3px solid var(--accent2);">
+        <div class="card-label">Observation Notes</div>
+        <p class="card-body">Observed how families currently track health information, particularly for hereditary conditions. Finding: many families lack a structured method — information is either remembered from conversations or written in scattered locations, making it easy to forget important preventive screening details.</p>
+      </div>
+      <div class="card" style="margin:0;border-top:3px solid var(--accent3);">
+        <div class="card-label">Competitive Review</div>
+        <p class="card-body">Reviewed existing health-related applications to identify common preventive-health features, analyze alert presentation styles, review multilingual support implementation, and evaluate UI simplicity. Purpose: understand industry norms and identify usability improvements — not to replicate competitors.</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-label">Key Observation Insight</div>
+      <p class="insight-text">Most families do not have a structured way of organizing health information. Information is either remembered from conversations or written in different places, revealing usability gaps and inefficiencies — demonstrating the need for a simpler and more organized approach to tracking preventive screenings and family health history.</p>
+    </div>
+  </section>
+
+  <!-- S9: CONSOLIDATED MASTER LIST -->
+  <section class="section" id="s9">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2 class="section-title">Consolidated Prioritized User Requirements</h2>
+      <span class="section-accent" style="background:var(--accent);"></span>
+    </div>
+
+    <div class="card" style="margin-bottom:1.25rem;">
+      <div class="card-label">Overview</div>
+      <p class="card-body">Final consolidated list from all elicitation activities — interviews, surveys, document analysis, observation, and competitive analysis — combining requirements from all stakeholder groups (Family Members, Healthcare Providers, and Administrators) and prioritized using MoSCoW.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Requirement Statement</th><th>Priority</th><th>Stakeholder</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-id">UR-01</td>
+            <td class="td-req">The system shall allow users to track medication schedules and receive reminders.</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:12px;color:var(--text-muted);">Family</td>
+          </tr>
+          <tr>
+            <td class="td-id">UR-02</td>
+            <td class="td-req">The system shall allow users to monitor health indicators such as blood pressure and glucose levels.</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:12px;color:var(--text-muted);">Family</td>
+          </tr>
+          <tr>
+            <td class="td-id">UR-03</td>
+            <td class="td-req">The system shall allow healthcare providers to view patient health data remotely.</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:12px;color:var(--text-muted);">Healthcare Provider</td>
+          </tr>
+          <tr>
+            <td class="td-id">UR-04</td>
+            <td class="td-req">The system shall allow healthcare providers to update patient medical records.</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:12px;color:var(--text-muted);">Healthcare Provider</td>
+          </tr>
+          <tr>
+            <td class="td-id">UR-05</td>
+            <td class="td-req">The system shall provide emergency alert functionality for critical health situations.</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:12px;color:var(--text-muted);">Family</td>
+          </tr>
+          <tr>
+            <td class="td-id">UR-06</td>
+            <td class="td-req">The system shall allow administrators to manage user accounts and roles.</td>
+            <td><span class="moscow m-must">MUST</span></td>
+            <td style="font-size:12px;color:var(--text-muted);">Administrator</td>
+          </tr>
+          <tr>
+            <td class="td-id">UR-07</td>
+            <td class="td-req">The system shall generate reports for healthcare providers based on patient data.</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:12px;color:var(--text-muted);">Healthcare Provider</td>
+          </tr>
+          <tr>
+            <td class="td-id">UR-08</td>
+            <td class="td-req">The system shall allow communication between patients and healthcare providers.</td>
+            <td><span class="moscow m-should">SHOULD</span></td>
+            <td style="font-size:12px;color:var(--text-muted);">Family / HP</td>
+          </tr>
+          <tr>
+            <td class="td-id">UR-09</td>
+            <td class="td-req">The system shall provide data visualization (charts/graphs) for health trends.</td>
+            <td><span class="moscow m-could">COULD</span></td>
+            <td style="font-size:12px;color:var(--text-muted);">Family</td>
+          </tr>
+          <tr>
+            <td class="td-id">UR-10</td>
+            <td class="td-req">The system shall support integration with wearable health devices.</td>
+            <td><span class="moscow m-could">COULD</span></td>
+            <td style="font-size:12px;color:var(--text-muted);">Family</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Summary counts -->
+    <div class="grid-4" style="margin-top:1.25rem;">
+      <div class="stat-card"><div class="stat-value" style="color:var(--must);">6</div><div class="stat-desc">Must Have requirements</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--should);">2</div><div class="stat-desc">Should Have requirements</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--could);">2</div><div class="stat-desc">Could Have requirements</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--text-muted);">3</div><div class="stat-desc">Stakeholder groups</div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  SE 311 — Software Requirements Engineering &nbsp;·&nbsp; Sillah Phase 2: Requirements Elicitation &nbsp;·&nbsp; Section 1342 &nbsp;·&nbsp; Ms. Alhanouf Almutairi
+</footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('themeIcon').textContent = isDark ? '🌙' : '☀️';
+    document.getElementById('themeLabel').textContent = isDark ? 'Dark' : 'Light';
+  }
+
+  const sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9'];
+  const dots = document.querySelectorAll('.nav-dot');
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      document.getElementById(sections[i]).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  function updateDots() {
+    let current = 0;
+    sections.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 120) current = i;
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+  window.addEventListener('scroll', updateDots);
+  updateDots();
+
+  function enhanceResponsiveTables() {
+    document.querySelectorAll('.table-wrap table').forEach((table) => {
+      const headers = Array.from(table.querySelectorAll('thead th')).map((th) =>
+        th.textContent.trim()
+      );
+      table.querySelectorAll('tbody tr').forEach((row) => {
+        Array.from(row.children).forEach((cell, index) => {
+          if (cell.tagName === 'TD' && headers[index]) {
+            cell.setAttribute('data-label', headers[index]);
+          }
+        });
+      });
+    });
+  }
+
+  enhanceResponsiveTables();
+</script>
+</body>
+</html>

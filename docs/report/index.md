@@ -8,13 +8,18 @@ treated separately and is not counted as a report phase.
 
 ## Available Downloads
 
+### Phase 1
 - [Phase 1 Report (PDF)](./phase-1.pdf)
 - [Phase 1 Report (HTML)](./report-phase-1.html)
+
+### Phase 2
+- [Phase 2 Report (PDF)](./phase-2.pdf)
+- [Phase 2 Report (HTML)](./report-phase-2.html)
 
 ## Report Progress
 
 - Phase 1: Available
-- Phase 2: Coming soon
+- Phase 2: Available
 - Phase 3: Coming soon
 
 ## Primary Reading Paths
