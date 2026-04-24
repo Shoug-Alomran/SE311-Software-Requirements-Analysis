@@ -14,6 +14,7 @@ design, implementation planning, and controlled change.
 
 ## Recommended Next Step
 
-Use the [SRS](phase-4-specification/srs.md) and
-[Traceability Matrix](phase-6-requirements-management/traceability-matrix.md)
+Use the [Phase 3 Overview](phase-3-analysis/index.md),
+[Functional Requirements](phase-3-analysis/functional-requirements.md),
+and [Prioritization](phase-3-analysis/prioritization.md)
 as the operational baseline for design and development work.
