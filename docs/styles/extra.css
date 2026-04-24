@@ -245,10 +245,14 @@ body,
   -webkit-overflow-scrolling: touch;
 }
 
+.md-typeset__table {
+  width: 100%;
+}
+
 .md-typeset table:not([class]) {
   display: table;
-  width: fit-content;
-  min-width: min(100%, 42rem);
+  width: 100%;
+  min-width: 100%;
   max-width: 100%;
   border-radius: 14px;
   border: 1px solid var(--panel-border);
