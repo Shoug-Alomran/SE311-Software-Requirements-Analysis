@@ -16,11 +16,15 @@ treated separately and is not counted as a report phase.
 - [Phase 2 Report (PDF)](./phase-2.pdf)
 - [Phase 2 Report (HTML)](./report-phase-2.html)
 
+### Phase 3
+- [Phase 3 Report (PDF)](./phase-3.pdf)
+- [Phase 3 Report (HTML)](./report-phase-3.html)
+
 ## Report Progress
 
 - Phase 1: Available
 - Phase 2: Available
-- Phase 3: Coming soon
+- Phase 3: Available
 
 ## Primary Reading Paths
 

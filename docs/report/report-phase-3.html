@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sillah Phase 3 — Requirements Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root[data-theme="dark"] {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e29;
+    --border: #252a38;
+    --text: #e2e6f0;
+    --text-muted: #6b7490;
+    --text-dim: #9aa0b8;
+    --accent: #4e8cff;
+    --accent2: #2dd4bf;
+    --accent3: #a78bfa;
+    --accent4: #fb923c;
+    --accent5: #22c55e;
+    --tag-bg: #1e2535;
+    --card-shadow: 0 2px 24px rgba(0,0,0,0.4);
+    --hero-gradient: linear-gradient(135deg, #0d1526 0%, #0d0f14 60%, #12111c 100%);
+    --stripe: rgba(78,140,255,0.04);
+    --high: #ef4444;
+    --medium: #f59e0b;
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f6fb;
+    --bg2: #ffffff;
+    --bg3: #edf0f8;
+    --border: #dde2f0;
+    --text: #1a1e2e;
+    --text-muted: #8892b0;
+    --text-dim: #4a5275;
+    --accent: #2563eb;
+    --accent2: #0d9488;
+    --accent3: #7c3aed;
+    --accent4: #ea580c;
+    --accent5: #16a34a;
+    --tag-bg: #e8ecf8;
+    --card-shadow: 0 2px 24px rgba(30,40,80,0.08);
+    --hero-gradient: linear-gradient(135deg, #dce8ff 0%, #f4f6fb 60%, #ece8ff 100%);
+    --stripe: rgba(37,99,235,0.03);
+    --high: #dc2626;
+    --medium: #d97706;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: clamp(15px, 0.35vw + 13.5px, 18px); transition: background 0.3s, color 0.3s; min-height: 100vh; }
+  .topbar { position: sticky; top: 0; z-index: 100; background: var(--bg2); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 52px; backdrop-filter: blur(12px); }
+  .topbar-left { display: flex; align-items: center; gap: 0.6rem; }
+  .topbar-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); background: var(--tag-bg); padding: 3px 8px; border-radius: 3px; }
+  .topbar-title { font-family: 'DM Mono', monospace; font-size: clamp(11px, 0.25vw + 10px, 12px); color: var(--text-dim); letter-spacing: 0.05em; }
+  .toggle-btn { display: flex; align-items: center; gap: 6px; background: var(--tag-bg); border: 1px solid var(--border); border-radius: 20px; padding: 5px 14px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); transition: all 0.2s; }
+  .toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .side-nav { position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 50; }
+  .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.2s; position: relative; }
+  .nav-dot:hover, .nav-dot.active { background: var(--accent); transform: scale(1.5); }
+  .nav-dot::after { content: attr(data-label); position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 10px; font-family: 'DM Mono', monospace; color: var(--text-muted); white-space: nowrap; opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+  .nav-dot:hover::after { opacity: 1; }
+
+  .hero { background: var(--hero-gradient); border-bottom: 1px solid var(--border); padding: 5rem 3rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 80px, var(--stripe) 80px, var(--stripe) 81px); pointer-events: none; }
+  .hero-inner, .main { max-width: min(1320px, calc(100vw - 7rem)); margin: 0 auto; position: relative; }
+  .hero-meta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .chip { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; border: 1px solid; }
+  .chip-blue { color: var(--accent); border-color: var(--accent); background: rgba(78,140,255,0.08); }
+  .chip-teal { color: var(--accent2); border-color: var(--accent2); background: rgba(45,212,191,0.08); }
+  .chip-purple { color: var(--accent3); border-color: var(--accent3); background: rgba(167,139,250,0.08); }
+  .chip-green { color: var(--accent5); border-color: var(--accent5); background: rgba(34,197,94,0.08); }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.12; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.01em; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub { font-size: clamp(0.95rem, 0.4vw + 0.85rem, 1.08rem); color: var(--text-dim); max-width: 78ch; margin-bottom: 2rem; }
+  .hero-footer { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .hero-stat { display: flex; flex-direction: column; gap: 2px; }
+  .hero-stat-val { font-family: 'DM Mono', monospace; font-size: 1.1rem; font-weight: 500; color: var(--text); }
+  .hero-stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .hero-divider { width: 1px; height: 36px; background: var(--border); }
+
+  .main { padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem) 6rem; }
+  .section { margin-bottom: 3.5rem; scroll-margin-top: 70px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  .section:nth-child(1){animation-delay:.05s}.section:nth-child(2){animation-delay:.1s}.section:nth-child(3){animation-delay:.15s}.section:nth-child(4){animation-delay:.2s}.section:nth-child(5){animation-delay:.25s}.section:nth-child(6){animation-delay:.3s}.section:nth-child(7){animation-delay:.35s}.section:nth-child(8){animation-delay:.4s}
+  @keyframes fadeUp { to { opacity: 1; transform: none; } }
+  .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .section-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); background: var(--tag-bg); padding: 2px 7px; border-radius: 3px; flex-shrink: 0; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.15rem, 0.8vw + 0.95rem, 1.45rem); color: var(--text); }
+  .section-accent { display: block; width: 32px; height: 2px; border-radius: 2px; margin-left: auto; }
+
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; box-shadow: var(--card-shadow); transition: border-color 0.2s; }
+  .card:hover { border-color: var(--accent); }
+  .card-label { font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .card-body { color: var(--text-dim); font-size: clamp(1rem, 0.25vw + 0.9rem, 1.12rem); line-height: 1.65; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .feature-item { display: flex; gap: 0.85rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .feature-item:last-child { border-bottom: none; }
+  .feature-code { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent); background: rgba(78,140,255,0.1); border: 1px solid rgba(78,140,255,0.2); padding: 2px 7px; border-radius: 3px; flex-shrink: 0; margin-top: 2px; white-space: nowrap; }
+  .feature-text { color: var(--text-dim); font-size: clamp(0.98rem, 0.22vw + 0.9rem, 1.08rem); }
+  .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; text-align: center; }
+  .stat-value { font-family: 'DM Mono', monospace; font-size: 1.4rem; font-weight: 500; margin-bottom: 4px; }
+  .stat-desc { font-size: 0.82rem; color: var(--text-muted); }
+  .pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 3px; border: 1px solid; white-space: nowrap; letter-spacing: 0.05em; }
+  .p-high { color: var(--high); border-color: rgba(239,68,68,0.25); background: rgba(239,68,68,0.08); }
+  .p-medium { color: var(--medium); border-color: rgba(245,158,11,0.25); background: rgba(245,158,11,0.08); }
+
+  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1rem; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: var(--bg3); padding: 0.7rem 1rem; text-align: left; font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 500; white-space: nowrap; }
+  td { padding: 0.8rem 1rem; border-top: 1px solid var(--border); font-size: clamp(0.96rem, 0.22vw + 0.88rem, 1.04rem); color: var(--text-dim); vertical-align: top; }
+  tr:hover td { background: var(--bg3); }
+  .td-id { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); white-space: nowrap; font-weight: 500; }
+  .td-name { font-weight: 600; color: var(--text); }
+  .td-req { color: var(--text); }
+  .authors-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .author-chip { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 5px 14px; font-size: 0.85rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+  .author-id { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); }
+  .insight { background: var(--bg2); border: 1px solid var(--border); border-left: 4px solid var(--accent2); border-radius: 8px; padding: 1rem 1.25rem; margin-top: 0.75rem; }
+  .insight-label { font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); margin-bottom: 0.35rem; }
+  .insight-text { color: var(--text-dim); font-size: clamp(0.96rem, 0.2vw + 0.86rem, 1.04rem); }
+  .analysis-list { display: grid; gap: 0.75rem; }
+  .analysis-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; }
+  .analysis-item strong { color: var(--text); }
+
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; } ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); }
+
+  @media (max-width: 900px) {
+    .side-nav { right: 0.75rem; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+    .hero-inner, .main { max-width: min(100%, 960px); }
+  }
+  @media (max-width: 720px) {
+    .topbar { padding: 0.75rem 1rem; height: auto; gap: 0.75rem; align-items: flex-start; flex-direction: column; }
+    .topbar-left { width: 100%; flex-wrap: wrap; }
+    .toggle-btn { align-self: flex-end; }
+    .hero-footer { gap: 0.9rem; align-items: flex-start; }
+    .hero-divider { width: 100%; height: 1px; }
+    .card, .insight, .analysis-item { padding: 1rem; }
+    .authors-row { gap: 0.75rem; }
+    .author-chip { width: 100%; justify-content: space-between; border-radius: 12px; padding: 0.75rem 1rem; }
+    .feature-item { gap: 0.65rem; }
+    .side-nav { display: none; }
+  }
+  @media (max-width: 700px) { .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) {
+    .table-wrap { overflow: visible; border: none; background: transparent; }
+    .table-wrap table, .table-wrap thead, .table-wrap tbody, .table-wrap tr, .table-wrap th, .table-wrap td { display: block; width: 100%; }
+    .table-wrap thead { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .table-wrap tbody { display: grid; gap: 0.9rem; }
+    .table-wrap tr { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 0.25rem 0; box-shadow: var(--card-shadow); }
+    .table-wrap td { border: none; border-top: 1px solid var(--border); padding: 0.8rem 1rem; min-width: 0; white-space: normal; }
+    .table-wrap td:first-child { border-top: none; padding-top: 0.95rem; }
+    .table-wrap td::before { content: attr(data-label); display: block; margin-bottom: 0.35rem; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    footer { padding: 1.25rem 1rem 2rem; line-height: 1.7; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-tag">SE 311</span>
+    <span class="topbar-title">Sillah Phase 3 — Requirements Analysis</span>
+  </div>
+  <button class="toggle-btn" onclick="toggleTheme()">
+    <span id="themeIcon">☀️</span>
+    <span id="themeLabel">Light</span>
+  </button>
+</nav>
+
+<nav class="side-nav">
+  <div class="nav-dot" data-label="Overview" data-target="s0"></div>
+  <div class="nav-dot" data-label="Scope" data-target="s1"></div>
+  <div class="nav-dot" data-label="Interfaces" data-target="s2"></div>
+  <div class="nav-dot" data-label="Features" data-target="s3"></div>
+  <div class="nav-dot" data-label="Quality" data-target="s4"></div>
+  <div class="nav-dot" data-label="Domain" data-target="s5"></div>
+  <div class="nav-dot" data-label="Priority" data-target="s6"></div>
+  <div class="nav-dot" data-label="Validation" data-target="s7"></div>
+</nav>
+
+<header class="hero" id="s0">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="chip chip-blue">Phase 3</span>
+      <span class="chip chip-teal">Requirements Analysis</span>
+      <span class="chip chip-purple">SRS Drafted</span>
+      <span class="chip chip-green">Approved 23 Apr 2026</span>
+    </div>
+    <h1><em>Sillah</em><br>Software Requirements Analysis</h1>
+    <p class="hero-sub">Translating the elicited needs from Phase 2 into a structured Software Requirements Specification with defined system features, interfaces, quality constraints, and domain entities for the Sillah Family Health Management System.</p>
+    <div class="hero-footer">
+      <div class="hero-stat"><span class="hero-stat-val">30</span><span class="hero-stat-label">Functional Requirements</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-val">6</span><span class="hero-stat-label">Core Features</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-val">5+</span><span class="hero-stat-label">Entity Groups</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-val">32</span><span class="hero-stat-label">Validation Responses</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <div class="section" style="margin-bottom:2.5rem;">
+    <div class="authors-row">
+      <div class="author-chip"><span>Shoug Alomran</span><span class="author-id">223410067</span></div>
+      <div class="author-chip"><span>Ghala Essa S Alsaqer</span><span class="author-id">223410837</span></div>
+      <div class="author-chip"><span>Gala Alalula</span><span class="author-id">223410067</span></div>
+      <div class="author-chip"><span>Salma Al Khaldi</span><span class="author-id">223410067</span></div>
+    </div>
+  </div>
+
+  <section class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Purpose, Scope &amp; Audience</h2>
+      <span class="section-accent" style="background:var(--accent);"></span>
+    </div>
+
+    <div class="grid-2">
+      <div class="card" style="margin:0;">
+        <div class="card-label">Purpose</div>
+        <p class="card-body">This SRS defines the functional and non-functional requirements of the Sillah Family Health Management System. It is intended to create a shared understanding between stakeholders and developers and to guide design, implementation, and validation.</p>
+      </div>
+      <div class="card" style="margin:0;">
+        <div class="card-label">Release Scope</div>
+        <p class="card-body">The current release focuses on web-based family health tracking, health event recording, risk alert generation, dashboard summaries, and a limited database interaction layer. Direct diagnosis, real-time clinical decision-making, and hospital-system integration remain outside the current release scope.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-label">Intended Readers</div>
+      <p class="card-body">Developers, testers, project managers, family-user stakeholders, healthcare validators, and the SE311 course evaluator each use this analysis package from a different angle. The document aligns with IEEE-style SRS expectations and consolidates the approved Phase 3 analysis content into one readable view.</p>
+    </div>
+
+    <div class="insight">
+      <div class="insight-label">Primary Product Functions</div>
+      <p class="insight-text">The analyzed system centers on user registration and login, family member profile management, recording health conditions and events, generating preventive-health risk alerts, visualizing important health summaries on a dashboard, and supporting controlled SQL-based demo queries.</p>
+    </div>
+  </section>
+
+  <section class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Interfaces &amp; Operating Context</h2>
+      <span class="section-accent" style="background:var(--accent2);"></span>
+    </div>
+
+    <div class="grid-2">
+      <div class="card" style="margin:0;">
+        <div class="card-label">Operating Environment</div>
+        <div class="analysis-list">
+          <div class="analysis-item"><strong>OE-1</strong> The system operates through modern web browsers including Chrome, Firefox, Edge, and Safari.</div>
+          <div class="analysis-item"><strong>OE-2</strong> The platform is web-based, with React and Vite on the frontend and Node.js with Express on the backend.</div>
+          <div class="analysis-item"><strong>OE-3</strong> Supabase supports authentication and application data storage, while MySQL supports the CS340 Phase 5 demo layer.</div>
+          <div class="analysis-item"><strong>OE-4</strong> The application is intended for cloud hosting, such as Vercel, and must be reachable from desktop and mobile devices.</div>
+        </div>
+      </div>
+      <div class="card" style="margin:0;">
+        <div class="card-label">Communication &amp; External Interfaces</div>
+        <div class="analysis-list">
+          <div class="analysis-item"><strong>CI-1</strong> User communication with the system occurs through standard web browsers over HTTPS.</div>
+          <div class="analysis-item"><strong>CI-2</strong> Transmitted data must be encrypted using secure communication protocols.</div>
+          <div class="analysis-item"><strong>CI-3</strong> Authentication data and session data are exchanged using secure, structured formats such as JSON.</div>
+          <div class="analysis-item"><strong>CI-4</strong> Backend and database access occurs through secure API calls. Future integrations with national health platforms are noted, but excluded from the current release.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-label">Use Case Reference</div>
+      <p class="card-body">The detailed documented use case in the report is <strong>Manage Family Members</strong>. It captures the expected preconditions, normal flow, exceptions, and validation feedback patterns that recur across the wider Sillah feature set.</p>
+    </div>
+  </section>
+
+  <section class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">System Features</h2>
+      <span class="section-accent" style="background:var(--accent3);"></span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>Priority</th><th>Summary</th><th>Requirement IDs</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-name">User Account Management</td>
+            <td><span class="pill p-high">HIGH</span></td>
+            <td>Registration, authentication, secure access control, and logout.</td>
+            <td class="td-id">REQ-1 to REQ-5</td>
+          </tr>
+          <tr>
+            <td class="td-name">Family Member Management</td>
+            <td><span class="pill p-high">HIGH</span></td>
+            <td>Add, edit, delete, and persist profiles linked to a user account.</td>
+            <td class="td-id">REQ-6 to REQ-10</td>
+          </tr>
+          <tr>
+            <td class="td-name">Health Event Tracking</td>
+            <td><span class="pill p-high">HIGH</span></td>
+            <td>Record, store, view, update, and delete health event history.</td>
+            <td class="td-id">REQ-11 to REQ-15</td>
+          </tr>
+          <tr>
+            <td class="td-name">Risk Alert System</td>
+            <td><span class="pill p-high">HIGH</span></td>
+            <td>Evaluate health data, generate alerts, and keep them associated with family members.</td>
+            <td class="td-id">REQ-16 to REQ-20</td>
+          </tr>
+          <tr>
+            <td class="td-name">Dashboard &amp; Visualization</td>
+            <td><span class="pill p-medium">MEDIUM</span></td>
+            <td>Summarize family health data, display active alerts, and refresh derived data clearly.</td>
+            <td class="td-id">REQ-21 to REQ-25</td>
+          </tr>
+          <tr>
+            <td class="td-name">Database Interaction Demo Layer</td>
+            <td><span class="pill p-medium">MEDIUM</span></td>
+            <td>Support controlled SQL execution and CRUD demonstration workflows through the application.</td>
+            <td class="td-id">REQ-26 to REQ-30</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-2">
+      <div class="card" style="margin:0;">
+        <div class="card-label">Feature Highlights</div>
+        <div class="feature-item"><span class="feature-code">REQ-4</span><div class="feature-text">Validate user credentials before access is granted.</div></div>
+        <div class="feature-item"><span class="feature-code">REQ-10</span><div class="feature-text">Associate every family member profile with a specific user account.</div></div>
+        <div class="feature-item"><span class="feature-code">REQ-18</span><div class="feature-text">Update risk alerts dynamically when new health data is entered.</div></div>
+        <div class="feature-item"><span class="feature-code">REQ-24</span><div class="feature-text">Refresh dashboard data in real time or on demand.</div></div>
+        <div class="feature-item"><span class="feature-code">REQ-30</span><div class="feature-text">Retrieve and display SQL query results through the demo layer.</div></div>
+      </div>
+      <div class="card" style="margin:0;">
+        <div class="card-label">Detailed Use Case Anchor</div>
+        <p class="card-body">The approved report documents <strong>Manage Family Members</strong> in full detail. It shows a user navigating to the family-management area, selecting add/edit/delete actions, receiving validation feedback, confirming deletions, and seeing the list refreshed after save operations.</p>
+        <p class="card-body" style="margin-top:0.75rem;">This use case also introduces two cross-cutting special requirements that shape the rest of the system: required-field validation before save and confirmation messaging after successful operations.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Non-Functional &amp; Business Rules</h2>
+      <span class="section-accent" style="background:var(--accent4);"></span>
+    </div>
+
+    <div class="grid-3">
+      <div class="card" style="margin:0;">
+        <div class="card-label">Performance</div>
+        <p class="card-body">Support 100 concurrent users, load key pages within 3 seconds, return action responses within 2 seconds, and show success confirmations promptly.</p>
+      </div>
+      <div class="card" style="margin:0;">
+        <div class="card-label">Safety</div>
+        <p class="card-body">The system must not present itself as a diagnostic tool and should frame alerts as informational preventive guidance only.</p>
+      </div>
+      <div class="card" style="margin:0;">
+        <div class="card-label">Security</div>
+        <p class="card-body">Use HTTPS, require authentication, restrict access to owner data, securely store credentials, and respect privacy expectations including PDPL awareness.</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:1rem;">
+      <div class="card" style="margin:0;">
+        <div class="card-label">Quality Attributes</div>
+        <div class="feature-item"><span class="feature-code">Availability</span><div class="feature-text">Target at least 99% availability excluding scheduled maintenance.</div></div>
+        <div class="feature-item"><span class="feature-code">Usability</span><div class="feature-text">Enable core tasks with minimal training through a user-friendly interface.</div></div>
+        <div class="feature-item"><span class="feature-code">Reliability</span><div class="feature-text">Ensure accurate and consistent operation under normal conditions.</div></div>
+        <div class="feature-item"><span class="feature-code">Robustness</span><div class="feature-text">Handle errors gracefully without losing user data.</div></div>
+      </div>
+      <div class="card" style="margin:0;">
+        <div class="card-label">Business Rules</div>
+        <div class="feature-item"><span class="feature-code">BR-1</span><div class="feature-text">Users manage only their own accounts and linked data.</div></div>
+        <div class="feature-item"><span class="feature-code">BR-4</span><div class="feature-text">Risk alerts are generated from predefined rules tied to stored health data.</div></div>
+        <div class="feature-item"><span class="feature-code">BR-7</span><div class="feature-text">Authentication is required before viewing or modifying health records.</div></div>
+        <div class="feature-item"><span class="feature-code">BR-10</span><div class="feature-text">All required fields must be completed before health data is stored.</div></div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-label">Internationalization &amp; Legal Constraints</div>
+      <p class="insight-text">The approved SRS explicitly requires bilingual Arabic and English support, including RTL/LTR layout handling, while also reinforcing privacy and confidentiality expectations under Saudi PDPL-aware handling.</p>
+    </div>
+  </section>
+
+  <section class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Domain Model &amp; Data Dictionary</h2>
+      <span class="section-accent" style="background:var(--accent5);"></span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Entity</th><th>Description</th><th>Key Attributes</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-name">User</td>
+            <td>Registered person who owns and manages tracked family health records.</td>
+            <td>`user_id`, `email`, `password`, `role`, `created_at`</td>
+            <td>Unique account; secure authentication required.</td>
+          </tr>
+          <tr>
+            <td class="td-name">Family Member</td>
+            <td>Tracked person linked to one user account.</td>
+            <td>`family_member_id`, `user_id`, `member_name`, `relationship`, `date_of_birth`</td>
+            <td>Supports one-to-many ownership from user to family members.</td>
+          </tr>
+          <tr>
+            <td class="td-name">Health Event</td>
+            <td>Recorded condition or medical event tied to a family member.</td>
+            <td>`event_id`, `family_member_id`, `condition_name`, `severity`, `status`</td>
+            <td>Stores the timeline and status of health-related entries.</td>
+          </tr>
+          <tr>
+            <td class="td-name">Risk Alert</td>
+            <td>Preventive-health notification generated from stored data and rules.</td>
+            <td>`alert_id`, `family_member_id`, `alert_title`, `risk_level`, `is_read`</td>
+            <td>Alerts remain informational and linked to the relevant family member.</td>
+          </tr>
+          <tr>
+            <td class="td-name">Appointment</td>
+            <td>Booking or simulated clinic appointment linked to the health workflow.</td>
+            <td>`appointment_id`, `family_member_id`, `clinic_name`, `appointment_date`, `status`</td>
+            <td>Included as a supporting entity in the report appendix.</td>
+          </tr>
+          <tr>
+            <td class="td-name">Dashboard Summary</td>
+            <td>Derived rollup data shown to the user after login.</td>
+            <td>`total_family_members`, `total_health_events`, `active_alerts_count`</td>
+            <td>Calculated from stored operational records.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-label">Model Interpretation</div>
+      <p class="card-body">The domain model reinforces a user-owned data architecture: one user controls many family members, each family member can own multiple health events and risk alerts, and dashboard values are derived from the accumulated records. This keeps the system centered on family-tracking workflows rather than provider-owned records.</p>
+    </div>
+  </section>
+
+  <section class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Priority Summary</h2>
+      <span class="section-accent" style="background:var(--accent);"></span>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:1rem;">
+      <div class="stat-card"><div class="stat-value" style="color:var(--high);">4</div><div class="stat-desc">High-priority features</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--medium);">2</div><div class="stat-desc">Medium-priority features</div></div>
+      <div class="stat-card"><div class="stat-value">20</div><div class="stat-desc">High-priority feature requirements</div></div>
+      <div class="stat-card"><div class="stat-value">10</div><div class="stat-desc">Medium-priority feature requirements</div></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card" style="margin:0;">
+        <div class="card-label">High-Priority Core</div>
+        <p class="card-body">User account management, family member management, health event tracking, and risk alert generation together represent the minimum meaningful operational release. These features create the secure, family-centered preventive-health workflow described throughout the SRS.</p>
+      </div>
+      <div class="card" style="margin:0;">
+        <div class="card-label">Medium-Priority Support</div>
+        <p class="card-body">Dashboard visualization and the database interaction demo layer provide visibility, reporting, and demonstration support, but they rely on the high-priority features to produce useful data and user value.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Validation &amp; Approval</h2>
+      <span class="section-accent" style="background:var(--accent2);"></span>
+    </div>
+
+    <div class="grid-3">
+      <div class="stat-card"><div class="stat-value">32</div><div class="stat-desc">Survey responses</div></div>
+      <div class="stat-card"><div class="stat-value">19–25</div><div class="stat-desc">Majority age group</div></div>
+      <div class="stat-card"><div class="stat-value">87.5%</div><div class="stat-desc">Female respondents</div></div>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <div class="card-label">Stakeholder Acceptance</div>
+      <p class="card-body">The Phase 3 report notes strong positive agreement around preventive-health tracking, risk alert functionality, and the family-centered interaction model. Overall, more than 80% of participants accepted the proposed system features, supporting alignment with user needs.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Approval Record</div>
+      <p class="card-body"><strong>Approved By:</strong> Dr. Lama Alalula</p>
+      <p class="card-body" style="margin-top:0.5rem;">The approved PDF also includes signed approval evidence in Appendix E.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  SE 311 — Software Requirements Engineering &nbsp;·&nbsp; Sillah Phase 3: Requirements Analysis &nbsp;·&nbsp; Section 1342 &nbsp;·&nbsp; Ms. Alhanouf Almutairi
+</footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('themeIcon').textContent = isDark ? '🌙' : '☀️';
+    document.getElementById('themeLabel').textContent = isDark ? 'Dark' : 'Light';
+  }
+
+  const sections = ['s0','s1','s2','s3','s4','s5','s6','s7'];
+  const dots = document.querySelectorAll('.nav-dot');
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      document.getElementById(sections[i]).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  function updateDots() {
+    let current = 0;
+    sections.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 120) current = i;
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+  window.addEventListener('scroll', updateDots);
+  updateDots();
+
+  function enhanceResponsiveTables() {
+    document.querySelectorAll('.table-wrap table').forEach((table) => {
+      const headers = Array.from(table.querySelectorAll('thead th')).map((th) => th.textContent.trim());
+      table.querySelectorAll('tbody tr').forEach((row) => {
+        Array.from(row.children).forEach((cell, index) => {
+          if (cell.tagName === 'TD' && headers[index]) cell.setAttribute('data-label', headers[index]);
+        });
+      });
+    });
+  }
+  enhanceResponsiveTables();
+</script>
+</body>
+</html>
