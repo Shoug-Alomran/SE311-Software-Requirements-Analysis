@@ -32,34 +32,51 @@ captures:
 
 <div class="grid cards" markdown>
 
--   :material-family-tree: **Domain Model**
+-   :material-family-tree: **[Domain Model](./domain-model.md)**
 
     Defines the main entities in the Sillah system, including users,
     family members, health events, alerts, appointments, and dashboard
     summaries.
 
--   :material-transit-connection-variant: **Use Cases**
+-   :material-transit-connection-variant: **[Use Cases](./use-cases.md)**
 
     Documents the primary end-to-end user interactions, with detailed
     emphasis on managing family members and navigating key system flows.
 
--   :material-format-list-bulleted-type: **Functional Requirements**
+-   :material-format-list-bulleted-type: **[Functional Requirements](./functional-requirements.md)**
 
     Groups analyzed requirements into six features:
     account management, family member management, health event tracking,
     risk alerts, dashboard visualization, and database interaction.
 
--   :material-shield-check-outline: **Non-Functional Requirements**
+-   :material-shield-check-outline: **[Non-Functional Requirements](./nonfunctional-requirements.md)**
 
     Covers performance, safety, security, usability, reliability,
     legal/privacy, bilingual support, and database integrity.
 
--   :material-sort-variant: **Prioritization**
+-   :material-sort-variant: **[Prioritization](./prioritization.md)**
 
     Classifies the features by delivery importance, highlighting the
     high-priority release scope versus medium-priority support features.
 
 </div>
+
+---
+
+## :material-format-list-bulleted-square: Phase 3 Page Set
+
+The current Phase 3 documentation is intentionally organized into the
+five analysis pages shown in the section navigation:
+
+1. [Domain Model](./domain-model.md)
+2. [Use Cases](./use-cases.md)
+3. [Functional Requirements](./functional-requirements.md)
+4. [Non-Functional Requirements](./nonfunctional-requirements.md)
+5. [Prioritization](./prioritization.md)
+
+No extra Phase 3 pages are required right now because the approved
+report’s appendix content is already folded into the existing analysis
+pages, especially the domain model and non-functional requirements.
 
 ---
 
