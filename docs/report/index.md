@@ -8,6 +8,9 @@ treated separately and is not counted as a report phase.
 
 ## Available Downloads
 
+### Presentation
+- [Project Presentation (HTML)](./report.html)
+
 ### Phase 1
 - [Phase 1 Report (PDF)](./phase-1.pdf)
 - [Phase 1 Report (HTML)](./report-phase-1.html)
@@ -28,6 +31,7 @@ treated separately and is not counted as a report phase.
 
 ## Primary Reading Paths
 
+- [Project Presentation](./report.html)
 - [Introduction](../introduction.md)
 - [Phase 1 - Inception](../phase-1-inception/index.md)
 - [Phase 2 - Elicitation](../phase-2-elicitation/index.md)

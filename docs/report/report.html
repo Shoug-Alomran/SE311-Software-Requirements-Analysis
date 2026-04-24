@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sillah Project Presentation</title>
+  <style>
+    :root[data-theme="dark"] {
+      --bg: #07131a;
+      --bg-soft: #0d1c24;
+      --panel: rgba(12, 28, 36, 0.84);
+      --panel-strong: #10252f;
+      --panel-alt: #122d38;
+      --border: rgba(140, 196, 209, 0.18);
+      --text: #e6f2f4;
+      --muted: #9ab7bf;
+      --soft: #c9dde2;
+      --accent: #59d8b0;
+      --accent-2: #73c4ff;
+      --accent-3: #b0f26b;
+      --accent-4: #ffd26f;
+      --danger: #ff8f8f;
+      --hero: radial-gradient(circle at top left, rgba(89, 216, 176, 0.18), transparent 34%),
+              radial-gradient(circle at top right, rgba(115, 196, 255, 0.16), transparent 30%),
+              linear-gradient(145deg, #09131a 0%, #0d1c24 42%, #10252f 100%);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    :root[data-theme="light"] {
+      --bg: #edf6f7;
+      --bg-soft: #f8fcfc;
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-strong: #ffffff;
+      --panel-alt: #f2fbf7;
+      --border: rgba(33, 78, 89, 0.14);
+      --text: #14313a;
+      --muted: #567480;
+      --soft: #2a4a53;
+      --accent: #0e9c78;
+      --accent-2: #0f74c8;
+      --accent-3: #679d1f;
+      --accent-4: #b88211;
+      --danger: #c85555;
+      --hero: radial-gradient(circle at top left, rgba(14, 156, 120, 0.12), transparent 34%),
+              radial-gradient(circle at top right, rgba(15, 116, 200, 0.1), transparent 30%),
+              linear-gradient(145deg, #f6fffd 0%, #edf6f7 42%, #e6f1f4 100%);
+      --shadow: 0 24px 70px rgba(39, 73, 86, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+      background:
+        linear-gradient(90deg, transparent 0, transparent 79px, rgba(115, 196, 255, 0.045) 79px, rgba(115, 196, 255, 0.045) 80px),
+        linear-gradient(transparent 0, transparent 79px, rgba(89, 216, 176, 0.035) 79px, rgba(89, 216, 176, 0.035) 80px),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1320px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 0 0 64px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--bg-soft) 76%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .scroll-progress {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 3px;
+      background: rgba(127, 157, 165, 0.12);
+      overflow: hidden;
+    }
+
+    .scroll-progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+      transition: width 0.12s linear;
+    }
+
+    .topbar-inner {
+      width: min(1320px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(89, 216, 176, 0.2), rgba(115, 196, 255, 0.16));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 2px;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toggle {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .toggle:hover {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+    }
+
+    .hero {
+      margin-top: 22px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      overflow: hidden;
+      background: var(--hero);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 76% 18%, rgba(176, 242, 107, 0.16), transparent 18%),
+        radial-gradient(circle at 18% 80%, rgba(115, 196, 255, 0.12), transparent 20%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 24px;
+      padding: 42px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--accent);
+      font-size: 0.52em;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+    }
+
+    .hero-lead {
+      max-width: 64ch;
+      color: var(--soft);
+      font-size: 1.05rem;
+      margin: 0 0 24px;
+    }
+
+    .meta-grid,
+    .stats,
+    .toc-grid,
+    .phase-grid,
+    .card-grid,
+    .feature-grid,
+    .gallery-grid,
+    .timeline,
+    .footer-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .meta-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-bottom: 18px;
+    }
+
+    .meta-card,
+    .stat,
+    .card,
+    .toc-link,
+    .timeline-card,
+    .gallery-card,
+    .feature-card,
+    .placeholder {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .meta-card {
+      padding: 16px 18px;
+      min-height: 108px;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .meta-value {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .meta-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 0;
+    }
+
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: space-between;
+    }
+
+    .logo-card {
+      padding: 18px;
+      display: grid;
+      place-items: center;
+      min-height: 320px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), transparent),
+        color-mix(in srgb, var(--panel-strong) 72%, transparent);
+    }
+
+    .logo-card img {
+      width: min(100%, 320px);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.18));
+    }
+
+    .visual-note {
+      padding: 16px 18px;
+      color: var(--soft);
+      font-size: 0.96rem;
+    }
+
+    .section {
+      margin-top: 28px;
+      scroll-margin-top: 88px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(1.45rem, 2.1vw, 2.2rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-kicker {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+    }
+
+    .section-note {
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 0.96rem;
+      margin: 0;
+    }
+
+    .toc-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .toc-link {
+      display: block;
+      text-decoration: none;
+      padding: 18px;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .toc-link.active {
+      border-color: color-mix(in srgb, var(--accent) 58%, var(--border));
+      background: color-mix(in srgb, var(--panel-alt) 80%, transparent);
+      transform: translateY(-2px);
+    }
+
+    .toc-link:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--accent) 58%, var(--border));
+      background: color-mix(in srgb, var(--panel-alt) 72%, transparent);
+    }
+
+    .toc-num {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .toc-name {
+      display: block;
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .toc-desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .stats {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .stat {
+      padding: 18px;
+      min-height: 120px;
+    }
+
+    .stat-value {
+      font-size: clamp(1.7rem, 2.6vw, 2.35rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .stat-note {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin: 0;
+    }
+
+    .card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .phase-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1.15fr 1fr 1fr;
+    }
+
+    .card,
+    .timeline-card,
+    .gallery-card,
+    .feature-card {
+      padding: 22px;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .card:hover,
+    .timeline-card:hover,
+    .gallery-card:hover,
+    .feature-card:hover,
+    .stat:hover,
+    .meta-card:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 52%, var(--border));
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.22);
+    }
+
+    .card h3,
+    .timeline-card h3,
+    .gallery-card h3,
+    .feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p,
+    .timeline-card p,
+    .gallery-card p,
+    .feature-card p {
+      margin: 0;
+      color: var(--soft);
+    }
+
+    .list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--soft);
+    }
+
+    .list li + li {
+      margin-top: 8px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      background: color-mix(in srgb, var(--panel-alt) 74%, transparent);
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    .chip strong {
+      color: var(--text);
+    }
+
+    .phase-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phase-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+    }
+
+    .phase-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(89, 216, 176, 0.18), rgba(115, 196, 255, 0.16));
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .timeline {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .timeline-card small {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+    }
+
+    .quote {
+      margin-top: 14px;
+      padding: 18px;
+      border-left: 4px solid var(--accent);
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--panel-alt) 74%, transparent);
+      color: var(--soft);
+      font-size: 1.02rem;
+    }
+
+    .gallery-card.media {
+      padding: 0;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .gallery-card.media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 100%;
+    }
+
+    .gallery-card.copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .gallery-caption {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 12px 0 0;
+    }
+
+    .gallery-stack {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 16px;
+    }
+
+    .experience-stack {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .screen-card {
+      padding: 0;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .screen-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: var(--panel-strong);
+    }
+
+    .screen-copy {
+      padding: 18px 20px 20px;
+      background: var(--panel);
+    }
+
+    .screen-copy h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .screen-copy p {
+      margin: 0;
+      color: var(--soft);
+      font-size: 0.95rem;
+    }
+
+    .callout-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .callout {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: color-mix(in srgb, var(--panel-alt) 72%, transparent);
+      box-shadow: var(--shadow);
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .callout span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .placeholder {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 280px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), transparent),
+        repeating-linear-gradient(135deg, rgba(115, 196, 255, 0.06) 0 14px, rgba(89, 216, 176, 0.04) 14px 28px),
+        color-mix(in srgb, var(--panel-strong) 78%, transparent);
+    }
+
+    .placeholder-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .placeholder-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    .placeholder p {
+      margin: 0;
+      color: var(--soft);
+    }
+
+    .placeholder em {
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    .metric-bar {
+      margin-top: 14px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(127, 157, 165, 0.18);
+      overflow: hidden;
+    }
+
+    .metric-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .feature-card {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent),
+        color-mix(in srgb, var(--panel-alt) 72%, transparent);
+    }
+
+    .feature-tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.1fr 1fr;
+    }
+
+    .footnote {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0 0;
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid,
+      .gallery-grid,
+      .gallery-stack,
+      .experience-grid,
+      .experience-stack,
+      .footer-grid,
+      .feature-grid,
+      .phase-grid,
+      .timeline,
+      .callout-grid,
+      .stats,
+      .meta-grid,
+      .toc-grid,
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar-inner,
+      .shell {
+        width: min(100vw - 20px, 1320px);
+      }
+
+      .hero-grid,
+      .gallery-grid,
+      .gallery-stack,
+      .experience-grid,
+      .experience-stack,
+      .footer-grid,
+      .feature-grid,
+      .phase-grid,
+      .timeline,
+      .callout-grid,
+      .stats,
+      .meta-grid,
+      .toc-grid,
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .toggle {
+        align-self: flex-end;
+      }
+
+      .hero-grid {
+        padding: 24px;
+      }
+
+      .card,
+      .timeline-card,
+      .gallery-card,
+      .feature-card,
+      .placeholder,
+      .meta-card,
+      .stat {
+        border-radius: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-badge">S</div>
+        <div class="brand-copy">
+          <span class="eyebrow">SE 311 · Software Requirements Engineering</span>
+          <div class="brand-title">Sillah Project Presentation</div>
+        </div>
+      </div>
+      <button class="toggle" id="themeToggle" type="button" aria-label="Toggle dark and light mode">Light Mode</button>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+  </div>
+
+  <div class="shell">
+    <header class="hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <h1><span>Software Analysis Meets Hospital Web Application</span>Sillah</h1>
+          <p class="hero-lead">
+            A comprehensive presentation of the Sillah project journey based only on the approved Phase 1, Phase 2, and Phase 3 reports: from vision and scope, to elicitation, to software requirements analysis for a family-centered preventive health web platform.
+          </p>
+
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span class="meta-label">Course</span>
+              <p class="meta-value">SE 311 — Software Requirements Engineering</p>
+              <p class="meta-note">Section 1342</p>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label">Instructor</span>
+              <p class="meta-value">Ms. Alhanouf Almutairi</p>
+              <p class="meta-note">Referenced in Phase 2 and Phase 3 reports</p>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label">Project Type</span>
+              <p class="meta-value">Family Health Management System</p>
+              <p class="meta-note">Preventive, bilingual, web-based</p>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label">Approved By</span>
+              <p class="meta-value">Dr. Lama Alalula</p>
+              <p class="meta-note">Approval record included in Phase 3</p>
+            </div>
+          </div>
+
+          <div class="chips">
+            <span class="chip"><strong>Partners:</strong> Shoug Alomran</span>
+            <span class="chip">Ghala Alsaqer</span>
+            <span class="chip">Gala Alalula</span>
+            <span class="chip">Salma Al Khaldi</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="logo-card meta-card">
+            <img src="../logo.png" alt="Sillah family health management system logo">
+          </div>
+          <div class="visual-note meta-card">
+            The project theme is grounded in the reports themselves: preventive healthcare, hereditary risk tracking, bilingual usability, privacy, family-centered workflows, and future-facing integration possibilities in the Saudi healthcare context.
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="toc">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Table Of Contents</span>
+          <h2 class="section-title">Presentation Map</h2>
+        </div>
+        <p class="section-note">Top-level sections for quick navigation through the complete project story.</p>
+      </div>
+
+      <div class="toc-grid">
+        <a class="toc-link" href="#overview">
+          <span class="toc-num">01</span>
+          <span class="toc-name">Project Overview</span>
+          <span class="toc-desc">Problem, vision, objectives, and success framing.</span>
+        </a>
+        <a class="toc-link" href="#journey">
+          <span class="toc-num">02</span>
+          <span class="toc-name">Project Journey</span>
+          <span class="toc-desc">How the work moved from inception to analysis.</span>
+        </a>
+        <a class="toc-link" href="#phase1">
+          <span class="toc-num">03</span>
+          <span class="toc-name">Phase 1</span>
+          <span class="toc-desc">Vision, scope, opportunities, and constraints.</span>
+        </a>
+        <a class="toc-link" href="#phase2">
+          <span class="toc-num">04</span>
+          <span class="toc-name">Phase 2</span>
+          <span class="toc-desc">Elicitation methods, findings, and user requirements.</span>
+        </a>
+        <a class="toc-link" href="#phase3">
+          <span class="toc-num">05</span>
+          <span class="toc-name">Phase 3</span>
+          <span class="toc-desc">SRS structure, features, and operating context.</span>
+        </a>
+        <a class="toc-link" href="#prototype">
+          <span class="toc-num">06</span>
+          <span class="toc-name">Prototype Visuals</span>
+          <span class="toc-desc">Core screens that visually support the system requirements.</span>
+        </a>
+        <a class="toc-link" href="#experience">
+          <span class="toc-num">07</span>
+          <span class="toc-name">Product Experience</span>
+          <span class="toc-desc">More real screens showing the flow of the platform.</span>
+        </a>
+        <a class="toc-link" href="#validation">
+          <span class="toc-num">08</span>
+          <span class="toc-name">Validation</span>
+          <span class="toc-desc">Survey evidence, approval, and acceptance indicators.</span>
+        </a>
+        <a class="toc-link" href="#closing">
+          <span class="toc-num">09</span>
+          <span class="toc-name">Closing Summary</span>
+          <span class="toc-desc">What the project achieved and what remained future work.</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Overview</span>
+          <h2 class="section-title">Project In One View</h2>
+        </div>
+        <p class="section-note">The reports consistently position Sillah as a family-centric preventive-health web platform aimed at hereditary condition awareness and early risk detection.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value" style="color:var(--accent)">3</div>
+          <span class="stat-label">Project Phases</span>
+          <p class="stat-note">Vision & scope, elicitation, and requirements analysis.</p>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="color:var(--accent-2)">32</div>
+          <span class="stat-label">Survey Responses</span>
+          <p class="stat-note">Used to validate the proposed system direction.</p>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="color:var(--accent-3)">30</div>
+          <span class="stat-label">Functional Requirements</span>
+          <p class="stat-note">Documented in the Phase 3 analysis package.</p>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="color:var(--accent-4)">6</div>
+          <span class="stat-label">Core Features</span>
+          <p class="stat-note">The minimum meaningful operational release.</p>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="color:var(--danger)">99%</div>
+          <span class="stat-label">Availability Target</span>
+          <p class="stat-note">Listed among the Phase 3 quality attributes.</p>
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top:16px;">
+        <div class="card">
+          <h3>Problem Context</h3>
+          <p>Phase 1 identifies a rising number of inherited heart diseases and other hereditary conditions in Saudi Arabia, paired with the lack of a proper family-centered system for monitoring health records and advising on inherited risks.</p>
+          <div class="quote">“Sillah empowers Saudi families to proactively manage hereditary health risks by combining intelligent risk screening, culturally appropriate education, and seamless connection to healthcare professionals.”</div>
+        </div>
+        <div class="card">
+          <h3>Project Direction</h3>
+          <p>The reports align around a web-based, bilingual, preventive-health platform with family profile management, health-event recording, rule-based alerts, dashboard summaries, and simulated clinic-oriented support.</p>
+          <ul class="list">
+            <li>Aligned with Saudi Vision 2030 and preventive healthcare digitization.</li>
+            <li>Constrained by prototype scope, privacy requirements, and non-diagnostic positioning.</li>
+            <li>Designed to be mobile-first, accessible, and secure.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="journey">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Process</span>
+          <h2 class="section-title">How The Project Progressed</h2>
+        </div>
+        <p class="section-note">The project moved in a classic software analysis sequence: define the product, elicit stakeholder needs, then formalize the specification.</p>
+      </div>
+
+      <div class="phase-grid">
+        <div class="timeline-card phase-card">
+          <div class="phase-number">1</div>
+          <h3>Vision And Scope</h3>
+          <p>Phase 1 framed the business need, the target users, the feature scope, the project priorities, and the product limitations for the first release.</p>
+        </div>
+        <div class="timeline-card phase-card">
+          <div class="phase-number">2</div>
+          <h3>Requirements Elicitation</h3>
+          <p>Phase 2 gathered evidence through interviews, surveys, observation, document analysis, and competitive review to refine traceable user requirements.</p>
+        </div>
+        <div class="timeline-card phase-card">
+          <div class="phase-number">3</div>
+          <h3>Requirements Analysis</h3>
+          <p>Phase 3 translated those needs into a structured SRS with functional requirements, interfaces, quality expectations, business rules, and a domain model.</p>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin-top:16px;">
+        <div class="timeline-card">
+          <small>Phase 1 Milestones</small>
+          <h3>Definition And Scope Control</h3>
+          <p>Versioned document history in Phase 1 shows refinement from template population to final revision, keeping the scope anchored around the initial preventive-health experience.</p>
+        </div>
+        <div class="timeline-card">
+          <small>Phase 2 Milestones</small>
+          <h3>Evidence And Prioritization</h3>
+          <p>MoSCoW prioritization and stakeholder-specific requirements helped separate essential functions from future enhancements and cross-check assumptions against real feedback.</p>
+        </div>
+        <div class="timeline-card">
+          <small>Phase 3 Milestones</small>
+          <h3>Specification And Validation</h3>
+          <p>The approved SRS consolidated the project into an implementation-ready analysis package while retaining limits such as no diagnosis and no hospital-system integration in the current release.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="phase1">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Phase 1</span>
+          <h2 class="section-title">Vision, Scope, And Business Case</h2>
+        </div>
+        <p class="section-note">This phase established why Sillah should exist, what the first release should contain, and what the prototype should explicitly avoid.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Business Opportunity</h3>
+          <p>The reports position Sillah as a response to the lack of a unified, family-centric digital system in Saudi Arabia that can track hereditary cardiac conditions, detect risk patterns, provide personalized alerts, connect users to clinics, offer culturally relevant awareness content, and support bilingual accessibility.</p>
+        </div>
+        <div class="card">
+          <h3>Business Objectives</h3>
+          <ul class="list">
+            <li>Increase early detection of hereditary cardiac risks through structured family health data collection and screening.</li>
+            <li>Provide a user-friendly digital tool for recording and analyzing family health data.</li>
+            <li>Reduce long-term healthcare costs through preventive action.</li>
+            <li>Support national health initiatives and demonstrate prototype feasibility.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Initial Release Scope</h3>
+          <ul class="list">
+            <li>Family member and health event management.</li>
+            <li>Rule-based hereditary risk detection for cardiac disease, diabetes, hypertension, and high cholesterol.</li>
+            <li>Personalized alerts and recommendations.</li>
+            <li>Awareness Hub, clinic booking simulation, bilingual interface, authentication, and responsive UI.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Limitations And Exclusions</h3>
+          <ul class="list">
+            <li>No real medical diagnosis.</li>
+            <li>No hospital electronic health record integration in the prototype.</li>
+            <li>No AI or machine-learning prediction in the current version.</li>
+            <li>No real-time clinic availability, production-grade notifications, or genetic-testing data ingestion.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-grid" style="margin-top:16px;">
+        <div class="feature-card">
+          <span class="feature-tag">Success Metrics</span>
+          <h3>Usability And Completion</h3>
+          <p>Phase 1 sets targets such as at least 80% onboarding completion, family tree creation in under five minutes, and a System Usability Scale score of at least 80.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Risk Framing</span>
+          <h3>Adoption, Data, And Compliance</h3>
+          <p>Business risks include low trust in sharing sensitive health data, inaccurate entry, evolving clinical rules, overlapping competitors, and prototype-level compliance demands.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Deployment</span>
+          <h3>Hospital-Web Readiness</h3>
+          <p>Deployment considerations emphasize HTTPS, secure authentication, Saudi-wide access, mobile-first usage, AST scheduling alignment, and full Arabic support with culturally appropriate content.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="phase2">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Phase 2</span>
+          <h2 class="section-title">Requirements Elicitation And Stakeholder Evidence</h2>
+        </div>
+        <p class="section-note">This phase turned the Phase 1 vision into evidence-backed user requirements with clear stakeholder coverage.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Elicitation Techniques</h3>
+          <ul class="list">
+            <li>Interviews with healthcare providers.</li>
+            <li>Bilingual survey in Arabic and English.</li>
+            <li>Document analysis using PDPL and screening guidelines.</li>
+            <li>Observation of family health tracking habits.</li>
+            <li>Competitive review of similar health platforms.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Stakeholders</h3>
+          <ul class="list">
+            <li>Families as primary users.</li>
+            <li>Healthcare providers as clinical validators.</li>
+            <li>System administrators for operational control.</li>
+            <li>Legal and regulatory stakeholders for PDPL alignment.</li>
+            <li>Public health authorities as future integration stakeholders.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin-top:16px;">
+        <div class="timeline-card">
+          <small>Interview 1</small>
+          <h3>Dr. Lama Alalula</h3>
+          <p>ENT surgeon, interviewed on 15 March 2026. Phase 2 records a preference for concise patient summaries and highlights the value of family history and clinically useful recommendations.</p>
+        </div>
+        <div class="timeline-card">
+          <small>Interview 2</small>
+          <h3>Dr. Alhanouf Alaloola</h3>
+          <p>Cardiac surgeon, interviewed on 28 March 2026. Phase 2 notes support for summaries tailored to appointment context and concern for workflow disruption.</p>
+        </div>
+        <div class="timeline-card">
+          <small>Survey Evidence</small>
+          <h3>32 Responses</h3>
+          <p>The survey validated family-centered features, preventive alerts, bilingual support, role-based access control, and strong interest in privacy and usability.</p>
+        </div>
+      </div>
+
+      <div class="feature-grid" style="margin-top:16px;">
+        <div class="feature-card">
+          <span class="feature-tag">Key Findings</span>
+          <h3>What Stakeholders Wanted</h3>
+          <p>Track chronic and hereditary conditions, include pediatric profiles from birth, show meaningful alerts, provide specialist referrals or lifestyle guidance, and preserve medically appropriate language.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Family Requirements</span>
+          <h3>Core User Expectations</h3>
+          <p>Create and manage multiple family profiles, record hereditary conditions, generate personalized alerts, view notification history, simulate appointments, and switch dynamically between Arabic and English.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Provider And Admin Needs</span>
+          <h3>Accuracy And Control</h3>
+          <p>Providers wanted validated data, concise patient summaries, and clinically appropriate guidance. Administrators needed role management, user account control, educational-content management, and secure oversight.</p>
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top:16px;">
+        <div class="card">
+          <h3>Survey Highlights</h3>
+          <ul class="list">
+            <li>87.5% female respondents.</li>
+            <li>84.4% aged 19–25 years.</li>
+            <li>59.4% interested in managing family profiles.</li>
+            <li>87.5% agreed on role-based access control.</li>
+            <li>Language preference split confirmed the need for bilingual support.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Observation And Document Analysis</h3>
+          <p>Phase 2 found that many families do not have a structured way to organize health information, while PDPL and preventive screening guidelines shaped the security, privacy, and consent expectations for the system.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="phase3">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Phase 3</span>
+          <h2 class="section-title">Software Requirements Analysis And SRS</h2>
+        </div>
+        <p class="section-note">Phase 3 formalized the system into release scope, interfaces, detailed features, quality attributes, business rules, and a domain model.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Operating Context</h3>
+          <ul class="list">
+            <li>Runs in modern browsers including Chrome, Firefox, Edge, and Safari.</li>
+            <li>Frontend stack: React and Vite.</li>
+            <li>Backend stack: Node.js and Express.</li>
+            <li>Supabase supports authentication and application data storage; MySQL supports the CS340 Phase 5 demo layer.</li>
+            <li>Intended for cloud hosting and access from desktop and mobile devices.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Release Scope</h3>
+          <p>The current release focuses on web-based family health tracking, health event recording, risk alert generation, dashboard summaries, and a limited database interaction layer, while direct diagnosis, real-time clinical decision-making, and hospital-system integration remain out of scope.</p>
+        </div>
+      </div>
+
+      <div class="feature-grid" style="margin-top:16px;">
+        <div class="feature-card">
+          <span class="feature-tag">Feature 1</span>
+          <h3>User Account Management</h3>
+          <p>Registration, authentication, secure access control, credential validation, and logout capabilities form the secured entry point of the system.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Feature 2</span>
+          <h3>Family Member Management</h3>
+          <p>Add, edit, delete, and persist family member profiles while linking every profile to the owning user account.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Feature 3</span>
+          <h3>Health Event Tracking</h3>
+          <p>Record, store, view, update, and delete health event history for each tracked family member.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Feature 4</span>
+          <h3>Risk Alert System</h3>
+          <p>Evaluate stored health data against predefined rules, generate alerts, and update them dynamically as new information is entered.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Feature 5</span>
+          <h3>Dashboard And Visualization</h3>
+          <p>Summarize family health records, display active alerts, and refresh derived insights in real time or on demand.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Feature 6</span>
+          <h3>Database Demo Layer</h3>
+          <p>Provide controlled SQL execution and CRUD demonstration workflows through the application interface.</p>
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top:16px;">
+        <div class="card">
+          <h3>Quality And Safety Requirements</h3>
+          <ul class="list">
+            <li>Support 100 concurrent users.</li>
+            <li>Load key pages within 3 seconds and action responses within 2 seconds.</li>
+            <li>Maintain at least 99% availability excluding scheduled maintenance.</li>
+            <li>Ensure HTTPS, authentication, owner-only access, secure credential storage, and privacy awareness.</li>
+            <li>Keep alerts informational and preventive rather than diagnostic.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Domain Model</h3>
+          <p>Phase 3 defines the key entities as User, Family Member, Health Event, Risk Alert, Appointment, and Dashboard Summary, reinforcing a user-owned data model in which one user manages multiple family members and each member can hold events and alerts.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prototype">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Visuals</span>
+          <h2 class="section-title">Prototype And Presentation Imagery</h2>
+        </div>
+        <p class="section-note">You added real prototype screens in the project images folder, so this section now uses them directly to support the report-driven narrative.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card media">
+          <img src="../img/patient_portal_dashboard.png" alt="Sillah patient portal dashboard">
+        </div>
+        <div class="gallery-card copy">
+          <div>
+            <span class="placeholder-label">Patient View</span>
+            <h3 class="placeholder-title">Dashboard As The Operational Hub</h3>
+            <p>This screen aligns with the Phase 3 feature set by surfacing family-member counts, appointments, health records, unread alerts, quick actions, and a privacy-focused access message in one view.</p>
+          </div>
+          <p><em>Supports:</em> dashboard visualization, owner-controlled access, and the family-centered workflow described across the reports.</p>
+        </div>
+        <div class="gallery-card media">
+          <img src="../img/patient_medical_alerts.png" alt="Sillah patient medical alerts screen">
+        </div>
+      </div>
+
+      <div class="gallery-stack">
+        <div class="gallery-card media">
+          <img src="../img/patient_family_health_tree.png" alt="Sillah patient family health tree screen">
+        </div>
+        <div class="gallery-card media">
+          <img src="../img/doctor_portal_dashboard.png" alt="Sillah doctor portal dashboard">
+        </div>
+        <div class="gallery-card copy">
+          <div>
+            <span class="placeholder-label">Family Management</span>
+            <h3 class="placeholder-title">Family Tree And Condition Tracking</h3>
+            <p>The family health tree visual supports the Phase 2 and Phase 3 emphasis on adding, editing, and reviewing family-member profiles together with hereditary-condition data.</p>
+          </div>
+          <p><em>Supports:</em> the documented “Manage Family Members” use case and the user-owned domain model.</p>
+        </div>
+        <div class="gallery-card copy">
+          <div>
+            <span class="placeholder-label">Clinical Perspective</span>
+            <h3 class="placeholder-title">Provider Dashboard</h3>
+            <p>The doctor portal reinforces the provider-facing needs captured during elicitation: patient access, appointment handling, medication workflows, and a clinically structured portal experience.</p>
+          </div>
+          <p><em>Supports:</em> healthcare-provider requirements and future clinical workflow alignment discussed in Phase 2.</p>
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top:16px;">
+        <div class="card">
+          <h3>Alert And Recommendation Flow</h3>
+          <p>The medical alerts interface visually complements the reports’ emphasis on rule-based preventive alerts, notification history, and recommendation content that guides users toward next steps without crossing into diagnosis.</p>
+        </div>
+        <div class="card">
+          <h3>Why These Screens Fit The Presentation</h3>
+          <p>These images map directly to major report themes: family-centered data ownership, preventive alerting, dashboard summaries, privacy-aware access, and the bridge between patient and provider workflows in a healthcare web application.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Product Experience</span>
+          <h2 class="section-title">How The Platform Feels In Use</h2>
+        </div>
+        <p class="section-note">These additional screens make the presentation feel complete by showing entry, guidance, prevention, and follow-up moments across the user journey.</p>
+      </div>
+
+      <div class="experience-grid">
+        <div class="screen-card gallery-card">
+          <img src="../img/login.png" alt="Sillah login screen">
+          <div class="screen-copy">
+            <h3>Secure Entry Point</h3>
+            <p>The login screen supports the reports’ repeated emphasis on secure authentication, controlled access to sensitive health data, and a clean bilingual-friendly patient-facing experience.</p>
+          </div>
+        </div>
+
+        <div class="experience-stack">
+          <div class="screen-card gallery-card">
+            <img src="../img/patient_risk_assessment.png" alt="Sillah risk assessment screen">
+            <div class="screen-copy">
+              <h3>Risk Assessment</h3>
+              <p>A direct visual match for the preventive-alert and rule-based screening story documented in all three phases.</p>
+            </div>
+          </div>
+          <div class="screen-card gallery-card">
+            <img src="../img/patient_my_appointments.png" alt="Sillah appointments screen">
+            <div class="screen-copy">
+              <h3>Appointments</h3>
+              <p>Supports the simulated booking and follow-up workflow repeatedly described in the scope and user requirements.</p>
+            </div>
+          </div>
+          <div class="screen-card gallery-card" style="grid-column: 1 / -1;">
+            <img src="../img/patient_awareness_hub.png" alt="Sillah awareness hub screen">
+            <div class="screen-copy">
+              <h3>Awareness Hub</h3>
+              <p>This screen reinforces one of Sillah’s strongest differentiators in the reports: culturally relevant preventive education, curated resources, and guided health-awareness content for families.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-grid">
+        <div class="callout">
+          <strong>Access</strong>
+          <span>Secure login and role-based protection are visible from the first interaction.</span>
+        </div>
+        <div class="callout">
+          <strong>Prevention</strong>
+          <span>Risk scoring and recommendations keep the product aligned with preventive, not diagnostic, care.</span>
+        </div>
+        <div class="callout">
+          <strong>Action</strong>
+          <span>Appointments and alerts turn stored data into practical next steps for users and providers.</span>
+        </div>
+        <div class="callout">
+          <strong>Education</strong>
+          <span>The awareness hub supports long-term engagement beyond one-time data entry.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="validation">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Validation</span>
+          <h2 class="section-title">Evidence Of Acceptance And Quality</h2>
+        </div>
+        <p class="section-note">The reports include both quantitative and qualitative support for the direction of the system.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Stakeholder Acceptance</h3>
+          <p>Phase 3 records strong positive agreement around preventive-health tracking, risk alert functionality, and the family-centered interaction model, noting that more than 80% of participants accepted the proposed system features.</p>
+          <div class="metric-bar"><div class="metric-fill" style="width:82%;"></div></div>
+        </div>
+        <div class="card">
+          <h3>Survey-Backed Direction</h3>
+          <p>Phase 2 highlights clear demand for family-centered functionality, preventive alerts, security and privacy protections, and bilingual usability, while also identifying future interest in AI prediction, emergency alerts, wearable integration, and trend tracking.</p>
+          <div class="metric-bar"><div class="metric-fill" style="width:87.5%;"></div></div>
+        </div>
+      </div>
+
+      <div class="feature-grid" style="margin-top:16px;">
+        <div class="feature-card">
+          <span class="feature-tag">Validation Point</span>
+          <h3>Security And Privacy</h3>
+          <p>Role-based access control and privacy protection received strong stakeholder emphasis, consistent with PDPL-aware handling across the reports.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Validation Point</span>
+          <h3>Bilingual Readiness</h3>
+          <p>The language preference split in Phase 2 and the repeated Phase 1 and Phase 3 requirements make bilingual Arabic and English support a validated necessity, not just a design preference.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-tag">Validation Point</span>
+          <h3>Clinical Framing</h3>
+          <p>Healthcare interviews helped shape the system as a preventive support tool with structured summaries and recommendations, while keeping diagnosis out of scope.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="closing">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Closing</span>
+          <h2 class="section-title">What We Delivered Through The Reports</h2>
+        </div>
+        <p class="section-note">Taken together, the three reports show a coherent software-analysis arc from business need to structured specification.</p>
+      </div>
+
+      <div class="footer-grid">
+        <div class="card">
+          <h3>Final Project Story</h3>
+          <p>Sillah began as a preventive-health vision for Saudi families, matured through elicitation with families, providers, and administrators, and concluded with a detailed SRS that defined the product’s first release, architecture context, quality expectations, and domain model.</p>
+          <ul class="list">
+            <li>The product remained family-centered and prevention-focused throughout.</li>
+            <li>The analysis consistently balanced ambition with prototype limits.</li>
+            <li>The strongest recurring themes were risk awareness, bilingual usability, privacy, and secure access.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Future Direction Already Noted In The Reports</h3>
+          <ul class="list">
+            <li>Integration with national health platforms such as Sehhaty and Mawid.</li>
+            <li>AI-enhanced risk prediction.</li>
+            <li>More advanced provider dashboards and real-time appointment support.</li>
+            <li>Wearable integration, emergency alerts, and broader health-trend analysis.</li>
+          </ul>
+          <p class="footnote">These future items are presented because they are explicitly mentioned in the reports, not added as new ideas here.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <p class="footnote">Source basis for this presentation: Phase 1 Vision & Scope, Phase 2 Requirements Elicitation, and Phase 3 Requirements Analysis reports, plus the local project images already present in the repository. No additional project facts were introduced beyond those materials.</p>
+    </section>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const progress = document.getElementById('scrollProgress');
+    const savedTheme = localStorage.getItem('sillah-presentation-theme');
+    const tocLinks = [...document.querySelectorAll('.toc-link')];
+    const trackedSections = tocLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    function syncThemeButton() {
+      toggle.textContent = root.getAttribute('data-theme') === 'dark' ? 'Light Mode' : 'Dark Mode';
+    }
+
+    function syncScrollState() {
+      const scrollTop = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+      progress.style.width = `${pct}%`;
+
+      let activeId = trackedSections[0]?.id;
+      for (const section of trackedSections) {
+        if (section.getBoundingClientRect().top <= 140) activeId = section.id;
+      }
+
+      tocLinks.forEach((link) => {
+        const href = link.getAttribute('href');
+        link.classList.toggle('active', href === `#${activeId}`);
+      });
+    }
+
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      root.setAttribute('data-theme', savedTheme);
+    }
+    syncThemeButton();
+    syncScrollState();
+
+    toggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('sillah-presentation-theme', next);
+      syncThemeButton();
+    });
+
+    window.addEventListener('scroll', syncScrollState, { passive: true });
+    window.addEventListener('resize', syncScrollState);
+  </script>
+</body>
+</html>
