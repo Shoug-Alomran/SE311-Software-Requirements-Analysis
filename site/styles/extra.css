@@ -235,14 +235,32 @@ body,
   padding: 0.75rem 1rem;
 }
 
+.md-typeset__scrollwrap,
+.md-typeset__table {
+  max-width: 100%;
+}
+
+.md-typeset__scrollwrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .md-typeset table:not([class]) {
   display: table;
-  width: 100%;
+  width: fit-content;
+  min-width: min(100%, 42rem);
   max-width: 100%;
   border-radius: 14px;
   border: 1px solid var(--panel-border);
   background: var(--panel-bg);
   table-layout: auto;
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 .md-typeset table:not([class]) th {

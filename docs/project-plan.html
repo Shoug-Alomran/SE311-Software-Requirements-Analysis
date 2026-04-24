@@ -533,10 +533,12 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       background: var(--card);
+      max-width: 100%;
     }
     .expected-table {
-      width: 100%;
-      min-width: 900px;
+      width: fit-content;
+      min-width: min(100%, 56rem);
+      max-width: 100%;
       border-collapse: collapse;
       font-size: 13px;
     }
@@ -546,6 +548,8 @@
       padding: 10px;
       vertical-align: top;
       color: var(--text);
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
     .expected-table th {
       background: var(--surface);

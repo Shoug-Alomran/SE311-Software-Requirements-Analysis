@@ -345,8 +345,8 @@
   .risk-body { color: var(--text-dim); font-size: clamp(0.96rem, 0.2vw + 0.86rem, 1.04rem); }
 
   /* STAKEHOLDER TABLE */
-  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); -webkit-overflow-scrolling: touch; }
-  table { width: 100%; border-collapse: collapse; }
+  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); max-width: 100%; -webkit-overflow-scrolling: touch; }
+  table { width: fit-content; min-width: min(100%, 42rem); max-width: 100%; border-collapse: collapse; }
   th {
     background: var(--bg3);
     padding: 0.7rem 1rem;
@@ -364,6 +364,8 @@
     font-size: clamp(0.96rem, 0.22vw + 0.88rem, 1.04rem);
     color: var(--text-dim);
     vertical-align: top;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
   tr:hover td { background: var(--bg3); }
   .td-name { font-weight: 600; color: var(--text); white-space: nowrap; }
