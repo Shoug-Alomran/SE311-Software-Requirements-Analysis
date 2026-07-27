@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sillah Project Presentation</title>
+  <meta name="description" content="A comprehensive presentation of the Sillah project journey: vision and scope, elicitation, and software requirements analysis for a family-centered preventive health web platform.">
+  <link rel="icon" type="image/png" href="../google.png">
+  <link rel="apple-touch-icon" href="../google.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sillah Project Presentation">
+  <meta property="og:description" content="A comprehensive presentation of the Sillah project journey: vision and scope, elicitation, and software requirements analysis for a family-centered preventive health web platform.">
+  <meta property="og:image" content="https://software-requirements-analysis.shoug-tech.com/banner.png">
+  <meta property="og:url" content="https://software-requirements-analysis.shoug-tech.com/report/report.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sillah Project Presentation">
+  <meta name="twitter:description" content="A comprehensive presentation of the Sillah project journey: vision and scope, elicitation, and software requirements analysis for a family-centered preventive health web platform.">
+  <meta name="twitter:image" content="https://software-requirements-analysis.shoug-tech.com/banner.png">
   <style>
     :root[data-theme="dark"] {
       --bg: #07131a;
@@ -183,6 +195,50 @@
         radial-gradient(circle at 76% 18%, rgba(176, 242, 107, 0.16), transparent 18%),
         radial-gradient(circle at 18% 80%, rgba(115, 196, 255, 0.12), transparent 20%);
       pointer-events: none;
+      animation: heroGlow 10s ease-in-out infinite;
+    }
+
+    @keyframes heroGlow {
+      0%, 100% { opacity: 0.75; transform: translate3d(0, 0, 0) scale(1); }
+      50% { opacity: 1; transform: translate3d(0, -6px, 0) scale(1.03); }
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-orb.o1 {
+      width: 14px; height: 14px;
+      top: 14%; left: 62%;
+      background: radial-gradient(circle, var(--accent-3), transparent 70%);
+      animation: floatY 7s ease-in-out infinite;
+    }
+
+    .hero-orb.o2 {
+      width: 10px; height: 10px;
+      top: 68%; left: 8%;
+      background: radial-gradient(circle, var(--accent-2), transparent 70%);
+      animation: floatY 9s ease-in-out infinite 1.2s;
+    }
+
+    .hero-orb.o3 {
+      width: 8px; height: 8px;
+      top: 30%; left: 92%;
+      background: radial-gradient(circle, var(--accent), transparent 70%);
+      animation: floatY 6.5s ease-in-out infinite 0.6s;
+    }
+
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.55; }
+      50% { transform: translateY(-22px) translateX(10px); opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero::after, .hero-orb { animation: none; }
     }
 
     .hero-grid {
@@ -308,6 +364,32 @@
     .section {
       margin-top: 28px;
       scroll-margin-top: 88px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .section.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .section {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    .scroll-progress span {
+      background-size: 200% 100%;
+      animation: progressShimmer 3.5s linear infinite;
+    }
+
+    @keyframes progressShimmer {
+      0% { background-position: 0% 0; }
+      100% { background-position: 200% 0; }
     }
 
     .section-head {
@@ -498,6 +580,17 @@
 
     .chip strong {
       color: var(--text);
+    }
+
+    .chip-label {
+      border-style: dashed;
+      background: transparent;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 8px 14px;
     }
 
     .phase-card {
@@ -820,6 +913,9 @@
 
   <div class="shell">
     <header class="hero" id="top">
+      <span class="hero-orb o1" aria-hidden="true"></span>
+      <span class="hero-orb o2" aria-hidden="true"></span>
+      <span class="hero-orb o3" aria-hidden="true"></span>
       <div class="hero-grid">
         <div>
           <h1><span>Software Analysis Meets Hospital Web Application</span>Sillah</h1>
@@ -851,7 +947,8 @@
           </div>
 
           <div class="chips">
-            <span class="chip"><strong>Partners:</strong> Shoug Alomran</span>
+            <span class="chip chip-label">Partners</span>
+            <span class="chip">Shoug Alomran</span>
             <span class="chip">Ghala Alsaqer</span>
             <span class="chip">Gala Alalula</span>
             <span class="chip">Salma Al Khaldi</span>
@@ -1502,6 +1599,17 @@
 
     window.addEventListener('scroll', syncScrollState, { passive: true });
     window.addEventListener('resize', syncScrollState);
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.section').forEach((section) => revealObserver.observe(section));
   </script>
 </body>
 </html>

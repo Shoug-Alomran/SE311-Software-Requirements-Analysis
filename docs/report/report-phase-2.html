@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sillah Phase 2 — Requirements Elicitation</title>
+<meta name="description" content="Phase 2 Requirements Elicitation report for Sillah: elicitation methods, stakeholder findings, and MoSCoW-prioritized user requirements.">
+<link rel="icon" type="image/png" href="../google.png">
+<link rel="apple-touch-icon" href="../google.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sillah Phase 2 — Requirements Elicitation">
+<meta property="og:description" content="Phase 2 Requirements Elicitation report for Sillah: elicitation methods, stakeholder findings, and MoSCoW-prioritized user requirements.">
+<meta property="og:image" content="https://software-requirements-analysis.shoug-tech.com/banner.png">
+<meta property="og:url" content="https://software-requirements-analysis.shoug-tech.com/report/report-phase-2.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sillah Phase 2 — Requirements Elicitation">
+<meta name="twitter:description" content="Phase 2 Requirements Elicitation report for Sillah: elicitation methods, stakeholder findings, and MoSCoW-prioritized user requirements.">
+<meta name="twitter:image" content="https://software-requirements-analysis.shoug-tech.com/banner.png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root[data-theme="dark"] {
@@ -69,7 +81,17 @@
 
   /* HERO */
   .hero { background: var(--hero-gradient); border-bottom: 1px solid var(--border); padding: 5rem 3rem 4rem; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 80px, var(--stripe) 80px, var(--stripe) 81px); pointer-events: none; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 80px, var(--stripe) 80px, var(--stripe) 81px); pointer-events: none; animation: stripeDrift 14s linear infinite; }
+  @keyframes stripeDrift { 0% { transform: translateX(0); } 100% { transform: translateX(81px); } }
+  .hero-orb { position: absolute; border-radius: 50%; filter: blur(1px); pointer-events: none; }
+  .hero-orb.o1 { width: 10px; height: 10px; top: 18%; left: 82%; background: radial-gradient(circle, var(--accent3), transparent 70%); animation: orbFloat 8s ease-in-out infinite; }
+  .hero-orb.o2 { width: 8px; height: 8px; top: 70%; left: 6%; background: radial-gradient(circle, var(--accent2), transparent 70%); animation: orbFloat 10s ease-in-out infinite 1s; }
+  .hero-orb.o3 { width: 7px; height: 7px; top: 40%; left: 94%; background: radial-gradient(circle, var(--accent), transparent 70%); animation: orbFloat 7s ease-in-out infinite 0.5s; }
+  @keyframes orbFloat { 0%, 100% { transform: translateY(0) translateX(0); opacity: 0.5; } 50% { transform: translateY(-20px) translateX(8px); opacity: 1; } }
+  .chip { animation: chipPulse 3.5s ease-in-out infinite; }
+  .chip-teal { animation-delay: 0.4s; } .chip-purple { animation-delay: 0.8s; } .chip-orange { animation-delay: 1.2s; }
+  @keyframes chipPulse { 0%, 100% { box-shadow: 0 0 0 rgba(0,0,0,0); } 50% { box-shadow: 0 0 14px -2px currentColor; } }
+  @media (prefers-reduced-motion: reduce) { .hero::before, .hero-orb, .chip, .section { animation: none !important; } }
   .hero-inner { max-width: min(1320px, calc(100vw - 7rem)); margin: 0 auto; position: relative; }
   .hero-meta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
   .chip { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; border: 1px solid; }
@@ -293,6 +315,9 @@
 
 <!-- HERO -->
 <header class="hero" id="s0">
+  <span class="hero-orb o1" aria-hidden="true"></span>
+  <span class="hero-orb o2" aria-hidden="true"></span>
+  <span class="hero-orb o3" aria-hidden="true"></span>
   <div class="hero-inner">
     <div class="hero-meta">
       <span class="chip chip-blue">Phase 2</span>

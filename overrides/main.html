@@ -8,7 +8,17 @@
     {% set robots = page.meta.robots %}
   {% endif %}
   <meta name="robots" content="{{ robots }}">
+  <link rel="apple-touch-icon" href="{{ site_root }}/google.png">
   <meta property="og:url" content="{{ page.canonical_url if page and page.canonical_url else config.site_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name | e }}">
+  <meta property="og:title" content="{{ (page.title | striptags | e) if page and page.title else config.site_name | e }}">
+  <meta property="og:description" content="{{ (page.meta.description | e) if page and page.meta and page.meta.description else config.site_description | e }}">
+  <meta property="og:image" content="{{ site_root }}/banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ (page.title | striptags | e) if page and page.title else config.site_name | e }}">
+  <meta name="twitter:description" content="{{ (page.meta.description | e) if page and page.meta and page.meta.description else config.site_description | e }}">
+  <meta name="twitter:image" content="{{ site_root }}/banner.png">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",

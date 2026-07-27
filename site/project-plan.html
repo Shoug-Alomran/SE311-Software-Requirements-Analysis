@@ -6,6 +6,18 @@
   <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href="https://software-requirements-analysis.shoug-tech.com/project-plan.html" />
   <title>Requirements Engineering Dashboard | Sillah (صلة) Family Health Management System</title>
+  <meta name="description" content="Requirements Engineering Dashboard for Sillah — tasks, deliverables, and tools tracked across the SE311 software requirements analysis project.">
+  <link rel="icon" type="image/png" href="google.png">
+  <link rel="apple-touch-icon" href="google.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Requirements Engineering Dashboard | Sillah">
+  <meta property="og:description" content="Requirements Engineering Dashboard for Sillah — tasks, deliverables, and tools tracked across the SE311 software requirements analysis project.">
+  <meta property="og:image" content="https://software-requirements-analysis.shoug-tech.com/banner.png">
+  <meta property="og:url" content="https://software-requirements-analysis.shoug-tech.com/project-plan.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Requirements Engineering Dashboard | Sillah">
+  <meta name="twitter:description" content="Requirements Engineering Dashboard for Sillah — tasks, deliverables, and tools tracked across the SE311 software requirements analysis project.">
+  <meta name="twitter:image" content="https://software-requirements-analysis.shoug-tech.com/banner.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <style>
@@ -73,12 +85,19 @@
 
     .sidebar {
       width: 280px;
-      background: linear-gradient(180deg, var(--primary) 0%, #5a52d5 100%);
+      background: linear-gradient(160deg, var(--primary) 0%, #5a52d5 50%, var(--primary) 100%);
+      background-size: 200% 200%;
+      animation: sidebarShift 12s ease-in-out infinite;
       padding: 25px 20px;
       display: flex;
       flex-direction: column;
       box-shadow: 5px 0 15px var(--shadow);
       z-index: 10;
+    }
+
+    @keyframes sidebarShift {
+      0%, 100% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
     }
 
     .logo {
@@ -89,6 +108,19 @@
       font-size: 20px;
       font-weight: 800;
       gap: 10px;
+    }
+
+    .logo i {
+      animation: logoPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.9; }
+      50% { transform: scale(1.12) rotate(-4deg); opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sidebar, .logo i { animation: none !important; }
     }
 
     .search-box { margin-bottom: 20px; position: relative; }
