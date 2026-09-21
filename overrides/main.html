@@ -1,45 +1,194 @@
-{% extends "base.html" %}
-
-{% block extrahead %}
-  {{ super() }}
-  {% set site_root = config.site_url[:-1] if config.site_url.endswith('/') else config.site_url %}
-  {% set robots = "index, follow" %}
-  {% if page and page.meta and page.meta.robots %}
-    {% set robots = page.meta.robots %}
-  {% endif %}
-  <meta name="robots" content="{{ robots }}">
-  <link rel="apple-touch-icon" href="{{ site_root }}/google.png">
-  <meta property="og:url" content="{{ page.canonical_url if page and page.canonical_url else config.site_url }}">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="{{ config.site_name | e }}">
-  <meta property="og:title" content="{{ (page.title | striptags | e) if page and page.title else config.site_name | e }}">
-  <meta property="og:description" content="{{ (page.meta.description | e) if page and page.meta and page.meta.description else config.site_description | e }}">
-  <meta property="og:image" content="{{ site_root }}/banner.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ (page.title | striptags | e) if page and page.title else config.site_name | e }}">
-  <meta name="twitter:description" content="{{ (page.meta.description | e) if page and page.meta and page.meta.description else config.site_description | e }}">
-  <meta name="twitter:image" content="{{ site_root }}/banner.png">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
+{% extends "base.html" %} {% block fonts %}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+/>
+{% endblock %} {% block extrahead %} {{ super() }}
+<script>
+  document.documentElement.classList.add("sx-js");
+</script>
+{% set site_root = config.site_url[:-1] if config.site_url.endswith('/') else
+config.site_url %} {% set robots = "index, follow" %} {% if page and page.meta
+and page.meta.robots %} {% set robots = page.meta.robots %} {% endif %}
+<meta name="robots" content="{{ robots }}" />
+<meta name="theme-color" content="#0b8a7a" />
+<link rel="apple-touch-icon" href="{{ site_root }}/google.png" />
+<meta
+  property="og:url"
+  content="{{ page.canonical_url if page and page.canonical_url else config.site_url }}"
+/>
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="{{ config.site_name | e }}" />
+<meta
+  property="og:title"
+  content="{{ (page.title | striptags | e) if page and page.title else config.site_name | e }}"
+/>
+<meta
+  property="og:description"
+  content="{{ (page.meta.description | e) if page and page.meta and page.meta.description else config.site_description | e }}"
+/>
+<meta property="og:image" content="{{ site_root }}/banner.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta
+  name="twitter:title"
+  content="{{ (page.title | striptags | e) if page and page.title else config.site_name | e }}"
+/>
+<meta
+  name="twitter:description"
+  content="{{ (page.meta.description | e) if page and page.meta and page.meta.description else config.site_description | e }}"
+/>
+<meta name="twitter:image" content="{{ site_root }}/banner.png" />
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ config.site_name | e }}",
+    "url": "{{ site_root | e }}"
+  }
+</script>
+{% if page and page.canonical_url %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "{{ page.title | striptags | e }}",
+    "url": "{{ page.canonical_url | e }}",
+    "isPartOf": {
       "@type": "WebSite",
       "name": "{{ config.site_name | e }}",
       "url": "{{ site_root | e }}"
     }
-  </script>
-  {% if page and page.canonical_url %}
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "{{ page.title | striptags | e }}",
-      "url": "{{ page.canonical_url | e }}",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "{{ config.site_name | e }}",
-        "url": "{{ site_root | e }}"
-      }
-    }
-  </script>
+  }
+</script>
+{% endif %} {% endblock %} {#- The header carries its own dropdown navigation,
+so the tab bar is not rendered. -#} {% block tabs %}{% endblock %} {% block
+content %}
+<div class="sx-eyebrow">
+  <span class="sx-eyebrow__dot"></span>
+  {%- if page.parent %} {{ page.parent.title | replace(" - ", " · ") }} {%- else
+  %} SE311 · Sillah {%- endif %}
+</div>
+{{ super() }} {% endblock %} {% block footer %}
+<footer class="md-footer sx-footer">
+  {% set hide_footer_nav = page.meta and page.meta.hide and "footer" in
+  page.meta.hide %} {% if (page.previous_page or page.next_page) and not
+  hide_footer_nav %}
+  <nav class="sx-pager md-grid" aria-label="{{ lang.t('footer') }}">
+    {% if page.previous_page %}
+    <a
+      href="{{ page.previous_page.url | url }}"
+      class="sx-pager__link sx-pager__link--prev"
+    >
+      <span class="sx-pager__dir">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 12H5m6 6-6-6 6-6" />
+        </svg>
+        Previous
+      </span>
+      <span class="sx-pager__title">{{ page.previous_page.title }}</span>
+    </a>
+    {% else %}<span></span>{% endif %} {% if page.next_page %}
+    <a
+      href="{{ page.next_page.url | url }}"
+      class="sx-pager__link sx-pager__link--next"
+    >
+      <span class="sx-pager__dir">
+        Next
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14m-6-6 6 6-6 6" />
+        </svg>
+      </span>
+      <span class="sx-pager__title">{{ page.next_page.title }}</span>
+    </a>
+    {% endif %}
+  </nav>
   {% endif %}
+
+  <div class="sx-footer__main">
+    <div class="sx-footer__grid md-grid">
+      <div class="sx-footer__brand">
+        <a class="sx-brand" href="{{ nav.homepage.url | url }}">
+          <span class="sx-brand__mark"
+            ><img
+              src="{{ config.theme.logo | url }}"
+              alt=""
+              width="28"
+              height="28"
+          /></span>
+          <span class="sx-brand__code">SE311</span>
+          <span class="sx-brand__slash">/</span>
+          <span class="sx-brand__name">sillah</span>
+        </a>
+        <p>
+          A prevention-first requirements baseline for hereditary cardiac risk
+          awareness in Saudi families. Built at Prince Sultan University.
+        </p>
+        <div class="sx-footer__status">
+          <span class="sx-live-dot"></span> Project complete · 2026
+        </div>
+      </div>
+
+      <div class="sx-footer__col">
+        <div class="sx-footer__title">Project</div>
+        <a href="{{ 'introduction/' | url }}">Introduction</a>
+        <a href="{{ 'team/' | url }}">Team</a>
+        <a href="{{ 'conclusion/' | url }}">Conclusion</a>
+        <a href="{{ 'privacy-notice/' | url }}">Privacy notice</a>
+        <a href="{{ 'academic-disclaimer/' | url }}">Academic disclaimer</a>
+      </div>
+
+      <div class="sx-footer__col">
+        <div class="sx-footer__title">Phases</div>
+        <a href="{{ 'phase-1-inception/' | url }}">Phase 1 · Inception</a>
+        <a href="{{ 'phase-2-elicitation/' | url }}">Phase 2 · Elicitation</a>
+        <a href="{{ 'phase-3-analysis/' | url }}">Phase 3 · Analysis</a>
+      </div>
+
+      <div class="sx-footer__col">
+        <div class="sx-footer__title">Reports</div>
+        <a href="{{ 'report/phase-1.pdf' | url }}"
+          >Phase 1 report <span>PDF</span></a
+        >
+        <a href="{{ 'report/phase-2.pdf' | url }}"
+          >Phase 2 report <span>PDF</span></a
+        >
+        <a href="{{ 'report/phase-3.pdf' | url }}"
+          >Phase 3 report <span>PDF</span></a
+        >
+        <a href="{{ 'report/report.html' | url }}">Presentation</a>
+      </div>
+
+      <div class="sx-footer__col">
+        <div class="sx-footer__title">Contact</div>
+        <a href="mailto:inquiry@shoug-tech.com">inquiry@shoug-tech.com</a>
+        <a href="https://shoug-tech.com/" target="_blank" rel="noopener"
+          >shoug-tech.com ↗</a
+        >
+        <a
+          href="https://shoug-tech.com/work/projects/"
+          target="_blank"
+          rel="noopener"
+          >More projects ↗</a
+        >
+      </div>
+    </div>
+
+    <div class="sx-footer__bottom md-grid">
+      <span>{{ config.copyright }}</span>
+      <span
+        >Made by
+        <a
+          href="https://blueprint.shoug-tech.com/"
+          target="_blank"
+          rel="noopener"
+          >Blueprint</a
+        ></span
+      >
+    </div>
+  </div>
+</footer>
 {% endblock %}

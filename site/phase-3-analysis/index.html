@@ -19,8 +19,11 @@
         <link rel="next" href="domain-model/">
       
       
+        
+      
+      
       <link rel="icon" href="../google.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -28,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -41,29 +44,26 @@
       
     
     
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Nunito Sans";--md-code-font:"JetBrains Mono"}</style>
-      
-    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+
     
       <link rel="stylesheet" href="../styles/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-    
   
+  <script>document.documentElement.classList.add("sx-js")</script>
   
   
   
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b8a7a">
   <link rel="apple-touch-icon" href="https://software-requirements-analysis.shoug-tech.com/google.png">
   <meta property="og:url" content="https://software-requirements-analysis.shoug-tech.com/phase-3-analysis/">
   <meta property="og:type" content="website">
@@ -71,6 +71,8 @@
   <meta property="og:title" content="Overview">
   <meta property="og:description" content="Full SE311 Software Requirements Analysis Project Documentation">
   <meta property="og:image" content="https://software-requirements-analysis.shoug-tech.com/banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Overview">
   <meta name="twitter:description" content="Full SE311 Software Requirements Analysis Project Documentation">
@@ -109,11 +111,8 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="red">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
   
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -132,85 +131,184 @@
     
     
       
-
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="SE311 - Sillah (صلة) Family Health Management System" class="md-header__button md-logo" aria-label="SE311 - Sillah (صلة) Family Health Management System" data-md-component="logo">
-      
-  <img src="../logo.png" alt="logo">
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+<header class="md-header sx-header" data-md-component="header">
+  <div class="sx-progress" aria-hidden="true"><span></span></div>
+  <nav class="md-header__inner md-grid sx-header__inner" aria-label="Header">
+    <label class="md-header__button md-icon sx-header__drawer" for="__drawer" aria-label="Open navigation">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
-    <div class="md-header__title" data-md-component="header-title">
+
+    <a href=".." class="sx-brand" aria-label="SE311 - Sillah (صلة) Family Health Management System" data-md-component="logo">
+      <span class="sx-brand__mark">
+        <img src="../logo.png" alt="" width="28" height="28">
+      </span>
+      <span class="sx-brand__code">SE311</span>
+      <span class="sx-brand__slash">/</span>
+      <span class="sx-brand__name">sillah</span>
+    </a><div class="md-header__title sx-visually-hidden" data-md-component="header-title">
       <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            SE311 - Sillah (صلة) Family Health Management System
-          </span>
-        </div>
+        <div class="md-header__topic"><span class="md-ellipsis">SE311 - Sillah (صلة) Family Health Management System</span></div>
         <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Overview
-            
-          </span>
+          <span class="md-ellipsis">Overview</span>
         </div>
       </div>
     </div>
-    
+
+    <ul class="sx-nav">
+      <li class="sx-nav__item sx-nav__item--menu">
+        <button class="sx-nav__trigger" type="button" aria-haspopup="true">
+          Project
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="sx-menu">
+            <a class="sx-menu__link" href="../introduction/">
+              <span class="sx-menu__index">01</span>
+              <span>Introduction</span>
+            </a>
+            <a class="sx-menu__link" href="../team/">
+              <span class="sx-menu__index">02</span>
+              <span>Team</span>
+            </a>
+            <a class="sx-menu__link" href="../report/">
+              <span class="sx-menu__index">03</span>
+              <span>Report</span>
+            </a>
+            <a class="sx-menu__link" href="../conclusion/">
+              <span class="sx-menu__index">04</span>
+              <span>Conclusion</span>
+            </a>
+        </div>
+      </li>
+      <li class="sx-nav__item sx-nav__item--menu">
+        <button class="sx-nav__trigger" type="button" aria-haspopup="true">
+          Phase 1
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="sx-menu">
+          <div class="sx-menu__label">Inception</div>
+            <a class="sx-menu__link" href="../phase-1-inception/">
+              <span class="sx-menu__index">01</span>
+              <span>Overview</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-1-inception/business-requirements/">
+              <span class="sx-menu__index">02</span>
+              <span>Business Requirements</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-1-inception/scope-and-limitations/">
+              <span class="sx-menu__index">03</span>
+              <span>Scope & Limitations</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-1-inception/business-context/">
+              <span class="sx-menu__index">04</span>
+              <span>Business Context</span>
+            </a>
+        </div>
+      </li>
+      <li class="sx-nav__item sx-nav__item--menu">
+        <button class="sx-nav__trigger" type="button" aria-haspopup="true">
+          Phase 2
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="sx-menu">
+          <div class="sx-menu__label">Elicitation</div>
+            <a class="sx-menu__link" href="../phase-2-elicitation/">
+              <span class="sx-menu__index">01</span>
+              <span>Overview</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-2-elicitation/elicitation-plan/">
+              <span class="sx-menu__index">02</span>
+              <span>Elicitation Plan</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-2-elicitation/stakeholders/">
+              <span class="sx-menu__index">03</span>
+              <span>Stakeholder Analysis</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-2-elicitation/elicitation-notes/">
+              <span class="sx-menu__index">04</span>
+              <span>Interviews & Notes</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-2-elicitation/family-requirements/">
+              <span class="sx-menu__index">05</span>
+              <span>Family Requirements</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-2-elicitation/provider-requirements/">
+              <span class="sx-menu__index">06</span>
+              <span>Healthcare Provider Requirements</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-2-elicitation/survey/">
+              <span class="sx-menu__index">07</span>
+              <span>Survey</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-2-elicitation/admin-requirements/">
+              <span class="sx-menu__index">08</span>
+              <span>Administrator Requirements</span>
+            </a>
+            <a class="sx-menu__link" href="../phase-2-elicitation/document-analysis/">
+              <span class="sx-menu__index">09</span>
+              <span>Document & Competitive Analysis</span>
+            </a>
+        </div>
+      </li>
+      <li class="sx-nav__item sx-nav__item--menu is-active">
+        <button class="sx-nav__trigger" type="button" aria-haspopup="true">
+          Phase 3
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="sx-menu">
+          <div class="sx-menu__label">Analysis</div>
+            <a class="sx-menu__link is-active" href="./">
+              <span class="sx-menu__index">01</span>
+              <span>Overview</span>
+            </a>
+            <a class="sx-menu__link" href="domain-model/">
+              <span class="sx-menu__index">02</span>
+              <span>Domain Model</span>
+            </a>
+            <a class="sx-menu__link" href="use-cases/">
+              <span class="sx-menu__index">03</span>
+              <span>Use Cases</span>
+            </a>
+            <a class="sx-menu__link" href="functional-requirements/">
+              <span class="sx-menu__index">04</span>
+              <span>Functional Requirements</span>
+            </a>
+            <a class="sx-menu__link" href="nonfunctional-requirements/">
+              <span class="sx-menu__index">05</span>
+              <span>Non-Functional Requirements</span>
+            </a>
+            <a class="sx-menu__link" href="prioritization/">
+              <span class="sx-menu__index">06</span>
+              <span>Prioritization</span>
+            </a>
+        </div>
+      </li>
+    </ul>
+
+    <div class="sx-header__actions">
       
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="red"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="red"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m3.55 19.09 1.41 1.41 1.8-1.79-1.42-1.42M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6c0-3.32-2.69-6-6-6m8 7h3v-2h-3m-2.76 7.71 1.8 1.79 1.41-1.41-1.79-1.8M20.45 5l-1.41-1.4-1.8 1.79 1.42 1.42M13 1h-2v3h2M6.76 5.39 4.96 3.6 3.55 5l1.79 1.81 1.42-1.42M1 13h3v-2H1m12 9h-2v3h2"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+        
+          <label class="sx-search-trigger" for="__search" aria-label="Search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <span class="sx-search-trigger__text">Search</span>
+            <kbd>⌘K</kbd>
+          </label>
+          <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
       
@@ -218,7 +316,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -229,177 +327,50 @@
     </div>
   </div>
 </div>
+        
+      
+
+      
+        <div class="sx-icon-btn sx-palette">
+          <form class="md-header__option" data-md-component="palette">
+  
     
     
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m3.55 19.09 1.41 1.41 1.8-1.79-1.42-1.42M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6c0-3.32-2.69-6-6-6m8 7h3v-2h-3m-2.76 7.71 1.8 1.79 1.41-1.41-1.79-1.8M20.45 5l-1.41-1.4-1.8 1.79 1.42 1.42M13 1h-2v3h2M6.76 5.39 4.96 3.6 3.55 5l1.79 1.81zM1 13h3v-2H1m12 9h-2v3h2"/></svg>
+      </label>
+    
+  
+</form>
+        </div>
+      
+      
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+
+      <a class="sx-btn sx-btn--primary sx-btn--sm sx-header__cta" href="../report/">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+        Report
+      </a>
+    </div>
   </nav>
-  
-    
-      
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
-        
-  
-    
-  
-  Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../introduction/" class="md-tabs__link">
-        
-  
-    
-  
-  Introduction
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../team/" class="md-tabs__link">
-        
-  
-    
-  
-  Team
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../phase-1-inception/" class="md-tabs__link">
-          
-  
-    
-  
-  Phase 1 - Inception
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../phase-2-elicitation/" class="md-tabs__link">
-          
-  
-    
-  
-  Phase 2 - Elicitation
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
-          
-  
-    
-  
-  Phase 3 - Analysis
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../report/" class="md-tabs__link">
-          
-  
-    
-  
-  Report
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../conclusion/" class="md-tabs__link">
-        
-  
-    
-  
-  Conclusion
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-    
-  
 </header>
     
     <div class="md-container" data-md-component="container">
       
-      
-        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -437,9 +408,16 @@
       <a href=".." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -457,9 +435,16 @@
       <a href="../introduction/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Introduction
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -477,9 +462,16 @@
       <a href="../team/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Team
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -509,32 +501,39 @@
     
     
     
-    
       
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../phase-1-inception/" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
+    
+  
     Phase 1 - Inception
+  
+
+    
   </span>
+  
   
 
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -543,7 +542,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Phase 1 - Inception
+            
+  
+    Phase 1 - Inception
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -559,9 +562,16 @@
       <a href="../phase-1-inception/business-requirements/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Business Requirements
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -580,9 +590,16 @@
       <a href="../phase-1-inception/scope-and-limitations/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Scope & Limitations
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -601,9 +618,16 @@
       <a href="../phase-1-inception/business-context/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Business Context
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -651,32 +675,39 @@
     
     
     
-    
       
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../phase-2-elicitation/" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
+    
+  
     Phase 2 - Elicitation
+  
+
+    
   </span>
+  
   
 
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -685,7 +716,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Phase 2 - Elicitation
+            
+  
+    Phase 2 - Elicitation
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -701,9 +736,16 @@
       <a href="../phase-2-elicitation/elicitation-plan/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Elicitation Plan
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -722,9 +764,16 @@
       <a href="../phase-2-elicitation/stakeholders/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Stakeholder Analysis
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -743,9 +792,16 @@
       <a href="../phase-2-elicitation/elicitation-notes/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Interviews & Notes
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -764,9 +820,16 @@
       <a href="../phase-2-elicitation/family-requirements/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Family Requirements
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -785,9 +848,16 @@
       <a href="../phase-2-elicitation/provider-requirements/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Healthcare Provider Requirements
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -806,9 +876,16 @@
       <a href="../phase-2-elicitation/survey/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Survey
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -827,9 +904,16 @@
       <a href="../phase-2-elicitation/admin-requirements/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Administrator Requirements
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -848,9 +932,16 @@
       <a href="../phase-2-elicitation/document-analysis/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Document & Competitive Analysis
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -894,26 +985,36 @@
     
     
     
+      
+        
+        
+      
+      
+        
+      
     
-      
-      
     
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
-          
           
           <div class="md-nav__link md-nav__container">
             <a href="./" class="md-nav__link md-nav__link--active">
               
   
+  
   <span class="md-ellipsis">
+    
+  
     Phase 3 - Analysis
+  
+
+    
   </span>
+  
   
 
             </a>
@@ -928,7 +1029,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            Phase 3 - Analysis
+            
+  
+    Phase 3 - Analysis
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -944,9 +1049,16 @@
       <a href="domain-model/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Domain Model
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -965,9 +1077,16 @@
       <a href="use-cases/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Use Cases
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -986,9 +1105,16 @@
       <a href="functional-requirements/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Functional Requirements
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -1007,9 +1133,16 @@
       <a href="nonfunctional-requirements/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Non-Functional Requirements
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -1028,9 +1161,16 @@
       <a href="prioritization/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Prioritization
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -1062,26 +1202,33 @@
     
     
     
-    
       
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          
           <div class="md-nav__link md-nav__container">
             <a href="../report/" class="md-nav__link ">
               
   
+  
   <span class="md-ellipsis">
+    
+  
     Report
+  
+
+    
   </span>
+  
   
 
             </a>
@@ -1091,7 +1238,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
-            Report
+            
+  
+    Report
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1114,9 +1265,16 @@
       <a href="../conclusion/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
+    
+  
     Conclusion
+  
+
+    
   </span>
+  
   
 
       </a>
@@ -1153,7 +1311,9 @@
         <li class="md-nav__item">
   <a href="#phase-purpose" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase Purpose
+      
+        Phase Purpose
+      
     </span>
   </a>
   
@@ -1162,7 +1322,9 @@
         <li class="md-nav__item">
   <a href="#core-analysis-outputs" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Analysis Outputs
+      
+        Core Analysis Outputs
+      
     </span>
   </a>
   
@@ -1171,7 +1333,9 @@
         <li class="md-nav__item">
   <a href="#phase-3-page-set" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase 3 Page Set
+      
+        Phase 3 Page Set
+      
     </span>
   </a>
   
@@ -1180,7 +1344,9 @@
         <li class="md-nav__item">
   <a href="#analysis-snapshot" class="md-nav__link">
     <span class="md-ellipsis">
-      Analysis Snapshot
+      
+        Analysis Snapshot
+      
     </span>
   </a>
   
@@ -1189,7 +1355,9 @@
         <li class="md-nav__item">
   <a href="#supporting-report-artifact" class="md-nav__link">
     <span class="md-ellipsis">
-      Supporting Report Artifact
+      
+        Supporting Report Artifact
+      
     </span>
   </a>
   
@@ -1205,9 +1373,64 @@
           
           
             <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href=".." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Phase 3 - Analysis
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
               <article class="md-content__inner md-typeset">
                 
+  <div class="sx-eyebrow">
+    <span class="sx-eyebrow__dot"></span>
+      Phase 3 · Analysis
+  </div>
+  
                   
+
 
 
 <h1 id="phase-3-requirements-analysis">Phase 3 — Requirements Analysis<a class="headerlink" href="#phase-3-requirements-analysis" title="Permanent link">&para;</a></h1>
@@ -1218,7 +1441,7 @@ for the <strong>Sillah Family Health Management System</strong>.</p>
 and non-functional requirements, and organizing the solution into
 use cases, domain entities, interfaces, and priorities.</p>
 <hr />
-<h2 id="phase-purpose"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6m0 2h7v5h5v11H6V4m2 8v2h8v-2H8m0 4v2h5v-2H8Z"/></svg></span> Phase Purpose<a class="headerlink" href="#phase-purpose" title="Permanent link">&para;</a></h2>
+<h2 id="phase-purpose"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg></span> Phase Purpose<a class="headerlink" href="#phase-purpose" title="Permanent link">&para;</a></h2>
 <p>The goal of this phase is to convert stakeholder expectations into a
 clear, implementable, and testable specification that can guide design
 and development.</p>
@@ -1233,40 +1456,40 @@ captures:</p>
 <li>implementation priority across the analyzed feature set</li>
 </ul>
 <hr />
-<h2 id="core-analysis-outputs"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 13.5v8H3v-8h8m-2 2H5v4h4v-4M12 2l5.5 9h-11L12 2m0 3.86L10.08 9h3.84L12 5.86M17.5 13c2.5 0 4.5 2 4.5 4.5S20 22 17.5 22 13 20 13 17.5s2-4.5 4.5-4.5m0 2a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg></span> Core Analysis Outputs<a class="headerlink" href="#core-analysis-outputs" title="Permanent link">&para;</a></h2>
+<h2 id="core-analysis-outputs"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 13.5v8H3v-8zm-2 2H5v4h4zM12 2l5.5 9h-11zm0 3.86L10.08 9h3.84zM17.5 13c2.5 0 4.5 2 4.5 4.5S20 22 17.5 22 13 20 13 17.5s2-4.5 4.5-4.5m0 2a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg></span> Core Analysis Outputs<a class="headerlink" href="#core-analysis-outputs" title="Permanent link">&para;</a></h2>
 <div class="grid cards">
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1a2.5 2.5 0 0 0-2.5 2.5A2.5 2.5 0 0 0 11 5.79V7H7a2 2 0 0 0-2 2v.71A2.5 2.5 0 0 0 3.5 12 2.5 2.5 0 0 0 5 14.29V15H4a2 2 0 0 0-2 2v1.21A2.5 2.5 0 0 0 .5 20.5 2.5 2.5 0 0 0 3 23a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 4 18.21V17h4v1.21a2.5 2.5 0 0 0-1.5 2.29A2.5 2.5 0 0 0 9 23a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-1.5-2.29V17a2 2 0 0 0-2-2H7v-.71A2.5 2.5 0 0 0 8.5 12 2.5 2.5 0 0 0 7 9.71V9h10v.71A2.5 2.5 0 0 0 15.5 12a2.5 2.5 0 0 0 1.5 2.29V15h-1a2 2 0 0 0-2 2v1.21a2.5 2.5 0 0 0-1.5 2.29A2.5 2.5 0 0 0 15 23a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-1.5-2.29V17h4v1.21a2.5 2.5 0 0 0-1.5 2.29A2.5 2.5 0 0 0 21 23a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-1.5-2.29V17a2 2 0 0 0-2-2h-1v-.71A2.5 2.5 0 0 0 20.5 12 2.5 2.5 0 0 0 19 9.71V9a2 2 0 0 0-2-2h-4V5.79a2.5 2.5 0 0 0 1.5-2.29A2.5 2.5 0 0 0 12 1m0 1.5a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M6 11a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m12 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M3 19.5a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m6 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m6 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m6 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1Z"/></svg></span> <strong><a href="domain-model/">Domain Model</a></strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1a2.5 2.5 0 0 0-2.5 2.5A2.5 2.5 0 0 0 11 5.79V7H7a2 2 0 0 0-2 2v.71A2.5 2.5 0 0 0 3.5 12 2.5 2.5 0 0 0 5 14.29V15H4a2 2 0 0 0-2 2v1.21A2.5 2.5 0 0 0 .5 20.5 2.5 2.5 0 0 0 3 23a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 4 18.21V17h4v1.21a2.5 2.5 0 0 0-1.5 2.29A2.5 2.5 0 0 0 9 23a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-1.5-2.29V17a2 2 0 0 0-2-2H7v-.71A2.5 2.5 0 0 0 8.5 12 2.5 2.5 0 0 0 7 9.71V9h10v.71A2.5 2.5 0 0 0 15.5 12a2.5 2.5 0 0 0 1.5 2.29V15h-1a2 2 0 0 0-2 2v1.21a2.5 2.5 0 0 0-1.5 2.29A2.5 2.5 0 0 0 15 23a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-1.5-2.29V17h4v1.21a2.5 2.5 0 0 0-1.5 2.29A2.5 2.5 0 0 0 21 23a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-1.5-2.29V17a2 2 0 0 0-2-2h-1v-.71A2.5 2.5 0 0 0 20.5 12 2.5 2.5 0 0 0 19 9.71V9a2 2 0 0 0-2-2h-4V5.79a2.5 2.5 0 0 0 1.5-2.29A2.5 2.5 0 0 0 12 1m0 1.5a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M6 11a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m12 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M3 19.5a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m6 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m6 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m6 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1"/></svg></span> <strong><a href="domain-model/">Domain Model</a></strong></p>
 <p>Defines the main entities in the Sillah system, including users,
 family members, health events, alerts, appointments, and dashboard
 summaries.</p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 11h-3.18C14.4 9.84 13.3 9 12 9c-1.3 0-2.4.84-2.82 2H6c-.33 0-2-.1-2-2V8c0-1.83 1.54-2 2-2h10.18C16.6 7.16 17.7 8 19 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3c-1.3 0-2.4.84-2.82 2H6C4.39 4 2 5.06 2 8v1c0 2.94 2.39 4 4 4h3.18c.42 1.16 1.52 2 2.82 2 1.3 0 2.4-.84 2.82-2H18c.33 0 2 .1 2 2v1c0 1.83-1.54 2-2 2H7.82C7.4 16.84 6.3 16 5 16a3 3 0 0 0-3 3 3 3 0 0 0 3 3c1.3 0 2.4-.84 2.82-2H18c1.61 0 4-1.07 4-4v-1c0-2.93-2.39-4-4-4m1-7a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M5 20a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1Z"/></svg></span> <strong><a href="use-cases/">Use Cases</a></strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 11h-3.18C14.4 9.84 13.3 9 12 9s-2.4.84-2.82 2H6c-.33 0-2-.1-2-2V8c0-1.83 1.54-2 2-2h10.18C16.6 7.16 17.7 8 19 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3c-1.3 0-2.4.84-2.82 2H6C4.39 4 2 5.06 2 8v1c0 2.94 2.39 4 4 4h3.18c.42 1.16 1.52 2 2.82 2s2.4-.84 2.82-2H18c.33 0 2 .1 2 2v1c0 1.83-1.54 2-2 2H7.82C7.4 16.84 6.3 16 5 16a3 3 0 0 0-3 3 3 3 0 0 0 3 3c1.3 0 2.4-.84 2.82-2H18c1.61 0 4-1.07 4-4v-1c0-2.93-2.39-4-4-4m1-7a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M5 20a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1"/></svg></span> <strong><a href="use-cases/">Use Cases</a></strong></p>
 <p>Documents the primary end-to-end user interactions, with detailed
 emphasis on managing family members and navigating key system flows.</p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9.5 7.5 14h-5L5 9.5M3 4h4v4H3V4m2 16a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2M9 5v2h12V5H9m0 14h12v-2H9v2m0-6h12v-2H9v2Z"/></svg></span> <strong><a href="functional-requirements/">Functional Requirements</a></strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9.5 7.5 14h-5zM3 4h4v4H3zm2 16a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2M9 5v2h12V5zm0 14h12v-2H9zm0-6h12v-2H9z"/></svg></span> <strong><a href="functional-requirements/">Functional Requirements</a></strong></p>
 <p>Groups analyzed requirements into six features:
 account management, family member management, health event tracking,
 risk alerts, dashboard visualization, and database interaction.</p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4v6m-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> <strong><a href="nonfunctional-requirements/">Non-Functional Requirements</a></strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9"/></svg></span> <strong><a href="nonfunctional-requirements/">Non-Functional Requirements</a></strong></p>
 <p>Covers performance, safety, security, usability, reliability,
 legal/privacy, bilingual support, and database integrity.</p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h12v-2H3m0-5v2h18V6M3 18h6v-2H3v2Z"/></svg></span> <strong><a href="prioritization/">Prioritization</a></strong></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h12v-2H3m0-5v2h18V6M3 18h6v-2H3z"/></svg></span> <strong><a href="prioritization/">Prioritization</a></strong></p>
 <p>Classifies the features by delivery importance, highlighting the
 high-priority release scope versus medium-priority support features.</p>
 </li>
 </ul>
 </div>
 <hr />
-<h2 id="phase-3-page-set"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4h4v4H3V4m6 1v2h12V5H9m-6 5h4v4H3v-4m6 1v2h12v-2H9m-6 5h4v4H3v-4m6 1v2h12v-2H9"/></svg></span> Phase 3 Page Set<a class="headerlink" href="#phase-3-page-set" title="Permanent link">&para;</a></h2>
+<h2 id="phase-3-page-set"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4h4v4H3zm6 1v2h12V5zm-6 5h4v4H3zm6 1v2h12v-2zm-6 5h4v4H3zm6 1v2h12v-2z"/></svg></span> Phase 3 Page Set<a class="headerlink" href="#phase-3-page-set" title="Permanent link">&para;</a></h2>
 <p>The current Phase 3 documentation is intentionally organized into the
 five analysis pages shown in the section navigation:</p>
 <ol>
@@ -1280,7 +1503,7 @@ five analysis pages shown in the section navigation:</p>
 report’s appendix content is already folded into the existing analysis
 pages, especially the domain model and non-functional requirements.</p>
 <hr />
-<h2 id="analysis-snapshot"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 2v12h7V6H4m16 12V6h-1.24c.24.54.19 1.07.19 1.13-.07.67-.54 1.37-.71 1.62l-2.33 2.55 3.32-.02.01 1.22-5.2-.03-.04-1s3.05-3.23 3.2-3.52c.14-.28.71-1.95-.7-1.95-1.23.05-1.09 1.3-1.09 1.3l-1.54.01s.01-.66.38-1.31H13v12h2.58l-.01-.86.97-.01s.91-.16.92-1.05c.04-1-.81-1-.96-1-.13 0-1.07.05-1.07.87h-1.52s.04-2.06 2.59-2.06c2.6 0 2.46 2.02 2.46 2.02s.04 1.25-1.11 1.72l.52.37H20M8.92 16h-1.5v-5.8l-1.8.56V9.53l3.14-1.12h.16V16Z"/></svg></span> Analysis Snapshot<a class="headerlink" href="#analysis-snapshot" title="Permanent link">&para;</a></h2>
+<h2 id="analysis-snapshot"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 2v12h7V6zm16 12V6h-1.24c.24.54.19 1.07.19 1.13-.07.67-.54 1.37-.71 1.62l-2.33 2.55 3.32-.02.01 1.22-5.2-.03-.04-1s3.05-3.23 3.2-3.52c.14-.28.71-1.95-.7-1.95-1.23.05-1.09 1.3-1.09 1.3l-1.54.01s.01-.66.38-1.31H13v12h2.58l-.01-.86.97-.01s.91-.16.92-1.05c.04-1-.81-1-.96-1-.13 0-1.07.05-1.07.87h-1.52s.04-2.06 2.59-2.06c2.6 0 2.46 2.02 2.46 2.02s.04 1.25-1.11 1.72l.52.37zM8.92 16h-1.5v-5.8l-1.8.56V9.53l3.14-1.12h.16z"/></svg></span> Analysis Snapshot<a class="headerlink" href="#analysis-snapshot" title="Permanent link">&para;</a></h2>
 <div class="grid cards">
 <ul>
 <li>
@@ -1305,7 +1528,7 @@ pages, especially the domain model and non-functional requirements.</p>
 </ul>
 </div>
 <hr />
-<h2 id="supporting-report-artifact"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42Z"/></svg></span> Supporting Report Artifact<a class="headerlink" href="#supporting-report-artifact" title="Permanent link">&para;</a></h2>
+<h2 id="supporting-report-artifact"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.98 2.98 0 0 0 0-4.24 2.98 2.98 0 0 0-4.24 0l-3.53 3.53a2.98 2.98 0 0 0 0 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.98 2.98 0 0 0 0 4.24 2.98 2.98 0 0 0 4.24 0l3.53-3.53a2.98 2.98 0 0 0 0-4.24.973.973 0 0 1 0-1.42"/></svg></span> Supporting Report Artifact<a class="headerlink" href="#supporting-report-artifact" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../report/phase-3.pdf">Phase 3 Report (PDF)</a></li>
 <li><a href="../report/report-phase-3.html">Phase 3 HTML Report</a></li>
@@ -1315,55 +1538,129 @@ pages, especially the domain model and non-functional requirements.</p>
 
 
 
+
+
+
+
+
+
+
                 
+
               </article>
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
   Back to top
 </button>
         
       </main>
       
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-    <div class="md-copyright__highlight">
-      © 2026 Shoug Fawaz Alomran · All rights reserved
-    </div>
+<footer class="md-footer sx-footer">
   
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
-</div>
+    <nav class="sx-pager md-grid" aria-label="Footer">
       
+        <a href="../phase-2-elicitation/document-analysis/" class="sx-pager__link sx-pager__link--prev">
+          <span class="sx-pager__dir">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6"/></svg>
+            Previous
+          </span>
+          <span class="sx-pager__title">Document & Competitive Analysis</span>
+        </a>
+      
+      
+        <a href="domain-model/" class="sx-pager__link sx-pager__link--next">
+          <span class="sx-pager__dir">
+            Next
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </span>
+          <span class="sx-pager__title">Domain Model</span>
+        </a>
+      
+    </nav>
+  
+
+  <div class="sx-footer__main">
+    <div class="sx-footer__grid md-grid">
+      <div class="sx-footer__brand">
+        <a class="sx-brand" href="..">
+          <span class="sx-brand__mark"><img src="../logo.png" alt="" width="28" height="28"></span>
+          <span class="sx-brand__code">SE311</span>
+          <span class="sx-brand__slash">/</span>
+          <span class="sx-brand__name">sillah</span>
+        </a>
+        <p>
+          A prevention-first requirements baseline for hereditary cardiac risk
+          awareness in Saudi families. Built at Prince Sultan University.
+        </p>
+        <div class="sx-footer__status">
+          <span class="sx-live-dot"></span> Project complete · 2026
+        </div>
+      </div>
+
+      <div class="sx-footer__col">
+        <div class="sx-footer__title">Project</div>
+        <a href="../introduction/">Introduction</a>
+        <a href="../team/">Team</a>
+        <a href="../conclusion/">Conclusion</a>
+        <a href="../privacy-notice/">Privacy notice</a>
+        <a href="../academic-disclaimer/">Academic disclaimer</a>
+      </div>
+
+      <div class="sx-footer__col">
+        <div class="sx-footer__title">Phases</div>
+        <a href="../phase-1-inception/">Phase 1 · Inception</a>
+        <a href="../phase-2-elicitation/">Phase 2 · Elicitation</a>
+        <a href="./">Phase 3 · Analysis</a>
+      </div>
+
+      <div class="sx-footer__col">
+        <div class="sx-footer__title">Reports</div>
+        <a href="../report/phase-1.pdf">Phase 1 report <span>PDF</span></a>
+        <a href="../report/phase-2.pdf">Phase 2 report <span>PDF</span></a>
+        <a href="../report/phase-3.pdf">Phase 3 report <span>PDF</span></a>
+        <a href="../report/report.html">Presentation</a>
+      </div>
+
+      <div class="sx-footer__col">
+        <div class="sx-footer__title">Contact</div>
+        <a href="mailto:inquiry@shoug-tech.com">inquiry@shoug-tech.com</a>
+        <a href="https://shoug-tech.com/" target="_blank" rel="noopener">shoug-tech.com ↗</a>
+        <a href="https://shoug-tech.com/work/projects/" target="_blank" rel="noopener">More projects ↗</a>
+      </div>
+    </div>
+
+    <div class="sx-footer__bottom md-grid">
+      <span>© 2026 Shoug Fawaz Alomran · All rights reserved</span>
+      <span>Made by <a href="https://blueprint.shoug-tech.com/" target="_blank" rel="noopener">Blueprint</a></span>
     </div>
   </div>
 </footer>
-      
+
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.cd18aaf1.min.js"></script>
       
-        <script src="../javascripts/cta-footer.js"></script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/site.js"></script>
       
     
   </body>

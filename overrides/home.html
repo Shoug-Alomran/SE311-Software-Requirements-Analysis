@@ -1,0 +1,694 @@
+{% extends "main.html" %} {#- Landing page: full-bleed sections rendered in the
+hero block; the regular docs layout (sidebars + article) is suppressed for this
+page only. -#} {% block site_nav %}{% endblock %} {% block container %}{%
+endblock %} {% block hero %}
+<div class="sx-home">
+  <!-- ============================== HERO ============================== -->
+  <section class="sx-hero">
+    <div class="sx-hero__bg" aria-hidden="true">
+      <div class="sx-hero__glow sx-hero__glow--a"></div>
+      <div class="sx-hero__glow sx-hero__glow--b"></div>
+    </div>
+
+    <div class="sx-hero__inner md-grid">
+      <div class="sx-hero__copy">
+        <a
+          class="sx-badge sx-rise"
+          style="--d: 0"
+          href="{{ 'introduction/' | url }}"
+        >
+          <span class="sx-live-dot"></span>
+          SE311 · Prince Sultan University
+        </a>
+
+        <h1 class="sx-hero__title sx-rise" style="--d: 1">
+          Heart disease runs in&nbsp;families.
+          <span class="sx-gradient-text">So should prevention.</span>
+        </h1>
+
+        <p class="sx-hero__lead sx-rise" style="--d: 2">
+          <strong>Sillah (صلة)</strong> is a family health management system
+          that turns scattered family history into early warnings for hereditary
+          cardiac risk. This site documents its full requirements lifecycle,
+          from inception and elicitation to analysis and a prioritised
+          specification.
+        </p>
+
+        <div class="sx-hero__actions sx-rise" style="--d: 3">
+          <a
+            class="sx-btn sx-btn--primary"
+            href="{{ 'phase-1-inception/' | url }}"
+          >
+            Explore the requirements
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14m-6-6 6 6-6 6" />
+            </svg>
+          </a>
+          <a class="sx-btn sx-btn--ghost" href="{{ 'report/' | url }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"
+              />
+              <path d="M14 3v5h5M9 13h6M9 17h6" />
+            </svg>
+            Read the report
+          </a>
+        </div>
+
+        <a class="sx-team sx-rise" style="--d: 4" href="{{ 'team/' | url }}">
+          <span class="sx-avatars">
+            <span style="--c: #0d9488">SA</span>
+            <span style="--c: #7c3aed">GA</span>
+            <span style="--c: #e11d48">GS</span>
+            <span style="--c: #d97706">SK</span>
+          </span>
+          <span
+            ><strong>Four-person team</strong> · SE311 Software Requirements
+            Engineering</span
+          >
+        </a>
+      </div>
+
+      <!-- Animated family-tree risk visual -->
+      <div class="sx-hero__visual sx-rise" style="--d: 2">
+        <div class="sx-chip sx-chip--top sx-float">
+          <span class="sx-chip__icon sx-chip__icon--heart">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 12h4l2-5 4 10 2-5h6" />
+            </svg>
+          </span>
+          <span>
+            <span class="sx-chip__label">Risk alert</span>
+            <span class="sx-chip__value">Hereditary CAD · 2 generations</span>
+          </span>
+        </div>
+
+        <div class="sx-window">
+          <div class="sx-window__bar">
+            <span class="sx-window__dots"><i></i><i></i><i></i></span>
+            <span class="sx-window__path">~/sillah/family-tree</span>
+            <span class="sx-window__tag"
+              ><span class="sx-live-dot"></span>risk engine</span
+            >
+          </div>
+
+          <div class="sx-window__body">
+            <svg
+              class="sx-tree"
+              viewBox="0 0 520 380"
+              role="img"
+              aria-label="Animated family tree showing hereditary cardiac risk travelling from a grandparent to the current user"
+            >
+              <defs>
+                <radialGradient id="sxRiskGlow">
+                  <stop
+                    offset="0"
+                    stop-color="var(--heart)"
+                    stop-opacity=".45"
+                  />
+                  <stop offset="1" stop-color="var(--heart)" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="sxYouGlow">
+                  <stop
+                    offset="0"
+                    stop-color="var(--accent)"
+                    stop-opacity=".45"
+                  />
+                  <stop
+                    offset="1"
+                    stop-color="var(--accent)"
+                    stop-opacity="0"
+                  />
+                </radialGradient>
+              </defs>
+
+              <!-- generation labels -->
+              <g class="sx-tree__gen">
+                <text x="16" y="74">GEN 1</text>
+                <text x="16" y="194">GEN 2</text>
+                <text x="16" y="314">GEN 3</text>
+              </g>
+
+              <!-- links -->
+              <g class="sx-tree__links">
+                <path class="sx-draw" style="--i: 0" d="M210 70 H310" />
+                <path
+                  class="sx-draw"
+                  style="--i: 1"
+                  d="M260 70 V130 H130 V165"
+                />
+                <path
+                  class="sx-draw sx-tree__risk-path"
+                  style="--i: 1"
+                  d="M260 130 H300 V165"
+                />
+                <path class="sx-draw" style="--i: 2" d="M320 185 H410" />
+                <path
+                  class="sx-draw"
+                  style="--i: 3"
+                  d="M365 185 V250 H240 V285"
+                />
+                <path
+                  class="sx-draw sx-tree__risk-path"
+                  style="--i: 4"
+                  d="M365 250 H400 V281"
+                />
+              </g>
+
+              <!-- risk signal travelling down the tree -->
+              <circle class="sx-tree__signal" r="4">
+                <animateMotion
+                  dur="3.6s"
+                  repeatCount="indefinite"
+                  begin="1.6s"
+                  path="M330 70 H260 V130 H300 V185 H365 V250 H400 V281"
+                />
+              </circle>
+
+              <!-- nodes -->
+              <g
+                class="sx-tree__node sx-pop"
+                style="--i: 0"
+                transform="translate(190 70)"
+              >
+                <circle r="20" />
+                <text y="4">GF</text>
+              </g>
+              <g
+                class="sx-tree__node sx-tree__node--risk sx-pop"
+                style="--i: 0"
+                transform="translate(330 70)"
+              >
+                <circle class="sx-tree__halo" r="46" fill="url(#sxRiskGlow)" />
+                <circle class="sx-tree__ring" r="20" />
+                <circle r="20" />
+                <text y="4">GM</text>
+              </g>
+              <g
+                class="sx-tree__node sx-pop"
+                style="--i: 1"
+                transform="translate(130 185)"
+              >
+                <circle r="20" />
+                <text y="4">AU</text>
+              </g>
+              <g
+                class="sx-tree__node sx-tree__node--warn sx-pop"
+                style="--i: 1"
+                transform="translate(300 185)"
+              >
+                <circle r="20" />
+                <text y="4">M</text>
+              </g>
+              <g
+                class="sx-tree__node sx-pop"
+                style="--i: 2"
+                transform="translate(430 185)"
+              >
+                <circle r="20" />
+                <text y="4">F</text>
+              </g>
+              <g
+                class="sx-tree__node sx-pop"
+                style="--i: 3"
+                transform="translate(240 305)"
+              >
+                <circle r="20" />
+                <text y="4">S</text>
+              </g>
+              <g
+                class="sx-tree__node sx-tree__node--you sx-pop"
+                style="--i: 4"
+                transform="translate(400 305)"
+              >
+                <circle class="sx-tree__halo" r="50" fill="url(#sxYouGlow)" />
+                <circle r="24" />
+                <text y="4">YOU</text>
+              </g>
+
+              <!-- annotations -->
+              <g class="sx-tree__notes">
+                <text x="358" y="74" class="is-heart">heart disease · 50</text>
+                <text x="300" y="226" text-anchor="middle" class="is-warn">
+                  high cholesterol
+                </text>
+                <text x="400" y="356" text-anchor="middle" class="is-accent">
+                  screening due
+                </text>
+              </g>
+            </svg>
+
+            <svg
+              class="sx-ecg"
+              viewBox="0 0 520 60"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M0 30 H150 L165 30 L175 12 L188 50 L198 6 L210 42 L220 30 H340 L352 30 L360 20 L370 38 L378 30 H520"
+              />
+            </svg>
+          </div>
+
+          <div class="sx-window__footer">
+            <span><b>members</b> 7</span>
+            <span><b>flags</b> <em class="is-heart">2</em></span>
+            <span class="sx-window__cmd"
+              >assessRisk(family) →
+              <em class="is-accent">schedule_screening</em></span
+            >
+          </div>
+        </div>
+
+        <div
+          class="sx-chip sx-chip--bottom sx-float"
+          style="--float-delay: -3s"
+        >
+          <span class="sx-chip__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2" />
+              <path d="M16 3v4M8 3v4M3 10h18m-11 5 2 2 4-4" />
+            </svg>
+          </span>
+          <span>
+            <span class="sx-chip__label">Next step</span>
+            <span class="sx-chip__value">Lipid panel booked</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <a class="sx-scroll-cue" href="#abstract" aria-label="Scroll to abstract">
+      <span>scroll</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 5v14m-6-6 6 6 6-6" />
+      </svg>
+    </a>
+  </section>
+
+  <!-- ============================== STATS ============================== -->
+  <section class="sx-stats md-grid sx-reveal">
+    <div class="sx-stat">
+      <div class="sx-stat__num"><span data-count="30">30</span></div>
+      <div class="sx-stat__label">
+        Functional requirements across the analysed scope
+      </div>
+    </div>
+    <div class="sx-stat">
+      <div class="sx-stat__num"><span data-count="6">6</span></div>
+      <div class="sx-stat__label">
+        Core features, four of them high-priority
+      </div>
+    </div>
+    <div class="sx-stat">
+      <div class="sx-stat__num"><span data-count="3">3</span></div>
+      <div class="sx-stat__label">
+        Stakeholder groups: families, providers, admins
+      </div>
+    </div>
+    <div class="sx-stat">
+      <div class="sx-stat__num">
+        <span data-count="17">17</span><small>+</small>
+      </div>
+      <div class="sx-stat__label">
+        Non-functional and operational constraints
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== ABSTRACT ============================== -->
+  <section class="sx-section md-grid" id="abstract">
+    <div class="sx-split">
+      <div class="sx-reveal">
+        <div class="sx-kicker">00 · Abstract</div>
+        <h2 class="sx-h2">
+          Most cardiac risk is visible years before the&nbsp;emergency.
+        </h2>
+      </div>
+      <div class="sx-prose sx-reveal" style="--d: 1">
+        <p>
+          Inherited heart conditions are often identified late. The signals are
+          usually there already, in a parent's diagnosis or a grandparent's age
+          at first event, but they are spread across people, memories and paper
+          records.
+        </p>
+        <p>
+          <strong>Sillah</strong> gives families one place to record that
+          history, applies rule-based risk checks across generations, and moves
+          people from an <strong>alert</strong> to a
+          <strong>screening appointment</strong> with a provider.
+        </p>
+        <p>
+          This project delivers the requirements baseline for that system:
+          <strong>30 testable functional requirements</strong>, a domain model,
+          use cases, and a prioritised release scope, all traced to stakeholder
+          needs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FOCUS ============================== -->
+  <section class="sx-section md-grid">
+    <div class="sx-section__head sx-reveal">
+      <div class="sx-kicker">01 · Prevention design</div>
+      <h2 class="sx-h2">Four ideas shape every requirement.</h2>
+      <p class="sx-section__lead">
+        Each requirement traces back to at least one of these prevention goals.
+      </p>
+    </div>
+
+    <div class="sx-bento">
+      <article class="sx-card sx-card--wide sx-reveal" style="--d: 0">
+        <div class="sx-card__top">
+          <span class="sx-icon"
+            ><svg viewBox="0 0 24 24">
+              <circle cx="12" cy="5" r="2.5" />
+              <circle cx="5" cy="19" r="2.5" />
+              <circle cx="19" cy="19" r="2.5" />
+              <path d="M12 7.5V12m0 0-6 4.8M12 12l6 4.8" /></svg
+          ></span>
+          <span class="sx-card__index">focus / 01</span>
+        </div>
+        <h3>Early risk identification</h3>
+        <p>
+          Capture and structure family history so inherited risk patterns
+          surface as early as possible, before the first cardiac event.
+        </p>
+        <div class="sx-mini-tree" aria-hidden="true">
+          <span></span><span class="is-risk"></span><span></span
+          ><span class="is-warn"></span><span class="is-you"></span>
+        </div>
+      </article>
+
+      <article class="sx-card sx-reveal" style="--d: 1">
+        <div class="sx-card__top">
+          <span class="sx-icon"
+            ><svg viewBox="0 0 24 24">
+              <path
+                d="M12 21s-7-4.4-9.3-9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 9.3 6C19 16.6 12 21 12 21z"
+              /></svg
+          ></span>
+          <span class="sx-card__index">focus / 02</span>
+        </div>
+        <h3>Preventive guidance</h3>
+        <p>
+          Clear recommendations and reminders that encourage regular screening
+          and healthier habits.
+        </p>
+      </article>
+
+      <article class="sx-card sx-reveal" style="--d: 2">
+        <div class="sx-card__top">
+          <span class="sx-icon"
+            ><svg viewBox="0 0 24 24">
+              <rect x="3" y="5" width="18" height="16" rx="2" />
+              <path d="M16 3v4M8 3v4M3 10h18" /></svg
+          ></span>
+          <span class="sx-card__index">focus / 03</span>
+        </div>
+        <h3>Clinical readiness</h3>
+        <p>
+          Appointment workflows that move a family from alert to provider action
+          quickly.
+        </p>
+      </article>
+
+      <article class="sx-card sx-card--wide sx-reveal" style="--d: 3">
+        <div class="sx-card__top">
+          <span class="sx-icon"
+            ><svg viewBox="0 0 24 24">
+              <path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z" />
+              <path d="m9 12 2 2 4-4" /></svg
+          ></span>
+          <span class="sx-card__index">focus / 04</span>
+        </div>
+        <h3>Governance &amp; trust</h3>
+        <p>
+          Traceability, validation and change control keep health-related
+          requirements reliable as the system evolves.
+        </p>
+        <div class="sx-trace" aria-hidden="true">
+          <span>BR-01</span><i></i><span>SN-04</span><i></i><span>FR-12</span
+          ><i></i><span class="is-accent">TC-12</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================== LIFECYCLE ============================== -->
+  <section class="sx-section md-grid">
+    <div class="sx-section__head sx-reveal">
+      <div class="sx-kicker">02 · Requirements lifecycle</div>
+      <h2 class="sx-h2">
+        From a problem statement to a prioritised specification.
+      </h2>
+      <p class="sx-section__lead">
+        Three phases are documented page by page on this site. Specification,
+        validation and management are covered in the final report.
+      </p>
+    </div>
+
+    <ol class="sx-timeline">
+      <li class="sx-phase sx-reveal" style="--d: 0">
+        <a href="{{ 'phase-1-inception/' | url }}">
+          <span class="sx-phase__num">01</span>
+          <span class="sx-phase__body">
+            <span class="sx-phase__title">Inception</span>
+            <span class="sx-phase__text"
+              >Business goals, scope boundaries and strategic context.</span
+            >
+            <span class="sx-phase__meta"
+              >4 pages <span class="sx-arrow">→</span></span
+            >
+          </span>
+        </a>
+      </li>
+      <li class="sx-phase sx-reveal" style="--d: 1">
+        <a href="{{ 'phase-2-elicitation/' | url }}">
+          <span class="sx-phase__num">02</span>
+          <span class="sx-phase__body">
+            <span class="sx-phase__title">Elicitation</span>
+            <span class="sx-phase__text"
+              >Interviews, a survey and document analysis across three
+              stakeholder groups.</span
+            >
+            <span class="sx-phase__meta"
+              >9 pages <span class="sx-arrow">→</span></span
+            >
+          </span>
+        </a>
+      </li>
+      <li class="sx-phase sx-reveal" style="--d: 2">
+        <a href="{{ 'phase-3-analysis/' | url }}">
+          <span class="sx-phase__num">03</span>
+          <span class="sx-phase__body">
+            <span class="sx-phase__title">Analysis</span>
+            <span class="sx-phase__text"
+              >Domain model, use cases, functional and non-functional
+              requirements, and priorities.</span
+            >
+            <span class="sx-phase__meta"
+              >6 pages <span class="sx-arrow">→</span></span
+            >
+          </span>
+        </a>
+      </li>
+      <li class="sx-phase sx-phase--report sx-reveal" style="--d: 3">
+        <a href="{{ 'report/' | url }}">
+          <span class="sx-phase__num">04–06</span>
+          <span class="sx-phase__body">
+            <span class="sx-phase__title"
+              >Specification · Validation · Management</span
+            >
+            <span class="sx-phase__text"
+              >SRS consolidation, quality checks, traceability and change
+              control.</span
+            >
+            <span class="sx-phase__meta"
+              >In the report <span class="sx-arrow">→</span></span
+            >
+          </span>
+        </a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============================== PROTOTYPE ============================== -->
+  <section class="sx-section sx-section--flush">
+    <div class="md-grid">
+      <div class="sx-section__head sx-reveal">
+        <div class="sx-kicker">03 · Prototype</div>
+        <h2 class="sx-h2">The requirements, as screens.</h2>
+        <p class="sx-section__lead">
+          Patient and doctor portals from the Sillah prototype. Click any screen
+          to enlarge it.
+        </p>
+      </div>
+    </div>
+
+    {% set row_a = [ ("patient_portal_dashboard", "Patient dashboard",
+    "Patient"), ("patient_family_health_tree", "Family health tree", "Patient"),
+    ("patient_medical_alerts", "Medical alerts", "Patient"),
+    ("patient_risk_assessment", "Risk assessment", "Patient"),
+    ("patient_my_appointments", "My appointments", "Patient"),
+    ("patient_awareness_hub", "Awareness hub", "Patient"),
+    ("patient_nearby_clinics", "Nearby clinics", "Patient"), ] %} {% set row_b =
+    [ ("doctor_portal_dashboard", "Doctor dashboard", "Doctor"),
+    ("doctor_patient_list", "Patient list", "Doctor"),
+    ("doctor_appointment_list", "Appointments", "Doctor"),
+    ("doctor_active_medications_list", "Active medications", "Doctor"),
+    ("patient_profile_family_overview", "Family overview", "Patient"),
+    ("patient_health_records_empty", "Health records", "Patient"), ("login",
+    "Sign in", "Auth"), ] %} {% for row in [row_a, row_b] %}
+    <div
+      class="sx-marquee{% if loop.index == 2 %} sx-marquee--reverse{% endif %}"
+    >
+      <div class="sx-marquee__track">
+        {% for slug, label, role in row %}
+        <button
+          class="sx-shot"
+          type="button"
+          data-full="{{ ('img/' ~ slug ~ '.png') | url }}"
+          data-caption="{{ label }}"
+        >
+          <span class="sx-shot__frame">
+            <img
+              src="{{ ('img/thumbs/' ~ slug ~ '.jpg') | url }}"
+              alt="Sillah prototype: {{ label }}"
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
+          <span class="sx-shot__cap"
+            ><span class="sx-shot__role">{{ role }}</span>{{ label }}</span
+          >
+        </button>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+
+  <!-- ============================== STAKEHOLDERS ============================== -->
+  <section class="sx-section md-grid">
+    <div class="sx-section__head sx-reveal">
+      <div class="sx-kicker">04 · Stakeholders</div>
+      <h2 class="sx-h2">Three groups, three sets of needs.</h2>
+    </div>
+
+    <div class="sx-people">
+      <a
+        class="sx-card sx-card--link sx-reveal"
+        style="--d: 0"
+        href="{{ 'phase-2-elicitation/family-requirements/' | url }}"
+      >
+        <div class="sx-card__top">
+          <span class="sx-icon"
+            ><svg viewBox="0 0 24 24">
+              <circle cx="9" cy="7" r="3" />
+              <circle cx="17" cy="9" r="2.3" />
+              <path d="M3 20a6 6 0 0 1 12 0M14.5 20a4.5 4.5 0 0 1 7-3.7" /></svg
+          ></span>
+          <span class="sx-card__index">group / 01</span>
+        </div>
+        <h3>Families</h3>
+        <p>
+          Record relatives and conditions, understand risk in plain language,
+          and get reminded to act.
+        </p>
+        <span class="sx-card__more"
+          >Family requirements <span class="sx-arrow">→</span></span
+        >
+      </a>
+      <a
+        class="sx-card sx-card--link sx-reveal"
+        style="--d: 1"
+        href="{{ 'phase-2-elicitation/provider-requirements/' | url }}"
+      >
+        <div class="sx-card__top">
+          <span class="sx-icon"
+            ><svg viewBox="0 0 24 24">
+              <path d="M6 3v6a4 4 0 0 0 8 0V3M10 13v2a5 5 0 0 0 10 0v-2" />
+              <circle cx="20" cy="11" r="2" /></svg
+          ></span>
+          <span class="sx-card__index">group / 02</span>
+        </div>
+        <h3>Healthcare providers</h3>
+        <p>
+          See structured family history at a glance, manage appointments and
+          follow up on flagged patients.
+        </p>
+        <span class="sx-card__more"
+          >Provider requirements <span class="sx-arrow">→</span></span
+        >
+      </a>
+      <a
+        class="sx-card sx-card--link sx-reveal"
+        style="--d: 2"
+        href="{{ 'phase-2-elicitation/admin-requirements/' | url }}"
+      >
+        <div class="sx-card__top">
+          <span class="sx-icon"
+            ><svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"
+              /></svg
+          ></span>
+          <span class="sx-card__index">group / 03</span>
+        </div>
+        <h3>Administrators</h3>
+        <p>
+          Keep accounts, content and data governance secure, auditable and
+          compliant with privacy rules.
+        </p>
+        <span class="sx-card__more"
+          >Admin requirements <span class="sx-arrow">→</span></span
+        >
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================== CTA ============================== -->
+  <section class="sx-section md-grid">
+    <div class="sx-cta sx-reveal">
+      <div class="sx-cta__grid" aria-hidden="true"></div>
+      <div class="sx-cta__copy">
+        <div class="sx-kicker">05 · Deliverables</div>
+        <h2 class="sx-h2">Read the full report.</h2>
+        <p>
+          Three written phase reports and the final presentation, available to
+          download or read in the browser.
+        </p>
+      </div>
+      <div class="sx-cta__links">
+        <a href="{{ 'report/phase-1.pdf' | url }}"
+          ><span class="sx-cta__tag">PDF</span>Phase 1 · Inception<span
+            class="sx-arrow"
+            >↗</span
+          ></a
+        >
+        <a href="{{ 'report/phase-2.pdf' | url }}"
+          ><span class="sx-cta__tag">PDF</span>Phase 2 · Elicitation<span
+            class="sx-arrow"
+            >↗</span
+          ></a
+        >
+        <a href="{{ 'report/phase-3.pdf' | url }}"
+          ><span class="sx-cta__tag">PDF</span>Phase 3 · Analysis<span
+            class="sx-arrow"
+            >↗</span
+          ></a
+        >
+        <a href="{{ 'report/report.html' | url }}"
+          ><span class="sx-cta__tag">HTML</span>Final presentation<span
+            class="sx-arrow"
+            >↗</span
+          ></a
+        >
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -12,19 +12,18 @@ theme:
   custom_dir: overrides
   logo: logo.png
   favicon: google.png
-  font:
-    text: Nunito Sans
-    code: JetBrains Mono
+  font: false
   icon:
     logo: material/ambulance
   features:
+    - navigation.instant
+    - navigation.instant.progress
     - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.sections
     - navigation.indexes
     - navigation.top
     - navigation.path
-    - toc.follow
+    - navigation.footer
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -32,15 +31,15 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: green
-      accent: red
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: green
-      accent: red
+      primary: custom
+      accent: custom
       toggle:
         icon: material/white-balance-sunny
         name: Switch to light mode
@@ -105,10 +104,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - toc:
-      permalink: true
+
 
 extra_css:
   - styles/extra.css
 extra_javascript:
-  - javascripts/cta-footer.js
+  - javascripts/site.js

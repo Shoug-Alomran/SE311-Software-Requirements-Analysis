@@ -7,3 +7,4 @@ __pycache__/
 
 # MkDocs generated output
 site/
+.venv/
